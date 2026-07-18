@@ -1,189 +1,98 @@
 ---
 name: shortcuts-generator
-description: Generate macOS/iOS Shortcuts by creating plist files. Use when asked to create shortcuts, automate workflows, build .shortcut files, or generate Shortcuts plists. Covers 1,155 actions (427 WF*Actions + 728 AppIntents), variable references, and control flow.
-allowed-tools: Write, Bash
+description: >
+  Use when the user wants to create, inspect, modify, or import a macOS/iOS
+  Shortcut. Covers generating valid `.shortcut` files from plist XML,
+  signing them for import, and understanding the Shortcuts action grammar:
+  WF*Actions, AppIntents, variables, and control flow.
+version: 1.2.0
+author: OTNworld fork / Hermes adaptation
+license: MIT
+platforms: [macos, ios]
+metadata:
+  hermes:
+    tags: [shortcuts, automation, apple, plist, ios, macos]
+    related_skills: [obsidian, apple-reminders, imessage]
 ---
 
-# macOS Shortcuts Generator
+# macOS/iOS Shortcuts Generator
 
-Generate valid `.shortcut` files that can be signed and imported into Apple's Shortcuts app.
+Génère ou corrige des fichiers `.shortcut` exploitables par l’app **Raccourcis** sur macOS/iOS, à partir de XML plist valide. Le skill documente la grammaire des actions et des paramètres ; il ne s’agit pas d’un générateur magique, mais d’un protocole reproductible.
 
-## Quick Start
+## Quand utiliser ce skill
 
-A shortcut is a binary plist with this structure:
+- L’utilisateur demande un raccourci, une automatisation Raccourcis, ou un `.shortcut`.
+- Il veut créer/modifier/examiner un workflow d’actions Apple Shortcuts.
+- Il parle de signature/import de `.shortcut`, variables, UUID, contrôle de flux.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>WFWorkflowActions</key>
-    <array>
-        <!-- Actions go here -->
-    </array>
-    <key>WFWorkflowClientVersion</key>
-    <string>2700.0.4</string>
-    <key>WFWorkflowHasOutputFallback</key>
-    <false/>
-    <key>WFWorkflowIcon</key>
-    <dict>
-        <key>WFWorkflowIconGlyphNumber</key>
-        <integer>59511</integer>
-        <key>WFWorkflowIconStartColor</key>
-        <integer>4282601983</integer>
-    </dict>
-    <key>WFWorkflowImportQuestions</key>
-    <array/>
-    <key>WFWorkflowMinimumClientVersion</key>
-    <integer>900</integer>
-    <key>WFWorkflowMinimumClientVersionString</key>
-    <string>900</string>
-    <key>WFWorkflowName</key>
-    <string>My Shortcut</string>
-    <key>WFWorkflowOutputContentItemClasses</key>
-    <array/>
-    <key>WFWorkflowTypes</key>
-    <array/>
-</dict>
-</plist>
-```
+## Livrables attendus
 
-### Minimal Hello World
+Pour chaque raccourci produit :
+- un fichier `.shortcut` XML exportable
+- un résumé des actions utilisées
+- les UUIDs principaux pour le chaînage
+- la commande de signature prête à exécuter
 
-```xml
-<dict>
-    <key>WFWorkflowActionIdentifier</key>
-    <string>is.workflow.actions.gettext</string>
-    <key>WFWorkflowActionParameters</key>
-    <dict>
-        <key>UUID</key>
-        <string>A1B2C3D4-E5F6-7890-ABCD-EF1234567890</string>
-        <key>WFTextActionText</key>
-        <string>Hello World!</string>
-    </dict>
-</dict>
-<dict>
-    <key>WFWorkflowActionIdentifier</key>
-    <string>is.workflow.actions.showresult</string>
-    <key>WFWorkflowActionParameters</key>
-    <dict>
-        <key>Text</key>
-        <dict>
-            <key>Value</key>
-            <dict>
-                <key>attachmentsByRange</key>
-                <dict>
-                    <key>{0, 1}</key>
-                    <dict>
-                        <key>OutputName</key>
-                        <string>Text</string>
-                        <key>OutputUUID</key>
-                        <string>A1B2C3D4-E5F6-7890-ABCD-EF1234567890</string>
-                        <key>Type</key>
-                        <string>ActionOutput</string>
-                    </dict>
-                </dict>
-                <key>string</key>
-                <string>￼</string>
-            </dict>
-            <key>WFSerializationType</key>
-            <string>WFTextTokenString</string>
-        </dict>
-    </dict>
-</dict>
-```
+## Étapes
 
-## Core Concepts
+1. **Collecte** : demander le nom du raccourci, les entrées, les actions souhaitées et l’ordre logique.
+2. **Choix des actions** : sélectionner les identifiants dans `references/ACTIONS.md` et `references/APPINTENTS.md`.
+3. **Génération des UUIDs** : un UUID par action productrice de sortie, au format `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` en majuscules.
+4. **Construction du plist** : suivre `references/PLIST_FORMAT.md` et `references/PARAMETER_TYPES.md`.
+5. **Chaînage** : câbler les sorties vers entrées via `attachmentsByRange` et U+FFFC, voir `references/VARIABLES.md`.
+6. **Flux de contrôle** : Repeat/If/Choose from Menu selon `references/CONTROL_FLOW.md`.
+7. **Validation rapide** : cohérence des UUIDs, types `<integer>` pour `WFControlFlowMode`, placeholder `￼` bien présent.
+8. **Signature** : exécuter la commande de signature adéquate, voir section Signing.
+9. **Import** : expliquer la marche à suivre si besoin.
 
-### 1. Actions
-Every action has:
-- **Identifier**: `is.workflow.actions.<name>` (e.g., `is.workflow.actions.showresult`)
-- **Parameters**: Action-specific configuration in `WFWorkflowActionParameters`
-- **UUID**: Unique identifier for referencing this action's output
+## Syntaxe courte
 
-### 2. Variable References
-To use output from a previous action:
-1. The source action needs a `UUID` parameter
-2. Reference it using `OutputUUID` in an `attachmentsByRange` dictionary
-3. Use `￼` (U+FFFC) as placeholder in the string where the variable goes
-4. Set `WFSerializationType` to `WFTextTokenString`
+- Identifiant d’action : `is.workflow.actions.<name>` ou intent.
+- Paramètres : `WFWorkflowActionParameters`.
+- Référence de sortie : `OutputUUID` + `attachmentsByRange` + `￼`.
+- Contrôle de flux : `GroupingIdentifier` + `WFControlFlowMode` `0/1/2`.
 
-### 3. Control Flow
-Control flow actions (repeat, conditional, menu) use:
-- `GroupingIdentifier`: UUID linking start/middle/end actions
-- `WFControlFlowMode`: 0=start, 1=middle (else/case), 2=end
+## Règles dures
 
-## Common Actions Quick Reference
+- UUIDs en majuscules uniquement.
+- `WFControlFlowMode` est un `<integer>`, jamais un string.
+- Clés de range au format `{position, length}`.
+- Le caractère de marque de variable est `￼` (U+FFFC), pas un placeholder standard.
+- Toute action productrice de sortie doit exposer un UUID.
 
-| Action | Identifier | Key Parameters |
-|--------|------------|----------------|
-| Text | `is.workflow.actions.gettext` | `WFTextActionText` |
-| Show Result | `is.workflow.actions.showresult` | `Text` |
-| Ask for Input | `is.workflow.actions.ask` | `WFAskActionPrompt`, `WFInputType` |
-| Use AI Model | `is.workflow.actions.askllm` | `WFLLMPrompt`, `WFLLMModel`, `WFGenerativeResultType` |
-| Comment | `is.workflow.actions.comment` | `WFCommentActionText` |
-| URL | `is.workflow.actions.url` | `WFURLActionURL` |
-| Get Contents of URL | `is.workflow.actions.downloadurl` | `WFURL`, `WFHTTPMethod` |
-| Get Weather | `is.workflow.actions.weather.currentconditions` | (none required) |
-| Open App | `is.workflow.actions.openapp` | `WFAppIdentifier` |
-| Open URL | `is.workflow.actions.openurl` | `WFInput` |
-| Alert | `is.workflow.actions.alert` | `WFAlertActionTitle`, `WFAlertActionMessage` |
-| Notification | `is.workflow.actions.notification` | `WFNotificationActionTitle`, `WFNotificationActionBody` |
-| Set Variable | `is.workflow.actions.setvariable` | `WFVariableName`, `WFInput` |
-| Get Variable | `is.workflow.actions.getvariable` | `WFVariable` |
-| Number | `is.workflow.actions.number` | `WFNumberActionNumber` |
-| List | `is.workflow.actions.list` | `WFItems` |
-| Dictionary | `is.workflow.actions.dictionary` | `WFItems` |
-| Repeat (count) | `is.workflow.actions.repeat.count` | `WFRepeatCount`, `GroupingIdentifier`, `WFControlFlowMode` |
-| Repeat (each) | `is.workflow.actions.repeat.each` | `WFInput`, `GroupingIdentifier`, `WFControlFlowMode` |
-| If/Otherwise | `is.workflow.actions.conditional` | `WFInput`, `WFCondition`, `GroupingIdentifier`, `WFControlFlowMode` |
-| Choose from Menu | `is.workflow.actions.choosefrommenu` | `WFMenuPrompt`, `WFMenuItems`, `GroupingIdentifier`, `WFControlFlowMode` |
-| Find Photos | `is.workflow.actions.filter.photos` | `WFContentItemFilter` (see FILTERS.md) |
-| Delete Photos | `is.workflow.actions.deletephotos` | `photos` (**NOT** `WFInput`!) |
+## Références
 
-## Detailed Reference Files
-
-For complete documentation, see:
-- [PLIST_FORMAT.md](PLIST_FORMAT.md) - Complete plist structure
-- [ACTIONS.md](ACTIONS.md) - All 427 WF*Action identifiers and parameters
-- [APPINTENTS.md](APPINTENTS.md) - All 728 AppIntent actions
-- [PARAMETER_TYPES.md](PARAMETER_TYPES.md) - All parameter value types and serialization formats
-- [VARIABLES.md](VARIABLES.md) - Variable reference system
-- [CONTROL_FLOW.md](CONTROL_FLOW.md) - Repeat, Conditional, Menu patterns
-- [FILTERS.md](FILTERS.md) - Content filters for Find/Filter actions (photos, files, etc.)
-- [EXAMPLES.md](EXAMPLES.md) - Complete working examples
+- `references/PLIST_FORMAT.md` : structure racine.
+- `references/ACTIONS.md` : 427 WF*Actions.
+- `references/APPINTENTS.md` : 728 AppIntents.
+- `references/PARAMETER_TYPES.md` : types et sérialisation.
+- `references/VARIABLES.md` : système de variables.
+- `references/CONTROL_FLOW.md` : Repeat / Condition / Menu.
+- `references/FILTERS.md` : filtres de contenu.
+- `references/EXAMPLES.md` : exemples complets.
 
 ## Signing Shortcuts
 
-Shortcuts MUST be signed before they can be imported. Use the macOS `shortcuts` CLI:
+Les `.shortcut` doivent être signés pour être importés.
 
 ```bash
-# Sign for anyone to use
-shortcuts sign --mode anyone --input MyShortcut.shortcut --output MyShortcut_signed.shortcut
+# Signer pour tout le monde
+shortcuts sign --mode anyone --input <input>.shortcut --output <output>_signed.shortcut
 
-# Sign for people who know you
-shortcuts sign --mode people-who-know-me --input MyShortcut.shortcut --output MyShortcut_signed.shortcut
+# Signer pour les contacts
+shortcuts sign --mode people-who-know-me --input <input>.shortcut --output <output>_signed.shortcut
 ```
 
-The signing process:
-1. Write your plist as XML to a `.shortcut` file
-2. Run `shortcuts sign` to add cryptographic signature (~19KB added)
-3. The signed file can be opened/imported into Shortcuts.app
+Processus :
+1. écrire le plist XML dans `<nom>.shortcut`
+2. signer avec `shortcuts sign`
+3. ouvrir/importer dans **Raccourcis**
 
-## Workflow for Creating Shortcuts
+## Workflow de sauvegarde
 
-1. **Define actions** - List what the shortcut should do
-2. **Generate UUIDs** - Each action that produces output needs a unique UUID
-3. **Build action array** - Create each action dictionary with identifier and parameters
-4. **Wire variable references** - Connect outputs to inputs using `OutputUUID`
-5. **Wrap in plist** - Add the root structure with icon, name, version
-6. **Write to file** - Save as `.shortcut` (XML plist format is fine)
-7. **Sign** - Run `shortcuts sign` to make it importable
+Si la modification est mineure, demander à l’utilisateur s’il veut :
+- écraser la version existante
+- créer une variante horodatée
+- conserver les deux sans tag particulier
 
-## Key Rules
-
-1. **UUIDs must be uppercase**: `A1B2C3D4-E5F6-7890-ABCD-EF1234567890`
-2. **WFControlFlowMode is an integer**: Use `<integer>0</integer>` not `<string>0</string>`
-3. **Range keys use format**: `{position, length}` - e.g., `{0, 1}` for first character
-4. **The placeholder character**: `￼` (U+FFFC) marks where variables are inserted
-5. **Control flow needs matching ends**: Every repeat/if/menu start needs an end action with same `GroupingIdentifier`
+Préférer la simplicité sauf consigne contraire explicite.
