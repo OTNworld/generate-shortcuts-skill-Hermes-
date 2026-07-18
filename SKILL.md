@@ -7,7 +7,7 @@ description: >
   WF*Actions, AppIntents, variables, and control flow. Also covers bridging
   workflows to external apps like Obsidian-vault-based prompting and local
   inference apps on iOS/macOS.
-version: 1.2.0
+version: 1.3.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -34,6 +34,14 @@ Pour chaque raccourci produit :
 - un résumé des actions utilisées
 - les UUIDs principaux pour le chaînage
 - la commande de signature prête à exécuter
+- pour les starters/projets : note dans le vault `Projets/.../` avec idée, plan, starter, tests iOS
+
+## Starters / templates projet
+
+- `templates/locally-obsidian.shortcut.xml` : starter **Locally → Obsidian**
+- workflow cible : `Share Sheet → Ask → GetText → Demander à Locally AI → Choose menu → Show/Copy/Save/Append`
+- branches recommandées : `Afficher`, `Copier`, `Nouvelle note AI`, `Append Daily`, `Append Inbox`
+- point d’attention iOS : `obsidian://open` après sauvegarde iCloud si l’app est installée
 
 ## Étapes
 
@@ -69,14 +77,21 @@ Pour chaque raccourci produit :
 - `gettextfrompdf` = PDF seulement.
 - `shareextension` / `ExtensionInput` = entrée fiabletexte/URL/rich text.
 
-## Obsidian pont
+## Obsidian pont / app locale iOS
 
-- Le vault est source de vérité, mais pas lisible automatiquement en pur iOS par le raccourci.
-- Apports de contexte autorisés : `ExtensionInput`, presse-papiers, Ask, URL scheme `obsidian://open?vault=<VAULT>&file=<PATH>` pour ouvrir, pas pour renvoyer du contenu.
-- Si l’app cible expose un App Intent ou un URL scheme, privilégier :
-  - `is.workflow.actions.appintentexecution`
-  - sinon `is.workflow.actions.openurl`
-  - sinon `is.workflow.actions.openapp` + alerte rappel coller/valider
+- Le vault est source de vérité, mais pas lisible automatiquement en pur iOS par le raccourci sauf App Intent/URL.
+- Ordre d’appel à une app locale : App Intent > URL scheme > ouverture d’app + alerte rappel.
+- `shareextension` / `ExtensionInput` est valide pour texte/URL/rich text.
+- Si l’app cible expose une pièce jointe dans Shortcuts, préférer ce canal à un presse-papiers manuel.
+
+## Modèle cross-app recommandé
+
+Flux générique iOS/documenté :
+1. entrée = `ExtensionInput` / `Ask` / presse-papiers
+2. composer un prompt texte avec variables et `attachmentsByRange`
+3. appeler l’app via intent/URL/`Open App`
+4. choisir la branche de sortie : `Show Result` / `Set Clipboard` / sauvegarde iCloud / append fichier
+5. pour écriture : utiliser `Open URL` avec `obsidian://...` quand possible
 
 ## Références
 
