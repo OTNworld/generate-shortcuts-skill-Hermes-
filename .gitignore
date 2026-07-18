@@ -1,0 +1,9 @@
+# macOS system junk
+.DS_Store
+.AppleDouble
+.LSOverride
+.localized
+
+# Signed outputs / generated shortcuts
+*_signed.shortcut
+*.shortcut
