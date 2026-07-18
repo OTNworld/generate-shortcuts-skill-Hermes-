@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>WFWorkflowActions</key>
+    <array>
+        <!-- Action 1: Share Extension -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.shareextension</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</string>
+            </dict>
+        </dict>
+
+        <!-- Action 2: Ask optional context -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.ask</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB</string>
+                <key>WFAskActionPrompt</key>
+                <string>Contexte optionnel ?</string>
+                <key>WFInputType</key>
+                <string>Text</string>
+            </dict>
+        </dict>
+
+        <!-- Action 3: Ask question for Locally -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.ask</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC</string>
+                <key>WFAskActionPrompt</key>
+                <string>Quelle question envoyer à Locally ?</string>
+                <key>WFInputType</key>
+                <string>Text</string>
+            </dict>
+        </dict>
+
+        <!-- Action 4: Build prompt -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.gettext</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD</string>
+                <key>WFTextActionText</key>
+                <string>Contexte : ￼
+Question : ￼</string>
+            </dict>
+        </dict>
+
+        <!-- Action 5: Ask Locally AI -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.appintentexecution</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE</string>
+                <key>WFAppIntentExecutionIntent</key>
+                <string>Demander à Locally AI</string>
+                <key>WFAppIntentExecutionParameters</key>
+                <dict>
+                    <key>Message</key>
+                    <dict>
+                        <key>Value</key>
+                        <dict>
+                            <key>attachmentsByRange</key>
+                            <dict>
+                                <key>{0, 1}</key>
+                                <dict>
+                                    <key>OutputUUID</key>
+                                    <string>DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD</string>
+                                    <key>OutputName</key>
+                                    <string>Text</string>
+                                    <key>Type</key>
+                                    <string>ActionOutput</string>
+                                </dict>
+                            </dict>
+                            <key>string</key>
+                            <string>￼</string>
+                        </dict>
+                        <key>WFSerializationType</key>
+                        <string>WFTextTokenString</string>
+                    </dict>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- Action 6: Choose destination -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.choosefrommenu</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF</string>
+                <key>GroupingIdentifier</key>
+                <string>11111111-1111-1111-1111-111111111111</string>
+                <key>WFControlFlowMode</key>
+                <integer>0</integer>
+                <key>WFMenuPrompt</key>
+                <string>Que faire de la réponse ?</string>
+                <key>WFMenuItems</key>
+                <array>
+                    <string>Afficher seulement</string>
+                    <string>Copier la réponse</string>
+                    <string>Nouvelle note AI</string>
+                    <string>Append Daily</string>
+                    <string>Append Inbox</string>
+                </array>
+            </dict>
+        </dict>
+
+        <!-- Branch A: Show result -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.showresult</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>11111111-1111-1111-1111-111111111112</string>
+                <key>GroupingIdentifier</key>
+                <string>11111111-1111-1111-1111-111111111111</string>
+                <key>WFControlFlowMode</key>
+                <integer>1</integer>
+                <key>Text</key>
+                <dict>
+                    <key>Value</key>
+                    <dict>
+                        <key>attachmentsByRange</key>
+                        <dict>
+                            <key>{0, 1}</key>
+                            <dict>
+                                <key>OutputUUID</key>
+                                <string>EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE</string>
+                                <key>OutputName</key>
+                                <string>Response</string>
+                                <key>Type</key>
+                                <string>ActionOutput</string>
+                            </dict>
+                        </dict>
+                        <key>string</key>
+                        <string>￼</string>
+                    </dict>
+                    <key>WFSerializationType</key>
+                    <string>WFTextTokenString</string>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- Branch B: Copy response -->
+        <dict>
+            <key>WFWorkflowActionIdentifier</key>
+            <string>is.workflow.actions.setclipboard</string>
+            <key>WFWorkflowActionParameters</key>
+            <dict>
+                <key>UUID</key>
+                <string>11111111-1111-1111-1111-111111111113</string>
+                <key>GroupingIdentifier</key>
+                <string>11111111-1111-1111-1111-111111111111</string>
+                <key>WFControlFlowMode</key>
+                <integer>1</integer>
+                <key>WFItems</key>
+                <dict>
+                    <key>Value</key>
+                    <dict>
+                        <key>attachmentsByRange</key>
+                        <dict>
+                            <key>{0, 1}</key>
+                            <dict>
+                                <key>OutputUUID</key>
+                                <string>EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE</string>
+                                <key>OutputName</key>
+                                <string>Response</string>
+                                <key>Type</key>
+                                <string>ActionOutput</string>
+                            </dict>
+                        </dict>
+                        <key>string</key>
+                        <string>￼</string>
+                    </dict>
+                    <key>WFSerializationType</key>
+                    <string>WFTextTokenString</string>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- Branch C/B...
+        Remaining branches are intentionally left minimal in this starter file.
+        Use the Choose from Menu structure above as the control-flow template
+        and add analogous branches for:
+        - Nouvelle note AI -> Save File -> Open URL obsidian://
+        - Append Daily -> File Append to Daily/yyyy-MM-dd.md
+        - Append Inbox -> File Append to Inbox.md
+        -->
+    </array>
+    <key>WFWorkflowClientVersion</key>
+    <string>2700.0.4</string>
+    <key>WFWorkflowHasOutputFallback</key>
+    <false/>
+    <key>WFWorkflowIcon</key>
+    <dict>
+        <key>WFWorkflowIconGlyphNumber</key>
+        <integer>59511</integer>
+        <key>WFWorkflowIconStartColor</key>
+        <integer>4282601983</integer>
+    </dict>
+    <key>WFWorkflowImportQuestions</key>
+    <array/>
+    <key>WFWorkflowMinimumClientVersion</key>
+    <integer>900</integer>
+    <key>WFWorkflowMinimumClientVersionString</key>
+    <string>900</string>
+    <key>WFWorkflowName</key>
+    <string>Locally → Obsidian</string>
+    <key>WFWorkflowOutputContentItemClasses</key>
+    <array/>
+    <key>WFWorkflowTypes</key>
+    <array/>
+</dict>
+</plist>

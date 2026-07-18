@@ -4,7 +4,9 @@ description: >
   Use when the user wants to create, inspect, modify, or import a macOS/iOS
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
-  WF*Actions, AppIntents, variables, and control flow.
+  WF*Actions, AppIntents, variables, and control flow. Also covers bridging
+  workflows to external apps like Obsidian-vault-based prompting and local
+  inference apps on iOS/macOS.
 version: 1.2.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
@@ -59,6 +61,22 @@ Pour chaque raccourci produit :
 - Clés de range au format `{position, length}`.
 - Le caractère de marque de variable est `￼` (U+FFFC), pas un placeholder standard.
 - Toute action productrice de sortie doit exposer un UUID.
+
+## Limites iOS autorisées
+
+- Pas d’action native documentée pour lire le contenu texte brut d’un `.md` iCloud.
+- `documentpicker.open/save` = sélection/sauvegarde fichier.
+- `gettextfrompdf` = PDF seulement.
+- `shareextension` / `ExtensionInput` = entrée fiabletexte/URL/rich text.
+
+## Obsidian pont
+
+- Le vault est source de vérité, mais pas lisible automatiquement en pur iOS par le raccourci.
+- Apports de contexte autorisés : `ExtensionInput`, presse-papiers, Ask, URL scheme `obsidian://open?vault=<VAULT>&file=<PATH>` pour ouvrir, pas pour renvoyer du contenu.
+- Si l’app cible expose un App Intent ou un URL scheme, privilégier :
+  - `is.workflow.actions.appintentexecution`
+  - sinon `is.workflow.actions.openurl`
+  - sinon `is.workflow.actions.openapp` + alerte rappel coller/valider
 
 ## Références
 
