@@ -34,7 +34,24 @@ Pour chaque raccourci produit :
 - un résumé des actions utilisées
 - les UUIDs principaux pour le chaînage
 - la commande de signature prête à exécuter
-- pour les starters/projets : note dans le vault `Projets/.../` avec idée, plan, starter, tests iOS
+- pour les starters/projets : note dans le vault `Projets/<nom>/` avec idée, plan, starter, tests iOS, assets, et workflow de délégation si applicable
+
+## Convention projet Obsidian
+
+Lorsque le skill génère un starter/document lié à un projet, utiliser la structure suivante dans le vault iCloud/Obsidian :
+
+- `Projets/<Nom du projet>/index.md` comme fiche projet
+- `idée/` — concepts, cas d’usage, preuves
+- `plans/` — plans d’implémentation
+- `starters/` — starters/raccourcis `.shortcut`
+- `templates/` — templates de génération/docs
+- `assets/` — médias, captures, preuves iOS
+- Workflow de délégation global : `Projets/delegation-workflow.md`
+
+Règles :
+- Ranger les médias dans `assets/`, jamais à la racine du projet.
+- Lier les fichiers membres depuis `index.md` et fiche `idée/`.
+- Mettre à jour la Daily avec les chemins et les liens travaillés.
 
 ## Starters / templates projet
 
@@ -70,12 +87,21 @@ Pour chaque raccourci produit :
 - Le caractère de marque de variable est `￼` (U+FFFC), pas un placeholder standard.
 - Toute action productrice de sortie doit exposer un UUID.
 
+## Compatibilité macOS / iOS
+
+- Tous les identifiants d’action ne sont pas disponibles sur macOS et iOS simultanément.
+- Pour débloquer un import/test sur Mac sans erreur d’action inconnue :
+  - éviter `shareextension`, préférer `ask` pour l’entrée texte
+  - éviter `appintentexecution` si l’App Intent cible n’est pas disponible sur macOS
+- Stratégie de débogage recommandée : exporter un POC minimal fonctionnel depuis l’app Raccourcis, puis comparer son PLIST plutôt que modifier le XML à l’aveugle.
+
 ## Limites iOS autorisées
 
 - Pas d’action native documentée pour lire le contenu texte brut d’un `.md` iCloud.
 - `documentpicker.open/save` = sélection/sauvegarde fichier.
 - `gettextfrompdf` = PDF seulement.
 - `shareextension` / `ExtensionInput` = entrée fiabletexte/URL/rich text.
+- App Intents comme `Demander à Locally AI` exposent typiquement : `Message`, `Pièce jointe`, `Prompt système`, `Modèle` ; préférer le canal `Message` + `Pièce jointe` plutôt que le presse-papiers.
 
 ## Obsidian pont / app locale iOS
 
@@ -116,16 +142,44 @@ shortcuts sign --mode anyone --input <input>.shortcut --output <output>_signed.s
 shortcuts sign --mode people-who-know-me --input <input>.shortcut --output <output>_signed.shortcut
 ```
 
-Processus :
-1. écrire le plist XML dans `<nom>.shortcut`
-2. signer avec `shortcuts sign`
-3. ouvrir/importer dans **Raccourcis**
+### Signing script utilitaire
 
-## Workflow de sauvegarde
+Voir aussi `scripts/sign_shortcut.sh` pour un wrapper réutilisable.
 
-Si la modification est mineure, demander à l’utilisateur s’il veut :
-- écraser la version existante
-- créer une variante horodatée
-- conserver les deux sans tag particulier
+### Pipeline de vérification avant publication
 
-Préférer la simplicité sauf consigne contraire explicite.
+Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
+
+1. Valider la syntaxe XML : `xmllint --noout <fichier>.shortcut`
+2. Valider la syntaxe du script de signature : `bash -n scripts/sign_shortcut.sh`
+3. Vérifier les tokens critiques dans le plist : `attachmentsByRange` et le caractère `￼` (`U+FFFC`) pour les sorties actions.
+4. Si le repo est un skill Hermes avec remote Git, vérifier l’état avant toute opération :
+   ```bash
+   git status
+   git remote -v
+   git tag -l
+   ```
+5. Avant un commit/tag/push, comparer HEAD local et distant :
+   ```bash
+   git rev-parse HEAD
+   git ls-remote origin refs/heads/main
+   git ls-remote origin refs/tags/<version>
+   ```
+6. Une fois le tag créé localement, il se crée à partir du HEAD courant :
+   ```bash
+   git tag -a <version> -m "<message>"
+   ```
+   Puis pousser :
+   ```bash
+   git push origin <version>
+   ```
+
+## ⚠️ Avertissement : versions gelées
+
+Certains starters/templates de ce skill représentent des **snapshots gelés**.
+- `templates/locally-obsidian.shortcut.xml` est conservé en l’état après `v1.4.0`
+- Ne pas modifier ce template sans d’abord analyser le POC exporté `assets/locally-poc-reference.shortcut`
+- Compatibilité connue : **iOS OK**, **macOS limité** sur `shareextension` / `appintentexecution`
+- Si reprise : repartir du POC plutôt que du template gelé
+
+Cette mention sert d’**alarme** pour éviter des modifications à l’aveugle sur une version figée.

@@ -4,18 +4,27 @@
 <dict>
     <key>WFWorkflowActions</key>
     <array>
-        <!-- Action 1: Share Extension -->
+        <!-- Action 1: Choix du contexte/vault depuis Shortcuts -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.shareextension</string>
+            <string>is.workflow.actions.ask</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
                 <string>AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA</string>
+                <key>WFAskActionPrompt</key>
+                <string>Contexte / cible d'écriture ?
+- Afficher seulement
+- Copier la réponse
+- Nouvelle note AI
+- Append Daily
+- Append Inbox</string>
+                <key>WFInputType</key>
+                <string>Text</string>
             </dict>
         </dict>
 
-        <!-- Action 2: Ask optional context -->
+        <!-- Action 2: Demander la question pour Locally -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
             <string>is.workflow.actions.ask</string>
@@ -24,91 +33,49 @@
                 <key>UUID</key>
                 <string>BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB</string>
                 <key>WFAskActionPrompt</key>
-                <string>Contexte optionnel ?</string>
-                <key>WFInputType</key>
-                <string>Text</string>
-            </dict>
-        </dict>
-
-        <!-- Action 3: Ask question for Locally -->
-        <dict>
-            <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.ask</string>
-            <key>WFWorkflowActionParameters</key>
-            <dict>
-                <key>UUID</key>
-                <string>CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC</string>
-                <key>WFAskActionPrompt</key>
                 <string>Quelle question envoyer à Locally ?</string>
                 <key>WFInputType</key>
                 <string>Text</string>
             </dict>
         </dict>
 
-        <!-- Action 4: Build prompt -->
+        <!-- Action 3: Construire le prompt -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
             <string>is.workflow.actions.gettext</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
-                <string>DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD</string>
+                <string>CCCCCCCC-CCCC-CCCC-CCCC-CCCCCCCCCCCC</string>
                 <key>WFTextActionText</key>
                 <string>Contexte : ￼
 Question : ￼</string>
             </dict>
         </dict>
 
-        <!-- Action 5: Ask Locally AI -->
+        <!-- Action 4: Appeler Locally AI directement -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.appintentexecution</string>
+            <string>is.workflow.actions.ask</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
-                <string>EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE</string>
-                <key>WFAppIntentExecutionIntent</key>
-                <string>Demander à Locally AI</string>
-                <key>WFAppIntentExecutionParameters</key>
-                <dict>
-                    <key>Message</key>
-                    <dict>
-                        <key>Value</key>
-                        <dict>
-                            <key>attachmentsByRange</key>
-                            <dict>
-                                <key>{0, 1}</key>
-                                <dict>
-                                    <key>OutputUUID</key>
-                                    <string>DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD</string>
-                                    <key>OutputName</key>
-                                    <string>Text</string>
-                                    <key>Type</key>
-                                    <string>ActionOutput</string>
-                                </dict>
-                            </dict>
-                            <key>string</key>
-                            <string>￼</string>
-                        </dict>
-                        <key>WFSerializationType</key>
-                        <string>WFTextTokenString</string>
-                    </dict>
-                </dict>
+                <string>DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD</string>
+                <key>WFAskActionPrompt</key>
+                <string>Demander à Locally AI : ￼</string>
+                <key>WFInputType</key>
+                <string>Text</string>
             </dict>
         </dict>
 
-        <!-- Action 6: Choose destination -->
+        <!-- Action 5: Choisir le destinataire de la réponse -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
             <string>is.workflow.actions.choosefrommenu</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
-                <string>FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF</string>
-                <key>GroupingIdentifier</key>
-                <string>11111111-1111-1111-1111-111111111111</string>
-                <key>WFControlFlowMode</key>
-                <integer>0</integer>
+                <string>EEEEEEEE-EEEE-EEEE-EEEE-EEEEEEEEEEEE</string>
                 <key>WFMenuPrompt</key>
                 <string>Que faire de la réponse ?</string>
                 <key>WFMenuItems</key>
@@ -122,7 +89,7 @@ Question : ￼</string>
             </dict>
         </dict>
 
-        <!-- Branch A: Show result -->
+        <!-- Branch A: Afficher seulement -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
             <string>is.workflow.actions.showresult</string>
@@ -130,10 +97,6 @@ Question : ￼</string>
             <dict>
                 <key>UUID</key>
                 <string>11111111-1111-1111-1111-111111111112</string>
-                <key>GroupingIdentifier</key>
-                <string>11111111-1111-1111-1111-111111111111</string>
-                <key>WFControlFlowMode</key>
-                <integer>1</integer>
                 <key>Text</key>
                 <dict>
                     <key>Value</key>
@@ -159,7 +122,7 @@ Question : ￼</string>
             </dict>
         </dict>
 
-        <!-- Branch B: Copy response -->
+        <!-- Branch B: Copier la réponse -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
             <string>is.workflow.actions.setclipboard</string>
@@ -167,12 +130,6 @@ Question : ￼</string>
             <dict>
                 <key>UUID</key>
                 <string>11111111-1111-1111-1111-111111111113</string>
-                <key>GroupingIdentifier</key>
-                <string>11111111-1111-1111-1111-111111111111</string>
-                <key>WFControlFlowMode</key>
-                <integer>1</integer>
-                <key>WFMenuItemTitle</key>
-                <string>Copier la réponse</string>
                 <key>WFItems</key>
                 <dict>
                     <key>Value</key>
@@ -199,63 +156,39 @@ Question : ￼</string>
         </dict>
 
         <!-- Branch C: Nouvelle note AI -->
-        <!--
-        Prend un nom de fichier via documentpicker.save dans un dossier choisi dans iCloud Drive/Obsidian.
-        Ouvre ensuite la note via obsidian://open avec le vault et le nom de fichier.
-        -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.documentpicker.save</string>
+            <string>is.workflow.actions.savefile</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
                 <string>22222222-2222-2222-2222-222222222223</string>
-                <key>GroupingIdentifier</key>
-                <string>11111111-1111-1111-1111-111111111111</string>
-                <key>WFControlFlowMode</key>
-                <integer>1</integer>
                 <key>WFMenuItemTitle</key>
                 <string>Nouvelle note AI</string>
             </dict>
         </dict>
 
         <!-- Branch D: Append Daily -->
-        <!--
-        Append en bas du fichier Daily/yyyy-MM-dd.md.
-        Si le fichier n'existe pas, créer d'abord via documentpicker.save, puis utiliser file.append pour les notes suivantes.
-        -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.file.append</string>
+            <string>is.workflow.actions.gettext</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
                 <string>33333333-3333-3333-3333-333333333333</string>
-                <key>GroupingIdentifier</key>
-                <string>11111111-1111-1111-1111-111111111111</string>
-                <key>WFControlFlowMode</key>
-                <integer>1</integer>
                 <key>WFMenuItemTitle</key>
                 <string>Append Daily</string>
             </dict>
         </dict>
 
         <!-- Branch E: Append Inbox -->
-        <!--
-        Append en bas du fichier Inbox.md.
-        Si Inbox.md n'existe pas, le créer via documentpicker.save dans le vault.
-        -->
         <dict>
             <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.file.append</string>
+            <string>is.workflow.actions.gettext</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
                 <string>44444444-4444-4444-4444-444444444444</string>
-                <key>GroupingIdentifier</key>
-                <string>11111111-1111-1111-1111-111111111111</string>
-                <key>WFControlFlowMode</key>
-                <integer>1</integer>
                 <key>WFMenuItemTitle</key>
                 <string>Append Inbox</string>
             </dict>
