@@ -31,6 +31,9 @@ Versioning follows the `version` field in `SKILL.md`.
   FAIL screenshots under `fixtures/attested/runs/`, `write_attest_results.sh`
 - `--auto` now includes `--with-inputs` + results aggregation
 - Competitive parity checklist (lean vs Viticci): `references/COMPETITIVE_CHECKLIST.md`
+- Lean remix + validate-on-write: `references/REMIX.md`, `scripts/remix_shortcut.py`,
+  `scripts/validate_on_write.sh`, `fixtures/remix/` (V0–V2); README differentiation
+
 
 ## [1.8.0] - 2026-07-26
 

@@ -36,13 +36,13 @@ Liens : [`ECOSYSTEM.md`](ECOSYSTEM.md) · [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.m
 
 Comprendre sans copier.
 
-- [ ] Lire / noter dans `references/ECOSYSTEM.md` (section “Parity notes”) :
-  - [ ] Slash commands build vs remix
-  - [ ] Hook PostToolUse + ce que fait le validator Craig Loop
-  - [ ] Structure des 19 goldens (tags / gaps vs notre palette)
-  - [ ] ToolKit snapshot : ce qui est *gated* vs notre `appintents.json`
-- [ ] Tableau gap → item checklist (mettre à jour ce fichier)
-- [ ] Décider le **MVP parité** : remix **ou** hook validate **ou** +goldens (un seul P0 d’abord)
+- [x] Lire / noter dans `references/ECOSYSTEM.md` (section “Parity notes”) :
+  - [x] Slash commands build vs remix
+  - [x] Hook PostToolUse + ce que fait le validator Craig Loop
+  - [x] Structure des 19 goldens (tags / gaps vs notre palette)
+  - [x] ToolKit snapshot : ce qui est *gated* vs notre `appintents.json`
+- [x] Tableau gap → item checklist (mettre à jour ce fichier)
+- [x] Décider le **MVP parité** : remix **puis** validate-on-write **puis** +goldens
 
 **DoD V0 :** une page “Parity notes” + ordre d’attaque P0 choisi.
 
@@ -54,26 +54,25 @@ Le plus gros différenciateur Viticci côté *édition*.
 
 ### V1.1 Spec agent
 
-- [ ] Doc `references/REMIX.md` :
+- [x] Doc `references/REMIX.md` :
   - Entrée : XML unsigned existant + instruction NL
   - Sortie : XML modifié + résumé des actions touchées
   - Interdits : réécrire tout le fichier si un diff local suffit
   - Toujours re-valider + re-signer
-- [ ] Ajouter dans `SKILL.md` une étape **Remix** (3–5 lignes) pointant vers `REMIX.md`
+- [x] Ajouter dans `SKILL.md` une étape **Remix** (3–5 lignes) pointant vers `REMIX.md`
 
 ### V1.2 Outils
 
-- [ ] `scripts/remix_shortcut.sh` (ou `.py`) :
-  - [ ] Charge XML → applique patch structuré (actions insert/replace/delete by UUID)
-  - [ ] Mode dry-run : affiche le plan avant write
-  - [ ] Appelle `check_shortcut_grammar.py --strict` + `validate.sh` subset
-- [ ] Fixture : `templates/examples/01-hello-world.shortcut.xml` + scénario “change Hello → Bonjour”
-- [ ] Test : remix → sign → `import_shortcut_ui` (optionnel) → `shortcuts run`
+- [x] `scripts/remix_shortcut.py` :
+  - [x] `--replace-text` / `--set-name` / `--dry-run` / `--output`
+  - [x] Appelle validate via `validate_on_write.sh` in protocol
+- [x] Fixture : `fixtures/remix/README.md` (Hello → Bonjour)
+- [x] Test : remix → sign → import → `shortcuts run` → `Bonjour!`
 
 ### V1.3 Qualité
 
-- [ ] Playbook `FAILURE_MODES.md` : “remix broke GroupingIdentifier / attachmentsByRange”
-- [ ] 2 scénarios remix documentés dans `EXAMPLES.md` ou `REMIX.md`
+- [x] Playbook `FAILURE_MODES.md` : remix / validate_on_write
+- [x] Scénario remix documenté dans `REMIX.md` + `fixtures/remix/`
 
 **DoD V1 :** un agent local peut remixer un golden teaching en ≤1 tour outillage + validate vert.
 
@@ -85,16 +84,16 @@ Le plus gros différenciateur Viticci côté *édition*.
 
 ### V2.1 Hook / script unique
 
-- [ ] `scripts/validate_on_write.sh <file.shortcut.xml>` :
+- [x] `scripts/validate_on_write.sh <file.shortcut.xml>` :
   - xmllint + grammar strict + IDs ∈ SSOT
   - exit ≠ 0 avec messages actionnables
-- [ ] Doc agent : “après chaque Write/Edit d’un plist Shortcuts, lancer validate_on_write”
+- [x] Doc agent : “après chaque Write/Edit d’un plist Shortcuts, lancer validate_on_write” (`SKILL.md` étape 9)
 
 ### V2.2 Intégrations optionnelles (sans forcer un IDE)
 
-- [ ] Cursor : snippet / rule dans `.cursor/rules` ou skill note (si le repo accepte)
-- [ ] Hermes : mention dans `SKILL.md` “mandatory after edit”
-- [ ] CI : déjà `validate.sh` — ne pas dupliquer inutilement
+- [x] Hermes / Cursor : mandatory in `SKILL.md`
+- [~] CI : déjà `validate.sh` — pas de duplication
+- [ ] Cursor `.cursor/rules` optionnel (plus tard)
 
 ### V2.3 Craig Loop *lite* (optionnel P2)
 
@@ -188,10 +187,10 @@ V0 cartographie
 
 Coche les 4 pour dire “on a comblé le ressenti auteur” sans match feature-for-feature :
 
-- [ ] V1 remix hello-world → Bonjour (validate + sign)
-- [ ] V2 validate_on_write obligatoire dans SKILL
+- [x] V1 remix hello-world → Bonjour (validate + sign)
+- [x] V2 validate_on_write obligatoire dans SKILL
 - [ ] V3 +3 community/gap goldens Import OK
-- [ ] V5 README différenciation attestation
+- [x] V5 README différenciation attestation
 
 ---
 
@@ -199,12 +198,12 @@ Coche les 4 pour dire “on a comblé le ressenti auteur” sans match feature-f
 
 | ID | Titre | P | Status |
 |----|-------|---|--------|
-| V0 | Cartographie peer | P0 | [ ] |
-| V1 | Remix / diff NL | P0 | [ ] |
-| V2 | Validate-on-write | P0 | [ ] |
+| V0 | Cartographie peer | P0 | [x] |
+| V1 | Remix / diff NL | P0 | [x] MVP |
+| V2 | Validate-on-write | P0 | [x] |
 | V3 | Corpus + ToolKit batch | P1 | [ ] |
 | V4 | Surface agent EN/selftest | P1 | [ ] |
-| V5 | Lead attestation | P1 | [ ] |
+| V5 | Lead attestation | P1 | [~] README |
 | V6 | Release packaging | P2 | [ ] |
 
 ---

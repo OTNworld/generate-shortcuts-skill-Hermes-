@@ -76,12 +76,17 @@ Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it 
 
 ## Local finalize (Mac → 10/10)
 
-See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md): pull the PR branch, run `./scripts/attest_local.sh --open`, fill `fixtures/attested/MATRIX.md`.
+See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md) and `./scripts/attest_local.sh --auto`.
+
+**Differentiation:** this skill treats **macOS sign → import UI → run → `results.json`** as first-class.
+Peer playgrounds often lead on remix/ToolKit size; we lead on **attested, reproducible Mac delivery**.
+Remix lean: `references/REMIX.md` + `scripts/remix_shortcut.py`. After every plist edit: `scripts/validate_on_write.sh`.
 
 ## Validation
 
 ```bash
 ./scripts/validate.sh
+./scripts/validate_on_write.sh templates/examples/01-hello-world.shortcut.xml
 ```
 
 Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar heuristics on importable templates (`*.stub.xml` is XML-only).

@@ -44,6 +44,16 @@ Common ways generated Shortcuts fail — and how to fix them before signing.
 3. Mode is `anyone` or `people-who-know-me`
 4. Do not commit signed files that embed secrets / personal vault paths
 
+## Remix / validate-on-write
+
+| Symptom | Likely cause | Fix |
+|---------|--------------|-----|
+| Accidental full rewrite | Agent regenerated instead of remix | Use `scripts/remix_shortcut.py` / `REMIX.md` |
+| `validate_on_write` FAIL grammar | Range/UUID/control-flow drift | Restore; smaller `--replace-text` |
+| `FAIL unknown action IDs` | Typo or missing SSOT entry | Check `data/wf_actions.json` |
+
+Mandatory after every plist edit: `./scripts/validate_on_write.sh <file>`.
+
 ## Debugging strategy
 
 1. Start from a golden in `templates/examples/`
