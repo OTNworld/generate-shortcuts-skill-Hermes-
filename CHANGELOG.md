@@ -5,6 +5,19 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [1.8.0] - 2026-07-26
+
+### Added
+- Strict grammar gate: UTF-16 range checks, menu title balance (`check_shortcut_grammar.py --strict`)
+- Starter palette: 12 XML under `templates/palette/` + `references/STARTER_PALETTE.md`
+- Community goldens: Invert Names, Days In a Month, Electricity Price
+- `scripts/extract_shortcut.sh` (plutil/plistlib) + iCloud extract notes
+- `scripts/render_refs.py` (+ `--check` in CI) to regenerate catalog fences from SSOT
+- `fixtures/attested/MAC_HANDOFF.md` checklist for later Mac attestation
+
+### Changed
+- Skill version 1.8.0
+
 ## [1.7.0] - 2026-07-26
 
 ### Added

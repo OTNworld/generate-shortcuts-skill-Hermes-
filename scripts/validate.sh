@@ -91,6 +91,13 @@ print('OK  markdown complete lists match SSOT')
 PY
 
 # --- XML well-formedness ---
+echo "== Rendered refs drift =="
+if python3 scripts/render_refs.py --check; then
+  :
+else
+  failures=$((failures + 1))
+fi
+
 echo "== XML (xmllint) =="
 while IFS= read -r -d '' file; do
   checked_xml=$((checked_xml + 1))
@@ -176,9 +183,9 @@ while IFS= read -r -d '' file; do
   fi
 done < <(find templates -type f \( -name '*.plist' -o -name '*.xml' \) -print0 2>/dev/null)
 
-# --- Deeper grammar (10/10 prep; already green on goldens) ---
-echo "== Grammar deep (check_shortcut_grammar.py) =="
-if python3 scripts/check_shortcut_grammar.py templates/; then
+# --- Deeper grammar (strict; community skips OutputName rarity) ---
+echo "== Grammar deep (check_shortcut_grammar.py --strict) =="
+if python3 scripts/check_shortcut_grammar.py --strict templates/; then
   :
 else
   failures=$((failures + 1))

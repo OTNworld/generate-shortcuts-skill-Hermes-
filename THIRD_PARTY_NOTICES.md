@@ -13,6 +13,9 @@ materials are referenced or selectively vendored.
 - Vendored files:
   - `templates/examples/community/09-url-cleaner.shortcut.xml`
   - `templates/examples/community/10-parse-json-feed.shortcut.xml`
+  - `templates/examples/community/11-invert-names.shortcut.xml`
+  - `templates/examples/community/12-days-in-a-month.shortcut.xml`
+  - `templates/examples/community/13-electricity-price.shortcut.xml`
   - `data/external/viticci-playground-goldens.index.jsonl` (index metadata)
 - Adapted documentation patterns may appear in `references/URL_SCHEMES.md`
   (cross-checked with Apple’s Shortcuts User Guide).

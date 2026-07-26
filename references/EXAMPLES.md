@@ -66,6 +66,9 @@ Real-world examples from peer projects — see [`templates/examples/community/`]
 |------|-------|
 | [`09-url-cleaner.shortcut.xml`](../templates/examples/community/09-url-cleaner.shortcut.xml) | URL Cleaner |
 | [`10-parse-json-feed.shortcut.xml`](../templates/examples/community/10-parse-json-feed.shortcut.xml) | Parse JSON Feed |
+| [`11-invert-names.shortcut.xml`](../templates/examples/community/11-invert-names.shortcut.xml) | Invert Names |
+| [`12-days-in-a-month.shortcut.xml`](../templates/examples/community/12-days-in-a-month.shortcut.xml) | Days In a Month |
+| [`13-electricity-price.shortcut.xml`](../templates/examples/community/13-electricity-price.shortcut.xml) | Electricity Price |
 
 Upstream catalog index: [`data/external/viticci-playground-goldens.index.jsonl`](../data/external/viticci-playground-goldens.index.jsonl).
 

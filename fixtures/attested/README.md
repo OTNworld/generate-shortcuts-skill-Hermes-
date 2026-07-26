@@ -24,3 +24,6 @@ Optional: store SHA-256 of the **unsigned XML** only (not personal signed binari
 ## Status
 
 No attestations recorded yet — scaffold for the 10/10 milestone.
+
+
+Detailed checklist: [`MAC_HANDOFF.md`](MAC_HANDOFF.md).

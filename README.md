@@ -101,6 +101,11 @@ Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar he
 | `references/ECOSYSTEM.md` | How we link, index, and selectively vendor peers |
 | `references/URL_SCHEMES.md` | `shortcuts://` + x-callback-url |
 | `templates/examples/community/` | MIT-vendored real-world goldens |
+| `templates/palette/` | 12 minimal power-action starters |
+| `references/STARTER_PALETTE.md` | Palette index |
+| `scripts/extract_shortcut.sh` | Binary/XML shortcut → inspectable XML |
+| `scripts/render_refs.py` | Regenerate catalog fences from SSOT |
+| `fixtures/attested/MAC_HANDOFF.md` | Later: Mac sign/import attestation |
 | `THIRD_PARTY_NOTICES.md` | Attribution for vendored/cited material |
 
 ## Requirements

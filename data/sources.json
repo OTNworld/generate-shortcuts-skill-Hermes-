@@ -11,7 +11,7 @@
     "do_not_vendor": [
       "GPL / copyleft sources as code (link only)",
       "unsigned personal vault exports with PII",
-      "entire peer skill trees (~10k+ lines) — keep as peer reference"
+      "entire peer skill trees (~10k+ lines) \u2014 keep as peer reference"
     ]
   },
   "sources": [
@@ -33,7 +33,10 @@
       "local_index": "data/external/viticci-playground-goldens.index.jsonl",
       "vendored_examples": [
         "templates/examples/community/09-url-cleaner.shortcut.xml",
-        "templates/examples/community/10-parse-json-feed.shortcut.xml"
+        "templates/examples/community/10-parse-json-feed.shortcut.xml",
+        "templates/examples/community/11-invert-names.shortcut.xml",
+        "templates/examples/community/12-days-in-a-month.shortcut.xml",
+        "templates/examples/community/13-electricity-price.shortcut.xml"
       ]
     },
     {
@@ -49,7 +52,7 @@
       "url": "https://github.com/joshfarrant/shortcuts-js",
       "role": "historical-generator",
       "license": "GPL-3.0",
-      "notes": "JS builder for older Shortcuts. Link only — do not vendor code into this MIT skill.",
+      "notes": "JS builder for older Shortcuts. Link only \u2014 do not vendor code into this MIT skill.",
       "use": "link"
     },
     {
@@ -65,7 +68,7 @@
       "url": "https://gist.github.com/0xdevalias/27d9aea9529be7b6ce59055332a94477",
       "role": "reverse-engineering-notes",
       "license": "gist",
-      "notes": "iCloud record API → downloadURL → plutil xml1 workflow.",
+      "notes": "iCloud record API \u2192 downloadURL \u2192 plutil xml1 workflow.",
       "use": "link"
     },
     {

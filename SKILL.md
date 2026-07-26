@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.7.0
+version: 1.8.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -41,6 +41,7 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 
 - `templates/hello-world.shortcut.xml` : golden minimal **importable** (Get Text → Show Result)
 - `templates/examples/` : goldens 01–08 + `community/` (MIT-vendored peers)
+- `templates/palette/` : 12 minimal power-action starters
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
 - `templates/locally-obsidian.stub.xml` : stub **non importable** (design only)
 - Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
@@ -95,6 +96,7 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/PLIST_FORMAT.md` : structure racine.
 - `references/ACTIONS.md` : 427 WF*Actions.
 - `references/POWER_ACTIONS.md` : schémas des 25 actions prioritaires.
+- `references/STARTER_PALETTE.md` : index des XML palette.
 - `references/APPINTENTS.md` : 154 AppIntents (curated subset).
 - `references/PARAMETER_TYPES.md` : types et sérialisation.
 - `references/VARIABLES.md` : système de variables.
@@ -129,6 +131,9 @@ Voir aussi `scripts/sign_shortcut.sh` pour un wrapper réutilisable
 `xmllint` optionnel avant signature — `SKIP_XMLLINT=1` pour les plists binaires).
 
 Validation du repo : `./scripts/validate.sh` (également exécuté en CI).
+
+Extraction d’exports : `./scripts/extract_shortcut.sh` (plutil/plistlib).
+Attestation Mac (plus tard) : `fixtures/attested/MAC_HANDOFF.md`.
 
 ### Pipeline de vérification avant publication
 

@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""Deeper shortcut grammar checks (10/10 prep).
-
-Current `scripts/validate.sh` covers XML + coarse heuristics.
-This module adds per-node and balance checks intended to become CI-blocking
-once goldens are macOS-attested.
+"""Shortcut grammar checks for teaching + community goldens.
 
 Usage:
-  python3 scripts/check_shortcut_grammar.py templates/examples/*.xml
-  python3 scripts/check_shortcut_grammar.py --strict templates/examples/
+  python3 scripts/check_shortcut_grammar.py templates/
+  python3 scripts/check_shortcut_grammar.py --strict templates/
 """
 
 from __future__ import annotations
@@ -22,16 +18,47 @@ FFFC = "\ufffc"
 UUID_RE = re.compile(
     r"^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$"
 )
+RANGE_RE = re.compile(r"^\{(\d+),\s*(\d+)\}$")
 CONTROL_FLOW_IDS = {
     "is.workflow.actions.choosefrommenu",
     "is.workflow.actions.conditional",
     "is.workflow.actions.repeat.count",
     "is.workflow.actions.repeat.each",
 }
+KNOWN_OUTPUT_NAMES = {
+    "Text",
+    "Provided Input",
+    "Response",
+    "List",
+    "URL",
+    "Dictionary",
+    "Dictionary Value",
+    "File",
+    "Weather Conditions",
+    "Repeat Index",
+    "Repeat Item",
+    "Repeat Results",
+    "Contents of URL",
+    "Updated Variables",
+    "Shortcut Input",
+    "Chosen Item",
+    "Selected Item",
+    "Date",
+    "Formatted Date",
+    "Count",
+    "Note",
+}
+
+
+def utf16_len(s: str) -> int:
+    """Approximate Shortcuts range indexing (UTF-16 code units)."""
+    n = 0
+    for ch in s:
+        n += 2 if ord(ch) > 0xFFFF else 1
+    return n
 
 
 def dict_to_map(d: ET.Element) -> dict:
-    """Best-effort plist dict → python dict (strings/ints/nested dicts/arrays)."""
     out = {}
     key = None
     for child in list(d):
@@ -64,7 +91,6 @@ def parse_value(el: ET.Element):
 
 
 def iter_actions(root: ET.Element):
-    # Root plist > dict > WFWorkflowActions array
     top = root.find("dict")
     if top is None:
         return
@@ -73,6 +99,68 @@ def iter_actions(root: ET.Element):
     for action in actions:
         if isinstance(action, dict):
             yield action
+
+
+def check_token_string(path: Path, obj: dict, trail: str, errors: list[str], strict: bool):
+    text = obj.get("string")
+    attachments = obj.get("attachmentsByRange")
+    if not isinstance(text, str):
+        return
+    if FFFC in text and not isinstance(attachments, dict):
+        errors.append(f"{path}: U+FFFC at {trail} without attachmentsByRange")
+        return
+    if not isinstance(attachments, dict):
+        return
+
+    positions = [i for i, ch in enumerate(text) if ch == FFFC]
+    # Map codepoint index → UTF-16 index
+    cp_to_u16 = {}
+    u16 = 0
+    for i, ch in enumerate(text):
+        cp_to_u16[i] = u16
+        u16 += 2 if ord(ch) > 0xFFFF else 1
+    text_u16 = u16
+
+    for key, ref in attachments.items():
+        m = RANGE_RE.match(str(key))
+        if not m:
+            errors.append(f"{path}: bad attachmentsByRange key {key!r} at {trail}")
+            continue
+        pos, length = int(m.group(1)), int(m.group(2))
+        if length < 1:
+            errors.append(f"{path}: attachmentsByRange length < 1 at {trail} key {key}")
+        if pos < 0 or pos + length > text_u16:
+            errors.append(
+                f"{path}: attachmentsByRange {key} out of bounds "
+                f"(utf16_len={text_u16}) at {trail}"
+            )
+        if isinstance(ref, dict):
+            oname = ref.get("OutputName")
+            if (
+                strict
+                and "community" not in path.parts
+                and "palette" not in path.parts
+                and isinstance(oname, str)
+                and oname
+                and oname not in KNOWN_OUTPUT_NAMES
+            ):
+                errors.append(
+                    f"{path}: uncommon OutputName {oname!r} at {trail} "
+                    f"(ok if attested; prefer known names for teaching goldens)"
+                )
+
+    if strict and positions:
+        expected = {cp_to_u16[i] for i in positions}
+        declared = set()
+        for key in attachments:
+            m = RANGE_RE.match(str(key))
+            if m:
+                declared.add(int(m.group(1)))
+        if expected - declared:
+            errors.append(
+                f"{path}: FFFC utf16 positions {sorted(expected - declared)} "
+                f"lack attachmentsByRange at {trail}"
+            )
 
 
 def check_file(path: Path, strict: bool) -> list[str]:
@@ -84,6 +172,8 @@ def check_file(path: Path, strict: bool) -> list[str]:
 
     root = tree.getroot()
     grouping_modes: dict[str, list[int]] = {}
+    menu_items: dict[str, list[str]] = {}
+    menu_titles: dict[str, list[str]] = {}
 
     for action in iter_actions(root):
         ident = action.get("WFWorkflowActionIdentifier", "")
@@ -107,37 +197,67 @@ def check_file(path: Path, strict: bool) -> list[str]:
             if mode is None:
                 errors.append(f"{path}: {ident} missing WFControlFlowMode")
             elif not isinstance(mode, int):
-                errors.append(f"{path}: {ident} WFControlFlowMode must be int, got {mode!r}")
+                errors.append(
+                    f"{path}: {ident} WFControlFlowMode must be int, got {mode!r}"
+                )
             if isinstance(gid, str) and isinstance(mode, int):
                 grouping_modes.setdefault(gid, []).append(mode)
+            if ident == "is.workflow.actions.choosefrommenu" and isinstance(gid, str):
+                if mode == 0 and isinstance(params.get("WFMenuItems"), list):
+                    menu_items[gid] = [
+                        x for x in params["WFMenuItems"] if isinstance(x, str)
+                    ]
+                if mode == 1 and isinstance(params.get("WFMenuItemTitle"), str):
+                    menu_titles.setdefault(gid, []).append(params["WFMenuItemTitle"])
 
-        # FFFC must live inside structures that also declare attachmentsByRange
         def walk(obj, trail: str):
             if isinstance(obj, dict):
-                text = obj.get("string")
-                if isinstance(text, str) and FFFC in text:
-                    if "attachmentsByRange" not in obj:
-                        errors.append(
-                            f"{path}: U+FFFC at {trail} without attachmentsByRange"
-                        )
+                if "attachmentsByRange" in obj or (
+                    isinstance(obj.get("string"), str) and FFFC in obj.get("string", "")
+                ):
+                    check_token_string(path, obj, trail, errors, strict)
                 for k, v in obj.items():
                     walk(v, f"{trail}.{k}")
             elif isinstance(obj, list):
                 for i, v in enumerate(obj):
                     walk(v, f"{trail}[{i}]")
-            elif isinstance(obj, str) and FFFC in obj and trail.endswith("WFTextActionText"):
-                # bare string gettext with FFFC and no dict wrapper
-                errors.append(f"{path}: bare WFTextActionText contains U+FFFC at {trail}")
+            elif isinstance(obj, str) and FFFC in obj and trail.endswith(
+                "WFTextActionText"
+            ):
+                errors.append(
+                    f"{path}: bare WFTextActionText contains U+FFFC at {trail}"
+                )
 
         walk(params, ident)
 
     for gid, modes in grouping_modes.items():
         if 0 not in modes or 2 not in modes:
             errors.append(
-                f"{path}: control-flow group {gid} missing start(0) or end(2); modes={modes}"
+                f"{path}: control-flow group {gid} missing start(0) or end(2); "
+                f"modes={modes}"
             )
         if strict and modes.count(0) != 1:
-            errors.append(f"{path}: group {gid} should have exactly one start; modes={modes}")
+            errors.append(
+                f"{path}: group {gid} should have exactly one start; modes={modes}"
+            )
+        if strict and modes.count(2) != 1:
+            errors.append(
+                f"{path}: group {gid} should have exactly one end; modes={modes}"
+            )
+
+    if strict:
+        for gid, items in menu_items.items():
+            titles = menu_titles.get(gid, [])
+            if len(titles) != len(items):
+                errors.append(
+                    f"{path}: menu {gid} has {len(items)} WFMenuItems but "
+                    f"{len(titles)} case titles"
+                )
+            elif sorted(titles) != sorted(items):
+                errors.append(
+                    f"{path}: menu {gid} WFMenuItemTitle set != WFMenuItems "
+                    f"({titles} vs {items})"
+                )
 
     return errors
 
@@ -148,7 +268,7 @@ def main() -> int:
     ap.add_argument(
         "--strict",
         action="store_true",
-        help="extra balance checks (intended CI-blocking for 10/10)",
+        help="balance + menu title + teaching OutputName checks",
     )
     args = ap.parse_args()
 
@@ -174,7 +294,8 @@ def main() -> int:
         print(f"grammar: {len(all_errors)} issue(s) in {checked} file(s)")
         return 1
 
-    print(f"OK  check_shortcut_grammar.py ({checked} files)")
+    mode = "strict" if args.strict else "standard"
+    print(f"OK  check_shortcut_grammar.py ({checked} files, {mode})")
     return 0
 
 
