@@ -108,7 +108,7 @@ Skipped unless named explicitly:
 | Golden | Observed | Classification |
 |--------|----------|----------------|
 | `04-url-open_signed` | **OK** (opens URL; may focus browser) | NET |
-| `08-downloadurl_signed` | Prefer magic input after `url` (no hand-wired `WFURL`); use stable host (`example.com`) | NET |
+| `08-downloadurl_signed` | Structure aligned with community electricity-price (magic input + headers). Runtime often **timeout** / privacy prompts → NET flaky | NET |
 | `05-weather-ai_signed` | FAIL when Ask LLM / Apple Intelligence unavailable | **ENV** (+ weather NET) — not a pure network smoke |
 
 Flaky causes: helper IPC (`Couldn’t communicate with a helper application`), Intelligence offline, captive portal / DNS. Document FAIL in MATRIX; do not treat ENV fails as golden regressions.

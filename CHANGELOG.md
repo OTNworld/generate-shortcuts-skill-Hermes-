@@ -50,7 +50,7 @@ Versioning follows the `version` field in `SKILL.md`.
 - Network pass notes in `ATTEST_AUTOMATION.md`; PLATFORM_MATRIX rows for community action IDs
 
 ### Fixed
-- `palette/08-downloadurl`: magic input after `url` + `example.com` (was invalid URL wiring)
+- `palette/08-downloadurl`: align with community electricity-price wiring (magic input + headers); runtime NET flaky
 
 ## [1.8.0] - 2026-07-26
 

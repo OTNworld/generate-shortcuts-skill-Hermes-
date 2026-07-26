@@ -26,7 +26,7 @@ Filled on macOS after automated sign → import UI → run (`./scripts/attest_lo
 | palette/05-list | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/06-dictionary | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK | fixed `getvalueforkey`; alias `06-dictionary-fixed_signed` |
 | palette/07-variables | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
-| palette/08-downloadurl | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | re-attest after wiring fix (magic input + example.com) |
+| palette/08-downloadurl | 26.5.2 | — |  | 2026-07-26 | OK | OK | FAIL | NET flaky timeout (apple.com); structure aligned electricity-price |
 | palette/09-comment-nothing | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/10-count | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/11-choosefromlist | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | interactive (UI) |
