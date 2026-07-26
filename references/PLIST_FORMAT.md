@@ -83,7 +83,25 @@ A `.shortcut` file is a binary plist (can be written as XML, then converted). Th
 | `WFWorkflowImportQuestions` | Array | No | Import-time questions |
 | `WFWorkflowInputContentItemClasses` | Array | No | Accepted input types |
 | `WFWorkflowOutputContentItemClasses` | Array | No | Output types |
-| `WFWorkflowTypes` | Array | No | Workflow types |
+| `WFWorkflowTypes` | Array | No | Where the shortcut appears (see below) |
+
+### `WFWorkflowTypes` values (common)
+
+From classic format references (verify on current OS):
+
+| Value | Meaning |
+|-------|---------|
+| `ActionExtension` | Show in Share Sheet |
+| `MenuBar` | Keep in Menu Bar (Mac) |
+| `QuickActions` | Use as Quick Action (Mac) |
+| `NCWidget` | Notification Center / widget surfaces (legacy naming) |
+| `Watch` / `WatchKit` | Apple Watch availability (naming varies by OS era) |
+| `Sleep` | Sleep Focus / Sleep Mode surfaces |
+
+### Import questions shape
+
+Each `WFWorkflowImportQuestions` item typically includes `ActionIndex`, `Category`
+(often `Parameter`), `ParameterKey`, `Text`, and optional `DefaultValue`.
 
 ## Icon Configuration
 
@@ -112,16 +130,31 @@ A `.shortcut` file is a binary plist (can be written as XML, then converted). Th
 
 ### Color Values
 
-Colors are ARGB integers. Common values:
+Icon tints are stored as **RGBA-8** integers. Example: `4282601983` → `0xFF4351FF`
+(`RRGGBBAA`). Values below come from the classic
+[sebj/iOS-Shortcuts-Reference](https://github.com/sebj/iOS-Shortcuts-Reference)
+table (liable to change across OS versions):
 
-| Color | Value | Description |
-|-------|-------|-------------|
-| Blue | 4282601983 | Default blue |
-| Red | 4282601983 | Red |
-| Green | 4292093695 | Green |
-| Orange | 4294967295 | Orange |
-| Purple | 4285887861 | Purple |
-| Gray | 2846468607 | Gray |
+| Color | Hex (RRGGBBAA) | Integer |
+|-------|----------------|--------:|
+| Red | `0xFF4351FF` | 4282601983 |
+| Dark Orange | `0xFD6631FF` | 4251333119 |
+| Orange | `0xFE9949FF` | 4271458815 |
+| Yellow | `0xFEC418FF` | 4274264319 |
+| Green | `0xFFD426FF` | 4292093695 |
+| Teal | `0x19BD03FF` | 431817727 |
+| Light Blue | `0x55DAE1FF` | 1440408063 |
+| Blue | `0x1B9AF7FF` | 463140863 |
+| Dark Blue | `0x3871DEFF` | 946986751 |
+| Violet | `0x7B72E9FF` | 2071128575 |
+| Purple | `0xDB49D8FF` | 3679049983 |
+| Pink | `0xED4694FF` | 3980825855 |
+| Taupe | `0xB4B2A9FF` | 3031607807 |
+| Gray | `0xA9A9A9FF` | 2846468607 |
+| Dark Gray / Black | `0x000000FF` | 255 |
+
+Skill templates historically use **Red** `4282601983` as the default glyph tint
+(not the “Blue” row). Verify against a fresh Shortcuts.app export when matching UI.
 
 ## Action Structure
 

@@ -2,6 +2,16 @@
 
 A Hermes skill for AI-assisted generation of macOS/iOS Shortcuts. Create valid `.shortcut` plist files that can be signed and imported into Apple's Shortcuts app.
 
+## Language policy
+
+| Surface | Language | Why |
+|---------|----------|-----|
+| `SKILL.md` (Hermes prompts / workflow) | French | Primary agent-facing protocol for this fork |
+| `README.md` + `references/*` | English | Shared technical grammar reference |
+| User-facing shortcut copy in templates | Match the target audience | EN for goldens; FR notes in Locally stub |
+
+`OutputName` values inside plists are always **English** Shortcuts labels.
+
 ## Installation
 
 ### 1. Create the Hermes skills directory (if it doesn't exist)
@@ -21,25 +31,33 @@ Or download and extract the files manually into `~/.hermes/skills/shortcuts-gene
 
 ### 3. Verify the installation
 
-Your directory structure should look like:
-
 ```
 ~/.hermes/skills/shortcuts-generator/
-├── SKILL.md                  # Required - skill definition
+├── SKILL.md
 ├── README.md
-├── references/
-│   ├── ACTIONS.md
-│   ├── APPINTENTS.md
-│   ├── CONTROL_FLOW.md
-│   ├── EXAMPLES.md
-│   ├── FILTERS.md
-│   ├── PARAMETER_TYPES.md
-│   ├── PLIST_FORMAT.md
-│   └── VARIABLES.md
+├── LICENSE
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── data/
+│   ├── wf_actions.json
+│   ├── appintents.json
+│   ├── sources.json                 # External repo registry
+│   └── external/                    # Remote corpus indexes
+├── references/                      # Grammar + playbooks + ECOSYSTEM.md
+├── templates/examples/              # Teaching goldens + community/
+├── THIRD_PARTY_NOTICES.md
 ├── scripts/
-│   └── sign_shortcut.sh
-└── templates/
-    └── shortcut-skeleton.plist
+│   ├── sign_shortcut.sh
+│   ├── validate.sh
+│   └── check_shortcut_grammar.py  # 10/10 prep (deeper grammar)
+├── templates/
+│   ├── hello-world.shortcut.xml
+│   ├── shortcut-skeleton.plist
+│   ├── locally-obsidian.stub.xml
+│   └── examples/                # Importable goldens 01–08
+├── fixtures/attested/           # 10/10: macOS/iOS import attestations
+└── .github/workflows/validate.yml
 ```
 
 ### 4. Reload Hermes skills
@@ -56,26 +74,55 @@ Once installed, ask Hermes to create a shortcut:
 
 Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it so you can import it directly into the Shortcuts app.
 
+## Local finalize (Mac → 10/10)
+
+See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md) and `./scripts/attest_local.sh --auto`.
+
+**Differentiation:** this skill treats **macOS sign → import UI → run → `results.json`** as first-class.
+Peer playgrounds often lead on remix/ToolKit size; we lead on **attested, reproducible Mac delivery**.
+Remix lean: `references/REMIX.md` + `scripts/remix_shortcut.py`. After every plist edit: `scripts/validate_on_write.sh`.
+
+## Validation
+
+```bash
+./scripts/validate.sh
+./scripts/validate_on_write.sh templates/examples/01-hello-world.shortcut.xml
+```
+
+Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar heuristics on importable templates (`*.stub.xml` is XML-only).
+
 ## What's Included
 
 | File | Description |
 |------|-------------|
-| `SKILL.md` | Skill definition with quick start guide |
-| `references/ACTIONS.md` | All 427 WF*Action identifiers and parameters |
-| `references/APPINTENTS.md` | All 728 AppIntent actions |
-| `references/PARAMETER_TYPES.md` | Parameter value types and serialization formats |
-| `references/VARIABLES.md` | Variable reference system |
-| `references/CONTROL_FLOW.md` | Repeat, Conditional, Menu patterns |
-| `references/FILTERS.md` | Content filters for Find/Filter actions |
-| `references/EXAMPLES.md` | Complete working examples |
-| `scripts/sign_shortcut.sh` | Shortcut signing helper |
-| `templates/shortcut-skeleton.plist` | Minimal shortcut template |
+| `SKILL.md` | Skill definition (FR) |
+| `data/wf_actions.json` | SSOT for all 438 WF*Action identifiers |
+| `data/appintents.json` | SSOT for curated subset of 154 AppIntent identifiers |
+| `references/ACTIONS.md` | WF*Action docs + complete list |
+| `references/POWER_ACTIONS.md` | Parameter schemas for 25 priority actions |
+| `references/APPINTENTS.md` | Curated subset of 154 AppIntent identifiers |
+| `references/FAILURE_MODES.md` | Agent failure playbook |
+| `references/PLATFORM_MATRIX.md` | iOS/macOS availability (curated) |
+| `references/EXAMPLES.md` | Index of importable goldens |
+| `scripts/sign_shortcut.sh` | Signing helper |
+| `scripts/validate.sh` | Repo validation |
+| `data/sources.json` | Registry of external repos / corpora |
+| `references/ECOSYSTEM.md` | How we link, index, and selectively vendor peers |
+| `references/URL_SCHEMES.md` | `shortcuts://` + x-callback-url |
+| `templates/examples/community/` | MIT-vendored real-world goldens |
+| `templates/palette/` | 12 minimal power-action starters |
+| `references/STARTER_PALETTE.md` | Palette index |
+| `scripts/extract_shortcut.sh` | Binary/XML shortcut → inspectable XML |
+| `scripts/render_refs.py` | Regenerate catalog fences from SSOT |
+| `fixtures/attested/MAC_HANDOFF.md` | Later: Mac sign/import attestation |
+| `THIRD_PARTY_NOTICES.md` | Attribution for vendored/cited material |
 
 ## Requirements
 
-- macOS with the `shortcuts` CLI tool (included with macOS)
+- macOS with the `shortcuts` CLI for signing/import
 - Hermes Agent
+- `xmllint` (libxml2) + `python3` for `./scripts/validate.sh`
 
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).

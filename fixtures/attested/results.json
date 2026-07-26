@@ -1,0 +1,304 @@
+{
+  "schema": "shortcuts-attest-results/v1",
+  "generated_at_utc": "2026-07-26T20:50:57Z",
+  "machine": {
+    "hostname": "MacStudio-de-paul.local",
+    "system": "Darwin",
+    "release": "25.5.0",
+    "macOS": "26.5.2"
+  },
+  "skill_version": "1.10.0",
+  "hashes_file": "fixtures/attested/hashes.sha256",
+  "hash_count": 29,
+  "import": {
+    "rows": [
+      {
+        "name": "01-hello-world_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "02-ask-input_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "03-ask-llm_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "04-menu_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "05-weather-ai_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "06-conditional-v2_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "07-repeat-count_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "08-repeat-each_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "01-ask_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "02-gettext-show_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "03-setclipboard_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "04-url-open_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "05-list_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "06-dictionary-fixed_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "07-variables_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "08-downloadurl_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "09-comment-nothing_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "10-count_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "11-choosefromlist_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "12-delay_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "09-url-cleaner_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "11-invert-names_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "0",
+        "notes": "present in library"
+      },
+      {
+        "name": "hello-bonjour_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "4568",
+        "notes": ""
+      },
+      {
+        "name": "09-share-sheet-input_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "4603",
+        "notes": ""
+      },
+      {
+        "name": "14-preview-folder-contents_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "20599",
+        "notes": ""
+      },
+      {
+        "name": "15-masto-redirect_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "22913",
+        "notes": ""
+      },
+      {
+        "name": "16-calendar-locations_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "4512",
+        "notes": ""
+      }
+    ],
+    "tally": {
+      "OK": 27,
+      "FAIL": 0,
+      "SKIP": 0,
+      "other": 0
+    }
+  },
+  "run": {
+    "rows": [
+      {
+        "name": "01-hello-world_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "06-conditional-v2_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "06-conditional_signed",
+        "result": "SKIP",
+        "notes": "alias 06-conditional-v2_signed OK"
+      },
+      {
+        "name": "07-repeat-count_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "08-repeat-each_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "02-gettext-show_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "03-setclipboard_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "05-list_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "06-dictionary-fixed_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "06-dictionary_signed",
+        "result": "SKIP",
+        "notes": "alias 06-dictionary-fixed_signed OK"
+      },
+      {
+        "name": "07-variables_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "09-comment-nothing_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "10-count_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "12-delay_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "02-ask-input_signed",
+        "result": "OK",
+        "notes": ""
+      },
+      {
+        "name": "01-ask_signed",
+        "result": "OK",
+        "notes": ""
+      }
+    ],
+    "tally": {
+      "OK": 14,
+      "FAIL": 0,
+      "SKIP": 2,
+      "other": 0
+    }
+  },
+  "pass": true,
+  "summary": "import OK=27 FAIL=0 SKIP=0; run OK=14 FAIL=0 SKIP=2"
+}
