@@ -1,6 +1,7 @@
 # Shortcuts Actions Reference
 
 Complete catalog of all 427 WF*Action classes and their identifiers.
+Source of truth: [`data/wf_actions.json`](../data/wf_actions.json).
 
 ## Identifier Mapping Rules
 

@@ -8,7 +8,9 @@ A Hermes skill for AI-assisted generation of macOS/iOS Shortcuts. Create valid `
 |---------|----------|-----|
 | `SKILL.md` (Hermes prompts / workflow) | French | Primary agent-facing protocol for this fork |
 | `README.md` + `references/*` | English | Shared technical grammar reference |
-| User-facing shortcut copy in templates | Match the target audience | FR for Locally stub notes; EN for Hello World golden |
+| User-facing shortcut copy in templates | Match the target audience | EN for goldens; FR notes in Locally stub |
+
+`OutputName` values inside plists are always **English** Shortcuts labels.
 
 ## Installation
 
@@ -29,31 +31,29 @@ Or download and extract the files manually into `~/.hermes/skills/shortcuts-gene
 
 ### 3. Verify the installation
 
-Your directory structure should look like:
-
 ```
 ~/.hermes/skills/shortcuts-generator/
-├── SKILL.md                  # Required - skill definition
+├── SKILL.md
 ├── README.md
 ├── LICENSE
-├── references/
-│   ├── ACTIONS.md
-│   ├── APPINTENTS.md
-│   ├── CONTROL_FLOW.md
-│   ├── EXAMPLES.md
-│   ├── FILTERS.md
-│   ├── PARAMETER_TYPES.md
-│   ├── PLIST_FORMAT.md
-│   └── VARIABLES.md
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── data/
+│   ├── wf_actions.json          # SSOT: 427 WF*Action ids
+│   └── appintents.json          # SSOT: 154 curated AppIntent ids
+├── references/                  # Grammar + playbooks
 ├── scripts/
 │   ├── sign_shortcut.sh
-│   └── validate.sh
+│   ├── validate.sh
+│   └── check_shortcut_grammar.py  # 10/10 prep (deeper grammar)
 ├── templates/
-│   ├── hello-world.shortcut.xml   # Importable golden
+│   ├── hello-world.shortcut.xml
 │   ├── shortcut-skeleton.plist
-│   └── locally-obsidian.stub.xml  # Non-importable design stub
-└── .github/workflows/
-    └── validate.yml
+│   ├── locally-obsidian.stub.xml
+│   └── examples/                # Importable goldens 01–08
+├── fixtures/attested/           # 10/10: macOS/iOS import attestations
+└── .github/workflows/validate.yml
 ```
 
 ### 4. Reload Hermes skills
@@ -76,31 +76,31 @@ Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it 
 ./scripts/validate.sh
 ```
 
-Checks XML well-formedness, shell syntax, and grammar rules on importable templates (stubs named `*.stub.xml` are XML-checked only).
+Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar heuristics on importable templates (`*.stub.xml` is XML-only).
 
 ## What's Included
 
 | File | Description |
 |------|-------------|
-| `SKILL.md` | Skill definition with quick start guide (FR) |
-| `references/ACTIONS.md` | All 427 WF*Action identifiers and parameters |
+| `SKILL.md` | Skill definition (FR) |
+| `data/wf_actions.json` | SSOT for all 427 WF*Action identifiers |
+| `data/appintents.json` | SSOT for curated subset of 154 AppIntent identifiers |
+| `references/ACTIONS.md` | WF*Action docs + complete list |
+| `references/POWER_ACTIONS.md` | Parameter schemas for 25 priority actions |
 | `references/APPINTENTS.md` | Curated subset of 154 AppIntent identifiers |
-| `references/PARAMETER_TYPES.md` | Parameter value types and serialization formats |
-| `references/VARIABLES.md` | Variable reference system |
-| `references/CONTROL_FLOW.md` | Repeat, Conditional, Menu patterns |
-| `references/FILTERS.md` | Content filters for Find/Filter actions |
-| `references/EXAMPLES.md` | Complete working examples |
-| `scripts/sign_shortcut.sh` | Shortcut signing helper |
-| `scripts/validate.sh` | Repo validation (XML, bash, grammar) |
-| `templates/shortcut-skeleton.plist` | Minimal shortcut template |
-| `templates/hello-world.shortcut.xml` | Importable golden example |
-| `templates/locally-obsidian.stub.xml` | Non-importable Locally → Obsidian design stub |
+| `references/FAILURE_MODES.md` | Agent failure playbook |
+| `references/PLATFORM_MATRIX.md` | iOS/macOS availability (curated) |
+| `references/EXAMPLES.md` | Index of importable goldens |
+| `scripts/sign_shortcut.sh` | Signing helper |
+| `scripts/validate.sh` | Repo validation |
+| `templates/examples/` | Importable golden shortcuts |
+| `templates/locally-obsidian.stub.xml` | Non-importable design stub |
 
 ## Requirements
 
-- macOS with the `shortcuts` CLI tool (included with macOS) for signing/import
+- macOS with the `shortcuts` CLI for signing/import
 - Hermes Agent
-- `xmllint` (libxml2) for `./scripts/validate.sh`
+- `xmllint` (libxml2) + `python3` for `./scripts/validate.sh`
 
 ## License
 

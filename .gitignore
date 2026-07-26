@@ -4,6 +4,12 @@
 .LSOverride
 .localized
 
-# Signed outputs / generated shortcuts
+# Signed outputs / generated shortcuts (XML goldens use *.shortcut.xml)
 *_signed.shortcut
 *.shortcut
+!*.shortcut.xml
+
+# Local attestation scratch
+/out/
+/fixtures/attested/*.shortcut
+/fixtures/attested/*_signed.shortcut

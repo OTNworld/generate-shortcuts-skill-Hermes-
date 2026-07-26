@@ -112,16 +112,17 @@ A `.shortcut` file is a binary plist (can be written as XML, then converted). Th
 
 ### Color Values
 
-Colors are ARGB integers. Common values:
+Colors are ARGB integers sampled from Shortcuts exports (not an official Apple table).
+Verify against a fresh export if exact branding matters:
 
-| Color | Value | Description |
-|-------|-------|-------------|
-| Blue | 4282601983 | Default blue |
-| Red | 4282601983 | Red |
-| Green | 4292093695 | Green |
-| Orange | 4294967295 | Orange |
-| Purple | 4285887861 | Purple |
-| Gray | 2846468607 | Gray |
+| Color | Value | Notes |
+|-------|-------|-------|
+| Blue | 4282601983 | Default blue used in skill templates |
+| Red | 4285149847 | Common red glyph tint |
+| Green | 4292093695 | Common green tint |
+| Orange | 4289374890 | Common orange tint (not `0xFFFFFFFF`) |
+| Purple | 4285887861 | Common purple tint |
+| Gray | 2846468607 | Common gray tint |
 
 ## Action Structure
 

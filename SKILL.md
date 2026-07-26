@@ -4,10 +4,9 @@ description: >
   Use when the user wants to create, inspect, modify, or import a macOS/iOS
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
-  WF*Actions, AppIntents, variables, and control flow. Also covers bridging
-  workflows to external apps like Obsidian-vault-based prompting and local
-  inference apps on iOS/macOS.
-version: 1.5.0
+  WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
+  Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
+version: 1.6.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -34,43 +33,26 @@ Pour chaque raccourci produit :
 - un résumé des actions utilisées
 - les UUIDs principaux pour le chaînage
 - la commande de signature prête à exécuter
-- pour les starters/projets : note dans le vault `Projets/<nom>/` avec idée, plan, starter, tests iOS, assets, et workflow de délégation si applicable
+- `./scripts/validate.sh` au vert sur les templates/goldens du repo (et sur le fichier généré si placé sous `templates/`)
 
-## Convention projet Obsidian
+Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE.md`.
 
-Lorsque le skill génère un starter/document lié à un projet, utiliser la structure suivante dans le vault iCloud/Obsidian :
+## Starters / templates
 
-- `Projets/<Nom du projet>/index.md` comme fiche projet
-- `idée/` — concepts, cas d’usage, preuves
-- `plans/` — plans d’implémentation
-- `starters/` — starters/raccourcis `.shortcut`
-- `templates/` — templates de génération/docs
-- `assets/` — médias, captures, preuves iOS
-- Workflow de délégation global : `Projets/delegation-workflow.md`
-
-Règles :
-- Ranger les médias dans `assets/`, jamais à la racine du projet.
-- Lier les fichiers membres depuis `index.md` et fiche `idée/`.
-- Mettre à jour la Daily avec les chemins et les liens travaillés.
-
-## Starters / templates projet
-
-- `templates/hello-world.shortcut.xml` : golden minimal **importable** (Ask/GetText/Show Result)
+- `templates/hello-world.shortcut.xml` : golden minimal **importable** (Get Text → Show Result)
+- `templates/examples/` : goldens 01–08 (ask, menu, weather+AI, conditional, repeats)
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
-- `templates/locally-obsidian.stub.xml` : stub **non importable** Locally → Obsidian (snapshot de conception)
-- workflow cible du stub : `Share Sheet → Ask → GetText → Demander à Locally AI → Choose menu → Show/Copy/Save/Append`
-- branches recommandées (à implémenter hors stub) : `Afficher`, `Copier`, `Nouvelle note AI`, `Append Daily`, `Append Inbox`
-- point d’attention iOS : `obsidian://open` après sauvegarde iCloud si l’app est installée
+- `templates/locally-obsidian.stub.xml` : stub **non importable** (design only)
 
 ## Étapes
 
 1. **Collecte** : demander le nom du raccourci, les entrées, les actions souhaitées et l’ordre logique.
-2. **Choix des actions** : sélectionner les identifiants dans `references/ACTIONS.md` et `references/APPINTENTS.md`.
-3. **Génération des UUIDs** : un UUID par action productrice de sortie, au format `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` en majuscules.
+2. **Choix des actions** : préférer `references/POWER_ACTIONS.md`, puis IDs dans `data/wf_actions.json` / `references/ACTIONS.md` et `data/appintents.json`.
+3. **Génération des UUIDs** : un UUID par action productrice de sortie, au format `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX` en majuscules hex.
 4. **Construction du plist** : suivre `references/PLIST_FORMAT.md` et `references/PARAMETER_TYPES.md`.
 5. **Chaînage** : câbler les sorties vers entrées via `attachmentsByRange` et U+FFFC, voir `references/VARIABLES.md`.
-6. **Flux de contrôle** : Repeat/If/Choose from Menu selon `references/CONTROL_FLOW.md`.
-7. **Validation rapide** : cohérence des UUIDs, types `<integer>` pour `WFControlFlowMode`, placeholder `￼` bien présent.
+6. **Flux de contrôle** : Repeat/If/Choose from Menu selon `references/CONTROL_FLOW.md` + goldens 04/06/07/08.
+7. **Validation rapide** : `./scripts/validate.sh` ; checklist `references/FAILURE_MODES.md`.
 8. **Signature** : exécuter la commande de signature adéquate, voir section Signing.
 9. **Import** : expliquer la marche à suivre si besoin.
 
@@ -80,57 +62,49 @@ Règles :
 - Paramètres : `WFWorkflowActionParameters`.
 - Référence de sortie : `OutputUUID` + `attachmentsByRange` + `￼`.
 - Contrôle de flux : `GroupingIdentifier` + `WFControlFlowMode` `0/1/2`.
+- `OutputName` : toujours les libellés **anglais** Shortcuts (`Text`, `Provided Input`, `Response`, …).
 
 ## Règles dures
 
-- UUIDs en majuscules uniquement.
+- UUIDs en majuscules hex uniquement (`0-9A-F`).
 - `WFControlFlowMode` est un `<integer>`, jamais un string.
 - Clés de range au format `{position, length}`.
 - Le caractère de marque de variable est `￼` (U+FFFC), pas un placeholder standard.
 - Toute action productrice de sortie doit exposer un UUID.
+- Ne jamais utiliser `is.workflow.actions.savefile` → `documentpicker.save`.
 
 ## Compatibilité macOS / iOS
 
-- Tous les identifiants d’action ne sont pas disponibles sur macOS et iOS simultanément.
+Voir `references/PLATFORM_MATRIX.md` pour les ~actions prioritaires.
+
 - Pour débloquer un import/test sur Mac sans erreur d’action inconnue :
   - éviter `shareextension`, préférer `ask` pour l’entrée texte
   - éviter `appintentexecution` si l’App Intent cible n’est pas disponible sur macOS
-- Stratégie de débogage recommandée : exporter un POC minimal fonctionnel depuis l’app Raccourcis, puis comparer son PLIST plutôt que modifier le XML à l’aveugle.
+- Stratégie de débogage : exporter un POC minimal depuis Raccourcis, puis comparer le PLIST.
 
 ## Limites iOS autorisées
 
-- Pas d’action native documentée pour lire le contenu texte brut d’un `.md` iCloud.
-- `documentpicker.open/save` = sélection/sauvegarde fichier.
-- `gettextfrompdf` = PDF seulement.
-- `shareextension` / `ExtensionInput` = entrée fiabletexte/URL/rich text.
-- App Intents comme `Demander à Locally AI` exposent typiquement : `Message`, `Pièce jointe`, `Prompt système`, `Modèle` ; préférer le canal `Message` + `Pièce jointe` plutôt que le presse-papiers.
-
-## Obsidian pont / app locale iOS
-
-- Le vault est source de vérité, mais pas lisible automatiquement en pur iOS par le raccourci sauf App Intent/URL.
-- Ordre d’appel à une app locale : App Intent > URL scheme > ouverture d’app + alerte rappel.
-- `shareextension` / `ExtensionInput` est valide pour texte/URL/rich text.
-- Si l’app cible expose une pièce jointe dans Shortcuts, préférer ce canal à un presse-papiers manuel.
-
-## Modèle cross-app recommandé
-
-Flux générique iOS/documenté :
-1. entrée = `ExtensionInput` / `Ask` / presse-papiers
-2. composer un prompt texte avec variables et `attachmentsByRange`
-3. appeler l’app via intent/URL/`Open App`
-4. choisir la branche de sortie : `Show Result` / `Set Clipboard` / sauvegarde iCloud / append fichier
-5. pour écriture : utiliser `Open URL` avec `obsidian://...` quand possible
+Sur iOS, les limites acceptables pour un premier jet sont :
+- permissions (Photos, Localisation, Réseau)
+- disponibilité Apple Intelligence pour `askllm`
+- apps tierces absentes (Obsidian, Locally, …)
 
 ## Références
 
 - `references/PLIST_FORMAT.md` : structure racine.
 - `references/ACTIONS.md` : 427 WF*Actions.
+- `references/POWER_ACTIONS.md` : schémas des 25 actions prioritaires.
 - `references/APPINTENTS.md` : 154 AppIntents (curated subset).
 - `references/PARAMETER_TYPES.md` : types et sérialisation.
 - `references/VARIABLES.md` : système de variables.
 - `references/CONTROL_FLOW.md` : Repeat / Condition / Menu.
 - `references/FILTERS.md` : filtres de contenu.
-- `references/EXAMPLES.md` : exemples complets.
+- `references/EXAMPLES.md` : index des goldens.
+- `references/FAILURE_MODES.md` : playbook d’échecs agent.
+- `references/PLATFORM_MATRIX.md` : disponibilité iOS/macOS.
+- `references/OBSIDIAN_BRIDGE.md` : conventions vault (optionnel).
+- `references/ROADMAP_10.md` : suite vers 10/10.
+- `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.
 
 ## Signing Shortcuts
 
@@ -172,19 +146,15 @@ Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
    git ls-remote origin refs/heads/main
    git ls-remote origin refs/tags/<version>
    ```
-7. Une fois le tag créé localement, il se crée à partir du HEAD courant :
+7. Une fois le tag créé localement :
    ```bash
    git tag -a <version> -m "<message>"
-   ```
-   Puis pousser :
-   ```bash
    git push origin <version>
    ```
 
 ## ⚠️ Avertissement : stubs non importables
 
-- `templates/locally-obsidian.stub.xml` est un **snapshot de conception non importable** (branches incomplètes, control-flow / variables incorrects).
+- `templates/locally-obsidian.stub.xml` est un **snapshot de conception non importable**.
 - Ne pas le signer ni l’importer dans Raccourcis.
-- Compatibilité cible connue pour un futur POC Locally : **iOS OK**, **macOS limité** sur `shareextension` / `appintentexecution`.
-- Pour un raccourci minimal valide, utiliser `templates/hello-world.shortcut.xml` ou `references/EXAMPLES.md`.
-- Reprendre un workflow Locally → Obsidian uniquement à partir d’un export Shortcuts réel, pas à partir de ce stub.
+- Pour un raccourci minimal valide, utiliser `templates/examples/` ou `templates/hello-world.shortcut.xml`.
+- Bridge Obsidian : `references/OBSIDIAN_BRIDGE.md`.
