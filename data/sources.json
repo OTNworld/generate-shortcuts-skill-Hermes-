@@ -20,7 +20,7 @@
       "url": "https://github.com/drewocarr/generate-shortcuts-skill",
       "role": "upstream-lineage",
       "license": "unknown/unspecified",
-      "notes": "Original Claude skill this Hermes fork descends from (docs layout + 427 actions dump).",
+      "notes": "Original Claude skill this Hermes fork descends from (docs layout + early WF actions dump). Upstream LICENSE is unspecified as of 2026-07 — treat as lineage/reference only; this repo ships under MIT for *our* original + clearly attributed MIT-vendored community goldens. Do not relicense upstream content.",
       "use": "link"
     },
     {

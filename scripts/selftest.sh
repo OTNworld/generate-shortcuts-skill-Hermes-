@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Fast local selftest: validate + craig fixtures + remix structural + optional Darwin.
+# Fast local selftest: validate + unittest + craig + remix + optional Darwin.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
@@ -7,12 +7,16 @@ cd "$ROOT"
 ./scripts/validate.sh
 ./scripts/validate_on_write.sh templates/examples/01-hello-world.shortcut.xml
 
+echo "== Unit tests =="
+python3 -m unittest discover -s tests -v
+
 echo "== Craig Loop fixtures =="
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 cp fixtures/craig/lc-uuid-hello.shortcut.xml "$TMP/lc.xml"
 cp fixtures/craig/mode-str.shortcut.xml "$TMP/mode.xml"
-# Expect broken before fix
+cp fixtures/craig/savefile-hello.shortcut.xml "$TMP/sf.xml"
+
 if ./scripts/validate_on_write.sh "$TMP/lc.xml" 2>/dev/null; then
   echo "FAIL craig lc-uuid should be invalid before --fix" >&2
   exit 1
@@ -26,9 +30,29 @@ if ./scripts/validate_on_write.sh "$TMP/mode.xml" 2>/dev/null; then
 fi
 ./scripts/validate_on_write.sh --fix "$TMP/mode.xml"
 ./scripts/validate_on_write.sh "$TMP/mode.xml"
+
+if ./scripts/validate_on_write.sh "$TMP/sf.xml" 2>/dev/null; then
+  echo "FAIL craig savefile should be invalid before --fix" >&2
+  exit 1
+fi
+./scripts/validate_on_write.sh --fix "$TMP/sf.xml"
+./scripts/validate_on_write.sh "$TMP/sf.xml"
 echo "OK  craig fixtures"
 
-echo "== Remix structural =="
+echo "== Remix structural + I/O fixture =="
+python3 scripts/remix_shortcut.py fixtures/remix/hello-bonjour.input.xml \
+  --replace-text "Hello World!" "Bonjour!" \
+  --output "$TMP/hello-bonjour.xml"
+./scripts/validate_on_write.sh "$TMP/hello-bonjour.xml"
+python3 - <<PY
+import plistlib
+from pathlib import Path
+got = plistlib.loads(Path("$TMP/hello-bonjour.xml").read_bytes())
+exp = plistlib.loads(Path("fixtures/remix/hello-bonjour.expected.xml").read_bytes())
+assert got == exp, "remix I/O fixture mismatch"
+print("OK  remix I/O fixture")
+PY
+
 python3 scripts/remix_shortcut.py templates/examples/01-hello-world.shortcut.xml \
   --output "$TMP/hello-remix.xml" \
   --replace-text "Hello World!" "Bonjour!" \

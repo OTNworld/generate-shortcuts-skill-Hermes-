@@ -17,9 +17,13 @@ Peer: [viticci/shortcuts-playground](https://github.com/viticci/shortcuts-playgr
 - When a user needs an intent absent from `appintents.json`, add **one batch ≤20** after verifying BundleIdentifier + Name from an exported shortcut — never invent descriptors.
 - Settings deep-link batch (Open*SettingsStaticDeepLinks / VPN Set|Toggle) follows existing SSOT grammar; **verify on Mac** before teaching `appintentexecution` goldens.
 
-## 2026-07-26 curated batch (+14)
+## 2026-07-26 curated batch (+14) — **unverified**
+
+Listed in `data/appintents.json` → `unverified` (must stay ⊆ `identifiers`):
 
 `OpenVPN|Developer|Wallpaper|LockScreen|Safari|Photos|Messages|Camera|AppStore|Health|GameCenter|Translate` + `SettingsStaticDeepLinks`, plus `SetVPNIntent` / `ToggleVPNIntent`.
+
+**Agent rule:** do **not** ship teaching `appintentexecution` goldens for these until a Mac/iOS export confirms BundleIdentifier + Name. SSOT membership ≠ device-verified.
 
 ## Horizon watchlist (do not invent IDs)
 

@@ -6,6 +6,7 @@ Broken XML samples for `scripts/craig_loop_lite.py` / `validate_on_write.sh --fi
 |------|-------|----------|
 | `lc-uuid-hello.shortcut.xml` | lowercase UUID hex letters | uppercase → validate PASS |
 | `mode-str.shortcut.xml` | `WFControlFlowMode` as `<string>` | `<integer>` → validate PASS |
+| `savefile-hello.shortcut.xml` | `is.workflow.actions.savefile` | `documentpicker.save` → validate PASS |
 
 Regenerate:
 

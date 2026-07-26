@@ -5,6 +5,23 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [1.12.0] - 2026-07-26
+
+### Added
+- Linux 10/10 track: `references/LINUX_10_CHECKLIST.md`, `references/AGENT_ENTRY.md`
+- Stdlib unit tests: `tests/test_linux10.py` (remix, craig, schemas, secrets)
+- JSON schemas: `data/schemas/{wf_actions,appintents,attest-results}.v1.json` + `check_json_schema.py`
+- Secret heuristics gate: `scripts/check_no_secrets.py` (wired in `validate.sh`)
+- AppIntents `unverified` list (14 Settings/VPN IDs); WF `platform_hints` for palette actions
+- Remix I/O fixtures: `fixtures/remix/hello-bonjour.{input,expected}.xml`
+- Craig fixture: `savefile-hello` → `documentpicker.save` auto-fix
+- FAILURE_MODES “Erreur → une commande” table
+
+### Changed
+- Skill version 1.12.0
+- `selftest.sh` runs unittest + savefile craig + remix I/O assert
+- Upstream lineage clarified in `sources.json`, `THIRD_PARTY_NOTICES.md`, `SECURITY.md`
+
 ## [1.11.0] - 2026-07-26
 
 ### Added

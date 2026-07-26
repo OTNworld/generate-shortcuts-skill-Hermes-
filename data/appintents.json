@@ -170,5 +170,21 @@
     "ToggleOrientationLockIntent",
     "ToggleVPNIntent",
     "ToggleWiFiIntent"
+  ],
+  "unverified": [
+    "OpenAppStoreSettingsStaticDeepLinks",
+    "OpenCameraSettingsStaticDeepLinks",
+    "OpenDeveloperSettingsStaticDeepLinks",
+    "OpenGameCenterSettingsStaticDeepLinks",
+    "OpenHealthSettingsStaticDeepLinks",
+    "OpenLockScreenSettingsStaticDeepLinks",
+    "OpenMessagesSettingsStaticDeepLinks",
+    "OpenPhotosSettingsStaticDeepLinks",
+    "OpenSafariSettingsStaticDeepLinks",
+    "OpenTranslateSettingsStaticDeepLinks",
+    "OpenVPNSettingsStaticDeepLinks",
+    "OpenWallpaperSettingsStaticDeepLinks",
+    "SetVPNIntent",
+    "ToggleVPNIntent"
   ]
 }

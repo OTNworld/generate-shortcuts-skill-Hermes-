@@ -3,6 +3,17 @@
 This skill is MIT-licensed (see [LICENSE](LICENSE)). The following third-party
 materials are referenced or selectively vendored.
 
+## Upstream lineage
+
+### drewocarr/generate-shortcuts-skill
+
+- Role: historical lineage (docs layout / early action catalog inspiration)
+- Upstream: https://github.com/drewocarr/generate-shortcuts-skill
+- License: **unspecified / unknown** (as recorded in `data/sources.json`)
+- Use: **link only** — this MIT LICENSE covers *this* repository’s original work
+  and MIT-compatible vendored community goldens; it does **not** assert that the
+  upstream project is MIT.
+
 ## Vendored under MIT
 
 ### viticci/shortcuts-playground-plugin

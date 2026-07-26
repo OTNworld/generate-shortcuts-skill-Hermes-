@@ -20,5 +20,8 @@ jobs:
       - name: ShellCheck scripts
         run: shellcheck -x scripts/*.sh
 
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+
       - name: Selftest (validate + craig + remix)
         run: bash ./scripts/selftest.sh

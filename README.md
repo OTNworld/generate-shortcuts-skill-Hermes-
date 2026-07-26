@@ -74,7 +74,9 @@ Once installed, ask Hermes to create a shortcut:
 
 Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it so you can import it directly into the Shortcuts app.
 
-**Product direction (companion app / Siri / local-model marketplace):** see [`references/HORIZON.md`](references/HORIZON.md). The Locally→Obsidian stub track is abandoned.
+**Agent map (≤2 min):** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
+**Linux 10/10 track:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
+**Product direction (companion app / Siri / local-model marketplace):** [`references/HORIZON.md`](references/HORIZON.md). The Locally→Obsidian stub track is abandoned.
 
 ## Local finalize (Mac → 10/10)
 

@@ -1,7 +1,7 @@
 # Checklist — prochains pas (attestation + skill 10/10)
 
-Dernière màj : **2026-07-26** (Mac local, macOS 26.5.2, automation Return/AX en place).  
-Branche de travail : `cursor/skill-quality-hardening-0e57`.
+Dernière màj : **2026-07-26** (Linux 10/10 track + Mac baseline).  
+Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 
 **Légende**
 
