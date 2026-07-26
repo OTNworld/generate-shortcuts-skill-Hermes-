@@ -325,7 +325,7 @@ cat fixtures/attested/runs/run_report.tsv
 | D1 | MATRIX complete | P0 | | [x] |
 | D2 | bump 1.9.0 | P0 | | [x] |
 | D3 | docs agent | P1 | | [~] |
-| D4 | git/PR | P0 | | [ ] |
+| D4 | git/PR | P0 | | [x] |
 | D5 | CI Darwin-safe | P1 | | [ ] |
 | E* | roadmap élargie | P2 | | [ ] |
 | F* | vision expérimentale | P2 | | [ ] |
