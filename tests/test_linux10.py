@@ -176,6 +176,23 @@ class TestCraig(unittest.TestCase):
             self.assertNotIn("savefile", text)
 
 
+class TestSources(unittest.TestCase):
+    def test_sources_gate(self):
+        r = run(["python3", "scripts/check_sources.py"])
+        self.assertEqual(r.returncode, 0, r.stderr + r.stdout)
+
+    def test_sources_schema(self):
+        r = run(
+            [
+                "python3",
+                "scripts/check_json_schema.py",
+                "data/sources.json",
+                "data/schemas/sources.v1.json",
+            ]
+        )
+        self.assertEqual(r.returncode, 0, r.stderr)
+
+
 class TestHorizon(unittest.TestCase):
     def test_packages_gate(self):
         r = run(["python3", "scripts/check_horizon_packages.py"])

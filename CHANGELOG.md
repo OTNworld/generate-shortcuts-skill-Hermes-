@@ -5,6 +5,20 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [1.14.0] - 2026-07-26
+
+### Added
+- Sources registry hardening: `data/schemas/sources.v1.json`, `scripts/check_sources.py`,
+  `scripts/refresh_external_indexes.sh`, `data/external/viticci-gaps.jsonl` (11 non-vendored)
+- Official / research links: Apple User Guide, App Intents, ScPL, Zachary7829 format,
+  Matthew Cassinelli actions directory (`data/sources.json` now 13 entries)
+- `last_checked` / `archived` / `tags` on source records
+
+### Changed
+- Skill version 1.14.0
+- `ECOSYSTEM.md` + `THIRD_PARTY_NOTICES.md` synced (8 community, 11 gaps, Apple official block)
+- `validate.sh` runs sources integrity gate
+
 ## [1.13.0] - 2026-07-26
 
 ### Added

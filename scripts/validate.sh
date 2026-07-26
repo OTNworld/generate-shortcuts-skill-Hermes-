@@ -125,6 +125,9 @@ python3 scripts/check_no_secrets.py
 echo "== Horizon packages =="
 python3 scripts/check_horizon_packages.py
 
+echo "== Sources registry =="
+python3 scripts/check_sources.py
+
 # --- XML well-formedness ---
 echo "== Rendered refs drift =="
 if python3 scripts/render_refs.py --check; then

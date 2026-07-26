@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
-version: 1.13.0
+version: 1.14.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
