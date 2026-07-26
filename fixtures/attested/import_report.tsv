@@ -21,3 +21,8 @@ name	result	method	ms	notes
 12-delay_signed	OK	return	0	present in library
 09-url-cleaner_signed	OK	return	0	present in library
 11-invert-names_signed	OK	return	0	present in library
+hello-bonjour_signed	OK	return	4568	
+09-share-sheet-input_signed	OK	return	4603	
+14-preview-folder-contents_signed	OK	return	20599	
+15-masto-redirect_signed	OK	return	22913	
+16-calendar-locations_signed	OK	return	4512	

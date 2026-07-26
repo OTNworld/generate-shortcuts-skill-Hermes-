@@ -8,11 +8,11 @@ Objectif : combler le **gap d’expérience auteur** face à [viticci/shortcuts-
 | Axe | Nous | Viticci playground |
 |-----|------|--------------------|
 | Attestation Mac sign/import/run + `results.json` | **Lead** | Faible / non systématique |
-| Corpus goldens | 8 teaching + 12 palette + 5 community | ~19 goldens riches |
-| Remix / diff NL sur XML existant | Absent | **Lead** |
-| Validate-on-write (hooks) | CI only | PostToolUse + Craig Loop |
-| ToolKit / AppIntents profondeur | 154 curated | ToolKit v63+ gated |
-| Surface skill | Lean FR Hermes | Plugin Claude/Codex lourd |
+| Corpus goldens | 9 teaching + 12 palette + 8 community | ~19 goldens riches |
+| Remix / diff NL sur XML existant | **`remix_shortcut.py` + REMIX.md** | **Lead** (richer agents) |
+| Validate-on-write (hooks) | **`validate_on_write.sh`** | PostToolUse + Craig Loop |
+| ToolKit / AppIntents profondeur | 438 WF + 154 curated | ToolKit v63+ gated |
+| Surface skill | Lean FR + `SKILL.en.md` | Plugin Claude/Codex lourd |
 | License posture | MIT + link-not-vendor GPL | MIT plugin |
 
 **Légende :** `[ ]` todo · `[~]` partiel · `[x]` done · **P0/P1/P2** priorité  
@@ -27,8 +27,8 @@ Liens : [`ECOSYSTEM.md`](ECOSYSTEM.md) · [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.m
 - [x] Rester **MIT** ; GPL = link only
 - [x] Garder `SKILL.md` agent-facing **court** ; détail dans `references/`
 - [x] Toute nouvelle feature d’édition doit finir par `./scripts/validate.sh` (+ attest Mac si importable)
-- [ ] Chaque phase livre un **DoD mesurable** (ci-dessous) avant la suivante
-- [ ] Préférer **wrappers locaux** (`scripts/`) aux hooks IDE propriétaires quand possible (Hermes + Cursor)
+- [x] Chaque phase livre un **DoD mesurable** (ci-dessous) avant la suivante
+- [x] Préférer **wrappers locaux** (`scripts/`) aux hooks IDE propriétaires quand possible (Hermes + Cursor)
 
 ---
 
@@ -108,39 +108,38 @@ Le plus gros différenciateur Viticci côté *édition*.
 
 ### V3.1 Goldens
 
-- [ ] Mapper les 19 Viticci index → gaps vs `templates/`
-- [ ] Vendor **+3 à +5** MIT goldens (attribution `THIRD_PARTY_NOTICES`) qui couvrent :
-  - [ ] Share Sheet / ImportQuestions (aussi B7 roadmap)
-  - [ ] Files / Save (`documentpicker.save`)
-  - [ ] HTTP + JSON (au-delà de parse-json-feed)
-- [ ] Chaque nouveau golden : `validate.sh` + au moins **Import OK** Mac (attest)
+- [x] Mapper les 19 Viticci index → gaps vs `templates/`
+- [x] Vendor **+3 à +5** MIT goldens (attribution `THIRD_PARTY_NOTICES`) qui couvrent :
+  - [x] Share Sheet / ImportQuestions (aussi B7 roadmap)
+  - [x] Files / Save (`documentpicker.save` / preview folder)
+  - [x] HTTP + JSON (masto-redirect + parse-json-feed)
+- [x] Chaque nouveau golden : `validate.sh` + au moins **Import OK** Mac (attest)
 
 ### V3.2 AppIntents / catalogues
 
-- [ ] Audit : quels intents Viticci “gated” manquent dans `data/appintents.json` ?
-- [ ] Étendre SSOT **par lots** (+20–40 max) avec `render_refs.py` + counts docs
-- [ ] `PLATFORM_MATRIX.md` : marquer macOS/iOS/unknown pour les nouveaux
+- [~] Audit : quels intents Viticci “gated” manquent dans `data/appintents.json` ? (reporté P2)
+- [x] Étendre SSOT **par lots** (+20–40 max) avec `render_refs.py` + counts docs → **438** WF
+- [~] `PLATFORM_MATRIX.md` : marquer macOS/iOS/unknown pour les nouveaux (reporté)
 
 ### V3.3 Icon / polish
 
-- [ ] `scripts/resolve_icon.sh` **lite** (glyph + couleur depuis prompt) — ou doc “utiliser table PLIST_FORMAT”
-- [ ] Ne pas cloner le resolve-icon Viticci verbatim
+- [~] Doc table `PLIST_FORMAT` (pas de `resolve_icon.sh` clone Viticci)
+- [x] Ne pas cloner le resolve-icon Viticci verbatim
 
 **DoD V3 :** ≥8 community **ou** teaching gap list “closed” ; AppIntents count documenté (pas forcément 728).
-
 ---
 
 ## Phase V4 — Surface agent (P1 UX)
 
 Sans devenir un mega-plugin.
 
-- [ ] `SKILL.en.md` (B6) pour audience EN / Cursor market
-- [ ] `OUTPUT_NAMES.md` (B6) — liste canonique OutputName EN
-- [ ] Commandes “virtuelles” documentées (pas forcément slash Claude) :
-  - [ ] `build` → protocole SKILL étapes 1–9
-  - [ ] `remix` → REMIX.md
-  - [ ] `attest` → `attest_local.sh --auto`
-- [ ] Selftest : `scripts/selftest.sh` = validate + grammar + (Darwin) hash-only
+- [x] `SKILL.en.md` (B6) pour audience EN / Cursor market
+- [x] `OUTPUT_NAMES.md` (B6) — liste canonique OutputName EN
+- [x] Commandes “virtuelles” documentées (pas forcément slash Claude) :
+  - [x] `build` → protocole SKILL étapes 1–9
+  - [x] `remix` → REMIX.md
+  - [x] `attest` → `attest_local.sh --auto`
+- [x] Selftest : `scripts/selftest.sh` = validate + grammar + (Darwin) hash-only
 
 **DoD V4 :** un nouvel agent Cursor/Hermes trouve build/remix/attest en ≤2 min de lecture SKILL.
 
@@ -150,11 +149,11 @@ Sans devenir un mega-plugin.
 
 Ne pas laisser Viticci rattraper *notre* axe.
 
-- [ ] Menu / choose-from-list : 1 run UI documenté **ou** skip catégorisé (déjà)
-- [ ] Network pass optionnelle (`--include-network`) + notes flaky
-- [ ] `results.json` schema versionné + exemple dans ATTEST_AUTOMATION
+- [x] Menu / choose-from-list : skip catégorisé (UI) dans MATRIX
+- [~] Network pass optionnelle (`--include-network`) + notes flaky (outil prêt, run manuel)
+- [x] `results.json` schema versionné + exemple dans ATTEST_AUTOMATION
 - [ ] iOS : 1 ligne MATRIX **quand** device dispo (hors Mac-max)
-- [ ] Comparer publiquement dans README : “attestation Mac first-class”
+- [x] Comparer publiquement dans README : “attestation Mac first-class”
 
 **DoD V5 :** README revendique clairement l’avance attestation ; `results.json` cité.
 
@@ -162,10 +161,10 @@ Ne pas laisser Viticci rattraper *notre* axe.
 
 ## Phase V6 — Packaging & distribution (P2)
 
-- [ ] Tag `v1.10.0` (ou 2.0) quand V1+V2+V3 min done
+- [x] Tag `v1.10.0` quand V1+V2+V3 min done
 - [ ] Entrée LobeHub / Cursor skills market (si pertinent) — description différenciante
-- [ ] Changelog “Parity track” résumé
-- [ ] PR / release notes bilingues FR-EN courte
+- [x] Changelog “Parity track” résumé (`CHANGELOG` 1.10.0)
+- [x] PR / release notes bilingues FR-EN courte
 
 **DoD V6 :** release publiée + lien ECOSYSTEM à jour.
 
@@ -204,7 +203,7 @@ Coche les 4 pour dire “on a comblé le ressenti auteur” sans match feature-f
 | V3 | Corpus + ToolKit batch | P1 | [x] |
 | V4 | Surface agent EN/selftest | P1 | [x] |
 | V5 | Lead attestation | P1 | [x] |
-| V6 | Release packaging | P2 | [~] on PR branch |
+| V6 | Release packaging | P2 | [x] `v1.10.0` |
 
 
 ---

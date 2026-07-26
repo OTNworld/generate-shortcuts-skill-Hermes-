@@ -33,6 +33,33 @@ Artifacts:
 - `fixtures/attested/inputs/` (Ask fixtures)
 - `fixtures/attested/runs/` (gitignored scratch + FAIL PNGs)
 
+### `results.json` schema (`shortcuts-attest-results/v1`)
+
+Produced by `scripts/write_attest_results.sh` from the import/run TSV reports.
+
+| Field | Meaning |
+|-------|---------|
+| `schema` | Always `shortcuts-attest-results/v1` |
+| `generated_at_utc` | Aggregation timestamp |
+| `machine` | `hostname`, `system`, `release`, `macOS` |
+| `skill_version` | From `SKILL.md` frontmatter |
+| `hash_count` / `hashes_file` | SHA-256 inventory of goldens |
+| `import.rows` / `import.tally` | Per-shortcut import OK/FAIL + counts |
+| `run.rows` / `run.tally` | Per-shortcut run OK/FAIL/SKIP + counts |
+| `pass` | `false` if any import/run row is `FAIL` |
+
+Example (trimmed):
+
+```json
+{
+  "schema": "shortcuts-attest-results/v1",
+  "skill_version": "1.10.0",
+  "import": { "tally": { "OK": 24, "FAIL": 0, "SKIP": 0, "other": 0 } },
+  "run": { "tally": { "OK": 14, "FAIL": 0, "SKIP": 0, "other": 0 } },
+  "pass": true
+}
+```
+
 Equivalent:
 
 ```bash

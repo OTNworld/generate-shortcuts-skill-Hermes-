@@ -1,15 +1,15 @@
 {
   "schema": "shortcuts-attest-results/v1",
-  "generated_at_utc": "2026-07-26T20:37:17Z",
+  "generated_at_utc": "2026-07-26T20:50:57Z",
   "machine": {
     "hostname": "MacStudio-de-paul.local",
     "system": "Darwin",
     "release": "25.5.0",
     "macOS": "26.5.2"
   },
-  "skill_version": "1.9.0",
+  "skill_version": "1.10.0",
   "hashes_file": "fixtures/attested/hashes.sha256",
-  "hash_count": 20,
+  "hash_count": 29,
   "import": {
     "rows": [
       {
@@ -165,10 +165,45 @@
         "method": "return",
         "ms": "0",
         "notes": "present in library"
+      },
+      {
+        "name": "hello-bonjour_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "4568",
+        "notes": ""
+      },
+      {
+        "name": "09-share-sheet-input_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "4603",
+        "notes": ""
+      },
+      {
+        "name": "14-preview-folder-contents_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "20599",
+        "notes": ""
+      },
+      {
+        "name": "15-masto-redirect_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "22913",
+        "notes": ""
+      },
+      {
+        "name": "16-calendar-locations_signed",
+        "result": "OK",
+        "method": "return",
+        "ms": "4512",
+        "notes": ""
       }
     ],
     "tally": {
-      "OK": 22,
+      "OK": 27,
       "FAIL": 0,
       "SKIP": 0,
       "other": 0
@@ -265,5 +300,5 @@
     }
   },
   "pass": true,
-  "summary": "import OK=22 FAIL=0 SKIP=0; run OK=14 FAIL=0 SKIP=2"
+  "summary": "import OK=27 FAIL=0 SKIP=0; run OK=14 FAIL=0 SKIP=2"
 }

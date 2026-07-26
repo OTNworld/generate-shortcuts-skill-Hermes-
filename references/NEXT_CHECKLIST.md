@@ -31,7 +31,7 @@ Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested
 | Network (weather/url/download) | `[ ]` skip volontaire (NET) |
 | Community import | `[x]` ≥2 |
 | Rapport machine-readable | `[x]` `results.json` + TSV |
-| Skill version attestation | `[x]` 1.9.0 |
+| Skill version attestation | `[x]` 1.10.0 |
 
 **FAIL connus (P0 qualité golden):** aucun (corrigés).
 
@@ -43,24 +43,18 @@ Objectif : zéro FAIL non documenté sur le set auto-run ; les FAIL restants son
 
 ### A1. Fix `examples/06-conditional` **P0**
 
-- [ ] Reproduire : `shortcuts run 06-conditional_signed` → capturer message + screenshot
-- [ ] Exporter un If/Else minimal depuis Raccourcis (même logique) via UI
-- [ ] `./scripts/extract_shortcut.sh` sur l’export → diff vs `templates/examples/06-conditional.shortcut.xml`
-- [ ] Corriger paramètres manquants (`WFInput`, conditions, `WFControlFlowMode`, UUIDs, `attachmentsByRange`)
-- [ ] `./scripts/validate.sh` + grammar strict au vert
-- [ ] Re-sign + `import_shortcut_ui.sh` + `shortcuts run` → **OK**
-- [ ] Mettre à jour ligne MATRIX (`FAIL` → `OK`) + note “fixed vs export”
+- [x] Reproduire / corriger golden (If + Variable wrapper)
+- [x] `./scripts/validate.sh` + grammar strict au vert
+- [x] Re-sign + import + `shortcuts run` → **OK** (alias `06-conditional-v2_signed`)
+- [x] MATRIX Run=OK
 
-**DoD :** `shortcuts run 06-conditional_signed` exit 0 sur macOS 26.5 ; MATRIX Run=OK.
+**DoD :** `shortcuts run 06-conditional-v2_signed` exit 0 sur macOS 26.5 ; MATRIX Run=OK.
 
 ### A2. Fix `palette/06-dictionary` **P0**
 
-- [ ] Reproduire le “action introuvable” (quel `WFWorkflowActionIdentifier` ?)
-- [ ] Vérifier `dictionary` + `getdictionaryvalue` dans `data/wf_actions.json` / macOS 26
-- [ ] Rebuild golden minimal : dictionary → get value → show result (export réel si besoin)
-- [ ] Re-sign / import / run → **OK**
-- [ ] Mettre à jour `STARTER_PALETTE.md` si le schéma change
-- [ ] MATRIX Run=OK
+- [x] Remplacer legacy `getdictionaryvalue` → `getvalueforkey` (+ SSOT)
+- [x] Re-sign / import / run → **OK** (alias `06-dictionary-fixed_signed`)
+- [x] MATRIX Run=OK
 
 **DoD :** run headless OK ; aucun ID d’action inconnu sur macOS 26.
 
@@ -95,7 +89,7 @@ Pour chaque golden skippé, décider une case MATRIX explicite :
 
 ### B2. Rapport JSON unique **P1**
 
-- [ ] `fixtures/attested/results.json` aggregant hash / sign / import / run
+- [x] `fixtures/attested/results.json` aggregant hash / sign / import / run
 - [ ] Schéma minimal documenté dans `ATTEST_AUTOMATION.md`
 - [ ] `attest_local.sh --auto` écrit ce fichier en fin de boucle
 - [ ] Exit code ≠ 0 si FAIL non whiteliste
@@ -226,7 +220,7 @@ Pour chaque golden skippé, décider une case MATRIX explicite :
 Reporté de [`ROADMAP_10.md`](ROADMAP_10.md) — faire après 1.9.0 :
 
 - [ ] **B6** `SKILL.en.md` + `OUTPUT_NAMES.md`
-- [ ] **B7** Golden Share Sheet / ImportQuestions (`09-share-sheet-input`)
+- [x] **B7** Golden Share Sheet / ImportQuestions (`09-share-sheet-input`)
 - [ ] **B8** Locally : attested golden **ou** design-only clair (stub déjà honnête)
 - [ ] Palette 12 → 16–20 (actions power manquantes)
 - [ ] Plus de community depuis `data/external/*.index.jsonl`
@@ -280,8 +274,8 @@ cat fixtures/attested/runs/run_report.tsv
 - [ ] Palette 01–12 : Sign OK, Import OK ; Run OK ou skip catégorisé
 - [ ] ≥2 community Import OK
 - [ ] Automation scripts documentés + `ATTEST_AUTOMATION.md` à jour
-- [ ] `results.json` ou TSV runs + MATRIX cohérents
-- [ ] `SKILL.md` 1.9.0 + CHANGELOG attestation
+- [x] `results.json` ou TSV runs + MATRIX cohérents
+- [x] `SKILL.md` 1.10.0 + CHANGELOG attestation / parity
 - [ ] PR mergeable, pas de binaires signed dans git
 
 ---

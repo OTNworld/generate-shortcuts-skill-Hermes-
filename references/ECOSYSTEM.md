@@ -59,7 +59,7 @@ Snapshot of [viticci/shortcuts-playground](https://github.com/viticci/shortcuts-
 | Sign wrapper | `sign-shortcut` (archive + sign, no `_signed` suffix) | `scripts/sign_shortcut.sh` (keep; attest uses `_signed` temp names) |
 | Icon resolver | `resolve-icon` / `select_shortcut_icon_color.py` | Table in `PLIST_FORMAT.md` (V3 lite later) |
 | ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (**438**) + `appintents.json` (154 curated) |
-| Goldens | ~19 playground XMLs | 8 teaching + 12 palette + 5 community |
+| Goldens | ~19 playground XMLs | 9 teaching + 12 palette + **8** community |
 | Attestation Mac import/run | Not first-class | **`attest_local.sh --auto` + `results.json`** (lead) |
 
 **MVP attack order chosen:** V1 remix → V2 validate_on_write → V3 goldens batch (see `COMPETITIVE_CHECKLIST.md`).
@@ -74,6 +74,12 @@ See [`templates/examples/community/README.md`](../templates/examples/community/R
 |------|----------------|------------|
 | `09-url-cleaner.shortcut.xml` | URL Cleaner | Real-world URL/text cleanup |
 | `10-parse-json-feed.shortcut.xml` | Parse JSON Feed | HTTP + dictionary + choose-from-list |
+| `11-invert-names.shortcut.xml` | Invert Names | Text / list transform |
+| `12-days-in-a-month.shortcut.xml` | Days in a Month | Date math |
+| `13-electricity-price.shortcut.xml` | Electricity Price | Network + dictionary |
+| `14-preview-folder-contents.shortcut.xml` | Preview Folder Contents | Files / folder listing |
+| `15-masto-redirect.shortcut.xml` | Masto Redirect | HTTP + URL rewrite |
+| `16-calendar-locations.shortcut.xml` | Calendar Locations | Calendar + locations |
 
 Full upstream catalog (19 entries): `data/external/viticci-playground-goldens.index.jsonl`.
 
