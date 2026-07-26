@@ -74,6 +74,10 @@ Once installed, ask Hermes to create a shortcut:
 
 Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it so you can import it directly into the Shortcuts app.
 
+## Local finalize (Mac → 10/10)
+
+See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md): pull the PR branch, run `./scripts/attest_local.sh --open`, fill `fixtures/attested/MATRIX.md`.
+
 ## Validation
 
 ```bash

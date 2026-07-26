@@ -5,6 +5,11 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [Unreleased]
+
+### Added
+- Local Mac finalize pack: `LOCAL_FINALIZE.md`, `scripts/attest_local.sh`, `fixtures/attested/MATRIX.md`
+
 ## [1.8.0] - 2026-07-26
 
 ### Added

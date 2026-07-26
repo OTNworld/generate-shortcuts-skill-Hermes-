@@ -23,7 +23,10 @@ Optional: store SHA-256 of the **unsigned XML** only (not personal signed binari
 
 ## Status
 
-No attestations recorded yet — scaffold for the 10/10 milestone.
+Matrix template ready: [`MATRIX.md`](MATRIX.md).  
+No attestations filled yet — complete on Mac via [`MAC_HANDOFF.md`](MAC_HANDOFF.md) / [`LOCAL_FINALIZE.md`](../../LOCAL_FINALIZE.md).
 
-
-Detailed checklist: [`MAC_HANDOFF.md`](MAC_HANDOFF.md).
+```bash
+./scripts/attest_local.sh --hash-only
+./scripts/attest_local.sh --open
+```
