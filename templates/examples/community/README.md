@@ -15,10 +15,12 @@ Catalog: [`references/ECOSYSTEM.md`](../../../references/ECOSYSTEM.md).
 | `14-preview-folder-contents.shortcut.xml` | Preview Folder Contents | viticci (files / picker) |
 | `15-masto-redirect.shortcut.xml` | Masto-Redirect | viticci (HTTP / detect / URL) |
 | `16-calendar-locations.shortcut.xml` | Calendar Locations | viticci (calendar filter) |
+| `17-create-calendar-event-from-template.shortcut.xml` | Create Calendar Event from Template | viticci (calendar + dictionary) |
+| `18-select-folder-compress-share.shortcut.xml` | Select Folder, Compress, and Share | viticci (files + zip + share) |
 
 More upstream titles: `data/external/viticci-playground-goldens.index.jsonl` (19).  
-**Not vendored (11):** `data/external/viticci-gaps.jsonl` — refresh via `./scripts/refresh_external_indexes.sh`.
+**Not vendored (9):** `data/external/viticci-gaps.jsonl` — refresh via `./scripts/refresh_external_indexes.sh`.
 
-Next lean vendor candidates (offline-friendly): *Create Calendar Event from Template*, *Select Folder, Compress, and Share* — avoid Evernote/Toggl API goldens unless a user needs them.
+Intentionally skipped (not lean): Evernote, Toggl, Dropbox, App Store API, WordleBot, Clip to iCloud Clipboard (118 actions).
 
 Agents: prefer `01`–`08` + `templates/palette/` for minimal patterns; use community when the user needs realism (HTTP, calendar math, text transforms).

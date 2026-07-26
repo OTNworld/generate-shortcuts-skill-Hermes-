@@ -5,6 +5,19 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [1.15.0] - 2026-07-26
+
+### Added
+- Selective Viticci gap vendors (MIT):
+  - `community/17-create-calendar-event-from-template.shortcut.xml`
+  - `community/18-select-folder-compress-share.shortcut.xml`
+- SSOT WF actions **438 → 442** (`file.getfoldercontents`, `file.select`, `makezip`, `properties.files`)
+
+### Changed
+- Skill version 1.15.0
+- Viticci gaps **11 → 9**; community goldens **8 → 10**
+- Intentionally skipped heavy/API gaps (Evernote, Toggl, Dropbox, App Store, WordleBot, Clip to iCloud Clipboard)
+
 ## [1.14.0] - 2026-07-26
 
 ### Added

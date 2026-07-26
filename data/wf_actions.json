@@ -1,6 +1,6 @@
 {
   "prefix": "is.workflow.actions.",
-  "count": 438,
+  "count": 442,
   "identifiers": [
     "addframetogif",
     "addmusictoupnext",
@@ -89,6 +89,8 @@
     "extracttextfromimage",
     "file",
     "file.append",
+    "file.getfoldercontents",
+    "file.select",
     "filter.calendarevents",
     "filter.contentitems",
     "filter.files",
@@ -287,6 +289,7 @@
     "makepdf",
     "makespokenaudiofromtext",
     "makevideofromgif",
+    "makezip",
     "markdownfromrichtext",
     "markup",
     "maskimage",
@@ -320,6 +323,7 @@
     "pocketget",
     "previewdocument",
     "print",
+    "properties.files",
     "quicklook",
     "quitapp",
     "randomnumber",
@@ -472,6 +476,10 @@
     "shareextension": "ios",
     "documentpicker.save": "both",
     "documentpicker.open": "both",
-    "runworkflow": "both"
+    "runworkflow": "both",
+    "file.getfoldercontents": "both",
+    "file.select": "both",
+    "makezip": "both",
+    "properties.files": "both"
   }
 }

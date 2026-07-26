@@ -1,6 +1,6 @@
 # Shortcuts Actions Reference
 
-Complete catalog of all 438 WF*Action classes and their identifiers.
+Complete catalog of all 442 WF*Action classes and their identifiers.
 Source of truth: [`data/wf_actions.json`](../data/wf_actions.json).
 
 ## Identifier Mapping Rules
@@ -249,7 +249,7 @@ Some actions have non-standard mappings:
 
 ## Complete Identifier List
 
-All 438 action identifiers (prefix `is.workflow.actions.` omitted):
+All 442 action identifiers (prefix `is.workflow.actions.` omitted):
 
 ```
 addframetogif, addmusictoupnext, addnewcalendar, addnewcontact, addnewevent,
@@ -271,10 +271,11 @@ detect.dictionary, detect.link, detect.text, detectlanguage, dictatetext,
 dictionary, displaysleep, documentpicker.open, documentpicker.save, downloadurl,
 ejectdisk, emailaddress, encodemedia, evernoteappend, evernotecreate,
 evernotedelete, evernotegetlink, evernotegetnotes, exit, expandurl,
-extractarchive, extracttextfromimage, file, file.append, filter.calendarevents,
-filter.contentitems, filter.files, finderimageconvert, findhealthsamples,
-focusconfigurationlink, folder, formatdate, formatfilesize, formatnumber,
-generatehash, generatemachinereadablecode, getclass, getclipboard, getcurrentapp,
+extractarchive, extracttextfromimage, file, file.append, file.getfoldercontents,
+file.select, filter.calendarevents, filter.contentitems, filter.files,
+finderimageconvert, findhealthsamples, focusconfigurationlink, folder,
+formatdate, formatfilesize, formatnumber, generatehash,
+generatemachinereadablecode, getclass, getclipboard, getcurrentapp,
 getcurrentlocation, getcurrentsafariwebpage, getcurrentsong, getdevicedetails,
 getdirections, getdistance, getdropboxfile, getemojiname, getepisodesforpodcast,
 getfilelink, getfocus, getfoldercontents, getframesfromimage, gethalfwaypoint,
@@ -326,18 +327,18 @@ linkwritingtoolsformatlist, linkwritingtoolsformattable,
 linkwritingtoolsproofread, linkwritingtoolsrewrite, linkwritingtoolssummarize,
 list, location, lockapp, lockscreen, loghealthsample, logoutuser, logworkout,
 makearchive, makediskimage, makegif, makeimagefrompdfpage, makeimagefromrichtext,
-makepdf, makespokenaudiofromtext, makevideofromgif, markdownfromrichtext, markup,
-maskimage, measurementconvert, measurementcreate, missing, mountdiskimage,
-movefile, movewindow, nothing, notification, number, openapp, openin,
-openincalendar, openurl, openuseractivity, openxcallbackurl, output,
-overlayimage, overlaytext, overridablelink, phonenumber, pinboardadd,
+makepdf, makespokenaudiofromtext, makevideofromgif, makezip,
+markdownfromrichtext, markup, maskimage, measurementconvert, measurementcreate,
+missing, mountdiskimage, movefile, movewindow, nothing, notification, number,
+openapp, openin, openincalendar, openurl, openuseractivity, openxcallbackurl,
+output, overlayimage, overlaytext, overridablelink, phonenumber, pinboardadd,
 pinboardget, playmusic, playpause, playpodcast, playsound, pocketadd, pocketget,
-previewdocument, print, quicklook, quitapp, randomnumber, recognizemusic,
-recordaudio, remoteappintentexecution, remotelink, removecalendaritems,
-removephotofromalbum, renamefile, repeat.count, repeat.each, replacetext,
-requestrideintent, requestuber, resizewindow, returntohomescreen, revealfiles,
-reversiblelink, richtextfromhtml, richtextfrommarkdown, roundnumber, rssfeed,
-rssfeedextract, runapplescript, runjavascriptonwebpage, runosascript,
+previewdocument, print, properties.files, quicklook, quitapp, randomnumber,
+recognizemusic, recordaudio, remoteappintentexecution, remotelink,
+removecalendaritems, removephotofromalbum, renamefile, repeat.count, repeat.each,
+replacetext, requestrideintent, requestuber, resizewindow, returntohomescreen,
+revealfiles, reversiblelink, richtextfromhtml, richtextfrommarkdown, roundnumber,
+rssfeed, rssfeedextract, runapplescript, runjavascriptonwebpage, runosascript,
 runshellscript, runshortcutconfigurationintent, runshortcutintent, runsshscript,
 runworkflow, safari.geturl, savedropboxfile, savetocameraroll,
 scanmachinereadablecode, searchitunes, searchlocalbusinesses, searchmaps,

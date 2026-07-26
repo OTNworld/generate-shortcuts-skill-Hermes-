@@ -22,6 +22,8 @@ vendored = {
         "URL Cleaner", "Parse JSON Feed", "Invert Names", "Days In a Month",
         "Days in a Month", "Electricity Price", "Preview Folder Contents",
         "Masto Redirect", "Masto-Redirect", "Calendar Locations",
+        "Create Calendar Event from Template",
+        "Select Folder, Compress, and Share",
     ]
 }
 entries = [

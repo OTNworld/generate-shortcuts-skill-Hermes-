@@ -46,7 +46,14 @@ Goldens : `palette/13-notification`, `14-number`, `15-openapp`, `16-speaktext`
 
 ---
 
-## M2 — Network pass **P1**
+### M1b — Community 17–18 (optional Import) **P1**
+
+- [ ] `17-create-calendar-event-from-template` Import OK (Run may be UI/ask)
+- [ ] `18-select-folder-compress-share` Import OK (Run=UI share sheet)
+
+```bash
+./scripts/attest_local.sh --import-ui --all --timeout 20
+```
 
 ```bash
 ./scripts/run_shortcut_attest.sh --include-network

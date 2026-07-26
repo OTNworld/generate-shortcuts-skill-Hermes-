@@ -32,7 +32,7 @@
       "url": "https://github.com/viticci/shortcuts-playground-plugin",
       "role": "peer-skill-best-in-class",
       "license": "MIT",
-      "notes": "Rich agent skill (~12k lines), 19 golden XMLs, URL schemes, toolkit snapshot. Primary community corpus. Index + 8 selective MIT vendors; gaps listed in data/external/viticci-gaps.jsonl.",
+      "notes": "Rich agent skill (~12k lines), 19 golden XMLs, URL schemes, toolkit snapshot. Primary community corpus. Index + 10 selective MIT vendors; gaps listed in data/external/viticci-gaps.jsonl.",
       "use": "index+selective-vendor",
       "local_index": "data/external/viticci-playground-goldens.index.jsonl",
       "vendored_examples": [
@@ -43,7 +43,9 @@
         "templates/examples/community/13-electricity-price.shortcut.xml",
         "templates/examples/community/14-preview-folder-contents.shortcut.xml",
         "templates/examples/community/15-masto-redirect.shortcut.xml",
-        "templates/examples/community/16-calendar-locations.shortcut.xml"
+        "templates/examples/community/16-calendar-locations.shortcut.xml",
+        "templates/examples/community/17-create-calendar-event-from-template.shortcut.xml",
+        "templates/examples/community/18-select-folder-compress-share.shortcut.xml"
       ],
       "archived": false,
       "last_checked": "2026-07-26",

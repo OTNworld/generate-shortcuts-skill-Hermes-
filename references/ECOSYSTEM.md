@@ -45,7 +45,7 @@ flowchart TB
 
 | Source | Why it matters | What we take |
 |--------|----------------|--------------|
-| [viticci/shortcuts-playground-plugin](https://github.com/viticci/shortcuts-playground-plugin) | Best-in-class agent skill + 19 goldens | Index + **8** community XMLs + URL patterns; **11** gaps indexed |
+| [viticci/shortcuts-playground-plugin](https://github.com/viticci/shortcuts-playground-plugin) | Best-in-class agent skill + 19 goldens | Index + **10** community XMLs + URL patterns; **9** gaps indexed |
 | [drewocarr/generate-shortcuts-skill](https://github.com/drewocarr/generate-shortcuts-skill) | Upstream skill lineage | Historical baseline (license unspecified) |
 | [sebj/iOS-Shortcuts-Reference](https://github.com/sebj/iOS-Shortcuts-Reference) | Classic format/ARGB/types (archived) | Colors + types cited into PLIST_FORMAT / URL_SCHEMES |
 | [Apple Shortcuts User Guide](https://support.apple.com/guide/shortcuts/welcome/ios) | Official product behavior | Link / cite |
@@ -68,8 +68,8 @@ Snapshot of [viticci/shortcuts-playground](https://github.com/viticci/shortcuts-
 | Validate on edit | PostToolUse → `validate-shortcut` (Craig Loop) | **`scripts/validate_on_write.sh`** |
 | Sign wrapper | `sign-shortcut` | `scripts/sign_shortcut.sh` |
 | Icon resolver | `resolve-icon` | Table in `PLIST_FORMAT.md` |
-| ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (**438**) + `appintents.json` (168 curated; see `APPINTENTS_GAP.md`) |
-| Goldens | ~19 playground XMLs | 9 teaching + **16** palette + **8** community |
+| ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (**442**) + `appintents.json` (168 curated; see `APPINTENTS_GAP.md`) |
+| Goldens | ~19 playground XMLs | 9 teaching + **16** palette + **10** community |
 | Attestation Mac import/run | Not first-class | **`attest_local.sh --auto` + `results.json`** (lead) |
 
 **Do not copy:** BEST_PRACTICES monolith, ToolKit v78 dumps wholesale, Claude-only hooks/agents, HealthKit pack until needed.
@@ -88,11 +88,13 @@ See [`templates/examples/community/README.md`](../templates/examples/community/R
 | `14-preview-folder-contents.shortcut.xml` | Preview Folder Contents | Files / folder listing |
 | `15-masto-redirect.shortcut.xml` | Masto-Redirect | HTTP + URL rewrite |
 | `16-calendar-locations.shortcut.xml` | Calendar Locations | Calendar + locations |
+| `17-create-calendar-event-from-template.shortcut.xml` | Create Calendar Event from Template | Calendar + dictionary template |
+| `18-select-folder-compress-share.shortcut.xml` | Select Folder, Compress, and Share | Files + zip + share |
 
 Full upstream catalog (19): `data/external/viticci-playground-goldens.index.jsonl`.  
-**Not vendored (11):** `data/external/viticci-gaps.jsonl` (App Store / Evernote / Dropbox / Toggl / WordleBot / …).
+**Not vendored (9):** `data/external/viticci-gaps.jsonl` (App Store / Evernote / Dropbox / Toggl / WordleBot / Clip to iCloud Clipboard / …).
 
-Next vendor candidates (MIT + gap + lean): prefer Files/Calendar templates that stay offline-friendly over Evernote/Toggl API goldens.
+Skipped on purpose (not lean): Evernote, Toggl, Dropbox, heavy clipboard suite, App Store API goldens.
 
 ## Refreshing indexes
 

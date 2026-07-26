@@ -24,6 +24,12 @@ Legend: `Y` = typically available, `L` = limited / version-dependent, `N` = usua
 | downloadurl | Y | Y | See ACTIONS HTTP section |
 | documentpicker.open / .save | Y | Y | Replaces invalid `savefile` |
 | file.append | Y | Y | |
+| file.getfoldercontents | Y | Y | |
+| file.select | Y | Y | Folder/file picker UI differs |
+| makezip | Y | Y | |
+| properties.files | Y | Y | |
+| addnewevent | Y | Y | Calendar permission |
+| adjustdate | Y | Y | |
 | runworkflow | Y | Y | |
 | share | Y | L | UI differs |
 | shareextension | Y | N/L | Prefer `ask` on Mac |
