@@ -65,7 +65,7 @@ Exposer les utils comme outils MCP au lieu de “lance ce bash”.
 - [x] Spec `references/MCP_SHORTCUTS.md` : outils proposés + args + stdout contract
 - [x] Outils min : `shortcuts_validate`, `shortcuts_remix`, `shortcuts_attest_status` (lecture `results.json`)
 - [x] Option : `shortcuts_attest_run` (Darwin only ; documenter permissions)
-- [x] Impl stub : `mcp/` ou serveur minimal (Node/Python) qui wrappe `scripts/`
+- [x] Impl stub : `mcp_server/` FastMCP + `.venv-mcp` + Cursor `mcp.json`
 - [x] Doc install locale (Cursor MCP settings) — **sans** forcer cloud Linux attest
 
 **DoD H1 :** depuis un chat Cursor avec MCP on, l’agent peut valider un XML **sans** coller la commande bash à la main.

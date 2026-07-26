@@ -136,7 +136,7 @@ Préférer les scripts du repo aux commandes inventées :
 | remix | `python3 scripts/remix_shortcut.py` |
 | attest Mac | `./scripts/attest_local.sh --auto` |
 
-MCP (horizon) : `references/MCP_SHORTCUTS.md`.
+MCP (horizon) : `references/MCP_SHORTCUTS.md` · serveur `mcp_server/run.sh`.
 
 ## Signing Shortcuts
 

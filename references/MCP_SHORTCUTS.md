@@ -2,7 +2,7 @@
 
 Expose repo utilities as MCP tools so agents call **tools** instead of inventing bash.
 
-**Status:** spec + stdio stub (`mcp/shortcuts_mcp_server.py`). Not required for Mac attestation rating.
+**Status:** FastMCP stdio server in `mcp_server/` + Cursor `mcp.json` entries.
 
 ## Tools
 
@@ -19,34 +19,32 @@ Expose repo utilities as MCP tools so agents call **tools** instead of inventing
 - Prefer returning **stdout/stderr text** + `ok: bool`.
 - Never sign/import on Linux cloud agents (`shortcuts_attest_run` must no-op or error with clear message).
 
-## Cursor MCP install (local)
+## Cursor install (done on this machine)
 
-Add to Cursor MCP settings (example):
+**User** `~/.cursor/mcp.json` and **project** `.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "shortcuts-hermes": {
-      "command": "python3",
-      "args": ["/ABS/PATH/generate-shortcuts-skill-Hermes-/mcp/shortcuts_mcp_server.py"],
+      "command": "/Users/ps/Developer/generate-shortcuts-skill-Hermes-/mcp_server/run.sh",
+      "args": [],
       "env": {
-        "SHORTCUTS_SKILL_ROOT": "/ABS/PATH/generate-shortcuts-skill-Hermes-"
+        "SHORTCUTS_SKILL_ROOT": "/Users/ps/Developer/generate-shortcuts-skill-Hermes-"
       }
     }
   }
 }
 ```
 
-Or from repo root:
+One-time venv (gitignored):
 
 ```bash
-SHORTCUTS_SKILL_ROOT="$PWD" python3 mcp/shortcuts_mcp_server.py
+/opt/homebrew/bin/python3 -m venv .venv-mcp
+.venv-mcp/bin/pip install -r mcp_server/requirements.txt
 ```
 
-## Dependencies
-
-Stub uses **stdio JSON-RPC minimal** (no extra pip package) so CI/Linux stay light.
-If you later prefer the official `mcp` Python SDK, keep the same tool names.
+Reload MCP in Cursor (Settings → MCP → refresh / restart) if tools do not appear.
 
 ## Out of scope
 

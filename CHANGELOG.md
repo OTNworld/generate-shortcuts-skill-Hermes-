@@ -45,10 +45,11 @@ Versioning follows the `version` field in `SKILL.md`.
 
 ### Added
 - Horizon track: `references/HORIZON_CHECKLIST.md` (utils → MCP → automations → market → CLI)
-- MCP stub: `mcp/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
+- MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
 - Market blurbs: `references/MARKET_LISTING.md`
 - Craig Loop lite: `scripts/craig_loop_lite.py` + `validate_on_write.sh --fix`
 - `references/APPINTENTS_GAP.md`, `.cursor/rules/shortcuts-validate-on-write.mdc`
+- Cursor MCP install: `shortcuts-hermes` via `mcp_server/run.sh` + `.venv-mcp`
 
 ### Fixed
 - `palette/08-downloadurl`: electricity-price wiring; runtime NET flaky
