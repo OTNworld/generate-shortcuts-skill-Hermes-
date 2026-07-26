@@ -1,6 +1,8 @@
 # AppIntents Reference
 
-Complete catalog of all 728 AppIntent actions available in macOS/iOS.
+Curated subset of **154** AppIntent identifiers commonly used with Shortcuts
+(`appintentexecution`). This is not a complete dump of every system AppIntent
+on macOS/iOS (historically hundreds more exist across OS releases).
 
 ## AppIntents vs WF*Actions
 
@@ -39,6 +41,9 @@ AppIntents are invoked using the `WFAppIntentExecutionAction` wrapper:
 ---
 
 ## AppIntents by Category
+
+Category headings may mention approximate OS-scope sizes. Only the identifiers
+listed in tables/fences below are part of this skill’s curated subset (154).
 
 ### Settings Deep Links (34 actions)
 
@@ -241,7 +246,7 @@ Examples:
 
 ## Complete AppIntent Identifier List
 
-All 728 AppIntent identifiers organized alphabetically by prefix:
+All **154 curated** AppIntent identifiers in this skill, organized alphabetically by prefix:
 
 ### Open* (Settings Deep Links)
 ```

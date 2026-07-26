@@ -8,6 +8,8 @@
   </array>
   <key>WFWorkflowClientVersion</key>
   <string>2700.0.4</string>
+  <key>WFWorkflowClientRelease</key>
+  <string>26A0000a</string>
   <key>WFWorkflowHasOutputFallback</key>
   <false/>
   <key>WFWorkflowIcon</key>

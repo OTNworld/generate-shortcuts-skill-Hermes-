@@ -7,7 +7,7 @@ description: >
   WF*Actions, AppIntents, variables, and control flow. Also covers bridging
   workflows to external apps like Obsidian-vault-based prompting and local
   inference apps on iOS/macOS.
-version: 1.3.0
+version: 1.5.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -55,9 +55,11 @@ Règles :
 
 ## Starters / templates projet
 
-- `templates/locally-obsidian.shortcut.xml` : starter **Locally → Obsidian**
-- workflow cible : `Share Sheet → Ask → GetText → Demander à Locally AI → Choose menu → Show/Copy/Save/Append`
-- branches recommandées : `Afficher`, `Copier`, `Nouvelle note AI`, `Append Daily`, `Append Inbox`
+- `templates/hello-world.shortcut.xml` : golden minimal **importable** (Ask/GetText/Show Result)
+- `templates/shortcut-skeleton.plist` : squelette racine pour génération
+- `templates/locally-obsidian.stub.xml` : stub **non importable** Locally → Obsidian (snapshot de conception)
+- workflow cible du stub : `Share Sheet → Ask → GetText → Demander à Locally AI → Choose menu → Show/Copy/Save/Append`
+- branches recommandées (à implémenter hors stub) : `Afficher`, `Copier`, `Nouvelle note AI`, `Append Daily`, `Append Inbox`
 - point d’attention iOS : `obsidian://open` après sauvegarde iCloud si l’app est installée
 
 ## Étapes
@@ -123,7 +125,7 @@ Flux générique iOS/documenté :
 
 - `references/PLIST_FORMAT.md` : structure racine.
 - `references/ACTIONS.md` : 427 WF*Actions.
-- `references/APPINTENTS.md` : 728 AppIntents.
+- `references/APPINTENTS.md` : 154 AppIntents (curated subset).
 - `references/PARAMETER_TYPES.md` : types et sérialisation.
 - `references/VARIABLES.md` : système de variables.
 - `references/CONTROL_FLOW.md` : Repeat / Condition / Menu.
@@ -144,28 +146,33 @@ shortcuts sign --mode people-who-know-me --input <input>.shortcut --output <outp
 
 ### Signing script utilitaire
 
-Voir aussi `scripts/sign_shortcut.sh` pour un wrapper réutilisable.
+Voir aussi `scripts/sign_shortcut.sh` pour un wrapper réutilisable
+(modes `anyone` | `people-who-know-me`, contrôle de présence de `shortcuts`,
+`xmllint` optionnel avant signature — `SKIP_XMLLINT=1` pour les plists binaires).
+
+Validation du repo : `./scripts/validate.sh` (également exécuté en CI).
 
 ### Pipeline de vérification avant publication
 
 Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
 
-1. Valider la syntaxe XML : `xmllint --noout <fichier>.shortcut`
-2. Valider la syntaxe du script de signature : `bash -n scripts/sign_shortcut.sh`
-3. Vérifier les tokens critiques dans le plist : `attachmentsByRange` et le caractère `￼` (`U+FFFC`) pour les sorties actions.
-4. Si le repo est un skill Hermes avec remote Git, vérifier l’état avant toute opération :
+1. Exécuter le validateur du repo : `./scripts/validate.sh`
+2. Valider la syntaxe XML d’un fichier isolé si besoin : `xmllint --noout <fichier>.shortcut`
+3. Valider la syntaxe des scripts : `bash -n scripts/*.sh`
+4. Vérifier les tokens critiques dans le plist : `attachmentsByRange` et le caractère `￼` (`U+FFFC`) pour les sorties actions.
+5. Si le repo est un skill Hermes avec remote Git, vérifier l’état avant toute opération :
    ```bash
    git status
    git remote -v
    git tag -l
    ```
-5. Avant un commit/tag/push, comparer HEAD local et distant :
+6. Avant un commit/tag/push, comparer HEAD local et distant :
    ```bash
    git rev-parse HEAD
    git ls-remote origin refs/heads/main
    git ls-remote origin refs/tags/<version>
    ```
-6. Une fois le tag créé localement, il se crée à partir du HEAD courant :
+7. Une fois le tag créé localement, il se crée à partir du HEAD courant :
    ```bash
    git tag -a <version> -m "<message>"
    ```
@@ -174,12 +181,10 @@ Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
    git push origin <version>
    ```
 
-## ⚠️ Avertissement : versions gelées
+## ⚠️ Avertissement : stubs non importables
 
-Certains starters/templates de ce skill représentent des **snapshots gelés**.
-- `templates/locally-obsidian.shortcut.xml` est conservé en l’état après `v1.4.0`
-- Ne pas modifier ce template sans d’abord analyser le POC exporté `assets/locally-poc-reference.shortcut`
-- Compatibilité connue : **iOS OK**, **macOS limité** sur `shareextension` / `appintentexecution`
-- Si reprise : repartir du POC plutôt que du template gelé
-
-Cette mention sert d’**alarme** pour éviter des modifications à l’aveugle sur une version figée.
+- `templates/locally-obsidian.stub.xml` est un **snapshot de conception non importable** (branches incomplètes, control-flow / variables incorrects).
+- Ne pas le signer ni l’importer dans Raccourcis.
+- Compatibilité cible connue pour un futur POC Locally : **iOS OK**, **macOS limité** sur `shareextension` / `appintentexecution`.
+- Pour un raccourci minimal valide, utiliser `templates/hello-world.shortcut.xml` ou `references/EXAMPLES.md`.
+- Reprendre un workflow Locally → Obsidian uniquement à partir d’un export Shortcuts réel, pas à partir de ce stub.
