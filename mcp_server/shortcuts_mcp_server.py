@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import platform
+import signal
 import subprocess
 from pathlib import Path
 
@@ -20,30 +21,68 @@ from mcp.server.fastmcp import FastMCP
 ROOT = Path(os.environ.get("SHORTCUTS_SKILL_ROOT", Path(__file__).resolve().parents[1]))
 mcp = FastMCP("shortcuts-hermes")
 
+# Keep MCP tool calls responsive: never block the client for many minutes.
+DEFAULT_TIMEOUT_SEC = 90
+ATTEST_AUTO_TIMEOUT_SEC = 90
+ATTEST_HASH_TIMEOUT_SEC = 60
 
-def _run(args: list[str], timeout: int = 120) -> str:
+
+def _run(args: list[str], timeout: int = DEFAULT_TIMEOUT_SEC) -> str:
+    """Run a subprocess; on timeout, kill the whole process group (bash children too)."""
     try:
-        p = subprocess.run(
+        proc = subprocess.Popen(
             args,
             cwd=ROOT,
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
             text=True,
-            timeout=timeout,
+            start_new_session=True,
         )
-        payload = {
-            "ok": p.returncode == 0,
-            "returncode": p.returncode,
-            "stdout": (p.stdout or "")[-8000:],
-            "stderr": (p.stderr or "")[-4000:],
-        }
-    except subprocess.TimeoutExpired as e:
-        payload = {
-            "ok": False,
-            "error": f"timeout after {timeout}s",
-            "stdout": ((e.stdout or "") if isinstance(e.stdout, str) else "")[-2000:],
-        }
     except Exception as e:
-        payload = {"ok": False, "error": str(e)}
+        return json.dumps({"ok": False, "error": str(e)}, ensure_ascii=False, indent=2)
+
+    try:
+        stdout, stderr = proc.communicate(timeout=timeout)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(proc.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            stdout, stderr = proc.communicate(timeout=5)
+        except subprocess.TimeoutExpired:
+            try:
+                os.killpg(proc.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            stdout, stderr = proc.communicate()
+        return json.dumps(
+            {
+                "ok": False,
+                "error": (
+                    f"timeout after {timeout}s — process group killed. "
+                    "For full Mac UI attest use scripts/attest_local.sh --auto in a terminal, "
+                    "or call shortcuts_attest_run with mode='auto' and a higher timeout_sec."
+                ),
+                "stdout": (stdout or "")[-2000:],
+                "stderr": (stderr or "")[-2000:],
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+    except Exception as e:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        return json.dumps({"ok": False, "error": str(e)}, ensure_ascii=False, indent=2)
+
+    payload = {
+        "ok": proc.returncode == 0,
+        "returncode": proc.returncode,
+        "stdout": (stdout or "")[-8000:],
+        "stderr": (stderr or "")[-4000:],
+    }
     return json.dumps(payload, ensure_ascii=False, indent=2)
 
 
@@ -118,17 +157,55 @@ def shortcuts_attest_status() -> str:
 
 
 @mcp.tool()
-def shortcuts_attest_run(all: bool = False) -> str:
-    """Run attest_local.sh --auto (macOS + Accessibility only)."""
-    if platform.system() != "Darwin":
-        return json.dumps(
-            {"ok": False, "error": "shortcuts_attest_run requires macOS (Darwin)"},
-            indent=2,
-        )
-    cmd = ["bash", str(ROOT / "scripts" / "attest_local.sh"), "--auto"]
-    if all:
-        cmd.append("--all")
-    return _run(cmd, timeout=600)
+def shortcuts_attest_run(
+    mode: str = "hash-only",
+    all: bool = False,
+    timeout_sec: int | None = None,
+) -> str:
+    """Attest helper. Default mode=hash-only (fast). mode=auto is Mac UI + long runs.
+
+    Modes:
+      - status: same as shortcuts_attest_status (instant)
+      - hash-only: write fixtures/attested/hashes.sha256 (default, ~seconds)
+      - auto: attest_local.sh --auto (Darwin + Accessibility; capped timeout)
+    """
+    mode_n = (mode or "hash-only").strip().lower()
+    if mode_n == "status":
+        return shortcuts_attest_status()
+
+    if mode_n == "hash-only":
+        cmd = [
+            "bash",
+            str(ROOT / "scripts" / "attest_local.sh"),
+            "--hash-only",
+            "--no-results",
+        ]
+        if all:
+            cmd.append("--all")
+        return _run(cmd, timeout=timeout_sec or ATTEST_HASH_TIMEOUT_SEC)
+
+    if mode_n == "auto":
+        if platform.system() != "Darwin":
+            return json.dumps(
+                {
+                    "ok": False,
+                    "error": "shortcuts_attest_run mode=auto requires macOS (Darwin)",
+                },
+                indent=2,
+            )
+        cmd = ["bash", str(ROOT / "scripts" / "attest_local.sh"), "--auto"]
+        if all:
+            cmd.append("--all")
+        # Cap so MCP clients never hang for 10+ minutes (previous default was 600s).
+        return _run(cmd, timeout=timeout_sec or ATTEST_AUTO_TIMEOUT_SEC)
+
+    return json.dumps(
+        {
+            "ok": False,
+            "error": f"unknown mode {mode!r}; use status | hash-only | auto",
+        },
+        indent=2,
+    )
 
 
 if __name__ == "__main__":

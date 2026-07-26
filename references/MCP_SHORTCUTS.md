@@ -11,13 +11,14 @@ Expose repo utilities as MCP tools so agents call **tools** instead of inventing
 | `shortcuts_validate` | `validate_on_write.sh` | `path` (string), `fix` (bool, optional) | Always safe |
 | `shortcuts_remix` | `remix_shortcut.py` | `path`, `replace_text` as `OLD=NEW`, `set_name`, `output` optional | Then validate |
 | `shortcuts_attest_status` | read `fixtures/attested/results.json` | none | Safe anywhere |
-| `shortcuts_attest_run` | `attest_local.sh --auto` | `all` bool optional | **Darwin + Accessibility only** |
+| `shortcuts_attest_run` | `attest_local.sh` by `mode` | `mode`=`status`\|`hash-only`\|`auto` (default **`hash-only`**), `all` bool, `timeout_sec` optional | Default is fast; `auto` is Darwin+AX and **timeout-capped** (kills process group) |
 
 ### Contracts
 
 - Exit / tool error if script exit ≠ 0.
 - Prefer returning **stdout/stderr text** + `ok: bool`.
-- Never sign/import on Linux cloud agents (`shortcuts_attest_run` must no-op or error with clear message).
+- Never sign/import on Linux cloud agents (`mode=auto` must error with a clear message).
+- MCP tools must return promptly: default `hash-only`; `auto` uses a short timeout (default 90s) and kills the bash process group on expiry so the client does not freeze. For a full unattended Mac loop, run `./scripts/attest_local.sh --auto` in a terminal instead of MCP.
 
 ## Cursor install (done on this machine)
 
