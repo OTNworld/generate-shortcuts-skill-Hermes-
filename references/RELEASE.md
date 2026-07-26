@@ -10,7 +10,8 @@ Dernière GitHub Release connue : **v1.10.0** (Mac-attested baseline)
 | **A — Linux-complete** | Merge PR + CI verte ; Mac deltas 1.11–1.15 **non** re-attestés | Explicit *Mac attest pending* |
 | **B — Mac-attested** | Après [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md) (palette 13–16 min) | Peut citer MATRIX / `results.json` à jour |
 
-Script : [`scripts/cut_release.sh`](../scripts/cut_release.sh) (**dry-run par défaut**).
+Script : [`scripts/cut_release.sh`](../scripts/cut_release.sh) (**dry-run par défaut**).  
+CI : [`.github/workflows/release.yml`](../.github/workflows/release.yml) crée la GitHub Release sur push de tag `v*` (profil **linux-complete**).
 
 ## Automatisable
 

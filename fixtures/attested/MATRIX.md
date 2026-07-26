@@ -45,6 +45,8 @@ Filled on macOS after automated sign → import UI → run (`./scripts/attest_lo
 | community/16-calendar-locations | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 calendar gap |
 | community/17-create-calendar-event-from-template | — | — |  |  |  |  |  | pending Mac attest (1.15.0 vendor) |
 | community/18-select-folder-compress-share | — | — |  |  |  |  |  | pending Mac attest (1.15.0 vendor); Share=UI |
+| community/19-app-release-notes | — | — |  |  |  |  |  | pending Mac attest (1.16.0); may need App Store/NET |
+| examples/10-rewrite-text | — | — |  |  |  |  |  | pending Mac; Run=ENV (Apple Intelligence) |
 | examples/09-share-sheet-input | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | teaching Share Sheet / ActionExtension |
 
 ## Hashes (unsigned XML only)

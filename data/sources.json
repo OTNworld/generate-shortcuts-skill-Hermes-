@@ -11,7 +11,7 @@
     "do_not_vendor": [
       "GPL / copyleft sources as code (link only)",
       "unsigned personal vault exports with PII",
-      "entire peer skill trees (~10k+ lines) — keep as peer reference",
+      "entire peer skill trees (~10k+ lines) \u2014 keep as peer reference",
       "AppIntent / ToolKit dumps without export-diff verification"
     ]
   },
@@ -21,18 +21,21 @@
       "url": "https://github.com/drewocarr/generate-shortcuts-skill",
       "role": "upstream-lineage",
       "license": "unknown/unspecified",
-      "notes": "Original Claude skill this Hermes fork descends from (docs layout + early WF actions dump). GitHub license=null as of 2026-07-26 — lineage/reference only; do not relicense upstream content as MIT.",
+      "notes": "Original Claude skill this Hermes fork descends from (docs layout + early WF actions dump). GitHub license=null as of 2026-07-26 \u2014 lineage/reference only; do not relicense upstream content as MIT.",
       "use": "link",
       "archived": false,
       "last_checked": "2026-07-26",
-      "tags": ["lineage", "skill"]
+      "tags": [
+        "lineage",
+        "skill"
+      ]
     },
     {
       "id": "viticci-shortcuts-playground",
       "url": "https://github.com/viticci/shortcuts-playground-plugin",
       "role": "peer-skill-best-in-class",
       "license": "MIT",
-      "notes": "Rich agent skill (~12k lines), 19 golden XMLs, URL schemes, toolkit snapshot. Primary community corpus. Index + 10 selective MIT vendors; gaps listed in data/external/viticci-gaps.jsonl.",
+      "notes": "Rich agent skill (~12k lines), 19 golden XMLs, URL schemes, toolkit snapshot. Primary community corpus. Index + 11 selective MIT vendors; gaps listed in data/external/viticci-gaps.jsonl.",
       "use": "index+selective-vendor",
       "local_index": "data/external/viticci-playground-goldens.index.jsonl",
       "vendored_examples": [
@@ -45,33 +48,45 @@
         "templates/examples/community/15-masto-redirect.shortcut.xml",
         "templates/examples/community/16-calendar-locations.shortcut.xml",
         "templates/examples/community/17-create-calendar-event-from-template.shortcut.xml",
-        "templates/examples/community/18-select-folder-compress-share.shortcut.xml"
+        "templates/examples/community/18-select-folder-compress-share.shortcut.xml",
+        "templates/examples/community/19-app-release-notes.shortcut.xml"
       ],
       "archived": false,
       "last_checked": "2026-07-26",
-      "tags": ["peer", "goldens", "mit"]
+      "tags": [
+        "peer",
+        "goldens",
+        "mit"
+      ]
     },
     {
       "id": "sebj-ios-shortcuts-reference",
       "url": "https://github.com/sebj/iOS-Shortcuts-Reference",
       "role": "format-reference",
       "license": "unknown/unspecified",
-      "notes": "Archived classic format reference: ImportQuestions, WFWorkflowTypes, icon ARGB colors, URL schemes. Cite into PLIST_FORMAT / URL_SCHEMES — do not copy wholesale.",
+      "notes": "Archived classic format reference: ImportQuestions, WFWorkflowTypes, icon ARGB colors, URL schemes. Cite into PLIST_FORMAT / URL_SCHEMES \u2014 do not copy wholesale.",
       "use": "cite-and-adapt",
       "archived": true,
       "last_checked": "2026-07-26",
-      "tags": ["format", "archived"]
+      "tags": [
+        "format",
+        "archived"
+      ]
     },
     {
       "id": "joshfarrant-shortcuts-js",
       "url": "https://github.com/joshfarrant/shortcuts-js",
       "role": "historical-generator",
       "license": "GPL-3.0",
-      "notes": "JS builder for older Shortcuts (archived). Link only — do not vendor code into this MIT skill.",
+      "notes": "JS builder for older Shortcuts (archived). Link only \u2014 do not vendor code into this MIT skill.",
       "use": "link",
       "archived": true,
       "last_checked": "2026-07-26",
-      "tags": ["gpl", "archived", "generator"]
+      "tags": [
+        "gpl",
+        "archived",
+        "generator"
+      ]
     },
     {
       "id": "drewburchfield-shortcuts-toolkit",
@@ -81,27 +96,35 @@
       "notes": "Programmatic bplist generation notes; pre-signing era caveats.",
       "use": "link",
       "last_checked": "2026-07-26",
-      "tags": ["bplist"]
+      "tags": [
+        "bplist"
+      ]
     },
     {
       "id": "devalias-shortcut-decompile-gist",
       "url": "https://gist.github.com/0xdevalias/27d9aea9529be7b6ce59055332a94477",
       "role": "reverse-engineering-notes",
       "license": "gist",
-      "notes": "iCloud record API → downloadURL → plutil xml1 workflow. Complements scripts/extract_shortcut.sh.",
+      "notes": "iCloud record API \u2192 downloadURL \u2192 plutil xml1 workflow. Complements scripts/extract_shortcut.sh.",
       "use": "link",
       "last_checked": "2026-07-26",
-      "tags": ["icloud", "extract"]
+      "tags": [
+        "icloud",
+        "extract"
+      ]
     },
     {
       "id": "routinehub-shortcut-source-tool",
       "url": "https://routinehub.co/shortcut/5256/",
       "role": "device-tooling",
       "license": "n/a (RoutineHub shortcut)",
-      "notes": "On-device view/convert/compare shortcut source (plist/json). Links rot — treat as human debug aid only.",
+      "notes": "On-device view/convert/compare shortcut source (plist/json). Links rot \u2014 treat as human debug aid only.",
       "use": "link",
       "last_checked": "2026-07-26",
-      "tags": ["device", "routinehub"]
+      "tags": [
+        "device",
+        "routinehub"
+      ]
     },
     {
       "id": "apple-shortcuts-url-guide",
@@ -111,7 +134,10 @@
       "notes": "Canonical shortcuts:// and x-callback-url documentation.",
       "use": "official",
       "last_checked": "2026-07-26",
-      "tags": ["apple", "url-schemes"]
+      "tags": [
+        "apple",
+        "url-schemes"
+      ]
     },
     {
       "id": "apple-shortcuts-user-guide",
@@ -121,17 +147,24 @@
       "notes": "Official Shortcuts User Guide (iOS). Prefer over third-party blogs for product behavior.",
       "use": "official",
       "last_checked": "2026-07-26",
-      "tags": ["apple", "docs"]
+      "tags": [
+        "apple",
+        "docs"
+      ]
     },
     {
       "id": "apple-app-intents",
       "url": "https://developer.apple.com/documentation/appintents",
       "role": "official-docs",
       "license": "Apple",
-      "notes": "App Intents framework docs — relevant to Horizon / Siri / appintentexecution; do not invent intent IDs from memory.",
+      "notes": "App Intents framework docs \u2014 relevant to Horizon / Siri / appintentexecution; do not invent intent IDs from memory.",
       "use": "official",
       "last_checked": "2026-07-26",
-      "tags": ["apple", "appintents", "horizon"]
+      "tags": [
+        "apple",
+        "appintents",
+        "horizon"
+      ]
     },
     {
       "id": "scpl-docs",
@@ -141,7 +174,10 @@
       "notes": "ScPL action docs with parameter keys (useful cross-check). Prefer Shortcuts.app export-diff when ScPL and modern OS disagree.",
       "use": "link",
       "last_checked": "2026-07-26",
-      "tags": ["parameters", "legacy-ref"]
+      "tags": [
+        "parameters",
+        "legacy-ref"
+      ]
     },
     {
       "id": "zachary7829-shortcuts-file-format",
@@ -151,7 +187,10 @@
       "notes": "Community write-up of .shortcut / plist structure and magic variables (U+FFFC).",
       "use": "link",
       "last_checked": "2026-07-26",
-      "tags": ["format", "plist"]
+      "tags": [
+        "format",
+        "plist"
+      ]
     },
     {
       "id": "matthewcassinelli-actions",
@@ -161,7 +200,10 @@
       "notes": "Human-oriented action directory (identifiers + UX). Link for research; not a SSOT for this skill.",
       "use": "link",
       "last_checked": "2026-07-26",
-      "tags": ["actions", "directory"]
+      "tags": [
+        "actions",
+        "directory"
+      ]
     }
   ]
 }

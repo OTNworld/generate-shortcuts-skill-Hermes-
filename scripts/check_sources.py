@@ -87,6 +87,7 @@ def main() -> int:
             norm_title("Calendar Locations"),
             norm_title("Create Calendar Event from Template"),
             norm_title("Select Folder, Compress, and Share"),
+            norm_title("App Release Notes"),
         }
         gaps = [e for e in entries if norm_title(e.get("title", "")) not in vendored_norm]
         if not GAP_INDEX.is_file():

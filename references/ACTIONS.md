@@ -1,6 +1,6 @@
 # Shortcuts Actions Reference
 
-Complete catalog of all 442 WF*Action classes and their identifiers.
+Complete catalog of all 446 WF*Action classes and their identifiers.
 Source of truth: [`data/wf_actions.json`](../data/wf_actions.json).
 
 ## Identifier Mapping Rules
@@ -249,7 +249,7 @@ Some actions have non-standard mappings:
 
 ## Complete Identifier List
 
-All 442 action identifiers (prefix `is.workflow.actions.` omitted):
+All 446 action identifiers (prefix `is.workflow.actions.` omitted):
 
 ```
 addframetogif, addmusictoupnext, addnewcalendar, addnewcontact, addnewevent,
@@ -274,7 +274,7 @@ evernotedelete, evernotegetlink, evernotegetnotes, exit, expandurl,
 extractarchive, extracttextfromimage, file, file.append, file.getfoldercontents,
 file.select, filter.calendarevents, filter.contentitems, filter.files,
 finderimageconvert, findhealthsamples, focusconfigurationlink, folder,
-formatdate, formatfilesize, formatnumber, generatehash,
+format.date, formatdate, formatfilesize, formatnumber, generatehash,
 generatemachinereadablecode, getclass, getclipboard, getcurrentapp,
 getcurrentlocation, getcurrentsafariwebpage, getcurrentsong, getdevicedetails,
 getdirections, getdistance, getdropboxfile, getemojiname, getepisodesforpodcast,
@@ -333,32 +333,33 @@ missing, mountdiskimage, movefile, movewindow, nothing, notification, number,
 openapp, openin, openincalendar, openurl, openuseractivity, openxcallbackurl,
 output, overlayimage, overlaytext, overridablelink, phonenumber, pinboardadd,
 pinboardget, playmusic, playpause, playpodcast, playsound, pocketadd, pocketget,
-previewdocument, print, properties.files, quicklook, quitapp, randomnumber,
-recognizemusic, recordaudio, remoteappintentexecution, remotelink,
-removecalendaritems, removephotofromalbum, renamefile, repeat.count, repeat.each,
-replacetext, requestrideintent, requestuber, resizewindow, returntohomescreen,
-revealfiles, reversiblelink, richtextfromhtml, richtextfrommarkdown, roundnumber,
-rssfeed, rssfeedextract, runapplescript, runjavascriptonwebpage, runosascript,
-runshellscript, runshortcutconfigurationintent, runshortcutintent, runsshscript,
-runworkflow, safari.geturl, savedropboxfile, savetocameraroll,
-scanmachinereadablecode, searchitunes, searchlocalbusinesses, searchmaps,
-searchweb, seek, selectcontacts, selectmusic, selectphoto, sendemail,
-sendmessage, sendtogoodreader, setairdropreceiving, setalwaysondisplay,
-setappearance, setcellulardata, setclipboard, setdictionaryvalue,
-sethotspotpassword, setitemname, setlisteningmode, setlowpowermode,
-setorientationlock, setparkedcar, setvariable, setvolume, setvpn, setwallpaper,
-setwifi, share, shareextension, shazammedia, showdefinition, showinblindsquare,
-showinstore, shownote, showpasswords, showreminderslist, showresult, showwebpage,
-shutdowndevice, skipsong, sleepdevice, social, speaktext, splitpdf,
-splitscreenapp, spotlightsearch, staccatolink, standaloneshortcut, startcall,
-startscreensaver, starttimer, storageservice, storageserviceinput,
-subscribetopodcast, switchposter, takephoto, takescreenshot, takevideo,
-text.match, text.match.getgroup, textcomponents, timeuntildate, todoistadd,
+previewdocument, print, properties.appstore, properties.files, quicklook,
+quitapp, randomnumber, recognizemusic, recordaudio, remoteappintentexecution,
+remotelink, removecalendaritems, removephotofromalbum, renamefile, repeat.count,
+repeat.each, replacetext, requestrideintent, requestuber, resizewindow,
+returntohomescreen, revealfiles, reversiblelink, richtextfromhtml,
+richtextfrommarkdown, roundnumber, rssfeed, rssfeedextract, runapplescript,
+runjavascriptonwebpage, runosascript, runshellscript,
+runshortcutconfigurationintent, runshortcutintent, runsshscript, runworkflow,
+safari.geturl, savedropboxfile, savetocameraroll, scanmachinereadablecode,
+searchappstore, searchitunes, searchlocalbusinesses, searchmaps, searchweb, seek,
+selectcontacts, selectmusic, selectphoto, sendemail, sendmessage,
+sendtogoodreader, setairdropreceiving, setalwaysondisplay, setappearance,
+setcellulardata, setclipboard, setdictionaryvalue, sethotspotpassword,
+setitemname, setlisteningmode, setlowpowermode, setorientationlock, setparkedcar,
+setvariable, setvolume, setvpn, setwallpaper, setwifi, share, shareextension,
+shazammedia, showdefinition, showinblindsquare, showinstore, shownote,
+showpasswords, showreminderslist, showresult, showwebpage, shutdowndevice,
+skipsong, sleepdevice, social, speaktext, splitpdf, splitscreenapp,
+spotlightsearch, staccatolink, standaloneshortcut, startcall, startscreensaver,
+starttimer, storageservice, storageserviceinput, subscribetopodcast,
+switchposter, takephoto, takescreenshot, takevideo, text.match,
+text.match.getgroup, textcomponents, timeuntildate, todoistadd,
 toggledonotdisturb, translatetext, trelloaddcard, trellocreateboard,
 trellocreatelist, trellogetitems, trimvideo, trimwhitespace, tumblrpost,
-ulyssesattach, url, urlencode, urlgetcomponent, vibrate, viewcontentgraph,
-waittoreturn, watchmedo, weather.currentconditions, weather.forecast,
-wordpresspost
+ulyssesattach, url, url.expand, urlencode, urlgetcomponent, vibrate,
+viewcontentgraph, waittoreturn, watchmedo, weather.currentconditions,
+weather.forecast, wordpresspost
 ```
 
 ---

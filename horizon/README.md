@@ -6,7 +6,9 @@ This directory is validated on Linux CI — it does **not** ship an app binary.
 | Package | Model policy | Primary shortcut |
 |---------|--------------|------------------|
 | [`hello-world`](packages/hello-world/) | `none` | `templates/examples/01-hello-world.shortcut.xml` |
+| [`clipboard-set`](packages/clipboard-set/) | `none` | `templates/palette/03-setclipboard.shortcut.xml` |
 | [`local-ask-llm`](packages/local-ask-llm/) | `apple-intelligence` | `templates/examples/03-ask-llm.shortcut.xml` |
+| [`local-rewrite`](packages/local-rewrite/) | `apple-intelligence` | `templates/examples/10-rewrite-text.shortcut.xml` |
 
 ## Format
 

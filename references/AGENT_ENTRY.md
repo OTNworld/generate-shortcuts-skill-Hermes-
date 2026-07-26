@@ -30,6 +30,7 @@ Single map for Hermes / Cursor agents. Details live in linked docs — start her
 | `craig_loop_lite.py` | Via `--fix` | UUID case, mode int, legacy IDs only |
 | `check_json_schema.py` | Catalogs / results | Shape matches `data/schemas/*` |
 | `check_no_secrets.py` | CI gate | No token-like strings in templates/fixtures |
+| `shortcut_icon.py` | Icon glyph/tint | Prints integers / XML from PLIST_FORMAT table |
 | `cut_release.sh` | GitHub tag/release | **Dry-run default**; `--apply` on `main` only |
 | `check_sources.py` | Ecosystem registry | `sources.json` + vendored paths + Viticci gaps |
 | `refresh_external_indexes.sh` | Refresh Viticci index | Rewrites index + `viticci-gaps.jsonl` |

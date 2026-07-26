@@ -176,6 +176,39 @@ class TestCraig(unittest.TestCase):
             self.assertNotIn("savefile", text)
 
 
+class TestIconHelper(unittest.TestCase):
+    def test_list(self):
+        r = run(["python3", "scripts/shortcut_icon.py", "--list"])
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("Globe", r.stdout)
+        self.assertIn("Red", r.stdout)
+
+    def test_resolve_xml(self):
+        r = run(
+            [
+                "python3",
+                "scripts/shortcut_icon.py",
+                "--glyph",
+                "Document",
+                "--color",
+                "Blue",
+                "--xml",
+            ]
+        )
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn("59493", r.stdout)
+        self.assertIn("463140863", r.stdout)
+
+
+class TestResultsHonesty(unittest.TestCase):
+    def test_attest_baseline_present(self):
+        data = json.loads((ROOT / "fixtures/attested/results.json").read_text())
+        self.assertEqual(data.get("skill_version"), "1.10.0")
+        base = data.get("attest_baseline") or {}
+        self.assertEqual(base.get("skill_version"), "1.10.0")
+        self.assertIn("unattested_deltas", base)
+
+
 class TestSources(unittest.TestCase):
     def test_sources_gate(self):
         r = run(["python3", "scripts/check_sources.py"])

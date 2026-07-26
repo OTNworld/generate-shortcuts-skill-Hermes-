@@ -5,10 +5,19 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
-## [Unreleased]
+## [1.16.0] - 2026-07-26
 
 ### Added
+- GitHub Actions `release.yml` — on `v*` tag: validate + selftest + `gh release create` (linux notes)
 - Release tooling: `references/RELEASE.md`, `scripts/cut_release.sh` (dry-run default; `--mode linux|mac`)
+- `scripts/shortcut_icon.py` — lean glyph/color helper from `PLIST_FORMAT.md`
+- Teaching golden `examples/10-rewrite-text` + Horizon packages `clipboard-set`, `local-rewrite`
+- Community MIT vendor `19-app-release-notes` (Viticci gap); WF SSOT **446**
+- `results.json` `attest_baseline` honesty block (snapshot remains skill **1.10.0**)
+
+### Changed
+- Skill version 1.16.0
+- Viticci gaps **9 → 8**; community **10 → 11**; Horizon packages **2 → 4**
 
 ## [1.15.0] - 2026-07-26
 

@@ -24,6 +24,7 @@ vendored = {
         "Masto Redirect", "Masto-Redirect", "Calendar Locations",
         "Create Calendar Event from Template",
         "Select Folder, Compress, and Share",
+        "App Release Notes",
     ]
 }
 entries = [

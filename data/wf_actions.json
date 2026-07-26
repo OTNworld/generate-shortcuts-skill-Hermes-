@@ -1,6 +1,6 @@
 {
   "prefix": "is.workflow.actions.",
-  "count": 442,
+  "count": 446,
   "identifiers": [
     "addframetogif",
     "addmusictoupnext",
@@ -98,6 +98,7 @@
     "findhealthsamples",
     "focusconfigurationlink",
     "folder",
+    "format.date",
     "formatdate",
     "formatfilesize",
     "formatnumber",
@@ -323,6 +324,7 @@
     "pocketget",
     "previewdocument",
     "print",
+    "properties.appstore",
     "properties.files",
     "quicklook",
     "quitapp",
@@ -360,6 +362,7 @@
     "savedropboxfile",
     "savetocameraroll",
     "scanmachinereadablecode",
+    "searchappstore",
     "searchitunes",
     "searchlocalbusinesses",
     "searchmaps",
@@ -435,6 +438,7 @@
     "tumblrpost",
     "ulyssesattach",
     "url",
+    "url.expand",
     "urlencode",
     "urlgetcomponent",
     "vibrate",
@@ -480,6 +484,10 @@
     "file.getfoldercontents": "both",
     "file.select": "both",
     "makezip": "both",
-    "properties.files": "both"
+    "properties.files": "both",
+    "format.date": "both",
+    "properties.appstore": "both",
+    "searchappstore": "both",
+    "url.expand": "both"
   }
 }

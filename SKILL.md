@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
-version: 1.15.0
+version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -105,7 +105,7 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 ## Références
 
 - `references/PLIST_FORMAT.md` : structure racine.
-- `references/ACTIONS.md` : 442 WF*Actions.
+- `references/ACTIONS.md` : 446 WF*Actions.
 - `references/POWER_ACTIONS.md` : schémas des 25 actions prioritaires.
 - `references/STARTER_PALETTE.md` : index des XML palette.
 - `references/APPINTENTS.md` : 168 AppIntents (curated subset).

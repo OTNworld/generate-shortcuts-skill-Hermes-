@@ -13,7 +13,7 @@ Palier A (9/10) is implemented in v1.6.0. Remaining for a credible **10/10 skill
 | B7 | Share Sheet / ImportQuestions golden (`09-share-sheet-input`) | **Done (1.10.0)** |
 | B8 | `URL_SCHEMES.md` + Locally track | **URL_SCHEMES done**; **Locally abandoned** → [`HORIZON.md`](HORIZON.md) |
 | B9 | `scripts/extract_shortcut.sh` (`plutil` round-trip helper) | **Done (1.8.0)** |
-| B10 | Expand community vendors from `data/external/*.index.jsonl` as needed | **10 goldens (1.15.0)**; 9 gaps remain |
+| B10 | Expand community vendors from `data/external/*.index.jsonl` as needed | **11 goldens (1.16.0)**; 8 gaps remain |
 | B11 | Attestation automation (import UI + run) | **Done (scripts)** — sheets / NET harden in 1.11.0 |
 | B12 | Lean remix + validate-on-write | **Done (1.10.0)**; structural remix **1.11.0** |
 | B13 | Horizon companion app / Siri / marketplace | **Paper MVP (1.13.0)** — [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md); app runtime out of band |

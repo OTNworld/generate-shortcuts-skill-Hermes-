@@ -103,7 +103,7 @@ Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar he
 | File | Description |
 |------|-------------|
 | `SKILL.md` | Skill definition (FR) |
-| `data/wf_actions.json` | SSOT for all 442 WF*Action identifiers |
+| `data/wf_actions.json` | SSOT for all 446 WF*Action identifiers |
 | `data/appintents.json` | SSOT for curated subset of 168 AppIntent identifiers |
 | `references/ACTIONS.md` | WF*Action docs + complete list |
 | `references/POWER_ACTIONS.md` | Parameter schemas for 25 priority actions |

@@ -26,6 +26,10 @@ Legend: `Y` = typically available, `L` = limited / version-dependent, `N` = usua
 | file.append | Y | Y | |
 | file.getfoldercontents | Y | Y | |
 | file.select | Y | Y | Folder/file picker UI differs |
+| searchappstore | Y | Y | Network |
+| properties.appstore | Y | Y | |
+| format.date | Y | Y | |
+| url.expand | Y | Y | |
 | makezip | Y | Y | |
 | properties.files | Y | Y | |
 | addnewevent | Y | Y | Calendar permission |

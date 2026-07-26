@@ -34,6 +34,7 @@ Registry SSOT: [`data/sources.json`](data/sources.json) (validated by `scripts/c
   - `templates/examples/community/16-calendar-locations.shortcut.xml`
   - `templates/examples/community/17-create-calendar-event-from-template.shortcut.xml`
   - `templates/examples/community/18-select-folder-compress-share.shortcut.xml`
+  - `templates/examples/community/19-app-release-notes.shortcut.xml`
   - `data/external/viticci-playground-goldens.index.jsonl` (index metadata)
   - `data/external/viticci-gaps.jsonl` (index of non-vendored titles)
 - Adapted documentation patterns may appear in `references/URL_SCHEMES.md`
