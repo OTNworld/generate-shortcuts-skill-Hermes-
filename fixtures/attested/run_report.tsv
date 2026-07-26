@@ -1,0 +1,17 @@
+name	result	notes
+01-hello-world_signed	OK	
+06-conditional-v2_signed	OK	
+06-conditional_signed	SKIP	alias 06-conditional-v2_signed OK
+07-repeat-count_signed	OK	
+08-repeat-each_signed	OK	
+02-gettext-show_signed	OK	
+03-setclipboard_signed	OK	
+05-list_signed	OK	
+06-dictionary-fixed_signed	OK	
+06-dictionary_signed	SKIP	alias 06-dictionary-fixed_signed OK
+07-variables_signed	OK	
+09-comment-nothing_signed	OK	
+10-count_signed	OK	
+12-delay_signed	OK	
+02-ask-input_signed	OK	
+01-ask_signed	OK	

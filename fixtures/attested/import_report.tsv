@@ -1,0 +1,23 @@
+name	result	method	ms	notes
+01-hello-world_signed	OK	return	0	present in library
+02-ask-input_signed	OK	return	0	present in library
+03-ask-llm_signed	OK	return	0	present in library
+04-menu_signed	OK	return	0	present in library
+05-weather-ai_signed	OK	return	0	present in library
+06-conditional-v2_signed	OK	return	0	present in library
+07-repeat-count_signed	OK	return	0	present in library
+08-repeat-each_signed	OK	return	0	present in library
+01-ask_signed	OK	return	0	present in library
+02-gettext-show_signed	OK	return	0	present in library
+03-setclipboard_signed	OK	return	0	present in library
+04-url-open_signed	OK	return	0	present in library
+05-list_signed	OK	return	0	present in library
+06-dictionary-fixed_signed	OK	return	0	present in library
+07-variables_signed	OK	return	0	present in library
+08-downloadurl_signed	OK	return	0	present in library
+09-comment-nothing_signed	OK	return	0	present in library
+10-count_signed	OK	return	0	present in library
+11-choosefromlist_signed	OK	return	0	present in library
+12-delay_signed	OK	return	0	present in library
+09-url-cleaner_signed	OK	return	0	present in library
+11-invert-names_signed	OK	return	0	present in library

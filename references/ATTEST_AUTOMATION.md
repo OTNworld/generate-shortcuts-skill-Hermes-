@@ -6,7 +6,7 @@ loop as far as Apple allows.
 ## Pipeline
 
 ```text
-XML golden → sign (CLI) → open → UI import → shortcuts run → MATRIX.md
+XML golden → sign (CLI) → open → UI import → shortcuts run (+ ask inputs) → results.json / MATRIX.md
 ```
 
 | Step | Tool | Needs |
@@ -14,21 +14,29 @@ XML golden → sign (CLI) → open → UI import → shortcuts run → MATRIX.md
 | Hash | `attest_local.sh --hash-only` | — |
 | Sign | `shortcuts sign` via `sign_shortcut.sh` | Shortcuts CLI |
 | Import | `import_shortcut_ui.sh` | **Accessibility** |
-| Run | `run_shortcut_attest.sh` | Shortcut already imported |
+| Run | `run_shortcut_attest.sh [--with-inputs]` | Shortcut already imported |
+| Aggregate | `write_attest_results.sh` | import/run TSV |
 | Vision fallback | `--click-green` | Screen Recording + Pillow |
 
 ## One-shot
 
 ```bash
 ./scripts/check_shortcuts_automation.sh
-./scripts/attest_local.sh --auto          # core goldens
+./scripts/attest_local.sh --auto          # sign + import UI + run + ask inputs + results.json
 # ./scripts/attest_local.sh --auto --all  # + community
 ```
+
+Artifacts:
+
+- `fixtures/attested/results.json`
+- `fixtures/attested/import_report.tsv` / `run_report.tsv`
+- `fixtures/attested/inputs/` (Ask fixtures)
+- `fixtures/attested/runs/` (gitignored scratch + FAIL PNGs)
 
 Equivalent:
 
 ```bash
-./scripts/attest_local.sh --import-ui --run
+./scripts/attest_local.sh --import-ui --run --with-inputs
 ```
 
 ## Permissions

@@ -12,6 +12,8 @@ DO_OPEN=0
 DO_IMPORT_UI=0
 DO_RUN=0
 CLICK_GREEN=0
+WITH_INPUTS=0
+WRITE_RESULTS=1
 SCOPE="core" # core = examples 01-08 + palette; all = + community
 
 usage() {
@@ -24,8 +26,10 @@ Usage: scripts/attest_local.sh [options]
   --import-ui     Sign + UI-import via Return/AX (implies --sign; needs Accessibility)
   --click-green   With --import-ui, also click green CTA via screenshot
   --run           After import, run non-interactive goldens (shortcuts run)
-  --auto          --import-ui --run (full local attestation loop)
+  --with-inputs   With --run/--auto, also run ask goldens via fixtures/attested/inputs
+  --auto          --import-ui --run --with-inputs (full local attestation loop)
   --all           Include templates/examples/community/*
+  --no-results    Skip writing fixtures/attested/results.json
 
 Default without flags: print this help + list goldens.
 
@@ -44,8 +48,10 @@ while [[ $# -gt 0 ]]; do
     --import-ui) DO_IMPORT_UI=1; DO_SIGN=1 ;;
     --click-green) CLICK_GREEN=1 ;;
     --run) DO_RUN=1 ;;
-    --auto) DO_IMPORT_UI=1; DO_SIGN=1; DO_RUN=1 ;;
+    --with-inputs) WITH_INPUTS=1 ;;
+    --auto) DO_IMPORT_UI=1; DO_SIGN=1; DO_RUN=1; WITH_INPUTS=1 ;;
     --all) SCOPE=all ;;
+    --no-results) WRITE_RESULTS=0 ;;
     -h|--help) usage; exit 0 ;;
     *) echo "Unknown arg: $1" >&2; usage; exit 2 ;;
   esac
@@ -68,7 +74,7 @@ if [[ "$HASH_ONLY" -eq 0 && "$DO_SIGN" -eq 0 && "$DO_RUN" -eq 0 ]]; then
   exit 0
 fi
 
-mkdir -p fixtures/attested /tmp/shortcuts-attest
+mkdir -p fixtures/attested fixtures/attested/runs fixtures/attested/inputs /tmp/shortcuts-attest
 OUT_HASH="fixtures/attested/hashes.sha256"
 
 if [[ "$HASH_ONLY" -eq 1 || "$DO_SIGN" -eq 1 ]]; then
@@ -107,17 +113,21 @@ if [[ "$DO_SIGN" -eq 1 ]]; then
   echo "Signed files under /tmp/shortcuts-attest/"
 fi
 
+IMPORT_RC=0
+RUN_RC=0
+
 if [[ "$DO_IMPORT_UI" -eq 1 ]]; then
   ./scripts/check_shortcuts_automation.sh || {
     echo "Fix Accessibility, then re-run with --import-ui / --auto" >&2
     exit 1
   }
+  # Fresh import report for this session
+  printf 'name\tresult\tmethod\tms\tnotes\n' >fixtures/attested/runs/import_report.tsv
   import_args=(./scripts/import_shortcut_ui.sh)
   if [[ "$CLICK_GREEN" -eq 1 ]]; then
     import_args+=(--click-green)
   fi
   if [[ ${#SIGNED_LIST[@]} -eq 0 ]]; then
-    # Reuse previously signed artifacts
     while IFS= read -r s; do
       [[ -z "$s" ]] && continue
       SIGNED_LIST+=("$s")
@@ -127,11 +137,29 @@ if [[ "$DO_IMPORT_UI" -eq 1 ]]; then
     echo "Error: no signed files; run with --sign/--import-ui/--auto first" >&2
     exit 1
   fi
+  set +e
   "${import_args[@]}" "${SIGNED_LIST[@]}"
+  IMPORT_RC=$?
+  set -e
 fi
 
 if [[ "$DO_RUN" -eq 1 ]]; then
-  ./scripts/run_shortcut_attest.sh
+  run_args=(./scripts/run_shortcut_attest.sh)
+  if [[ "$WITH_INPUTS" -eq 1 ]]; then
+    run_args+=(--with-inputs)
+  fi
+  set +e
+  "${run_args[@]}"
+  RUN_RC=$?
+  set -e
 fi
 
-echo "Record results in fixtures/attested/MATRIX.md"
+if [[ "$WRITE_RESULTS" -eq 1 && ( "$DO_IMPORT_UI" -eq 1 || "$DO_RUN" -eq 1 || "$HASH_ONLY" -eq 1 ) ]]; then
+  chmod +x scripts/write_attest_results.sh
+  set +e
+  ./scripts/write_attest_results.sh
+  set -e
+fi
+
+echo "Record / review fixtures/attested/MATRIX.md and fixtures/attested/results.json"
+exit $(( IMPORT_RC || RUN_RC ))

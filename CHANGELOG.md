@@ -26,6 +26,11 @@ Versioning follows the `version` field in `SKILL.md`.
 
 ## [Unreleased]
 
+### Added
+- Mac-max attestation (no iOS): `results.json`, import/run TSV snapshots, Ask `--with-inputs`,
+  FAIL screenshots under `fixtures/attested/runs/`, `write_attest_results.sh`
+- `--auto` now includes `--with-inputs` + results aggregation
+
 ## [1.8.0] - 2026-07-26
 
 ### Added

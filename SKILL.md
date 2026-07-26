@@ -146,8 +146,9 @@ Extraction d’exports : `./scripts/extract_shortcut.sh` (plutil/plistlib).
 # ./scripts/attest_local.sh --auto --all
 ```
 
-- Import UI : `scripts/import_shortcut_ui.sh` (Return / AX / `--click-green`)
-- Runs : `scripts/run_shortcut_attest.sh` → `fixtures/attested/runs/run_report.tsv`
+- Import UI : `scripts/import_shortcut_ui.sh` (Return / AX / `--click-green` / report TSV)
+- Runs : `scripts/run_shortcut_attest.sh --with-inputs` → TSV + optional FAIL PNG
+- Aggregate : `scripts/write_attest_results.sh` → `fixtures/attested/results.json`
 - Doc : `references/ATTEST_AUTOMATION.md`, handoff `fixtures/attested/MAC_HANDOFF.md`
 
 ### Pipeline de vérification avant publication

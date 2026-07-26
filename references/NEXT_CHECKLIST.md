@@ -25,23 +25,20 @@ Liens utiles :
 
 ---
 
-## État actuel (baseline 2026-07-26)
+## État actuel (baseline 2026-07-26, post max-Mac)
 
 | Zone | État |
 |------|------|
-| Sign CLI (`shortcuts sign`) | `[x]` 20/20 core OK |
-| Import UI (Return + verify `shortcuts list`) | `[x]` core OK (y compris les 4 manquants) |
-| Run headless non-interactif | `[~]` 10 OK / 2 FAIL |
-| Interactif (ask/menu/list) | `[ ]` skip volontaire |
-| Network (weather/url/download) | `[ ]` skip volontaire |
-| Community import | `[ ]` pas encore |
-| Rapport machine-readable | `[ ]` seulement TSV runs |
-| Skill version 1.9.0 attestation | `[ ]` pas bump |
+| Sign CLI (`shortcuts sign`) | `[x]` core OK |
+| Import UI (Return + verify `shortcuts list`) | `[x]` core + 2 community |
+| Run headless non-interactif | `[x]` OK (aliases v2/fixed when needed) |
+| Ask headless (`--with-inputs`) | `[x]` `02-ask-input`, `palette/01-ask` |
+| Network (weather/url/download) | `[ ]` skip volontaire (NET) |
+| Community import | `[x]` ≥2 |
+| Rapport machine-readable | `[x]` `results.json` + TSV |
+| Skill version attestation | `[x]` 1.9.0 |
 
-**FAIL connus (P0 qualité golden)**
-
-1. `examples/06-conditional` — Run FAIL : *Choisissez une valeur pour chaque paramètre de cette action.*
-2. `palette/06-dictionary` — Run FAIL : *action introuvable*.
+**FAIL connus (P0 qualité golden):** aucun (corrigés).
 
 ---
 
@@ -311,21 +308,21 @@ cat fixtures/attested/runs/run_report.tsv
 | A1 | Fix 06-conditional | P0 | | [x] |
 | A2 | Fix 06-dictionary | P0 | | [x] |
 | A3 | Classifier skips Run | P1 | | [x] |
-| B1 | import_report | P1 | | [ ] |
-| B2 | results.json | P1 | | [ ] |
-| B3 | screenshot on FAIL | P1 | | [ ] |
+| B1 | import_report | P1 | | [x] |
+| B2 | results.json | P1 | | [x] |
+| B3 | screenshot on FAIL | P1 | | [x] |
 | B4 | click-green robuste | P2 | | [ ] |
 | B5 | sheets secondaires | P1 | | [ ] |
-| B6 | idempotence | P2 | | [ ] |
-| B7 | preflight UX | P1 | | [ ] |
+| B6 | idempotence | P2 | | [~] `--force` |
+| B7 | preflight UX | P1 | | [x] |
 | C1 | community ×2 | P0 | | [x] |
 | C2 | network pass | P2 | | [ ] |
-| C3 | inputs headless | P1 | | [ ] |
-| C4 | iOS sample | P2 | | [ ] |
+| C3 | inputs headless | P1 | | [x] |
+| C4 | iOS sample | P2 | | [ ] _(skipped for Mac-max)_ |
 | D1 | MATRIX complete | P0 | | [x] |
 | D2 | bump 1.9.0 | P0 | | [x] |
-| D3 | docs agent | P1 | | [~] |
+| D3 | docs agent | P1 | | [x] |
 | D4 | git/PR | P0 | | [x] |
-| D5 | CI Darwin-safe | P1 | | [ ] |
+| D5 | CI Darwin-safe | P1 | | [x] |
 | E* | roadmap élargie | P2 | | [ ] |
 | F* | vision expérimentale | P2 | | [ ] |
