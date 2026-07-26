@@ -23,7 +23,7 @@ Génère ou corrige des fichiers `.shortcut` exploitables par l’app **Raccourc
 **Carte agent (≤2 min) :** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
 **Track Linux 10/10 :** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
 **Track Mac 10/10 :** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)  
-**Horizon packages :** [`horizon/README.md`](horizon/README.md)
+**Publication:** [`references/RELEASE.md`](references/RELEASE.md) · `./scripts/cut_release.sh` (dry-run)
 
 ## Quand utiliser ce skill
 

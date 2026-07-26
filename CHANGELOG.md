@@ -5,6 +5,11 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [Unreleased]
+
+### Added
+- Release tooling: `references/RELEASE.md`, `scripts/cut_release.sh` (dry-run default; `--mode linux|mac`)
+
 ## [1.15.0] - 2026-07-26
 
 ### Added
@@ -80,8 +85,6 @@ Versioning follows the `version` field in `SKILL.md`.
 
 ### Fixed
 - Doc drift: `OBSIDIAN_BRIDGE.md` points at `URL_SCHEMES.md` + Horizon
-
-## [Unreleased]
 
 ## [1.10.0] - 2026-07-26
 
