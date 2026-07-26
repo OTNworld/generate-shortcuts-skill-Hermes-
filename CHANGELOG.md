@@ -14,6 +14,7 @@ Versioning follows the `version` field in `SKILL.md`.
 - `CHANGELOG.md`, `CONTRIBUTING.md`, `SECURITY.md`
 - `fixtures/attested/` scaffold for macOS/iOS import attestation (10/10 prep)
 - `scripts/check_shortcut_grammar.py` deeper grammar checker scaffold (10/10 prep)
+- `references/ROADMAP_10.md` checklist for the 10/10 milestone
 
 ### Changed
 - `references/APPINTENTS.md` rebuilt from SSOT (single authoritative list)
