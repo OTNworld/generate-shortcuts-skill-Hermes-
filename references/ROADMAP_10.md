@@ -17,7 +17,9 @@ Palier A (9/10) is implemented in v1.6.0. Remaining for a credible **10/10 skill
 | B11 | Attestation automation (import UI + run) | **Done (scripts)** — harden via checklist |
 
 **Prochains pas détaillés (checklist active) :**  
-[`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md)
+[`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) (attestation / 10/10 Mac)  
+[`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) (parité auteur vs Viticci, lean)
+
 
 Ecosystem hub: `references/ECOSYSTEM.md` + `data/sources.json`.
 

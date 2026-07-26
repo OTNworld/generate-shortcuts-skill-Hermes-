@@ -30,6 +30,7 @@ Versioning follows the `version` field in `SKILL.md`.
 - Mac-max attestation (no iOS): `results.json`, import/run TSV snapshots, Ask `--with-inputs`,
   FAIL screenshots under `fixtures/attested/runs/`, `write_attest_results.sh`
 - `--auto` now includes `--with-inputs` + results aggregation
+- Competitive parity checklist (lean vs Viticci): `references/COMPETITIVE_CHECKLIST.md`
 
 ## [1.8.0] - 2026-07-26
 

@@ -111,6 +111,7 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/URL_SCHEMES.md` : `shortcuts://` et x-callback-url.
 - `references/ATTEST_AUTOMATION.md` : import UI + run automatisés (macOS local).
 - `references/NEXT_CHECKLIST.md` : checklist prochains pas vers 10/10.
+- `references/COMPETITIVE_CHECKLIST.md` : parité auteur vs Viticci (remix / validate-on-write / corpus), lean.
 - `references/ECOSYSTEM.md` : repos / corpus externes centralisés.
 - `references/ROADMAP_10.md` : suite vers 10/10.
 - `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.

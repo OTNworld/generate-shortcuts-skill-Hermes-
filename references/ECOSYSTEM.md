@@ -45,6 +45,8 @@ flowchart TB
 | [0xdevalias gist](https://gist.github.com/0xdevalias/27d9aea9529be7b6ce59055332a94477) | iCloud → bplist → `plutil` | Linked in extract roadmap |
 | [RoutineHub Source Tool](https://routinehub.co/shortcut/5256/) | On-device source inspect | Link for human debugging |
 
+**Closing the authoring gap (without absorbing Viticci):** see [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md).
+
 ## Community goldens vendored here
 
 See [`templates/examples/community/README.md`](../templates/examples/community/README.md).
