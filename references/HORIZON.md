@@ -36,14 +36,37 @@ Until the app repo exists:
 - Expand palette + remix so agents can author marketplace-ready goldens.
 - Track App Intent gaps for Siri / on-device AI in [`APPINTENTS_GAP.md`](APPINTENTS_GAP.md) (watchlist only — no invented IDs).
 - Do **not** revive `locally-obsidian.stub.xml` as an importable golden.
+- **Paper MVP:** package manifests under [`horizon/`](../horizon/) — see [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md).
+
+## Package format (`horizon-package/v1`)
+
+Validated by `scripts/check_horizon_packages.py` (CI):
+
+| Field | Role |
+|-------|------|
+| `shortcuts[].path` | Repo-relative unsigned XML |
+| `model_policy` | `none` / `apple-intelligence` / `on-device-preferred` / `cloud-allowed` |
+| `siri_phrases` | Future Siri / App Intent invocation hints |
+| `attestation` | Pointers to MATRIX / `results.json` + coarse status |
+| `edit.deep_link` | `hermes-shortcuts://edit?path=…` (convention only) |
+
+Samples: `horizon/packages/hello-world`, `horizon/packages/local-ask-llm`.
+
+## Deep link (convention)
+
+```
+hermes-shortcuts://edit?path=templates/examples/01-hello-world.shortcut.xml
+```
+
+Not registered by this skill repo — reserved for the companion app / IDE bridge.
 
 ## Suggested app backlog (out of band)
 
 1. Scaffold native app (Swift / App Intents) with Shortcuts import + run helpers.
-2. Define marketplace package format (unsigned XML + metadata + attestation blob).
+2. Consume `horizon/packages/*/package.json` as marketplace catalog seed.
 3. Local-model adapter (Apple Intelligence / third-party on-device) behind a stable App Intent.
 4. Siri phrases → install/run marketplace shortcut.
-5. Deep-link back to this skill for “edit in Hermes / Cursor”.
+5. Resolve `hermes-shortcuts://edit` back into this skill workspace.
 
 ## Anti-goals
 

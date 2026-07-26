@@ -76,6 +76,8 @@ Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it 
 
 **Agent map (≤2 min):** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
 **Linux 10/10 track:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
+**Mac 10/10 track (device):** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)  
+**Horizon packages:** [`horizon/README.md`](horizon/README.md)  
 **Product direction (companion app / Siri / local-model marketplace):** [`references/HORIZON.md`](references/HORIZON.md). The Locally→Obsidian stub track is abandoned.
 
 ## Local finalize (Mac → 10/10)

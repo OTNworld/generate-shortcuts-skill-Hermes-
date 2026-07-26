@@ -1,16 +1,18 @@
 # Finaliser en local (Mac) → 10/10
 
-Branche : `cursor/skill-quality-hardening-0e57`  
-PR : https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/pull/1
+Branche : `cursor/horizon-app-and-improvements-df7d`  
+PR : https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/pull/5  
+Checklist Mac : [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)
 
-La CI Linux est déjà au **~9.5**. Il reste l’**attestation Shortcuts** sur ton Mac.
+La CI Linux est déjà au **10/10** sur le track Linux (`LINUX_10_CHECKLIST.md`) + Horizon paper MVP.
+Il reste l’**attestation Shortcuts** sur ton Mac (palette 13–16, NET, AppIntents verify).
 
 ## 1. Récupérer la branche
 
 ```bash
 git fetch origin
-git checkout cursor/skill-quality-hardening-0e57
-git pull origin cursor/skill-quality-hardening-0e57
+git checkout cursor/horizon-app-and-improvements-df7d
+git pull origin cursor/horizon-app-and-improvements-df7d
 ./scripts/validate.sh
 ```
 
@@ -18,59 +20,29 @@ git pull origin cursor/skill-quality-hardening-0e57
 
 ```bash
 # Preflight Accessibilité (obligatoire pour l’import UI)
-./scripts/check_shortcuts_automation.sh
+./scripts/check_shortcuts_automation.sh --json
 
-# Boucle automatisée (core = examples 01–08 + palette)
-./scripts/attest_local.sh --auto
+# Boucle automatisée (core = examples + palette 01–16)
+./scripts/attest_local.sh --auto --force --timeout 20
 
-# Optionnel : community/ + clic vert screenshot
+# Optionnel : community/ + clic vert screenshot + réseau
 ./scripts/attest_local.sh --auto --all --click-green
+./scripts/run_shortcut_attest.sh --include-network
 ```
 
-Équivalent manuel / semi-manuel :
+Doc : [`references/ATTEST_AUTOMATION.md`](references/ATTEST_AUTOMATION.md) · handoff [`fixtures/attested/MAC_HANDOFF.md`](fixtures/attested/MAC_HANDOFF.md).
 
-```bash
-./scripts/attest_local.sh --hash-only
-./scripts/attest_local.sh --open          # ouvre seulement
-./scripts/attest_local.sh --import-ui     # import via Return/AX
-./scripts/attest_local.sh --run
-```
+## 3. Remplir MATRIX
 
-Doc : [`references/ATTEST_AUTOMATION.md`](references/ATTEST_AUTOMATION.md).
+Mettre à jour `fixtures/attested/MATRIX.md` + `results.json` (surtout palette 13–16).
+Cocher [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md).
 
-## 3. Remplir la matrice
+## 4. Ne pas committer
 
-Éditer [`fixtures/attested/MATRIX.md`](fixtures/attested/MATRIX.md)  
-(détails : [`fixtures/attested/MAC_HANDOFF.md`](fixtures/attested/MAC_HANDOFF.md)).
+- `*_signed.shortcut`
+- exports personnels / secrets
+- `fixtures/attested/runs/*.png` (déjà gitignored via `runs/`)
 
-Critères pass :
-- `examples/01`–`08` : Sign + Import + Run OK
-- `palette/01`–`12` : Sign + Import OK (Run optionnel si réseau/`delay`)
-- ≥ 2 `community/*` : Import OK
-- `fixtures/attested/hashes.sha256` présent
+## 5. Horizon
 
-## 4. Clôturer le 10/10
-
-```bash
-# Ne pas committer les *_signed.shortcut
-git add fixtures/attested/MATRIX.md fixtures/attested/hashes.sha256
-# Bump SKILL.md version → 1.9.0 + entrée CHANGELOG "Attested on macOS …"
-git commit -m "attest: macOS sign/import matrix for 10/10 skill"
-git push
-```
-
-Puis merger la PR.
-
-## Déjà fait sans Mac (ne pas refaire)
-
-- SSOT + validate/CI + grammar strict  
-- Goldens teaching + palette + community MIT  
-- ECOSYSTEM / extract / render_refs  
-- Stub Locally **abandonné** (voir `references/HORIZON.md`)  
-
-## Si un golden échoue à l’import
-
-1. Noter FAIL + message dans MATRIX  
-2. `./scripts/extract_shortcut.sh` sur un export Shortcuts du même flow  
-3. Diff vs le XML du repo → corriger le golden → re-signer  
-4. Ne pas inventer de paramètres
+Packages marketplace (paper) : [`horizon/README.md`](horizon/README.md) — pas besoin de Mac pour valider les manifests.

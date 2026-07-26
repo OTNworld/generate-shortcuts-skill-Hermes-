@@ -30,17 +30,19 @@ Single map for Hermes / Cursor agents. Details live in linked docs — start her
 | `craig_loop_lite.py` | Via `--fix` | UUID case, mode int, legacy IDs only |
 | `check_json_schema.py` | Catalogs / results | Shape matches `data/schemas/*` |
 | `check_no_secrets.py` | CI gate | No token-like strings in templates/fixtures |
+| `check_horizon_packages.py` | Marketplace manifests | Each `horizon/packages/*/package.json` valid |
 | `attest_local.sh` | **Darwin only** | Sign/import/run + results.json |
 | `render_refs.py` | After catalog ID changes | Docs fences match SSOT (`--check` in CI) |
 
 ## Tracks
 
-| Track | Checklist |
-|-------|-----------|
-| Linux 10/10 (this machine) | [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md) |
-| Mac attestation 10/10 | [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) |
-| Product app / marketplace | [`HORIZON.md`](HORIZON.md) |
-| Lean peer parity | [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) |
+| Track | Checklist | Status |
+|-------|-----------|--------|
+| Linux 10/10 | [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md) | **Done (1.12.0)** |
+| Horizon paper MVP | [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md) | **Done (1.13.0)** |
+| Mac attestation 10/10 | [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md) | **Open — needs Darwin** |
+| Lean peer parity | [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) | MVP done |
+| Product app runtime | [`HORIZON.md`](HORIZON.md) | Out of band |
 
 ## Language
 

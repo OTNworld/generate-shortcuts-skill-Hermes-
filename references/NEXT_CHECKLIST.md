@@ -1,6 +1,12 @@
 # Checklist — prochains pas (attestation + skill 10/10)
 
-Dernière màj : **2026-07-26** (Linux 10/10 track + Mac baseline).  
+> **Tracks actifs (2026-07-26) :**  
+> • Linux clos → [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md)  
+> • Horizon paper MVP clos → [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md)  
+> • **Mac restant → [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md)** (source of truth device)  
+> Ce fichier reste l’historique détaillé ; le suivi Mac court est dans `MAC_10_CHECKLIST.md`.
+
+Dernière màj : **2026-07-26** (Linux 10/10 + Horizon paper + Mac baseline).  
 Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 
 **Légende**

@@ -5,6 +5,19 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [1.13.0] - 2026-07-26
+
+### Added
+- Mac remaining track: `references/MAC_10_CHECKLIST.md` + refreshed `MAC_HANDOFF.md`
+- Horizon paper MVP: `horizon/packages/*`, `data/schemas/horizon-package.v1.json`,
+  `scripts/check_horizon_packages.py`, `references/HORIZON_CHECKLIST.md`
+- Sample marketplace SKUs: `hello-world`, `local-ask-llm` (Apple Intelligence policy)
+
+### Changed
+- Skill version 1.13.0
+- `HORIZON.md` documents package format + deep-link convention
+- `AGENT_ENTRY.md` / README point at Linux / Mac / Horizon tracks
+
 ## [1.12.0] - 2026-07-26
 
 ### Added

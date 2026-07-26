@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
-version: 1.12.0
+version: 1.13.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -21,7 +21,9 @@ metadata:
 Génère ou corrige des fichiers `.shortcut` exploitables par l’app **Raccourcis** sur macOS/iOS, à partir de XML plist valide. Le skill documente la grammaire des actions et des paramètres ; il ne s’agit pas d’un générateur magique, mais d’un protocole reproductible.
 
 **Carte agent (≤2 min) :** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
-**Track Linux 10/10 :** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)
+**Track Linux 10/10 :** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
+**Track Mac 10/10 :** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)  
+**Horizon packages :** [`horizon/README.md`](horizon/README.md)
 
 ## Quand utiliser ce skill
 
