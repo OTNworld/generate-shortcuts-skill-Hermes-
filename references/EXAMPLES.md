@@ -58,6 +58,17 @@ List → Repeat Each → End Repeat → Show Result.
 
 - File: [`templates/examples/08-repeat-each.shortcut.xml`](../templates/examples/08-repeat-each.shortcut.xml)
 
+## Community goldens (vendored MIT)
+
+Real-world examples from peer projects — see [`templates/examples/community/`](../templates/examples/community/) and [`ECOSYSTEM.md`](./ECOSYSTEM.md).
+
+| File | Title |
+|------|-------|
+| [`09-url-cleaner.shortcut.xml`](../templates/examples/community/09-url-cleaner.shortcut.xml) | URL Cleaner |
+| [`10-parse-json-feed.shortcut.xml`](../templates/examples/community/10-parse-json-feed.shortcut.xml) | Parse JSON Feed |
+
+Upstream catalog index: [`data/external/viticci-playground-goldens.index.jsonl`](../data/external/viticci-playground-goldens.index.jsonl).
+
 ---
 
 ## How to Use These Examples

@@ -5,6 +5,18 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [1.7.0] - 2026-07-26
+
+### Added
+- Ecosystem hub: `data/sources.json`, `references/ECOSYSTEM.md`, `THIRD_PARTY_NOTICES.md`
+- Viticci playground golden index: `data/external/viticci-playground-goldens.index.jsonl`
+- Community MIT goldens: URL Cleaner, Parse JSON Feed under `templates/examples/community/`
+- `references/URL_SCHEMES.md` (Apple-documented schemes + x-callback)
+
+### Changed
+- Icon color table aligned with sebj iOS-Shortcuts-Reference (RGBA-8)
+- Skill version 1.7.0
+
 ## [1.6.0] - 2026-07-26
 
 ### Added

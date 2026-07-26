@@ -40,9 +40,13 @@ Or download and extract the files manually into `~/.hermes/skills/shortcuts-gene
 ├── CONTRIBUTING.md
 ├── SECURITY.md
 ├── data/
-│   ├── wf_actions.json          # SSOT: 427 WF*Action ids
-│   └── appintents.json          # SSOT: 154 curated AppIntent ids
-├── references/                  # Grammar + playbooks
+│   ├── wf_actions.json
+│   ├── appintents.json
+│   ├── sources.json                 # External repo registry
+│   └── external/                    # Remote corpus indexes
+├── references/                      # Grammar + playbooks + ECOSYSTEM.md
+├── templates/examples/              # Teaching goldens + community/
+├── THIRD_PARTY_NOTICES.md
 ├── scripts/
 │   ├── sign_shortcut.sh
 │   ├── validate.sh
@@ -93,8 +97,11 @@ Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar he
 | `references/EXAMPLES.md` | Index of importable goldens |
 | `scripts/sign_shortcut.sh` | Signing helper |
 | `scripts/validate.sh` | Repo validation |
-| `templates/examples/` | Importable golden shortcuts |
-| `templates/locally-obsidian.stub.xml` | Non-importable design stub |
+| `data/sources.json` | Registry of external repos / corpora |
+| `references/ECOSYSTEM.md` | How we link, index, and selectively vendor peers |
+| `references/URL_SCHEMES.md` | `shortcuts://` + x-callback-url |
+| `templates/examples/community/` | MIT-vendored real-world goldens |
+| `THIRD_PARTY_NOTICES.md` | Attribution for vendored/cited material |
 
 ## Requirements
 

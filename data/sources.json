@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "policy": {
+    "prefer": "link-and-index",
+    "vendor_when": [
+      "MIT/Apache-2.0 compatible license",
+      "fills a gap vs templates/examples/",
+      "passes ./scripts/validate.sh grammar checks",
+      "attribution recorded in THIRD_PARTY_NOTICES.md"
+    ],
+    "do_not_vendor": [
+      "GPL / copyleft sources as code (link only)",
+      "unsigned personal vault exports with PII",
+      "entire peer skill trees (~10k+ lines) — keep as peer reference"
+    ]
+  },
+  "sources": [
+    {
+      "id": "drewocarr-generate-shortcuts-skill",
+      "url": "https://github.com/drewocarr/generate-shortcuts-skill",
+      "role": "upstream-lineage",
+      "license": "unknown/unspecified",
+      "notes": "Original Claude skill this Hermes fork descends from (docs layout + 427 actions dump).",
+      "use": "link"
+    },
+    {
+      "id": "viticci-shortcuts-playground",
+      "url": "https://github.com/viticci/shortcuts-playground-plugin",
+      "role": "peer-skill-best-in-class",
+      "license": "MIT",
+      "notes": "Rich agent skill (~12k lines), 19 golden XMLs, URL schemes, toolkit snapshot. Primary community corpus.",
+      "use": "index+selective-vendor",
+      "local_index": "data/external/viticci-playground-goldens.index.jsonl",
+      "vendored_examples": [
+        "templates/examples/community/09-url-cleaner.shortcut.xml",
+        "templates/examples/community/10-parse-json-feed.shortcut.xml"
+      ]
+    },
+    {
+      "id": "sebj-ios-shortcuts-reference",
+      "url": "https://github.com/sebj/iOS-Shortcuts-Reference",
+      "role": "format-reference",
+      "license": "unspecified",
+      "notes": "Archived classic format reference: ImportQuestions, WFWorkflowTypes, icon ARGB colors, URL schemes.",
+      "use": "cite-and-adapt"
+    },
+    {
+      "id": "joshfarrant-shortcuts-js",
+      "url": "https://github.com/joshfarrant/shortcuts-js",
+      "role": "historical-generator",
+      "license": "GPL-3.0",
+      "notes": "JS builder for older Shortcuts. Link only — do not vendor code into this MIT skill.",
+      "use": "link"
+    },
+    {
+      "id": "drewburchfield-shortcuts-toolkit",
+      "url": "https://github.com/drewburchfield/shortcuts-toolkit",
+      "role": "binary-plist-notes",
+      "license": "unknown",
+      "notes": "Programmatic bplist generation notes; pre-signing era caveats.",
+      "use": "link"
+    },
+    {
+      "id": "devalias-shortcut-decompile-gist",
+      "url": "https://gist.github.com/0xdevalias/27d9aea9529be7b6ce59055332a94477",
+      "role": "reverse-engineering-notes",
+      "license": "gist",
+      "notes": "iCloud record API → downloadURL → plutil xml1 workflow.",
+      "use": "link"
+    },
+    {
+      "id": "routinehub-shortcut-source-tool",
+      "url": "https://routinehub.co/shortcut/5256/",
+      "role": "device-tooling",
+      "license": "n/a (RoutineHub shortcut)",
+      "notes": "On-device view/convert/compare shortcut source (plist/json).",
+      "use": "link"
+    },
+    {
+      "id": "apple-shortcuts-url-guide",
+      "url": "https://support.apple.com/guide/shortcuts/use-url-schemes-apd621a1ad7a/ios",
+      "role": "official-docs",
+      "license": "Apple",
+      "notes": "Canonical shortcuts:// and x-callback-url documentation.",
+      "use": "link"
+    }
+  ]
+}

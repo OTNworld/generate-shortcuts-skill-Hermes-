@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.6.0
+version: 1.7.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -40,9 +40,10 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 ## Starters / templates
 
 - `templates/hello-world.shortcut.xml` : golden minimal **importable** (Get Text → Show Result)
-- `templates/examples/` : goldens 01–08 (ask, menu, weather+AI, conditional, repeats)
+- `templates/examples/` : goldens 01–08 + `community/` (MIT-vendored peers)
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
 - `templates/locally-obsidian.stub.xml` : stub **non importable** (design only)
+- Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
 
 ## Étapes
 
@@ -103,8 +104,11 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/FAILURE_MODES.md` : playbook d’échecs agent.
 - `references/PLATFORM_MATRIX.md` : disponibilité iOS/macOS.
 - `references/OBSIDIAN_BRIDGE.md` : conventions vault (optionnel).
+- `references/URL_SCHEMES.md` : `shortcuts://` et x-callback-url.
+- `references/ECOSYSTEM.md` : repos / corpus externes centralisés.
 - `references/ROADMAP_10.md` : suite vers 10/10.
 - `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.
+- `data/sources.json` : registre des sources externes.
 
 ## Signing Shortcuts
 

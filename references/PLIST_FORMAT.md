@@ -112,17 +112,31 @@ A `.shortcut` file is a binary plist (can be written as XML, then converted). Th
 
 ### Color Values
 
-Colors are ARGB integers sampled from Shortcuts exports (not an official Apple table).
-Verify against a fresh export if exact branding matters:
+Icon tints are stored as **RGBA-8** integers. Example: `4282601983` → `0xFF4351FF`
+(`RRGGBBAA`). Values below come from the classic
+[sebj/iOS-Shortcuts-Reference](https://github.com/sebj/iOS-Shortcuts-Reference)
+table (liable to change across OS versions):
 
-| Color | Value | Notes |
-|-------|-------|-------|
-| Blue | 4282601983 | Default blue used in skill templates |
-| Red | 4285149847 | Common red glyph tint |
-| Green | 4292093695 | Common green tint |
-| Orange | 4289374890 | Common orange tint (not `0xFFFFFFFF`) |
-| Purple | 4285887861 | Common purple tint |
-| Gray | 2846468607 | Common gray tint |
+| Color | Hex (RRGGBBAA) | Integer |
+|-------|----------------|--------:|
+| Red | `0xFF4351FF` | 4282601983 |
+| Dark Orange | `0xFD6631FF` | 4251333119 |
+| Orange | `0xFE9949FF` | 4271458815 |
+| Yellow | `0xFEC418FF` | 4274264319 |
+| Green | `0xFFD426FF` | 4292093695 |
+| Teal | `0x19BD03FF` | 431817727 |
+| Light Blue | `0x55DAE1FF` | 1440408063 |
+| Blue | `0x1B9AF7FF` | 463140863 |
+| Dark Blue | `0x3871DEFF` | 946986751 |
+| Violet | `0x7B72E9FF` | 2071128575 |
+| Purple | `0xDB49D8FF` | 3679049983 |
+| Pink | `0xED4694FF` | 3980825855 |
+| Taupe | `0xB4B2A9FF` | 3031607807 |
+| Gray | `0xA9A9A9FF` | 2846468607 |
+| Dark Gray / Black | `0x000000FF` | 255 |
+
+Skill templates historically use **Red** `4282601983` as the default glyph tint
+(not the “Blue” row). Verify against a fresh Shortcuts.app export when matching UI.
 
 ## Action Structure
 
