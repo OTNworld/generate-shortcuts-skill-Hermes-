@@ -35,8 +35,9 @@ Operators define the comparison type. These were discovered from Shortcuts inter
 
 | Operator | Meaning | Use Case |
 |----------|---------|----------|
+| 2 | `>` | Number greater than (legacy teaching; prefer verified exports) |
 | 3 | `>=` | Greater than or equal |
-| 4 | `is` | Exact match |
+| 4 | `is` | Exact match (strings/numbers) |
 | 5 | `is not` | Not equal |
 | 8 | `begins with` | String prefix |
 | 9 | `ends with` | String suffix |

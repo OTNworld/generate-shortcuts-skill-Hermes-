@@ -5,10 +5,26 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
-## [Unreleased]
+## [1.9.0] - 2026-07-26
 
 ### Added
 - Local Mac finalize pack: `LOCAL_FINALIZE.md`, `scripts/attest_local.sh`, `fixtures/attested/MATRIX.md`
+- Shortcuts attestation automation: `import_shortcut_ui.sh` (Return/AX/green-click),
+  `run_shortcut_attest.sh`, `check_shortcuts_automation.sh`, `references/ATTEST_AUTOMATION.md`
+- `attest_local.sh --import-ui` / `--run` / `--auto` / `--click-green`
+- Active next-steps checklist: `references/NEXT_CHECKLIST.md`
+- Attested on macOS 26.5.2 (MacStudio-de-paul): core Sign/Import + non-interactive Run;
+  community Import OK for `09-url-cleaner`, `11-invert-names`
+
+### Fixed
+- `examples/06-conditional`: headless Get Text + If (`WFCondition` 4 / Variable wrapper) — was Ask+broken number If
+- `palette/06-dictionary`: use `getvalueforkey` (not legacy `getdictionaryvalue`)
+- SSOT: replace `getdictionaryvalue` → `getvalueforkey` in `data/wf_actions.json`
+
+### Changed
+- Skill version 1.9.0
+
+## [Unreleased]
 
 ## [1.8.0] - 2026-07-26
 

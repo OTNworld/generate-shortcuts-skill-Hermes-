@@ -11,7 +11,7 @@ Schemas: [`POWER_ACTIONS.md`](./POWER_ACTIONS.md). Control-flow goldens live und
 | [`03-setclipboard.shortcut.xml`](../templates/palette/03-setclipboard.shortcut.xml) | gettext → setclipboard |
 | [`04-url-open.shortcut.xml`](../templates/palette/04-url-open.shortcut.xml) | url → openurl |
 | [`05-list.shortcut.xml`](../templates/palette/05-list.shortcut.xml) | list → showresult |
-| [`06-dictionary.shortcut.xml`](../templates/palette/06-dictionary.shortcut.xml) | dictionary → getdictionaryvalue → showresult |
+| [`06-dictionary.shortcut.xml`](../templates/palette/06-dictionary.shortcut.xml) | dictionary → getvalueforkey → showresult |
 | [`07-variables.shortcut.xml`](../templates/palette/07-variables.shortcut.xml) | setvariable / getvariable |
 | [`08-downloadurl.shortcut.xml`](../templates/palette/08-downloadurl.shortcut.xml) | url → downloadurl → showresult |
 | [`09-comment-nothing.shortcut.xml`](../templates/palette/09-comment-nothing.shortcut.xml) | comment + nothing |

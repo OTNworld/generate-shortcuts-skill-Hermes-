@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.8.0
+version: 1.9.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -56,7 +56,9 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 6. **Flux de contrôle** : Repeat/If/Choose from Menu selon `references/CONTROL_FLOW.md` + goldens 04/06/07/08.
 7. **Validation rapide** : `./scripts/validate.sh` ; checklist `references/FAILURE_MODES.md`.
 8. **Signature** : exécuter la commande de signature adéquate, voir section Signing.
-9. **Import** : expliquer la marche à suivre si besoin.
+9. **Import / attestation Mac** : sur un agent **local** macOS, préférer
+   `./scripts/attest_local.sh --auto` (sign → import UI → run). Détails :
+   `references/ATTEST_AUTOMATION.md`. Ne pas promettre l’import depuis un Cloud Agent Linux.
 
 ## Syntaxe courte
 
@@ -107,6 +109,8 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/PLATFORM_MATRIX.md` : disponibilité iOS/macOS.
 - `references/OBSIDIAN_BRIDGE.md` : conventions vault (optionnel).
 - `references/URL_SCHEMES.md` : `shortcuts://` et x-callback-url.
+- `references/ATTEST_AUTOMATION.md` : import UI + run automatisés (macOS local).
+- `references/NEXT_CHECKLIST.md` : checklist prochains pas vers 10/10.
 - `references/ECOSYSTEM.md` : repos / corpus externes centralisés.
 - `references/ROADMAP_10.md` : suite vers 10/10.
 - `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.
@@ -133,7 +137,18 @@ Voir aussi `scripts/sign_shortcut.sh` pour un wrapper réutilisable
 Validation du repo : `./scripts/validate.sh` (également exécuté en CI).
 
 Extraction d’exports : `./scripts/extract_shortcut.sh` (plutil/plistlib).
-Attestation Mac (plus tard) : `fixtures/attested/MAC_HANDOFF.md`.
+
+### Attestation automatisée (macOS local)
+
+```bash
+./scripts/check_shortcuts_automation.sh   # Accessibilité (+ screen optionnel)
+./scripts/attest_local.sh --auto          # sign + import UI + run
+# ./scripts/attest_local.sh --auto --all
+```
+
+- Import UI : `scripts/import_shortcut_ui.sh` (Return / AX / `--click-green`)
+- Runs : `scripts/run_shortcut_attest.sh` → `fixtures/attested/runs/run_report.tsv`
+- Doc : `references/ATTEST_AUTOMATION.md`, handoff `fixtures/attested/MAC_HANDOFF.md`
 
 ### Pipeline de vérification avant publication
 

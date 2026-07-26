@@ -13,3 +13,4 @@
 /out/
 /fixtures/attested/*.shortcut
 /fixtures/attested/*_signed.shortcut
+fixtures/attested/runs/

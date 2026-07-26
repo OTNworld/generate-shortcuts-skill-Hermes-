@@ -75,12 +75,16 @@ Prefix all identifiers with `is.workflow.actions.` unless noted.
 | `UUID` | string | |
 | `WFItems` | dictionary serialization | See PARAMETER_TYPES |
 
-## 10. getdictionaryvalue
+## 10. getvalueforkey
+
+Canonical id for “Get Dictionary Value” (prefer this over legacy `getdictionaryvalue`).
 
 | Key | Type | Notes |
 |-----|------|-------|
-| `WFDictionaryKey` | string | Key to read |
+| `WFDictionaryKey` | string or text token | Key to read |
+| `WFGetDictionaryValueType` | string | e.g. `Value`, `All Keys` |
 | `WFInput` | attachment | Dictionary source |
+| `UUID` | string | |
 
 ## 11. setvariable
 

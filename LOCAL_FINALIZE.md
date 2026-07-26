@@ -17,17 +17,26 @@ git pull origin cursor/skill-quality-hardening-0e57
 ## 2. Attester (sign → import → run)
 
 ```bash
-# Hashes des XML unsigned (commitables)
-./scripts/attest_local.sh --hash-only
+# Preflight Accessibilité (obligatoire pour l’import UI)
+./scripts/check_shortcuts_automation.sh
 
-# Signer + ouvrir dans Raccourcis (core = examples 01–08 + palette)
-./scripts/attest_local.sh --open
+# Boucle automatisée (core = examples 01–08 + palette)
+./scripts/attest_local.sh --auto
 
-# Optionnel : inclure community/
-./scripts/attest_local.sh --open --all
+# Optionnel : community/ + clic vert screenshot
+./scripts/attest_local.sh --auto --all --click-green
 ```
 
-Pour chaque fichier ouvert : importer dans Shortcuts, lancer une fois, noter OK/FAIL.
+Équivalent manuel / semi-manuel :
+
+```bash
+./scripts/attest_local.sh --hash-only
+./scripts/attest_local.sh --open          # ouvre seulement
+./scripts/attest_local.sh --import-ui     # import via Return/AX
+./scripts/attest_local.sh --run
+```
+
+Doc : [`references/ATTEST_AUTOMATION.md`](references/ATTEST_AUTOMATION.md).
 
 ## 3. Remplir la matrice
 

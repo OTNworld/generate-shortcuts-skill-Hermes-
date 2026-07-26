@@ -103,7 +103,7 @@
     "getcurrentsafariwebpage",
     "getcurrentsong",
     "getdevicedetails",
-    "getdictionaryvalue",
+    "getvalueforkey",
     "getdirections",
     "getdistance",
     "getdropboxfile",

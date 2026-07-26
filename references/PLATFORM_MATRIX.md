@@ -16,7 +16,7 @@ Legend: `Y` = typically available, `L` = limited / version-dependent, `N` = usua
 | url | Y | Y | |
 | list | Y | Y | |
 | dictionary | Y | Y | |
-| getdictionaryvalue | Y | Y | |
+| getvalueforkey | Y | Y | Prefer over legacy `getdictionaryvalue` |
 | setvariable / getvariable | Y | Y | |
 | choosefrommenu | Y | Y | Needs GroupingIdentifier |
 | conditional | Y | Y | |

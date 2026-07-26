@@ -8,6 +8,8 @@ Common ways generated Shortcuts fail — and how to fix them before signing.
 |---------|--------------|-----|
 | File won’t open / invalid shortcut | Malformed XML or non-plist root | `xmllint --noout file.shortcut` then `./scripts/validate.sh` |
 | Unknown action | ID not on this OS / typo | Check `data/wf_actions.json` + `PLATFORM_MATRIX.md` |
+| `action introuvable` on dictionary get | Used legacy `getdictionaryvalue` | Use `is.workflow.actions.getvalueforkey` (+ `WFGetDictionaryValueType`) |
+| `Choisissez une valeur pour chaque paramètre` | Ask/If missing params or interactive Ask in CLI | Prefer headless `gettext`/`number`; If input often needs `Type=Variable` wrapper; verify `WFCondition` |
 | Missing End Menu / If / Repeat | Control-flow block incomplete | Every start (`WFControlFlowMode` 0) needs end (2); menus need a case (1) per item |
 | Menu does nothing | Missing `GroupingIdentifier` or modes as strings | Same UUID for start/cases/end; modes as `<integer>` |
 | Variable shows as blank / literal `￼` | U+FFFC without `attachmentsByRange` | Pair every `￼` with a range key `{pos, len}` |

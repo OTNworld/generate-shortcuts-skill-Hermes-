@@ -1,0 +1,79 @@
+# Attestation automation (macOS)
+
+Linux CI cannot sign/import/run Shortcuts. On a Mac, the skill automates the
+loop as far as Apple allows.
+
+## Pipeline
+
+```text
+XML golden → sign (CLI) → open → UI import → shortcuts run → MATRIX.md
+```
+
+| Step | Tool | Needs |
+|------|------|-------|
+| Hash | `attest_local.sh --hash-only` | — |
+| Sign | `shortcuts sign` via `sign_shortcut.sh` | Shortcuts CLI |
+| Import | `import_shortcut_ui.sh` | **Accessibility** |
+| Run | `run_shortcut_attest.sh` | Shortcut already imported |
+| Vision fallback | `--click-green` | Screen Recording + Pillow |
+
+## One-shot
+
+```bash
+./scripts/check_shortcuts_automation.sh
+./scripts/attest_local.sh --auto          # core goldens
+# ./scripts/attest_local.sh --auto --all  # + community
+```
+
+Equivalent:
+
+```bash
+./scripts/attest_local.sh --import-ui --run
+```
+
+## Permissions
+
+1. **Accessibility** (required for import UI):  
+   System Settings → Privacy & Security → Accessibility → enable **Cursor** and/or **Terminal**.
+2. **Screen Recording** (optional, `--click-green`):  
+   same pane → Screen Recording → enable Cursor.
+
+Re-check:
+
+```bash
+./scripts/check_shortcuts_automation.sh
+```
+
+## How import UI works
+
+Apple exposes no `shortcuts import` CLI. Signed files open an import sheet whose
+primary button is often **not** in the Accessibility tree (SwiftUI).
+
+Reliable sequence used by `import_shortcut_ui.sh`:
+
+1. `open -a Shortcuts <signed.shortcut>`
+2. Focus process `Shortcuts`
+3. Try named AX click (`Ajouter ce raccourci` / `Add Shortcut` / …)
+4. Press **Return** (activates the default green CTA) — proven on macOS 26 FR
+5. Optional: locate green pixels `(≈60,132,41)` and `click at`
+6. Verify with `shortcuts list | grep -x <name>`
+
+## Run policy
+
+`run_shortcut_attest.sh` executes **non-interactive** goldens by default
+(`shortcuts run`, output to `fixtures/attested/runs/`).
+
+Skipped unless named explicitly:
+
+- ask / menu / choose-from-list (need UI input)
+- network-ish (`weather`, `url-open`, `downloadurl`) unless `--include-network`
+
+## Agent playbook
+
+1. Stay on a **local** Mac agent (not Cloud Linux).
+2. Run `./scripts/attest_local.sh --auto`.
+3. If Accessibility fails, open Privacy settings and ask the user to toggle Cursor.
+4. Fill `fixtures/attested/MATRIX.md` from sign/import/`run_report.tsv`.
+5. Never commit `*_signed.shortcut` binaries.
+
+See also: `LOCAL_FINALIZE.md`, `fixtures/attested/MAC_HANDOFF.md`.

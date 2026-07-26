@@ -10,12 +10,13 @@ Linux CI already covers XML + grammar + SSOT.
 ```bash
 git checkout cursor/skill-quality-hardening-0e57 && git pull
 ./scripts/validate.sh
-./scripts/attest_local.sh --hash-only
-./scripts/attest_local.sh --open          # core goldens
-# ./scripts/attest_local.sh --open --all  # + community
+./scripts/check_shortcuts_automation.sh
+./scripts/attest_local.sh --auto          # sign + import UI + run
+# ./scripts/attest_local.sh --auto --all
 ```
 
-Fill [`MATRIX.md`](MATRIX.md) as you confirm Sign / Import / Run.
+Fill [`MATRIX.md`](MATRIX.md) from automation + `runs/run_report.tsv`.  
+See [`references/ATTEST_AUTOMATION.md`](../../references/ATTEST_AUTOMATION.md).
 
 ## Extract / diff if something fails
 

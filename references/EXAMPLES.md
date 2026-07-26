@@ -42,7 +42,8 @@ Current weather → build prompt → Ask LLM → Show Result.
 
 ## Example 6: Conditional
 
-Ask Number → If / Otherwise / End If.
+Get Text (`yes`) → If / Otherwise / End If (string `is` / operator `4`).
+Headless-friendly (no Ask).
 
 - File: [`templates/examples/06-conditional.shortcut.xml`](../templates/examples/06-conditional.shortcut.xml)
 
