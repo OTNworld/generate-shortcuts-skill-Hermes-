@@ -52,6 +52,15 @@ def safe_fix(text: str) -> tuple[str, list[str]]:
         return f"{m.group('pre')}<integer>{m.group('mode')}</integer>"
 
     text3 = MODE_STRING.sub(int_mode, text2)
+
+    # Legacy dictionary action id → canonical
+    if "is.workflow.actions.getdictionaryvalue" in text3:
+        text3 = text3.replace(
+            "is.workflow.actions.getdictionaryvalue",
+            "is.workflow.actions.getvalueforkey",
+        )
+        notes.append("getdictionaryvalue → getvalueforkey")
+
     return text3, notes
 
 

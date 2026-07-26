@@ -5,21 +5,23 @@ Palier A (9/10) is implemented in v1.6.0. Remaining for a credible **10/10 skill
 | ID | Item | Status |
 |----|------|--------|
 | B1 | Make `check_shortcut_grammar.py --strict` the default CI gate + range-vs-string-length checks | **Done (1.8.0)** |
-| B2 | Starter palette 12–20 full XML schemas (`templates/palette/`) | **Done (12 in 1.8.0)** |
-| B3 | Fill `fixtures/attested/MATRIX.md` with real macOS/iOS import proofs | **Done (1.9.0 Mac 26.5)** |
+| B2 | Starter palette 12–20 full XML schemas (`templates/palette/`) | **Done (16 in 1.11.0)** |
+| B3 | Fill `fixtures/attested/MATRIX.md` with real macOS/iOS import proofs | **Done (1.9.0 Mac 26.5)** — palette 13–16 pending Mac re-attest |
 | B4 | Generate markdown catalogs from `data/*.json` (`scripts/render_refs.py`) | **Done (1.8.0)** |
 | B5 | `SECURITY.md` | Done (prep) |
 | B6 | `SKILL.en.md` + `OUTPUT_NAMES.md` | **Done (1.10.0)** |
 | B7 | Share Sheet / ImportQuestions golden (`09-share-sheet-input`) | **Done (1.10.0)** |
-| B8 | `URL_SCHEMES.md` + Locally attested golden or design-only md | **URL_SCHEMES done**; Locally attest still todo |
+| B8 | `URL_SCHEMES.md` + Locally track | **URL_SCHEMES done**; **Locally abandoned** → [`HORIZON.md`](HORIZON.md) |
 | B9 | `scripts/extract_shortcut.sh` (`plutil` round-trip helper) | **Done (1.8.0)** |
 | B10 | Expand community vendors from `data/external/*.index.jsonl` as needed | **8 goldens (1.10.0)** |
-| B11 | Attestation automation (import UI + run) | **Done (scripts)** — harden via checklist |
-| B12 | Lean remix + validate-on-write | **Done (1.10.0)** |
+| B11 | Attestation automation (import UI + run) | **Done (scripts)** — sheets / NET harden in 1.11.0 |
+| B12 | Lean remix + validate-on-write | **Done (1.10.0)**; structural remix **1.11.0** |
+| B13 | Horizon companion app / Siri / marketplace | **Direction only** — [`HORIZON.md`](HORIZON.md) |
 
 **Prochains pas détaillés (checklist active) :**  
 [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) (attestation / 10/10 Mac)  
-[`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) (parité auteur vs Viticci, lean)
+[`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) (parité auteur vs Viticci, lean)  
+[`HORIZON.md`](HORIZON.md) (app / marketplace — hors skill lean)
 
 
 Ecosystem hub: `references/ECOSYSTEM.md` + `data/sources.json`.

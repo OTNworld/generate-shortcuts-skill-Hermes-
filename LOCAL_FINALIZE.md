@@ -66,7 +66,7 @@ Puis merger la PR.
 - SSOT + validate/CI + grammar strict  
 - Goldens teaching + palette + community MIT  
 - ECOSYSTEM / extract / render_refs  
-- Stub Locally honnête  
+- Stub Locally **abandonné** (voir `references/HORIZON.md`)  
 
 ## Si un golden échoue à l’import
 

@@ -5,8 +5,8 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.10.0
+  Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
+version: 1.11.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]

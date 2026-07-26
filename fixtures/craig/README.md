@@ -14,4 +14,6 @@ Regenerate:
 ./scripts/validate_on_write.sh --fix fixtures/craig/<file>
 ```
 
-These files may be left **fixed** after local tests; re-break before demo if needed.
+These fixtures stay **intentionally broken** in git so CI / `selftest.sh` can prove
+`validate_on_write.sh --fix` recovers them. Do not commit the fixed forms.
+

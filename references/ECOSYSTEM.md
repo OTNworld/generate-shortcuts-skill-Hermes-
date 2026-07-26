@@ -58,8 +58,8 @@ Snapshot of [viticci/shortcuts-playground](https://github.com/viticci/shortcuts-
 | Validate on edit | PostToolUse → `validate-shortcut` (Craig Loop) | **`scripts/validate_on_write.sh`** after each Write (V2) |
 | Sign wrapper | `sign-shortcut` (archive + sign, no `_signed` suffix) | `scripts/sign_shortcut.sh` (keep; attest uses `_signed` temp names) |
 | Icon resolver | `resolve-icon` / `select_shortcut_icon_color.py` | Table in `PLIST_FORMAT.md` (V3 lite later) |
-| ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (**438**) + `appintents.json` (154 curated; see `APPINTENTS_GAP.md`) |
-| Goldens | ~19 playground XMLs | 9 teaching + 12 palette + **8** community |
+| ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (**438**) + `appintents.json` (168 curated; see `APPINTENTS_GAP.md`) |
+| Goldens | ~19 playground XMLs | 9 teaching + **16** palette + **8** community |
 | Attestation Mac import/run | Not first-class | **`attest_local.sh --auto` + `results.json`** (lead) |
 
 **MVP attack order chosen:** V1 remix → V2 validate_on_write → V3 goldens batch (see `COMPETITIVE_CHECKLIST.md`).
@@ -99,3 +99,4 @@ To vendor another MIT golden: download XML → add attribution comment → place
 - Do not submodule GPL `shortcuts-js` into this MIT repo.
 - Do not paste Viticci’s entire ~12k-line skill tree (keep Hermes skill lean; point agents at ECOSYSTEM when needed).
 - Do not treat RoutineHub iCloud links as permanent fixtures (they rot).
+- Do not revive Locally→Obsidian as a golden — product direction is [`HORIZON.md`](HORIZON.md).

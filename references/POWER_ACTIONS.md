@@ -198,11 +198,27 @@ Canonical id for “Get Dictionary Value” (prefer this over legacy `getdiction
 
 **OutputName:** `Weather Conditions`
 
-## 25. nothing
+## 26. notification
 
 | Key | Type | Notes |
 |-----|------|-------|
-| (empty params) | — | Placeholder / loop body |
+| `WFInput` | attachment | Body text (magic input) |
+
+## 27. number
+
+| Key | Type | Notes |
+|-----|------|-------|
+| `UUID` | string | |
+| `WFNumberActionNumber` | real/integer | Literal number |
+
+**OutputName:** `Number`
+
+## 28. speaktext
+
+| Key | Type | Notes |
+|-----|------|-------|
+| `WFInput` | attachment | Text to speak |
+| `WFSpeakTextWait` | boolean | Wait until finished |
 
 ---
 

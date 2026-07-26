@@ -1,6 +1,6 @@
 # AppIntents Reference
 
-Curated subset of **154** AppIntent identifiers commonly used with Shortcuts
+Curated subset of **168** AppIntent identifiers commonly used with Shortcuts
 (`appintentexecution`). Source of truth: [`data/appintents.json`](../data/appintents.json).
 This is not a complete dump of every system AppIntent on macOS/iOS.
 
@@ -42,9 +42,9 @@ AppIntents are invoked using the `WFAppIntentExecutionAction` wrapper:
 
 ## Complete AppIntent Identifier List
 
-All **154 curated** AppIntent identifiers in this skill (generated from SSOT):
+All **168 curated** AppIntent identifiers in this skill (generated from SSOT):
 
-### Open* (Settings / deep links) (54)
+### Open* (Settings / deep links) (66)
 ```
 OpenAboutSettingsStaticDeepLinks,
 OpenAccessibilityAudioDescriptionsStaticDeepLinks,
@@ -65,20 +65,26 @@ OpenAccessibilitySwitchControlStaticDeepLinks,
 OpenAccessibilityVocalShortcutsStaticDeepLinks,
 OpenAccessibilityVoiceControlStaticDeepLinks,
 OpenAccessibilityVoiceOverStaticDeepLinks, OpenAccessibilityZoomStaticDeepLinks,
-OpenAirDropSettingsStaticDeepLinks, OpenAppleIDSettingsStaticDeepLinks,
-OpenBatterySettingsStaticDeepLinks, OpenBluetoothSettingsStaticDeepLinks,
-OpenCalendarScreenIntent, OpenCameraIntent, OpenDisplaySettingsStaticDeepLinks,
-OpenFamilySettingsStaticDeepLinks, OpenFocusSettingsStaticDeepLinks,
-OpenGeneralSettingsStaticDeepLinks, OpenInternetAccountsSettingsStaticDeepLinks,
-OpenKeyboardSettingsStaticDeepLinks, OpenLanguageSettingsStaticDeepLinks,
-OpenNetworkSettingsStaticDeepLinks, OpenNotificationSettingsStaticDeepLinks,
-OpenPasswordsSettingsStaticDeepLinks, OpenPrivacySettingsStaticDeepLinks,
-OpenReminderListIntent, OpenScreenTimeSettingsStaticDeepLinks,
-OpenSecuritySettingsStaticDeepLinks, OpenSiriSettingsStaticDeepLinks,
-OpenSmartReminderListIntent, OpenSoftwareUpdateSettingsStaticDeepLinks,
-OpenSoundSettingsStaticDeepLinks, OpenStorageSettingsStaticDeepLinks,
-OpenTabGroupIntent, OpenTabIntent, OpenTrackpadSettingsStaticDeepLinks,
-OpenVoiceMemoFolderIntent, OpenWalletSettingsStaticDeepLinks,
+OpenAirDropSettingsStaticDeepLinks, OpenAppStoreSettingsStaticDeepLinks,
+OpenAppleIDSettingsStaticDeepLinks, OpenBatterySettingsStaticDeepLinks,
+OpenBluetoothSettingsStaticDeepLinks, OpenCalendarScreenIntent, OpenCameraIntent,
+OpenCameraSettingsStaticDeepLinks, OpenDeveloperSettingsStaticDeepLinks,
+OpenDisplaySettingsStaticDeepLinks, OpenFamilySettingsStaticDeepLinks,
+OpenFocusSettingsStaticDeepLinks, OpenGameCenterSettingsStaticDeepLinks,
+OpenGeneralSettingsStaticDeepLinks, OpenHealthSettingsStaticDeepLinks,
+OpenInternetAccountsSettingsStaticDeepLinks, OpenKeyboardSettingsStaticDeepLinks,
+OpenLanguageSettingsStaticDeepLinks, OpenLockScreenSettingsStaticDeepLinks,
+OpenMessagesSettingsStaticDeepLinks, OpenNetworkSettingsStaticDeepLinks,
+OpenNotificationSettingsStaticDeepLinks, OpenPasswordsSettingsStaticDeepLinks,
+OpenPhotosSettingsStaticDeepLinks, OpenPrivacySettingsStaticDeepLinks,
+OpenReminderListIntent, OpenSafariSettingsStaticDeepLinks,
+OpenScreenTimeSettingsStaticDeepLinks, OpenSecuritySettingsStaticDeepLinks,
+OpenSiriSettingsStaticDeepLinks, OpenSmartReminderListIntent,
+OpenSoftwareUpdateSettingsStaticDeepLinks, OpenSoundSettingsStaticDeepLinks,
+OpenStorageSettingsStaticDeepLinks, OpenTabGroupIntent, OpenTabIntent,
+OpenTrackpadSettingsStaticDeepLinks, OpenTranslateSettingsStaticDeepLinks,
+OpenVPNSettingsStaticDeepLinks, OpenVoiceMemoFolderIntent,
+OpenWalletSettingsStaticDeepLinks, OpenWallpaperSettingsStaticDeepLinks,
 OpenWiFiSettingsStaticDeepLinks
 ```
 
@@ -91,7 +97,7 @@ CreateTabGroupIntent, CreateTabIntent, CreateTimerIntent,
 CreateVoiceMemoFolderIntent, CreateWorkflowIntent, CreateiCloudLinkIntent
 ```
 
-### Toggle* (24)
+### Toggle* (25)
 ```
 ToggleAlarmIntent, ToggleAxAssistiveTouchIntent, ToggleAxAudioDescriptionsIntent,
 ToggleAxClosedCaptioningIntent, ToggleAxColorFiltersIntent,
@@ -101,16 +107,17 @@ ToggleAxReduceTransparencyIntent, ToggleAxSpeakScreenIntent,
 ToggleAxSwitchControlIntent, ToggleAxVoiceControlIntent, ToggleAxVoiceOverIntent,
 ToggleAxZoomIntent, ToggleBluetoothIntent, ToggleCellularDataIntent,
 ToggleDoNotDisturbIntent, ToggleFocusModeIntent, ToggleHomeAccessoryIntent,
-ToggleLowPowerModeIntent, ToggleOrientationLockIntent, ToggleWiFiIntent
+ToggleLowPowerModeIntent, ToggleOrientationLockIntent, ToggleVPNIntent,
+ToggleWiFiIntent
 ```
 
-### Set* (15)
+### Set* (16)
 ```
 SetAirplaneModeIntent, SetAlwaysOnDisplayIntent, SetAppearanceIntent,
 SetBrightnessIntent, SetCellularDataIntent, SetFlashlightIntent,
 SetListeningModeIntent, SetLowPowerModeIntent, SetNightShiftIntent,
 SetOrientationLockIntent, SetPersonalHotspotIntent, SetStageManagerIntent,
-SetTrueToneIntent, SetVolumeIntent, SetWiFiIntent
+SetTrueToneIntent, SetVPNIntent, SetVolumeIntent, SetWiFiIntent
 ```
 
 ### Find* / Search* (18)

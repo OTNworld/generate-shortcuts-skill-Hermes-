@@ -11,8 +11,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install libxml2-utils
-        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+      - name: Install libxml2-utils + shellcheck
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils shellcheck
 
       - name: Run skill validation
         run: bash ./scripts/validate.sh
+
+      - name: ShellCheck scripts
+        run: shellcheck -x scripts/*.sh
+
+      - name: Selftest (validate + craig + remix)
+        run: bash ./scripts/selftest.sh
