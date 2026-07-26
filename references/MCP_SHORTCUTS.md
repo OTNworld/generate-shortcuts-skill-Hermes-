@@ -9,7 +9,7 @@ Expose repo utilities as MCP tools so agents call **tools** instead of inventing
 | Tool | Wraps | Args | Notes |
 |------|-------|------|-------|
 | `shortcuts_validate` | `validate_on_write.sh` | `path` (string), `fix` (bool, optional) | Always safe |
-| `shortcuts_remix` | `remix_shortcut.py` | `path`, `replace_text` or `set_name`, `output` optional | Then validate |
+| `shortcuts_remix` | `remix_shortcut.py` | `path`, `replace_text` as `OLD=NEW`, `set_name`, `output` optional | Then validate |
 | `shortcuts_attest_status` | read `fixtures/attested/results.json` | none | Safe anywhere |
 | `shortcuts_attest_run` | `attest_local.sh --auto` | `all` bool optional | **Darwin + Accessibility only** |
 

@@ -14,9 +14,7 @@
 /fixtures/attested/*.shortcut
 /fixtures/attested/*_signed.shortcut
 fixtures/attested/runs/
-
-__pycache__/
-*.py[cod]
+fixtures/craig/remix-*.shortcut.xml
 
 # MCP server local venv
 .venv-mcp/

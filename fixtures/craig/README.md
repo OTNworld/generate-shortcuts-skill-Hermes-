@@ -6,6 +6,8 @@ Broken XML samples for `scripts/craig_loop_lite.py` / `validate_on_write.sh --fi
 |------|-------|----------|
 | `lc-uuid-hello.shortcut.xml` | lowercase UUID hex letters | uppercase → validate PASS |
 | `mode-str.shortcut.xml` | `WFControlFlowMode` as `<string>` | `<integer>` → validate PASS |
+| `remix-in.shortcut.xml` | MCP remix input (hello golden copy) | optional scratch |
+| `remix-out*.shortcut.xml` | MCP remix outputs | gitignored / local scratch |
 
 Regenerate:
 

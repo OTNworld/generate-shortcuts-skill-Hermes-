@@ -64,10 +64,22 @@ def shortcuts_remix(
     set_name: str | None = None,
     output: str | None = None,
 ) -> str:
-    """Lean text remix of an existing shortcut XML, then validate_on_write."""
+    """Lean text remix of an existing shortcut XML, then validate_on_write.
+
+    replace_text: either 'OLD=NEW' or pass two segments separated by the first '='.
+    """
     cmd = ["python3", str(ROOT / "scripts" / "remix_shortcut.py"), path]
     if replace_text:
-        cmd.extend(["--replace-text", replace_text])
+        if "=" not in replace_text:
+            return json.dumps(
+                {
+                    "ok": False,
+                    "error": "replace_text must look like OLD=NEW",
+                },
+                indent=2,
+            )
+        old, new = replace_text.split("=", 1)
+        cmd.extend(["--replace-text", old, new])
     if set_name:
         cmd.extend(["--set-name", set_name])
     if output:
