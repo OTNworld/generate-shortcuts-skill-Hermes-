@@ -44,6 +44,23 @@ Legend: `Y` = typically available, `L` = limited / version-dependent, `N` = usua
 | runosascript | N | Y | macOS only |
 | getselectedfinderfiles | N | Y | macOS only |
 | revealfiles | N | Y | macOS only |
+| alert | Y | Y | Teaching / UI |
+| appendvariable | Y | Y | |
+| choosefromlist | Y | Y | Interactive (UI) |
+| date / format.date | Y | Y | |
+| detect.text / detect.link / detect.dictionary | Y | Y | |
+| filter.files / filter.calendarevents | Y | Y | Community goldens |
+| getitemfromlist | Y | Y | |
+| gettraveltime | Y | L | Maps / location |
+| geturlcomponent | Y | Y | |
+| math / number | Y | Y | |
+| openin | Y | L | |
+| previewdocument | Y | Y | Files preview |
+| properties.contacts | Y | L | |
+| runapplescript | N | Y | Prefer `runosascript` naming in SSOT |
+| safari.geturl | Y | L | Safari |
+| setitemname | Y | Y | |
+| text.match / text.match.getgroup / text.replace / text.split | Y | Y | Regex / text |
 
 ## Guidance for agents
 

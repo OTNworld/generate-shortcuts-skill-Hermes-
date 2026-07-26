@@ -50,6 +50,7 @@ Common ways generated Shortcuts fail — and how to fix them before signing.
 |---------|--------------|-----|
 | Accidental full rewrite | Agent regenerated instead of remix | Use `scripts/remix_shortcut.py` / `REMIX.md` |
 | `validate_on_write` FAIL grammar | Range/UUID/control-flow drift | Restore; smaller `--replace-text` |
+| Lowercase UUID / mode as string | Mechanical plist mistakes | `./scripts/validate_on_write.sh --fix <file>` (Craig Loop lite) |
 | `FAIL unknown action IDs` | Typo or missing SSOT entry | Check `data/wf_actions.json` |
 
 Mandatory after every plist edit: `./scripts/validate_on_write.sh <file>`.

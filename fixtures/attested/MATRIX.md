@@ -15,18 +15,18 @@ Filled on macOS after automated sign → import UI → run (`./scripts/attest_lo
 | examples/02-ask-input | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK | headless via `inputs/02-ask-input.txt` |
 | examples/03-ask-llm | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | interactive / AI (ENV) |
 | examples/04-menu | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | interactive (UI) |
-| examples/05-weather-ai | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | network (NET) |
+| examples/05-weather-ai | 26.5.2 | — |  | 2026-07-26 | OK | OK | FAIL | ENV: Apple Intelligence unavailable (not pure NET) |
 | examples/06-conditional | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK | fixed golden; library alias `06-conditional-v2_signed` |
 | examples/07-repeat-count | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | examples/08-repeat-each | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/01-ask | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK | headless via `inputs/01-ask.txt` |
 | palette/02-gettext-show | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/03-setclipboard | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
-| palette/04-url-open | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | network (NET) |
+| palette/04-url-open | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK | `--include-network` |
 | palette/05-list | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/06-dictionary | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK | fixed `getvalueforkey`; alias `06-dictionary-fixed_signed` |
 | palette/07-variables | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
-| palette/08-downloadurl | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | network (NET) |
+| palette/08-downloadurl | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | re-attest after wiring fix (magic input + example.com) |
 | palette/09-comment-nothing | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/10-count | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/11-choosefromlist | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | interactive (UI) |

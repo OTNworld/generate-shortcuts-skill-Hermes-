@@ -6,51 +6,13 @@
     <array>
         <dict>
             <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.url</string>
+            <string>is.workflow.actions.gettext</string>
             <key>WFWorkflowActionParameters</key>
             <dict>
                 <key>UUID</key>
-                <string>AA000008-0008-4000-8000-000000000008</string>
-                <key>WFURLActionURL</key>
-                <string>https://example.com/</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.downloadurl</string>
-            <key>WFWorkflowActionParameters</key>
-            <dict>
-                <key>UUID</key>
-                <string>AA000018-0018-4000-8000-000000000018</string>
-                <key>Advanced</key>
-                <true/>
-                <key>WFHTTPMethod</key>
-                <string>GET</string>
-            </dict>
-        </dict>
-        <dict>
-            <key>WFWorkflowActionIdentifier</key>
-            <string>is.workflow.actions.count</string>
-            <key>WFWorkflowActionParameters</key>
-            <dict>
-                <key>UUID</key>
-                <string>AA000028-0028-4000-8000-000000000028</string>
-                <key>WFCountType</key>
-                <string>Characters</string>
-                <key>Input</key>
-                <dict>
-                    <key>Value</key>
-                    <dict>
-                        <key>OutputUUID</key>
-                        <string>AA000018-0018-4000-8000-000000000018</string>
-                        <key>OutputName</key>
-                        <string>Contents of URL</string>
-                        <key>Type</key>
-                        <string>ActionOutput</string>
-                    </dict>
-                    <key>WFSerializationType</key>
-                    <string>WFTextTokenAttachment</string>
-                </dict>
+                <string>A1B2C3D4-E5F6-7890-ABCD-EF1234567890</string>
+                <key>WFTextActionText</key>
+                <string>Hello World!</string>
             </dict>
         </dict>
         <dict>
@@ -67,9 +29,9 @@
                             <key>{0, 1}</key>
                             <dict>
                                 <key>OutputName</key>
-                                <string>Count</string>
+                                <string>Text</string>
                                 <key>OutputUUID</key>
-                                <string>AA000028-0028-4000-8000-000000000028</string>
+                                <string>A1B2C3D4-E5F6-7890-ABCD-EF1234567890</string>
                                 <key>Type</key>
                                 <string>ActionOutput</string>
                             </dict>
@@ -103,7 +65,7 @@
     <key>WFWorkflowMinimumClientVersionString</key>
     <string>900</string>
     <key>WFWorkflowName</key>
-    <string>Palette Download URL</string>
+    <string>Hello World</string>
     <key>WFWorkflowOutputContentItemClasses</key>
     <array/>
     <key>WFWorkflowTypes</key>

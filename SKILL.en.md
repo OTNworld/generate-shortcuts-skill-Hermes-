@@ -41,6 +41,7 @@ follow the same steps and scripts.
 7. `./scripts/validate.sh` / `FAILURE_MODES.md`.
 8. Sign (`scripts/sign_shortcut.sh`).
 9. **After every Write/Edit:** `./scripts/validate_on_write.sh <file>`.
+   Mechanical failures (UUID case / mode as string): `./scripts/validate_on_write.sh --fix <file>` (Craig Loop lite).
 10. **Remix** existing XML via `REMIX.md` — do not full-regenerate.
 11. Mac attestation: `./scripts/attest_local.sh --auto` (`ATTEST_AUTOMATION.md`).
 

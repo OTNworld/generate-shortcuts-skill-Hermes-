@@ -1,0 +1,15 @@
+---
+description: After editing Shortcuts plist/XML, run validate_on_write (optional Craig Loop --fix)
+globs: "**/*.{shortcut.xml,plist}"
+alwaysApply: false
+---
+
+# Shortcuts validate-on-write
+
+When you create or edit a Shortcuts plist / `.shortcut.xml` in this repo:
+
+1. Run `./scripts/validate_on_write.sh <file>` after every Write/Edit.
+2. If grammar fails on **UUID case** or **WFControlFlowMode as string**, run:
+   `./scripts/validate_on_write.sh --fix <file>` (Craig Loop lite, max 3 safe fixes).
+3. Do **not** auto-fix business semantics (wrong action IDs, bad ranges, invented AppIntents).
+4. Mac import/run: `./scripts/attest_local.sh --auto` (see `references/ATTEST_AUTOMATION.md`).

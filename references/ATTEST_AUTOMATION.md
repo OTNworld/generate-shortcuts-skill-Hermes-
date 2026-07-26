@@ -103,6 +103,18 @@ Skipped unless named explicitly:
 - ask / menu / choose-from-list (need UI input)
 - network-ish (`weather`, `url-open`, `downloadurl`) unless `--include-network`
 
+### Network pass notes (`--include-network`) — 2026-07-26
+
+| Golden | Observed | Classification |
+|--------|----------|----------------|
+| `04-url-open_signed` | **OK** (opens URL; may focus browser) | NET |
+| `08-downloadurl_signed` | Prefer magic input after `url` (no hand-wired `WFURL`); use stable host (`example.com`) | NET |
+| `05-weather-ai_signed` | FAIL when Ask LLM / Apple Intelligence unavailable | **ENV** (+ weather NET) — not a pure network smoke |
+
+Flaky causes: helper IPC (`Couldn’t communicate with a helper application`), Intelligence offline, captive portal / DNS. Document FAIL in MATRIX; do not treat ENV fails as golden regressions.
+
+Craig Loop lite (safe fixes only): `./scripts/validate_on_write.sh --fix <file>`
+
 ## Agent playbook
 
 1. Stay on a **local** Mac agent (not Cloud Linux).

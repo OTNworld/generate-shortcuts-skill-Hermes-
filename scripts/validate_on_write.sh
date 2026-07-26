@@ -5,10 +5,36 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-if [[ $# -lt 1 ]]; then
-  echo "Usage: scripts/validate_on_write.sh <file.shortcut.xml|plist> [...]" >&2
+FIX=0
+FILES=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --fix) FIX=1 ;;
+    -h|--help)
+      echo "Usage: scripts/validate_on_write.sh [--fix] <file.shortcut.xml|plist> [...]" >&2
+      exit 0
+      ;;
+    *) FILES+=("$1") ;;
+  esac
+  shift
+done
+
+if [[ ${#FILES[@]} -lt 1 ]]; then
+  echo "Usage: scripts/validate_on_write.sh [--fix] <file.shortcut.xml|plist> [...]" >&2
   exit 2
 fi
+
+if [[ "$FIX" -eq 1 ]]; then
+  rc=0
+  for f in "${FILES[@]}"; do
+    if ! python3 "$ROOT/scripts/craig_loop_lite.py" --validate "$f"; then
+      rc=1
+    fi
+  done
+  exit "$rc"
+fi
+
+set -- "${FILES[@]}"
 
 require() {
   command -v "$1" >/dev/null 2>&1 || {
