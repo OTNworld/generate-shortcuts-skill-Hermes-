@@ -162,7 +162,7 @@ Ne pas laisser Viticci rattraper *notre* axe.
 ## Phase V6 — Packaging & distribution (P2)
 
 - [x] Tag `v1.10.0` quand V1+V2+V3 min done
-- [ ] Entrée LobeHub / Cursor skills market (si pertinent) — description différenciante
+- [ ] Entrée LobeHub / Cursor skills market (si pertinent) — voir `HORIZON_CHECKLIST.md` H3 / `MARKET_LISTING.md`
 - [x] Changelog “Parity track” résumé (`CHANGELOG` 1.10.0)
 - [x] PR / release notes bilingues FR-EN courte
 

@@ -15,7 +15,7 @@ Branche de travail : `cursor/skill-quality-hardening-0e57`.
 | **P2** | Nice-to-have / polish |
 | **DoD** | Definition of Done (critère d’acceptation) |
 
-Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
+Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
 
 
 ---

@@ -115,6 +115,7 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/ATTEST_AUTOMATION.md` : import UI + run automatisés (macOS local).
 - `references/NEXT_CHECKLIST.md` : checklist prochains pas vers 10/10.
 - `references/COMPETITIVE_CHECKLIST.md` : parité auteur vs Viticci (remix / validate-on-write / corpus), lean.
+- `references/HORIZON_CHECKLIST.md` : après plafond Mac (MCP / automations / market / CLI).
 - `references/REMIX.md` : protocole remix / diff chirurgical.
 - `references/OUTPUT_NAMES.md` : libellés `OutputName` anglais.
 - `SKILL.en.md` : protocole agent en anglais.
@@ -122,6 +123,20 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/ROADMAP_10.md` : suite vers 10/10.
 - `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.
 - `data/sources.json` : registre des sources externes.
+
+## Utilitaires (ne pas réinventer)
+
+Préférer les scripts du repo aux commandes inventées :
+
+| Intent | Script |
+|--------|--------|
+| validate fichier | `./scripts/validate_on_write.sh <file>` |
+| fix mécanique | `./scripts/validate_on_write.sh --fix <file>` |
+| validate repo | `./scripts/validate.sh` / `./scripts/selftest.sh` |
+| remix | `python3 scripts/remix_shortcut.py` |
+| attest Mac | `./scripts/attest_local.sh --auto` |
+
+MCP (horizon) : `references/MCP_SHORTCUTS.md`.
 
 ## Signing Shortcuts
 

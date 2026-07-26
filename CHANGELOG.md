@@ -44,13 +44,9 @@ Versioning follows the `version` field in `SKILL.md`.
 ## [Unreleased]
 
 ### Added
-- Craig Loop lite: `scripts/craig_loop_lite.py` + `validate_on_write.sh --fix` (UUID case, mode integer)
-- `references/APPINTENTS_GAP.md` (curated 154 vs peer ToolKit dumps)
-- `.cursor/rules/shortcuts-validate-on-write.mdc`
-- Network pass notes in `ATTEST_AUTOMATION.md`; PLATFORM_MATRIX rows for community action IDs
-
-### Fixed
-- `palette/08-downloadurl`: align with community electricity-price wiring (magic input + headers); runtime NET flaky
+- Horizon track: `references/HORIZON_CHECKLIST.md` (utils → MCP → automations → market → CLI)
+- MCP stub: `mcp/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
+- Market blurbs: `references/MARKET_LISTING.md`
 
 ## [1.8.0] - 2026-07-26
 
