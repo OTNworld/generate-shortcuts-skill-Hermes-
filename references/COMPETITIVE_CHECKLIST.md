@@ -93,12 +93,12 @@ Le plus gros différenciateur Viticci côté *édition*.
 
 - [x] Hermes / Cursor : mandatory in `SKILL.md`
 - [~] CI : déjà `validate.sh` — pas de duplication
-- [ ] Cursor `.cursor/rules` optionnel (plus tard)
+- [x] Cursor `.cursor/rules` optionnel (`shortcuts-validate-on-write.mdc`)
 
 ### V2.3 Craig Loop *lite* (optionnel P2)
 
-- [ ] Boucle max N=3 : validate → fixer erreurs automatiques sûres (UUID case, mode integer) → re-validate
-- [ ] **Ne pas** auto-fixer la sémantique métier
+- [x] Boucle max N=3 : validate → fixer erreurs automatiques sûres (UUID case, mode integer) → re-validate
+- [x] **Ne pas** auto-fixer la sémantique métier
 
 **DoD V2 :** edit d’un golden volontairement cassé → script rouge ; fix → vert ; documenté pour l’agent.
 
@@ -117,9 +117,9 @@ Le plus gros différenciateur Viticci côté *édition*.
 
 ### V3.2 AppIntents / catalogues
 
-- [~] Audit : quels intents Viticci “gated” manquent dans `data/appintents.json` ? (reporté P2)
+- [x] Audit : quels intents Viticci “gated” manquent ? → `references/APPINTENTS_GAP.md` (garder curated 154)
 - [x] Étendre SSOT **par lots** (+20–40 max) avec `render_refs.py` + counts docs → **438** WF
-- [~] `PLATFORM_MATRIX.md` : marquer macOS/iOS/unknown pour les nouveaux (reporté)
+- [x] `PLATFORM_MATRIX.md` : marquer macOS/iOS/unknown pour les actions des goldens community
 
 ### V3.3 Icon / polish
 
@@ -150,7 +150,7 @@ Sans devenir un mega-plugin.
 Ne pas laisser Viticci rattraper *notre* axe.
 
 - [x] Menu / choose-from-list : skip catégorisé (UI) dans MATRIX
-- [~] Network pass optionnelle (`--include-network`) + notes flaky (outil prêt, run manuel)
+- [x] Network pass optionnelle (`--include-network`) + notes flaky
 - [x] `results.json` schema versionné + exemple dans ATTEST_AUTOMATION
 - [ ] iOS : 1 ligne MATRIX **quand** device dispo (hors Mac-max)
 - [x] Comparer publiquement dans README : “attestation Mac first-class”

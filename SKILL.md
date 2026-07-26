@@ -57,6 +57,7 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 7. **Validation rapide** : `./scripts/validate.sh` ; checklist `references/FAILURE_MODES.md`.
 8. **Signature** : exécuter la commande de signature adéquate, voir section Signing.
 9. **Après chaque Write/Edit** d’un plist Shortcuts : `./scripts/validate_on_write.sh <fichier>` (obligatoire).
+   Si échec mécanique (UUID minuscules / `WFControlFlowMode` en string) : `./scripts/validate_on_write.sh --fix <fichier>` (Craig Loop lite).
 10. **Remix** (fichier existant) : `references/REMIX.md` + `python3 scripts/remix_shortcut.py` — ne pas régénérer tout le XML.
 11. **Import / attestation Mac** : sur un agent **local** macOS, préférer
    `./scripts/attest_local.sh --auto` (sign → import UI → run). Détails :
