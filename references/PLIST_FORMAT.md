@@ -83,7 +83,25 @@ A `.shortcut` file is a binary plist (can be written as XML, then converted). Th
 | `WFWorkflowImportQuestions` | Array | No | Import-time questions |
 | `WFWorkflowInputContentItemClasses` | Array | No | Accepted input types |
 | `WFWorkflowOutputContentItemClasses` | Array | No | Output types |
-| `WFWorkflowTypes` | Array | No | Workflow types |
+| `WFWorkflowTypes` | Array | No | Where the shortcut appears (see below) |
+
+### `WFWorkflowTypes` values (common)
+
+From classic format references (verify on current OS):
+
+| Value | Meaning |
+|-------|---------|
+| `ActionExtension` | Show in Share Sheet |
+| `MenuBar` | Keep in Menu Bar (Mac) |
+| `QuickActions` | Use as Quick Action (Mac) |
+| `NCWidget` | Notification Center / widget surfaces (legacy naming) |
+| `Watch` / `WatchKit` | Apple Watch availability (naming varies by OS era) |
+| `Sleep` | Sleep Focus / Sleep Mode surfaces |
+
+### Import questions shape
+
+Each `WFWorkflowImportQuestions` item typically includes `ActionIndex`, `Category`
+(often `Parameter`), `ParameterKey`, `Text`, and optional `DefaultValue`.
 
 ## Icon Configuration
 
