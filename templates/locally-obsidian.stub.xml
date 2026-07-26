@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  STUB: NOT IMPORTABLE / NON IMPORTABLE
-  This Locally to Obsidian starter is an incomplete frozen snapshot for
-  design discussion only. It must NOT be signed or imported into Shortcuts.
+  ABANDONED STUB — NOT IMPORTABLE / NON IMPORTABLE (2026-07-26)
 
-  Known gaps vs references/CONTROL_FLOW.md and VARIABLES.md:
+  Locally → Obsidian track is abandoned. Product direction moved to a companion
+  app + Siri + local-model marketplace: see references/HORIZON.md.
+  This file is kept only as a historical design snapshot. Do NOT extend, sign,
+  import, or attest it.
+
+  Known gaps (why it was never a golden):
   - U+FFFC without attachmentsByRange on Get Text / Ask prompts
   - choosefrommenu missing GroupingIdentifier + WFControlFlowMode
   - invalid action id is.workflow.actions.savefile (use documentpicker.save)
-  - branches C/D/E are stubs; Locally AI is mocked via ask, not App Intent
+  - branches C/D/E are stubs; Locally AI mocked via ask, not App Intent
   - placeholder UUIDs (AAAAAAAA / sequential)
 
   For a working minimal shortcut, use templates/hello-world.shortcut.xml
-  (or examples in references/EXAMPLES.md).
-  Do not treat this file as a regression golden.
+  (or templates/examples/). Do not treat this file as a regression golden.
 -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">

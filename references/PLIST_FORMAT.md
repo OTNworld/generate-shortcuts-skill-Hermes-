@@ -156,6 +156,13 @@ table (liable to change across OS versions):
 Skill templates historically use **Red** `4282601983` as the default glyph tint
 (not the “Blue” row). Verify against a fresh Shortcuts.app export when matching UI.
 
+Helper (no Viticci clone):
+
+```bash
+python3 scripts/shortcut_icon.py --list
+python3 scripts/shortcut_icon.py --glyph Document --color Blue --xml
+```
+
 ## Action Structure
 
 Each action in `WFWorkflowActions` is a dictionary:

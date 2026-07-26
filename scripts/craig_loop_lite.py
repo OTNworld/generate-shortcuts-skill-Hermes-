@@ -4,6 +4,8 @@
 Only fixes mechanical issues (never business semantics):
   - UUID / OutputUUID / GroupingIdentifier: lowercase hex → UPPERCASE
   - WFControlFlowMode stored as <string>0|1|2</string> → <integer>
+  - getdictionaryvalue → getvalueforkey
+  - savefile → documentpicker.save
 
 Usage:
   python3 scripts/craig_loop_lite.py [--max N] [--dry-run] <file.shortcut.xml>
@@ -52,6 +54,23 @@ def safe_fix(text: str) -> tuple[str, list[str]]:
         return f"{m.group('pre')}<integer>{m.group('mode')}</integer>"
 
     text3 = MODE_STRING.sub(int_mode, text2)
+
+    # Legacy dictionary action id → canonical
+    if "is.workflow.actions.getdictionaryvalue" in text3:
+        text3 = text3.replace(
+            "is.workflow.actions.getdictionaryvalue",
+            "is.workflow.actions.getvalueforkey",
+        )
+        notes.append("getdictionaryvalue → getvalueforkey")
+
+    # Invalid legacy save id → documentpicker.save
+    if "is.workflow.actions.savefile" in text3:
+        text3 = text3.replace(
+            "is.workflow.actions.savefile",
+            "is.workflow.actions.documentpicker.save",
+        )
+        notes.append("savefile → documentpicker.save")
+
     return text3, notes
 
 

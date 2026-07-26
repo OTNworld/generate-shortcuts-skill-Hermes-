@@ -5,7 +5,6 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 RUNS="${ROOT}/fixtures/attested/runs"
 OUT="${ROOT}/fixtures/attested/results.json"
-HASHES="${ROOT}/fixtures/attested/hashes.sha256"
 
 mkdir -p "$RUNS"
 

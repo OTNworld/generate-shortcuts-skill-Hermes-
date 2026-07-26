@@ -18,5 +18,9 @@ Schemas: [`POWER_ACTIONS.md`](./POWER_ACTIONS.md). Control-flow goldens live und
 | [`10-count.shortcut.xml`](../templates/palette/10-count.shortcut.xml) | list → count |
 | [`11-choosefromlist.shortcut.xml`](../templates/palette/11-choosefromlist.shortcut.xml) | list → choosefromlist |
 | [`12-delay.shortcut.xml`](../templates/palette/12-delay.shortcut.xml) | delay → showresult |
+| [`13-notification.shortcut.xml`](../templates/palette/13-notification.shortcut.xml) | gettext → notification |
+| [`14-number.shortcut.xml`](../templates/palette/14-number.shortcut.xml) | number → showresult |
+| [`15-openapp.shortcut.xml`](../templates/palette/15-openapp.shortcut.xml) | openapp (Safari) |
+| [`16-speaktext.shortcut.xml`](../templates/palette/16-speaktext.shortcut.xml) | gettext → speaktext |
 
 **Agent rule:** compose from this palette + `templates/examples/0{4,6,7,8}*.xml` before freelancing obscure action parameters. If unsure, export a POC from Shortcuts.app and run `scripts/extract_shortcut.sh`.

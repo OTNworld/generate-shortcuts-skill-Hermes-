@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/data/schemas/attest-results.v1.json",
+  "title": "shortcuts-attest-results/v1",
+  "type": "object",
+  "required": [
+    "schema",
+    "generated_at_utc",
+    "machine",
+    "skill_version",
+    "hashes_file",
+    "hash_count",
+    "import",
+    "run",
+    "pass"
+  ],
+  "properties": {
+    "schema": { "const": "shortcuts-attest-results/v1" },
+    "generated_at_utc": { "type": "string", "minLength": 10 },
+    "machine": {
+      "type": "object",
+      "required": ["hostname", "system"],
+      "properties": {
+        "hostname": { "type": "string" },
+        "system": { "type": "string" },
+        "release": { "type": ["string", "null"] },
+        "macOS": { "type": ["string", "null"] }
+      }
+    },
+    "skill_version": { "type": ["string", "null"] },
+    "hashes_file": { "type": "string" },
+    "hash_count": { "type": "integer", "minimum": 0 },
+    "import": { "$ref": "#/$defs/reportBlock" },
+    "run": { "$ref": "#/$defs/reportBlock" },
+    "pass": { "type": "boolean" },
+    "summary": { "type": "string" }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "tally": {
+      "type": "object",
+      "required": ["OK", "FAIL", "SKIP"],
+      "properties": {
+        "OK": { "type": "integer", "minimum": 0 },
+        "FAIL": { "type": "integer", "minimum": 0 },
+        "SKIP": { "type": "integer", "minimum": 0 },
+        "other": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "reportBlock": {
+      "type": "object",
+      "required": ["rows", "tally"],
+      "properties": {
+        "rows": { "type": "array", "items": { "type": "object" } },
+        "tally": { "$ref": "#/$defs/tally" }
+      }
+    }
+  }
+}

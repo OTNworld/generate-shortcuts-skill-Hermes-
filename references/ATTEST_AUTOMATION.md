@@ -91,7 +91,11 @@ Reliable sequence used by `import_shortcut_ui.sh`:
 3. Try named AX click (`Ajouter ce raccourci` / `Add Shortcut` / …)
 4. Press **Return** (activates the default green CTA) — proven on macOS 26 FR
 5. Optional: locate green pixels `(≈60,132,41)` and `click at`
-6. Verify with `shortcuts list | grep -x <name>`
+6. Secondary sheets: named AX for untrusted/Allow/Continue (EN+FR); Escape if stuck; retry Return
+7. Verify with `shortcuts list | grep -x <name>`
+
+Idempotence: without `--force`, already-listed names are **SKIP**. Use
+`./scripts/attest_local.sh --auto --force --timeout 20` to re-import.
 
 ## Run policy
 
@@ -118,9 +122,11 @@ Craig Loop lite (safe fixes only): `./scripts/validate_on_write.sh --fix <file>`
 ## Agent playbook
 
 1. Stay on a **local** Mac agent (not Cloud Linux).
-2. Run `./scripts/attest_local.sh --auto`.
-3. If Accessibility fails, open Privacy settings and ask the user to toggle Cursor.
-4. Fill `fixtures/attested/MATRIX.md` from sign/import/`run_report.tsv`.
-5. Never commit `*_signed.shortcut` binaries.
+2. Run `./scripts/check_shortcuts_automation.sh` (or `--json` for agents).
+3. Run `./scripts/attest_local.sh --auto`.
+4. If Accessibility fails, open Privacy settings and ask the user to toggle Cursor.
+5. Optional network: `./scripts/run_shortcut_attest.sh --include-network` (flaky — MATRIX notes).
+6. Fill `fixtures/attested/MATRIX.md` from sign/import/`run_report.tsv`.
+7. Never commit `*_signed.shortcut` binaries.
 
 See also: `LOCAL_FINALIZE.md`, `fixtures/attested/MAC_HANDOFF.md`.
