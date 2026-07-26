@@ -16,7 +16,7 @@ Palier A (9/10) is implemented in v1.6.0. Remaining for a credible **10/10 skill
 | B10 | Expand community vendors from `data/external/*.index.jsonl` as needed | **8 goldens (1.10.0)** |
 | B11 | Attestation automation (import UI + run) | **Done (scripts)** — sheets / NET harden in 1.11.0 |
 | B12 | Lean remix + validate-on-write | **Done (1.10.0)**; structural remix **1.11.0** |
-| B13 | Horizon companion app / Siri / marketplace | **Direction only** — [`HORIZON.md`](HORIZON.md) |
+| B13 | Horizon companion app / Siri / marketplace | **Paper MVP (1.13.0)** — [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md); app runtime out of band |
 
 **Prochains pas détaillés (checklist active) :**  
 [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) (attestation / 10/10 Mac)  
