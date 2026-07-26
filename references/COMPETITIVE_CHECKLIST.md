@@ -189,7 +189,7 @@ Coche les 4 pour dire “on a comblé le ressenti auteur” sans match feature-f
 
 - [x] V1 remix hello-world → Bonjour (validate + sign)
 - [x] V2 validate_on_write obligatoire dans SKILL
-- [ ] V3 +3 community/gap goldens Import OK
+- [x] V3 +3 community/gap goldens Import OK
 - [x] V5 README différenciation attestation
 
 ---
@@ -201,10 +201,11 @@ Coche les 4 pour dire “on a comblé le ressenti auteur” sans match feature-f
 | V0 | Cartographie peer | P0 | [x] |
 | V1 | Remix / diff NL | P0 | [x] MVP |
 | V2 | Validate-on-write | P0 | [x] |
-| V3 | Corpus + ToolKit batch | P1 | [ ] |
-| V4 | Surface agent EN/selftest | P1 | [ ] |
-| V5 | Lead attestation | P1 | [~] README |
-| V6 | Release packaging | P2 | [ ] |
+| V3 | Corpus + ToolKit batch | P1 | [x] |
+| V4 | Surface agent EN/selftest | P1 | [x] |
+| V5 | Lead attestation | P1 | [x] |
+| V6 | Release packaging | P2 | [~] on PR branch |
+
 
 ---
 

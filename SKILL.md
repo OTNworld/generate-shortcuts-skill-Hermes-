@@ -6,7 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.9.0
+version: 1.10.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -98,7 +98,7 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 ## Références
 
 - `references/PLIST_FORMAT.md` : structure racine.
-- `references/ACTIONS.md` : 427 WF*Actions.
+- `references/ACTIONS.md` : 438 WF*Actions.
 - `references/POWER_ACTIONS.md` : schémas des 25 actions prioritaires.
 - `references/STARTER_PALETTE.md` : index des XML palette.
 - `references/APPINTENTS.md` : 154 AppIntents (curated subset).
@@ -115,6 +115,8 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/NEXT_CHECKLIST.md` : checklist prochains pas vers 10/10.
 - `references/COMPETITIVE_CHECKLIST.md` : parité auteur vs Viticci (remix / validate-on-write / corpus), lean.
 - `references/REMIX.md` : protocole remix / diff chirurgical.
+- `references/OUTPUT_NAMES.md` : libellés `OutputName` anglais.
+- `SKILL.en.md` : protocole agent en anglais.
 - `references/ECOSYSTEM.md` : repos / corpus externes centralisés.
 - `references/ROADMAP_10.md` : suite vers 10/10.
 - `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.

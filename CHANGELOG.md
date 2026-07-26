@@ -24,7 +24,7 @@ Versioning follows the `version` field in `SKILL.md`.
 ### Changed
 - Skill version 1.9.0
 
-## [Unreleased]
+## [1.10.0] - 2026-07-26
 
 ### Added
 - Mac-max attestation (no iOS): `results.json`, import/run TSV snapshots, Ask `--with-inputs`,
@@ -32,8 +32,16 @@ Versioning follows the `version` field in `SKILL.md`.
 - `--auto` now includes `--with-inputs` + results aggregation
 - Competitive parity checklist (lean vs Viticci): `references/COMPETITIVE_CHECKLIST.md`
 - Lean remix + validate-on-write: `references/REMIX.md`, `scripts/remix_shortcut.py`,
-  `scripts/validate_on_write.sh`, `fixtures/remix/` (V0–V2); README differentiation
+  `scripts/validate_on_write.sh`, `fixtures/remix/`
+- `SKILL.en.md`, `references/OUTPUT_NAMES.md`, `scripts/selftest.sh`
+- Community goldens 14–16 + teaching `09-share-sheet-input` (Share Sheet)
+- SSOT WF actions expanded to **438**
 
+### Changed
+- Skill version 1.10.0
+- README differentiation: Mac attestation first-class vs larger playground plugins
+
+## [Unreleased]
 
 ## [1.8.0] - 2026-07-26
 

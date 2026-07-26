@@ -12,6 +12,9 @@ Catalog: [`references/ECOSYSTEM.md`](../../../references/ECOSYSTEM.md).
 | `11-invert-names.shortcut.xml` | Invert Names | viticci/shortcuts-playground-plugin |
 | `12-days-in-a-month.shortcut.xml` | Days In a Month | viticci/shortcuts-playground-plugin |
 | `13-electricity-price.shortcut.xml` | Electricity Price | viticci/shortcuts-playground-plugin |
+| `14-preview-folder-contents.shortcut.xml` | Preview Folder Contents | viticci (files / picker) |
+| `15-masto-redirect.shortcut.xml` | Masto-Redirect | viticci (HTTP / detect / URL) |
+| `16-calendar-locations.shortcut.xml` | Calendar Locations | viticci (calendar filter) |
 
 More upstream titles: `data/external/viticci-playground-goldens.index.jsonl`.
 

@@ -58,7 +58,7 @@ Snapshot of [viticci/shortcuts-playground](https://github.com/viticci/shortcuts-
 | Validate on edit | PostToolUse → `validate-shortcut` (Craig Loop) | **`scripts/validate_on_write.sh`** after each Write (V2) |
 | Sign wrapper | `sign-shortcut` (archive + sign, no `_signed` suffix) | `scripts/sign_shortcut.sh` (keep; attest uses `_signed` temp names) |
 | Icon resolver | `resolve-icon` / `select_shortcut_icon_color.py` | Table in `PLIST_FORMAT.md` (V3 lite later) |
-| ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (427) + `appintents.json` (154 curated) |
+| ToolKit allowlists | v63 + v78 gated JSON catalogs | `data/wf_actions.json` (**438**) + `appintents.json` (154 curated) |
 | Goldens | ~19 playground XMLs | 8 teaching + 12 palette + 5 community |
 | Attestation Mac import/run | Not first-class | **`attest_local.sh --auto` + `results.json`** (lead) |
 

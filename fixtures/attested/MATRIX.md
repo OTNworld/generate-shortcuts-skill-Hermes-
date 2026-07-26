@@ -36,6 +36,10 @@ Filled on macOS after automated sign → import UI → run (`./scripts/attest_lo
 | community/11-invert-names | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | Import OK (C1) |
 | community/12-days-in-a-month |  | — |  |  |  |  |  | optional |
 | community/13-electricity-price |  | — |  |  |  |  |  | optional |
+| community/14-preview-folder-contents | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 files gap |
+| community/15-masto-redirect | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 HTTP gap |
+| community/16-calendar-locations | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 calendar gap |
+| examples/09-share-sheet-input | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | teaching Share Sheet / ActionExtension |
 
 ## Hashes (unsigned XML only)
 

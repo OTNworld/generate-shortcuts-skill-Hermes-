@@ -59,6 +59,12 @@ List → Repeat Each → End Repeat → Show Result.
 
 - File: [`templates/examples/08-repeat-each.shortcut.xml`](../templates/examples/08-repeat-each.shortcut.xml)
 
+## Example 9: Share Sheet Input
+
+`WFWorkflowTypes` includes `ActionExtension`; shows `Shortcut Input` from the Share Sheet.
+
+- File: [`templates/examples/09-share-sheet-input.shortcut.xml`](../templates/examples/09-share-sheet-input.shortcut.xml)
+
 ## Community goldens (vendored MIT)
 
 Real-world examples from peer projects — see [`templates/examples/community/`](../templates/examples/community/) and [`ECOSYSTEM.md`](./ECOSYSTEM.md).
@@ -70,6 +76,9 @@ Real-world examples from peer projects — see [`templates/examples/community/`]
 | [`11-invert-names.shortcut.xml`](../templates/examples/community/11-invert-names.shortcut.xml) | Invert Names |
 | [`12-days-in-a-month.shortcut.xml`](../templates/examples/community/12-days-in-a-month.shortcut.xml) | Days In a Month |
 | [`13-electricity-price.shortcut.xml`](../templates/examples/community/13-electricity-price.shortcut.xml) | Electricity Price |
+| [`14-preview-folder-contents.shortcut.xml`](../templates/examples/community/14-preview-folder-contents.shortcut.xml) | Preview Folder Contents |
+| [`15-masto-redirect.shortcut.xml`](../templates/examples/community/15-masto-redirect.shortcut.xml) | Masto-Redirect |
+| [`16-calendar-locations.shortcut.xml`](../templates/examples/community/16-calendar-locations.shortcut.xml) | Calendar Locations |
 
 Upstream catalog index: [`data/external/viticci-playground-goldens.index.jsonl`](../data/external/viticci-playground-goldens.index.jsonl).
 
