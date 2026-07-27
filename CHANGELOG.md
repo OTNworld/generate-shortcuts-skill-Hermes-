@@ -5,6 +5,14 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [Unreleased]
+
+### Added
+- Horizon iOS oneshot blueprint under `horizon/app/` (VISION, REQUIREMENTS, ARCHITECTURE, ONESHOT_PLAN, CHECKLIST, SKILL.md)
+- Fetch CI script `horizon/app/scripts/fetch_skill_packages.sh` + `check_oneshot_ready.py` gate in `validate.sh`
+- Bootstrap notes for private repo `OTNworld/horizon-iOS` (fetch-CI link mode)
+- Peer source links: laramarcodes/ios-dev-skill, n0an/App-Intents-Agent-Skill
+
 ## [1.16.0] - 2026-07-26
 
 ### Added

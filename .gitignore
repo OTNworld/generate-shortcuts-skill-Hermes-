@@ -17,3 +17,6 @@ fixtures/attested/runs/
 
 __pycache__/
 *.py[cod]
+
+# Horizon app fetch output (seed / local CI smoke)
+/horizon/app/Vendor/

@@ -5,7 +5,7 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
+  Horizon companion (marketplace / Siri): `references/HORIZON.md` · oneshot iOS blueprint: `horizon/app/SKILL.md`
 version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT

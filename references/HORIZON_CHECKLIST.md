@@ -34,9 +34,15 @@ Vision : [`HORIZON.md`](HORIZON.md) · index : [`../horizon/README.md`](../horiz
 
 ## Next (app repo — not this skill)
 
-- [ ] Swift scaffold consuming `horizon/packages/`
+Blueprint oneshot (docs + fetch script) lives in [`../horizon/app/`](../horizon/app/) — **seed ready**.
+
+Private repo: **`OTNworld/horizon-iOS`** (create under your account; see `app/REPO_BOOTSTRAP.md`).
+
+- [ ] Create private `horizon-iOS` + push seed from `horizon/app/`
+- [ ] Swift scaffold consuming fetched `Vendor/SkillPackages/`
 - [ ] Register `hermes-shortcuts://` URL scheme
 - [ ] On-device model adapter + Siri phrases → install/run
+- [ ] Complete [`../horizon/app/CHECKLIST.md`](../horizon/app/CHECKLIST.md) P0 gates
 
 ## Anti-goals
 

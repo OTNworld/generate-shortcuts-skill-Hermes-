@@ -49,7 +49,7 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 - `templates/palette/` : 16 minimal power-action starters
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
 - `templates/locally-obsidian.stub.xml` : stub **abandonné** (historique, non importable)
-- Horizon (app / Siri / marketplace) : `references/HORIZON.md`
+- Horizon (app / Siri / marketplace) : `references/HORIZON.md` · oneshot iOS : `horizon/app/SKILL.md`
 - Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
 
 ## Étapes

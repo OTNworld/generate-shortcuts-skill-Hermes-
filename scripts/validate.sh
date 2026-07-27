@@ -125,6 +125,9 @@ python3 scripts/check_no_secrets.py
 echo "== Horizon packages =="
 python3 scripts/check_horizon_packages.py
 
+echo "== Horizon iOS oneshot blueprint =="
+python3 horizon/app/scripts/check_oneshot_ready.py
+
 echo "== Sources registry =="
 python3 scripts/check_sources.py
 
