@@ -2,6 +2,23 @@
 
 Common ways generated Shortcuts fail — and how to fix them before signing.
 
+## Erreur → une commande
+
+| Validate / runtime message | Commande |
+|----------------------------|----------|
+| UUID not uppercase / lowercase hex | `./scripts/validate_on_write.sh --fix <file>` |
+| `WFControlFlowMode must be int` / mode as string | `./scripts/validate_on_write.sh --fix <file>` |
+| `getdictionaryvalue` / action introuvable dictionary | `./scripts/validate_on_write.sh --fix <file>` (→ `getvalueforkey`) |
+| `invalid action id savefile` | `./scripts/validate_on_write.sh --fix <file>` (→ `documentpicker.save`) |
+| `FAIL unknown action IDs` | Check spelling vs `data/wf_actions.json`; do not invent |
+| U+FFFC without `attachmentsByRange` | Restore producer wiring; see VARIABLES.md (not auto-fixed) |
+| `FAIL nothing changed` (remix) | Pass a real `--replace-text` / structural op |
+| Secret-like pattern in templates | Remove credential; see `SECURITY.md` / `check_no_secrets.py` |
+| Schema drift catalogs | `python3 scripts/check_json_schema.py data/….json data/schemas/….json` |
+| AppIntent unverified | Allowed in SSOT list only; **no** teaching `appintentexecution` golden until Mac export |
+
+Craig Loop lite **never** fixes business semantics — only mechanical ID/case/mode rewrites.
+
 ## Import / parse failures
 
 | Symptom | Likely cause | Fix |

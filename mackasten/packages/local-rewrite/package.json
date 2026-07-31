@@ -1,0 +1,27 @@
+{
+  "schema": "mackasten-package/v1",
+  "id": "local-rewrite",
+  "name": "Rewrite Text On-Device",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Local-model SKU: Ask → Ask LLM (Apple Intelligence) rewrite prompt → Show Result.",
+  "tags": ["local-model", "apple-intelligence", "rewrite", "marketplace"],
+  "model_policy": "apple-intelligence",
+  "siri_phrases": ["Rewrite this text", "Run rewrite shortcut"],
+  "shortcuts": [
+    {
+      "path": "templates/examples/10-rewrite-text.shortcut.xml",
+      "role": "primary",
+      "output_name": "Rewrite Text"
+    }
+  ],
+  "attestation": {
+    "matrix_ref": "fixtures/attested/MATRIX.md",
+    "results_ref": "fixtures/attested/results.json",
+    "status": "unattested"
+  },
+  "edit": {
+    "skill_path": "templates/examples/10-rewrite-text.shortcut.xml",
+    "deep_link": "hermes-shortcuts://edit?path=templates/examples/10-rewrite-text.shortcut.xml"
+  }
+}

@@ -31,6 +31,10 @@ Filled on macOS after automated sign → import UI → run (`./scripts/attest_lo
 | palette/10-count | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
 | palette/11-choosefromlist | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | interactive (UI) |
 | palette/12-delay | 26.5.2 | — |  | 2026-07-26 | OK | OK | OK |  |
+| palette/13-notification | — | — |  |  |  |  |  | pending Mac attest (1.11.0) |
+| palette/14-number | — | — |  |  |  |  |  | pending Mac attest (1.11.0) |
+| palette/15-openapp | — | — |  |  |  |  |  | pending Mac attest (1.11.0); may focus Safari |
+| palette/16-speaktext | — | — |  |  |  |  |  | pending Mac; Run=ENV/audio |
 | community/09-url-cleaner | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | Import OK (C1) |
 | community/10-parse-json-feed |  | — |  |  |  |  |  | optional |
 | community/11-invert-names | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | Import OK (C1) |
@@ -39,6 +43,10 @@ Filled on macOS after automated sign → import UI → run (`./scripts/attest_lo
 | community/14-preview-folder-contents | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 files gap |
 | community/15-masto-redirect | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 HTTP gap |
 | community/16-calendar-locations | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | V3 calendar gap |
+| community/17-create-calendar-event-from-template | — | — |  |  |  |  |  | pending Mac attest (1.15.0 vendor) |
+| community/18-select-folder-compress-share | — | — |  |  |  |  |  | pending Mac attest (1.15.0 vendor); Share=UI |
+| community/19-app-release-notes | — | — |  |  |  |  |  | pending Mac attest (1.16.0); may need App Store/NET |
+| examples/10-rewrite-text | — | — |  |  |  |  |  | pending Mac; Run=ENV (Apple Intelligence) |
 | examples/09-share-sheet-input | 26.5.2 | — |  | 2026-07-26 | OK | OK | — | teaching Share Sheet / ActionExtension |
 
 ## Hashes (unsigned XML only)
@@ -72,6 +80,7 @@ Also kept in `fixtures/attested/hashes.sha256`.
 
 - [x] All `examples/01`–`08` : Sign=OK, Import=OK, Run=OK (or documented skip UI/NET/ENV)
 - [x] All `palette/01`–`12` : Sign=OK, Import=OK (Run OK or categorized skip)
+- [ ] `palette/13`–`16` : Mac attest pending (validate/CI green on Linux)
 - [x] At least 2 `community/*` : Import=OK (`09-url-cleaner`, `11-invert-names`)
 - [x] `hashes.sha256` committed or pasted above
 - [x] Bump `SKILL.md` → `1.9.0` + CHANGELOG entry `Attested on macOS …`

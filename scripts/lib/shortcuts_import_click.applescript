@@ -5,7 +5,7 @@
 
 on buttonNames()
 	-- FR UI uses "Ajouter ce raccourci" on the signed-file import sheet.
-	return {"Add Shortcut", "Add This Shortcut", "Add Untrusted Shortcut", "Add Anyway", "Get Shortcut", "OK", "Ajouter ce raccourci", "Ajouter le raccourci", "Ajouter un raccourci", "Ajouter le raccourci non fiable", "Ajouter quand même", "Obtenir le raccourci"}
+	return {"Add Shortcut", "Add This Shortcut", "Add Untrusted Shortcut", "Add Anyway", "Allow", "OK", "Continue", "Get Shortcut", "Ajouter ce raccourci", "Ajouter le raccourci", "Ajouter un raccourci", "Ajouter le raccourci non fiable", "Ajouter quand même", "Autoriser", "Continuer", "Obtenir le raccourci"}
 end buttonNames
 
 on clickMatchingButton(targetProcess)

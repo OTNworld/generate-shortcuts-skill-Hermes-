@@ -300,5 +300,15 @@
     }
   },
   "pass": true,
-  "summary": "import OK=27 FAIL=0 SKIP=0; run OK=14 FAIL=0 SKIP=2"
+  "summary": "import OK=27 FAIL=0 SKIP=0; run OK=14 FAIL=0 SKIP=2",
+  "attest_baseline": {
+    "skill_version": "1.10.0",
+    "note": "This results.json is a Mac attestation snapshot for skill 1.10.0. Later skill versions may add goldens (palette 13\u201316, community 17\u201319, examples/10-rewrite-text, Mackasten packages) that are CI-validated only \u2014 see references/MAC_10_CHECKLIST.md.",
+    "unattested_deltas": [
+      "palette/13-16",
+      "community/17-19",
+      "examples/10-rewrite-text",
+      "mackasten packages beyond hello-world/local-ask-llm baseline refs"
+    ]
+  }
 }

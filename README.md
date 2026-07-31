@@ -8,7 +8,7 @@ A Hermes skill for AI-assisted generation of macOS/iOS Shortcuts. Create valid `
 |---------|----------|-----|
 | `SKILL.md` (Hermes prompts / workflow) | French | Primary agent-facing protocol for this fork |
 | `README.md` + `references/*` | English | Shared technical grammar reference |
-| User-facing shortcut copy in templates | Match the target audience | EN for goldens; FR notes in Locally stub |
+| User-facing shortcut copy in templates | Match the target audience | EN for goldens; FR optional vault notes |
 
 `OutputName` values inside plists are always **English** Shortcuts labels.
 
@@ -54,7 +54,7 @@ Or download and extract the files manually into `~/.hermes/skills/shortcuts-gene
 ├── templates/
 │   ├── hello-world.shortcut.xml
 │   ├── shortcut-skeleton.plist
-│   ├── locally-obsidian.stub.xml
+│   ├── locally-obsidian.stub.xml  # abandoned historical stub
 │   └── examples/                # Importable goldens 01–08
 ├── fixtures/attested/           # 10/10: macOS/iOS import attestations
 └── .github/workflows/validate.yml
@@ -74,6 +74,13 @@ Once installed, ask Hermes to create a shortcut:
 
 Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it so you can import it directly into the Shortcuts app.
 
+**Agent map (≤2 min):** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
+**Linux 10/10 track:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
+**Mac 10/10 track (device):** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)  
+**Mackasten packages:** [`mackasten/README.md`](mackasten/README.md)  
+**Release:** [`references/RELEASE.md`](references/RELEASE.md) · `./scripts/cut_release.sh`  
+**Product direction (companion app / Siri / local-model marketplace):** [`references/MACKASTEN.md`](references/MACKASTEN.md). The Locally→Obsidian stub track is abandoned.
+
 ## Local finalize (Mac → 10/10)
 
 See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md) and `./scripts/attest_local.sh --auto`.
@@ -82,9 +89,21 @@ See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md) and `./scripts/attest_local.sh --au
 Peer playgrounds often lead on remix/ToolKit size; we lead on **attested, reproducible Mac delivery**.
 Remix lean: `references/REMIX.md` + `scripts/remix_shortcut.py`. After every plist edit: `scripts/validate_on_write.sh`.
 
+## Agent commands → utilities
+
+| Intent | Command |
+|--------|---------|
+| **build** | Follow `SKILL.md` steps + goldens under `templates/` |
+| **validate** | `./scripts/validate_on_write.sh <file>` · repo: `./scripts/validate.sh` · gate: `./scripts/selftest.sh` |
+| **fix (Craig)** | `./scripts/validate_on_write.sh --fix <file>` |
+| **remix** | `python3 scripts/remix_shortcut.py` · `references/REMIX.md` |
+| **attest** | `./scripts/attest_local.sh --auto` (Mac + Accessibility) |
+| **mackasten** | Agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (MCP / automations / market) · paper MVP: `references/MACKASTEN_CHECKLIST.md` |
+
 ## Validation
 
 ```bash
+./scripts/selftest.sh
 ./scripts/validate.sh
 ./scripts/validate_on_write.sh templates/examples/01-hello-world.shortcut.xml
 ```
@@ -96,21 +115,26 @@ Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar he
 | File | Description |
 |------|-------------|
 | `SKILL.md` | Skill definition (FR) |
-| `data/wf_actions.json` | SSOT for all 438 WF*Action identifiers |
-| `data/appintents.json` | SSOT for curated subset of 154 AppIntent identifiers |
+| `data/wf_actions.json` | SSOT for all 446 WF*Action identifiers |
+| `data/appintents.json` | SSOT for curated subset of 168 AppIntent identifiers |
 | `references/ACTIONS.md` | WF*Action docs + complete list |
 | `references/POWER_ACTIONS.md` | Parameter schemas for 25 priority actions |
-| `references/APPINTENTS.md` | Curated subset of 154 AppIntent identifiers |
+| `references/APPINTENTS.md` | Curated subset of 168 AppIntent identifiers |
 | `references/FAILURE_MODES.md` | Agent failure playbook |
 | `references/PLATFORM_MATRIX.md` | iOS/macOS availability (curated) |
 | `references/EXAMPLES.md` | Index of importable goldens |
 | `scripts/sign_shortcut.sh` | Signing helper |
 | `scripts/validate.sh` | Repo validation |
+| `scripts/validate_on_write.sh` | Per-file post-edit validate (`--fix` = Craig Loop lite) |
+| `scripts/attest_local.sh` | Mac attestation pipeline |
+| `scripts/selftest.sh` | Local gate (validate + sample validate_on_write) |
+| `references/MACKASTEN_CHECKLIST.md` | Mackasten paper MVP (packages / schema) |
+| `references/MACKASTEN_AGENT_CHECKLIST.md` | Post–Mac-max agent track (MCP / market / CLI) |
 | `data/sources.json` | Registry of external repos / corpora |
 | `references/ECOSYSTEM.md` | How we link, index, and selectively vendor peers |
 | `references/URL_SCHEMES.md` | `shortcuts://` + x-callback-url |
 | `templates/examples/community/` | MIT-vendored real-world goldens |
-| `templates/palette/` | 12 minimal power-action starters |
+| `templates/palette/` | 16 minimal power-action starters |
 | `references/STARTER_PALETTE.md` | Palette index |
 | `scripts/extract_shortcut.sh` | Binary/XML shortcut → inspectable XML |
 | `scripts/render_refs.py` | Regenerate catalog fences from SSOT |

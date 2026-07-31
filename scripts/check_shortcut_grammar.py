@@ -46,6 +46,7 @@ KNOWN_OUTPUT_NAMES = {
     "Date",
     "Formatted Date",
     "Count",
+    "Number",
     "Note",
 }
 

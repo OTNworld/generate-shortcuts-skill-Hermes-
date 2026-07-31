@@ -8,10 +8,10 @@ Objectif : combler le **gap d’expérience auteur** face à [viticci/shortcuts-
 | Axe | Nous | Viticci playground |
 |-----|------|--------------------|
 | Attestation Mac sign/import/run + `results.json` | **Lead** | Faible / non systématique |
-| Corpus goldens | 9 teaching + 12 palette + 8 community | ~19 goldens riches |
+| Corpus goldens | 10 teaching + 16 palette + 11 community | ~19 goldens riches |
 | Remix / diff NL sur XML existant | **`remix_shortcut.py` + REMIX.md** | **Lead** (richer agents) |
 | Validate-on-write (hooks) | **`validate_on_write.sh`** | PostToolUse + Craig Loop |
-| ToolKit / AppIntents profondeur | 438 WF + 154 curated | ToolKit v63+ gated |
+| ToolKit / AppIntents profondeur | 446 WF + 168 curated | ToolKit v63+ gated |
 | Surface skill | Lean FR + `SKILL.en.md` | Plugin Claude/Codex lourd |
 | License posture | MIT + link-not-vendor GPL | MIT plugin |
 
@@ -117,8 +117,8 @@ Le plus gros différenciateur Viticci côté *édition*.
 
 ### V3.2 AppIntents / catalogues
 
-- [x] Audit : quels intents Viticci “gated” manquent ? → `references/APPINTENTS_GAP.md` (garder curated 154)
-- [x] Étendre SSOT **par lots** (+20–40 max) avec `render_refs.py` + counts docs → **438** WF
+- [x] Audit : quels intents Viticci “gated” manquent ? → `references/APPINTENTS_GAP.md` (garder curated 168)
+- [x] Étendre SSOT **par lots** (+20–40 max) avec `render_refs.py` + counts docs → **446** WF / **168** AppIntents
 - [x] `PLATFORM_MATRIX.md` : marquer macOS/iOS/unknown pour les actions des goldens community
 
 ### V3.3 Icon / polish
@@ -162,7 +162,7 @@ Ne pas laisser Viticci rattraper *notre* axe.
 ## Phase V6 — Packaging & distribution (P2)
 
 - [x] Tag `v1.10.0` quand V1+V2+V3 min done
-- [ ] Entrée LobeHub / Cursor skills market (si pertinent) — description différenciante
+- [ ] Entrée LobeHub / Cursor skills market (si pertinent) — voir `MACKASTEN_AGENT_CHECKLIST.md` H3 / `MARKET_LISTING.md`
 - [x] Changelog “Parity track” résumé (`CHANGELOG` 1.10.0)
 - [x] PR / release notes bilingues FR-EN courte
 

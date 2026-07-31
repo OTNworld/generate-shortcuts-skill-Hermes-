@@ -11,7 +11,8 @@ REPORT="${OUT_DIR}/run_report.tsv"
 TIMEOUT_SEC="${TIMEOUT_SEC:-25}"
 
 # Prefer fixed/v2 names when stale library copies still exist under the canonical name.
-NONINTERACTIVE="01-hello-world_signed 06-conditional-v2_signed 06-conditional_signed 07-repeat-count_signed 08-repeat-each_signed 02-gettext-show_signed 03-setclipboard_signed 05-list_signed 06-dictionary-fixed_signed 06-dictionary_signed 07-variables_signed 09-comment-nothing_signed 10-count_signed 12-delay_signed"
+NONINTERACTIVE="01-hello-world_signed 06-conditional-v2_signed 06-conditional_signed 07-repeat-count_signed 08-repeat-each_signed 02-gettext-show_signed 03-setclipboard_signed 05-list_signed 06-dictionary-fixed_signed 06-dictionary_signed 07-variables_signed 09-comment-nothing_signed 10-count_signed 12-delay_signed 13-notification_signed 14-number_signed 15-openapp_signed"
+# speaktext is ENV/UI (audio); skip in default headless set
 WITH_INPUTS="02-ask-input_signed 01-ask_signed"
 NETWORKISH="05-weather-ai_signed 04-url-open_signed 08-downloadurl_signed"
 

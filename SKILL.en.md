@@ -5,8 +5,8 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.10.0
+  Obsidian vault notes (optional; Locally track abandoned — see MACKASTEN.md).
+version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -21,6 +21,8 @@ metadata:
 English mirror of the agent protocol. The Hermes-facing `SKILL.md` remains French;
 follow the same steps and scripts.
 
+**Agent map:** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md) · **Linux 10/10:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md) · **Mac 10/10:** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md) · **Mackasten:** [`mackasten/README.md`](mackasten/README.md)
+
 ## Commands (virtual)
 
 | Intent | How |
@@ -29,6 +31,7 @@ follow the same steps and scripts.
 | **remix** | `references/REMIX.md` + `python3 scripts/remix_shortcut.py` |
 | **attest** | `./scripts/attest_local.sh --auto` (local Mac only) |
 | **validate** | `./scripts/validate_on_write.sh <file>` after every plist edit |
+| **selftest** | `./scripts/selftest.sh` (CI contract) |
 
 ## Steps
 

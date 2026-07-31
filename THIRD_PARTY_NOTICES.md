@@ -3,6 +3,19 @@
 This skill is MIT-licensed (see [LICENSE](LICENSE)). The following third-party
 materials are referenced or selectively vendored.
 
+Registry SSOT: [`data/sources.json`](data/sources.json) (validated by `scripts/check_sources.py`).
+
+## Upstream lineage
+
+### drewocarr/generate-shortcuts-skill
+
+- Role: historical lineage (docs layout / early action catalog inspiration)
+- Upstream: https://github.com/drewocarr/generate-shortcuts-skill
+- License: **unspecified / unknown** (GitHub `license=null` as of 2026-07-26)
+- Use: **link only** — this MIT LICENSE covers *this* repository’s original work
+  and MIT-compatible vendored community goldens; it does **not** assert that the
+  upstream project is MIT.
+
 ## Vendored under MIT
 
 ### viticci/shortcuts-playground-plugin
@@ -19,7 +32,11 @@ materials are referenced or selectively vendored.
   - `templates/examples/community/14-preview-folder-contents.shortcut.xml`
   - `templates/examples/community/15-masto-redirect.shortcut.xml`
   - `templates/examples/community/16-calendar-locations.shortcut.xml`
+  - `templates/examples/community/17-create-calendar-event-from-template.shortcut.xml`
+  - `templates/examples/community/18-select-folder-compress-share.shortcut.xml`
+  - `templates/examples/community/19-app-release-notes.shortcut.xml`
   - `data/external/viticci-playground-goldens.index.jsonl` (index metadata)
+  - `data/external/viticci-gaps.jsonl` (index of non-vendored titles)
 - Adapted documentation patterns may appear in `references/URL_SCHEMES.md`
   (cross-checked with Apple’s Shortcuts User Guide).
 
@@ -28,8 +45,17 @@ materials are referenced or selectively vendored.
 ### sebj/iOS-Shortcuts-Reference
 
 - Upstream: https://github.com/sebj/iOS-Shortcuts-Reference (archived)
+- License: unspecified
 - Used for: icon ARGB color table corrections, `WFWorkflowTypes` / input class names,
   classic URL scheme inventory (see `references/PLIST_FORMAT.md`, `URL_SCHEMES.md`).
+
+## Official (Apple)
+
+| Resource | URL | Use |
+|----------|-----|-----|
+| Shortcuts User Guide | https://support.apple.com/guide/shortcuts/welcome/ios | Behavior / product |
+| URL schemes | https://support.apple.com/guide/shortcuts/use-url-schemes-apd621a1ad7a/ios | `shortcuts://` |
+| App Intents | https://developer.apple.com/documentation/appintents | Mackasten / Siri / intents |
 
 ## Link-only (do not vendor code)
 
@@ -38,6 +64,10 @@ materials are referenced or selectively vendored.
 | [joshfarrant/shortcuts-js](https://github.com/joshfarrant/shortcuts-js) | GPL-3.0 | Copyleft incompatible with vendoring into MIT skill code |
 | [drewburchfield/shortcuts-toolkit](https://github.com/drewburchfield/shortcuts-toolkit) | unspecified | Reference notes only |
 | [drewocarr/generate-shortcuts-skill](https://github.com/drewocarr/generate-shortcuts-skill) | unspecified | Lineage / comparison |
-| Apple Shortcuts User Guide | Apple | Official URL scheme docs |
+| [ScPL docs](https://docs.scpl.dev/) | unspecified | Parameter cross-check |
+| [Zachary7829 file format](https://zachary7829.github.io/blog/shortcuts/fileformat) | unspecified | Community format notes |
+| [Matthew Cassinelli Actions](https://matthewcassinelli.com/actions/) | unspecified | Human action directory |
+| [0xdevalias gist](https://gist.github.com/0xdevalias/27d9aea9529be7b6ce59055332a94477) | gist | iCloud extract notes |
+| [RoutineHub Source Tool](https://routinehub.co/shortcut/5256/) | n/a | On-device debug; links rot |
 
-See also [`data/sources.json`](data/sources.json) and [`references/ECOSYSTEM.md`](references/ECOSYSTEM.md).
+See also [`references/ECOSYSTEM.md`](references/ECOSYSTEM.md).

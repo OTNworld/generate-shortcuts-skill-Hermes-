@@ -5,8 +5,8 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Obsidian vault workflows (see references/OBSIDIAN_BRIDGE.md).
-version: 1.10.0
+  Obsidian vault notes (optional; Locally track abandoned — see MACKASTEN.md).
+version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
 platforms: [macos, ios]
@@ -19,6 +19,11 @@ metadata:
 # macOS/iOS Shortcuts Generator
 
 Génère ou corrige des fichiers `.shortcut` exploitables par l’app **Raccourcis** sur macOS/iOS, à partir de XML plist valide. Le skill documente la grammaire des actions et des paramètres ; il ne s’agit pas d’un générateur magique, mais d’un protocole reproductible.
+
+**Carte agent (≤2 min) :** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
+**Track Linux 10/10 :** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
+**Track Mac 10/10 :** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)  
+**Publication:** [`references/RELEASE.md`](references/RELEASE.md) · `./scripts/cut_release.sh` (dry-run)
 
 ## Quand utiliser ce skill
 
@@ -41,9 +46,10 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 
 - `templates/hello-world.shortcut.xml` : golden minimal **importable** (Get Text → Show Result)
 - `templates/examples/` : goldens 01–08 + `community/` (MIT-vendored peers)
-- `templates/palette/` : 12 minimal power-action starters
+- `templates/palette/` : 16 minimal power-action starters
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
-- `templates/locally-obsidian.stub.xml` : stub **non importable** (design only)
+- `templates/locally-obsidian.stub.xml` : stub **abandonné** (historique, non importable)
+- Mackasten (app / Siri / marketplace) : `references/MACKASTEN.md`
 - Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
 
 ## Étapes
@@ -99,10 +105,10 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 ## Références
 
 - `references/PLIST_FORMAT.md` : structure racine.
-- `references/ACTIONS.md` : 438 WF*Actions.
+- `references/ACTIONS.md` : 446 WF*Actions.
 - `references/POWER_ACTIONS.md` : schémas des 25 actions prioritaires.
 - `references/STARTER_PALETTE.md` : index des XML palette.
-- `references/APPINTENTS.md` : 154 AppIntents (curated subset).
+- `references/APPINTENTS.md` : 168 AppIntents (curated subset).
 - `references/PARAMETER_TYPES.md` : types et sérialisation.
 - `references/VARIABLES.md` : système de variables.
 - `references/CONTROL_FLOW.md` : Repeat / Condition / Menu.
@@ -115,6 +121,8 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/ATTEST_AUTOMATION.md` : import UI + run automatisés (macOS local).
 - `references/NEXT_CHECKLIST.md` : checklist prochains pas vers 10/10.
 - `references/COMPETITIVE_CHECKLIST.md` : parité auteur vs Viticci (remix / validate-on-write / corpus), lean.
+- `references/MACKASTEN_CHECKLIST.md` : paper MVP packages / schema.
+- `references/MACKASTEN_AGENT_CHECKLIST.md` : après plafond Mac (MCP / automations / market / CLI).
 - `references/REMIX.md` : protocole remix / diff chirurgical.
 - `references/OUTPUT_NAMES.md` : libellés `OutputName` anglais.
 - `SKILL.en.md` : protocole agent en anglais.
@@ -122,6 +130,20 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/ROADMAP_10.md` : suite vers 10/10.
 - `data/wf_actions.json` / `data/appintents.json` : SSOT catalogues.
 - `data/sources.json` : registre des sources externes.
+
+## Utilitaires (ne pas réinventer)
+
+Préférer les scripts du repo aux commandes inventées :
+
+| Intent | Script |
+|--------|--------|
+| validate fichier | `./scripts/validate_on_write.sh <file>` |
+| fix mécanique | `./scripts/validate_on_write.sh --fix <file>` |
+| validate repo | `./scripts/validate.sh` / `./scripts/selftest.sh` |
+| remix | `python3 scripts/remix_shortcut.py` |
+| attest Mac | `./scripts/attest_local.sh --auto` |
+
+MCP (mackasten) : `references/MCP_SHORTCUTS.md` · serveur `mcp_server/run.sh`.
 
 ## Signing Shortcuts
 
@@ -186,7 +208,8 @@ Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
 
 ## ⚠️ Avertissement : stubs non importables
 
-- `templates/locally-obsidian.stub.xml` est un **snapshot de conception non importable**.
-- Ne pas le signer ni l’importer dans Raccourcis.
+- `templates/locally-obsidian.stub.xml` est un stub **abandonné** (non importable).
+- Ne pas le signer ni l’importer dans Raccourcis ; ne pas rouvrir le track Locally.
 - Pour un raccourci minimal valide, utiliser `templates/examples/` ou `templates/hello-world.shortcut.xml`.
-- Bridge Obsidian : `references/OBSIDIAN_BRIDGE.md`.
+- Direction produit (app / Siri / marketplace modèles locaux) : `references/MACKASTEN.md`.
+- Bridge Obsidian optionnel : `references/OBSIDIAN_BRIDGE.md`.
