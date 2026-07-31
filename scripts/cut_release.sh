@@ -115,7 +115,7 @@ PY
 )"
 
 if [[ "$MODE" == "linux" ]]; then
-  MAC_CLAIM="**Mac attestation:** baseline remains **v1.10.0** MATRIX. Deltas in 1.11.0–${VER} (palette 13–16, community 17–18, AppIntents \`unverified\`, Horizon packages) are **CI/Linux-validated**; device re-attest is tracked in \`references/MAC_10_CHECKLIST.md\`."
+  MAC_CLAIM="**Mac attestation:** baseline remains **v1.10.0** MATRIX. Deltas in 1.11.0–${VER} (palette 13–16, community 17–18, AppIntents \`unverified\`, Mackasten packages) are **CI/Linux-validated**; device re-attest is tracked in \`references/MAC_10_CHECKLIST.md\`."
   TITLE_SUFFIX="Linux-complete (Mac attest pending for post-1.10 deltas)"
 else
   MAC_CLAIM="**Mac attestation:** intended for use after \`MAC_10_CHECKLIST\` is completed on device. Confirm \`fixtures/attested/MATRIX.md\` + \`results.json\` \`skill_version\` == **${VER}** before publishing this claim. If MATRIX is still on an older skill version, use \`--mode linux\` instead."
@@ -138,7 +138,7 @@ ${SECTION}
 | Linux CI (\`validate\` / \`selftest\` / schemas / sources) | Supported |
 | macOS sign → import → run | See Mac claim below |
 | iOS | Best-effort / **not** systematically attested |
-| Horizon marketplace packages | **Paper MVP** (\`horizon/packages/\`) — not an App Store product |
+| Mackasten marketplace packages | **Paper MVP** (\`mackasten/packages/\`) — not an App Store product |
 | AppIntents listed in \`unverified\` | SSOT only — **no** teaching \`appintentexecution\` goldens yet |
 
 ${MAC_CLAIM}

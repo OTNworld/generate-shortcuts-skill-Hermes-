@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate horizon/packages/*/package.json against schema + path rules."""
+"""Validate mackasten/packages/*/package.json against schema + path rules."""
 
 from __future__ import annotations
 
@@ -11,13 +11,13 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from check_json_schema import validate_file  # noqa: E402
 
-SCHEMA = ROOT / "data/schemas/horizon-package.v1.json"
-PACKAGES = ROOT / "horizon/packages"
+SCHEMA = ROOT / "data/schemas/mackasten-package.v1.json"
+PACKAGES = ROOT / "mackasten/packages"
 
 
 def main() -> int:
     if not PACKAGES.is_dir():
-        print("OK  no horizon/packages (skip)")
+        print("OK  no mackasten/packages (skip)")
         return 0
 
     ai = json.loads((ROOT / "data/appintents.json").read_text())
@@ -26,7 +26,7 @@ def main() -> int:
     failures = 0
     manifests = sorted(PACKAGES.glob("*/package.json"))
     if not manifests:
-        print("FAIL horizon/packages has no package.json", file=sys.stderr)
+        print("FAIL mackasten/packages has no package.json", file=sys.stderr)
         return 1
 
     for man in manifests:
@@ -82,9 +82,9 @@ def main() -> int:
         print(f"OK  {man.relative_to(ROOT)} ({pkg_id})")
 
     if failures:
-        print(f"horizon packages failures={failures}", file=sys.stderr)
+        print(f"mackasten packages failures={failures}", file=sys.stderr)
         return 1
-    print(f"OK  horizon packages ({len(manifests)})")
+    print(f"OK  mackasten packages ({len(manifests)})")
     return 0
 
 

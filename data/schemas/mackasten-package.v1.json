@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/data/schemas/horizon-package.v1.json",
-  "title": "horizon-package/v1",
+  "$id": "https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/data/schemas/mackasten-package.v1.json",
+  "title": "mackasten-package/v1",
   "type": "object",
   "required": ["schema", "id", "name", "version", "license", "shortcuts"],
   "properties": {
-    "schema": { "const": "horizon-package/v1" },
+    "schema": { "const": "mackasten-package/v1" },
     "id": {
       "type": "string",
       "minLength": 2,

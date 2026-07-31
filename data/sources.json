@@ -157,13 +157,13 @@
       "url": "https://developer.apple.com/documentation/appintents",
       "role": "official-docs",
       "license": "Apple",
-      "notes": "App Intents framework docs \u2014 relevant to Horizon / Siri / appintentexecution; do not invent intent IDs from memory.",
+      "notes": "App Intents framework docs \u2014 relevant to Mackasten / Siri / appintentexecution; do not invent intent IDs from memory.",
       "use": "official",
       "last_checked": "2026-07-26",
       "tags": [
         "apple",
         "appintents",
-        "horizon"
+        "mackasten"
       ]
     },
     {

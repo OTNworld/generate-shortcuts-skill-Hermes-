@@ -49,7 +49,7 @@ flowchart TB
 | [drewocarr/generate-shortcuts-skill](https://github.com/drewocarr/generate-shortcuts-skill) | Upstream skill lineage | Historical baseline (license unspecified) |
 | [sebj/iOS-Shortcuts-Reference](https://github.com/sebj/iOS-Shortcuts-Reference) | Classic format/ARGB/types (archived) | Colors + types cited into PLIST_FORMAT / URL_SCHEMES |
 | [Apple Shortcuts User Guide](https://support.apple.com/guide/shortcuts/welcome/ios) | Official product behavior | Link / cite |
-| [Apple App Intents](https://developer.apple.com/documentation/appintents) | Siri / Horizon / `appintentexecution` | Link; never invent IDs |
+| [Apple App Intents](https://developer.apple.com/documentation/appintents) | Siri / Mackasten / `appintentexecution` | Link; never invent IDs |
 | [joshfarrant/shortcuts-js](https://github.com/joshfarrant/shortcuts-js) | Mature JS generator (archived, GPL) | **Link only** |
 | [ScPL docs](https://docs.scpl.dev/) | Action parameter keys | Cross-check only |
 | [0xdevalias gist](https://gist.github.com/0xdevalias/27d9aea9529be7b6ce59055332a94477) | iCloud → bplist → `plutil` | Linked for extract |
@@ -117,5 +117,5 @@ To vendor another MIT golden: download XML → add attribution comment → place
 - Do not submodule GPL `shortcuts-js` into this MIT repo.
 - Do not paste Viticci’s entire ~12k-line skill tree (keep Hermes skill lean; point agents at ECOSYSTEM when needed).
 - Do not treat RoutineHub iCloud links as permanent fixtures (they rot).
-- Do not revive Locally→Obsidian as a golden — product direction is [`HORIZON.md`](HORIZON.md).
+- Do not revive Locally→Obsidian as a golden — product direction is [`MACKASTEN.md`](MACKASTEN.md).
 - Do not mark AppIntent IDs verified from blog posts alone — export-diff on device.

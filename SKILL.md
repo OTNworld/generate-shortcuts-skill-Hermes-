@@ -5,7 +5,7 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
+  Obsidian vault notes (optional; Locally track abandoned — see MACKASTEN.md).
 version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
@@ -49,7 +49,7 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 - `templates/palette/` : 16 minimal power-action starters
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
 - `templates/locally-obsidian.stub.xml` : stub **abandonné** (historique, non importable)
-- Horizon (app / Siri / marketplace) : `references/HORIZON.md`
+- Mackasten (app / Siri / marketplace) : `references/MACKASTEN.md`
 - Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
 
 ## Étapes
@@ -195,5 +195,5 @@ Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
 - `templates/locally-obsidian.stub.xml` est un stub **abandonné** (non importable).
 - Ne pas le signer ni l’importer dans Raccourcis ; ne pas rouvrir le track Locally.
 - Pour un raccourci minimal valide, utiliser `templates/examples/` ou `templates/hello-world.shortcut.xml`.
-- Direction produit (app / Siri / marketplace modèles locaux) : `references/HORIZON.md`.
+- Direction produit (app / Siri / marketplace modèles locaux) : `references/MACKASTEN.md`.
 - Bridge Obsidian optionnel : `references/OBSIDIAN_BRIDGE.md`.

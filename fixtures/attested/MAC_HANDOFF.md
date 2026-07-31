@@ -1,7 +1,7 @@
 # Mac attestation handoff
 
 Complete remaining **Mac 10/10** items on a Mac with Shortcuts.app.
-Linux CI already covers XML + grammar + SSOT + Horizon package manifests.
+Linux CI already covers XML + grammar + SSOT + Mackasten package manifests.
 
 **Active checklist:** [`references/MAC_10_CHECKLIST.md`](../../references/MAC_10_CHECKLIST.md)  
 **Start here:** [`LOCAL_FINALIZE.md`](../../LOCAL_FINALIZE.md)
@@ -12,7 +12,7 @@ Skill version expected: **≥1.12.0** (current track may be 1.13.0+).
 
 ```bash
 git fetch origin
-git checkout cursor/horizon-app-and-improvements-df7d && git pull
+git checkout cursor/mackasten-app-and-improvements-df7d && git pull
 ./scripts/validate.sh
 ./scripts/check_shortcuts_automation.sh --json
 ./scripts/attest_local.sh --auto --force --timeout 20

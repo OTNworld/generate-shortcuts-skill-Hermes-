@@ -1,14 +1,14 @@
 # Checklist — sprints Linux → 10/10 (sans Mac/iOS)
 
 Dernière màj : **2026-07-26** · Skill : **1.12.0**  
-Branche : `cursor/horizon-app-and-improvements-df7d`
+Branche : `cursor/mackasten-app-and-improvements-df7d`
 
 **Périmètre :** tout ce qui atteint 10/10 **sans** `shortcuts` CLI, sans import UI, sans device.  
-**Hors scope :** attestation MATRIX live, iOS, Horizon app runtime, AppIntents *verified* via export.
+**Hors scope :** attestation MATRIX live, iOS, Mackasten app runtime, AppIntents *verified* via export.
 
 **Légende :** `[ ]` todo · `[~]` partiel · `[x]` done · **DoD** = critère d’acceptation
 
-Liens : [`AGENT_ENTRY.md`](AGENT_ENTRY.md) · [`HORIZON.md`](HORIZON.md) · [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) (Mac)
+Liens : [`AGENT_ENTRY.md`](AGENT_ENTRY.md) · [`MACKASTEN.md`](MACKASTEN.md) · [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) (Mac)
 
 ---
 
@@ -79,7 +79,7 @@ Liens : [`AGENT_ENTRY.md`](AGENT_ENTRY.md) · [`HORIZON.md`](HORIZON.md) · [`NE
 - [x] `validate.sh` + `selftest.sh` + unittest verts
 - [x] `SKILL.md` **1.12.0** + CHANGELOG
 - [x] Aucune promesse Mac/iOS non tenue
-- [x] Rating interne : CI/Docs/SSOT/DX/Security = **10** (attestation/Horizon inchangés — Mac/app)
+- [x] Rating interne : CI/Docs/SSOT/DX/Security = **10** (attestation/Mackasten inchangés — Mac/app)
 
 ### Commandes de clôture
 

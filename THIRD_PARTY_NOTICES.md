@@ -55,7 +55,7 @@ Registry SSOT: [`data/sources.json`](data/sources.json) (validated by `scripts/c
 |----------|-----|-----|
 | Shortcuts User Guide | https://support.apple.com/guide/shortcuts/welcome/ios | Behavior / product |
 | URL schemes | https://support.apple.com/guide/shortcuts/use-url-schemes-apd621a1ad7a/ios | `shortcuts://` |
-| App Intents | https://developer.apple.com/documentation/appintents | Horizon / Siri / intents |
+| App Intents | https://developer.apple.com/documentation/appintents | Mackasten / Siri / intents |
 
 ## Link-only (do not vendor code)
 

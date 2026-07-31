@@ -26,7 +26,7 @@ CI : [`.github/workflows/release.yml`](../.github/workflows/release.yml) crée l
 - Ne pas tagger depuis une PR cloud non mergée dans `main`
 - Ne pas revendiquer attestation Mac pour deltas post-`v1.10.0` sans MATRIX
 - AppIntents `unverified` ≠ teaching goldens
-- Horizon packages = paper MVP, pas une app store
+- Mackasten packages = paper MVP, pas une app store
 - iOS = best-effort / non attesté
 - Upstream `drewocarr` license unspecified — ne pas le dire MIT
 - Markets (LobeHub / Cursor) = fiche manuelle + wording prudent

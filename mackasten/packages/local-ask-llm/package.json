@@ -1,5 +1,5 @@
 {
-  "schema": "horizon-package/v1",
+  "schema": "mackasten-package/v1",
   "id": "local-ask-llm",
   "name": "Ask On-Device LLM",
   "version": "1.0.0",
