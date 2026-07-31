@@ -8,14 +8,18 @@ Versioning follows the `version` field in `SKILL.md`.
 ## [Unreleased]
 
 ### Added
-- Mackasten iOS oneshot blueprint under `mackasten/app/` (VISION, REQUIREMENTS, ARCHITECTURE, ONESHOT_PLAN, CHECKLIST, SKILL.md)
-- Fetch CI script `mackasten/app/scripts/fetch_skill_packages.sh` + `check_oneshot_ready.py` gate in `validate.sh` (dual layout: `mackasten/` + legacy `mackasten/`)
-- Bootstrap notes for private repo `OTNworld/mackasten-iOS` (fetch-CI link mode; former codename `mackasten-iOS`)
+- Mackasten companion **Swift/XcodeGen scaffold** under `mackasten/app/` (catalog, library, deep link, App Intents, Shortcuts bridge)
+- `project.yml`, `PrivacyInfo.xcprivacy`, fetch-packages workflow seed, SkillPin.env.example
+- Linux logic mirrors: `tests/test_mackasten_app_logic.py` (deep link, policy, URL encode, fixtures)
+- Mackasten oneshot blueprint under `mackasten/app/` (VISION, REQUIREMENTS, ARCHITECTURE, ONESHOT_PLAN, CHECKLIST, SKILL.md)
+- Fetch CI script `mackasten/app/scripts/fetch_skill_packages.sh` + `check_oneshot_ready.py` gate in `validate.sh`
+- Bootstrap for private repo **`OTNworld/Mackasten`** (no `-iOS` suffix) + `push_seed_to_mackasten.sh`
 - Peer source links: laramarcodes/ios-dev-skill, n0an/App-Intents-Agent-Skill
 - Mackasten agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (utils → MCP → automations → market → CLI)
 - MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
 - Market blurbs: `references/MARKET_LISTING.md`
 - Cursor MCP install: `shortcuts-hermes` via `mcp_server/run.sh` + `.venv-mcp`
+
 
 ## [1.16.0] - 2026-07-26
 

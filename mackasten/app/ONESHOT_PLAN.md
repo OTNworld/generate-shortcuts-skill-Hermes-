@@ -6,7 +6,7 @@ CI fetch scripts + unit tests purs, and hand off Mac gates explicitly.
 
 ## Preflight (human, once)
 
-1. Create private repo `OTNworld/mackasten-iOS` — [`REPO_BOOTSTRAP.md`](REPO_BOOTSTRAP.md).
+1. Private repo **`OTNworld/Mackasten`** exists + Cursor GitHub App access — [`REPO_BOOTSTRAP.md`](REPO_BOOTSTRAP.md).
 2. Grant the coding agent access to that private repo.
 3. Confirm Xcode 26+ / Simulator on the machine that will run phases D–F.
 
@@ -14,78 +14,54 @@ CI fetch scripts + unit tests purs, and hand off Mac gates explicitly.
 
 **DoD:** `xcodegen` project opens ; empty tabs compile.
 
-| Step | Action | Req |
-|------|--------|-----|
-| A1 | Copy seed `mackasten/app/**` into app repo root (or submodule docs) | — |
-| A2 | Add `project.yml` (iOS app + unit test bundle) | H-N2 |
-| A3 | Bundle ID `com.otnworld.mackasten`, display name Mackasten | H-N11 |
-| A4 | Register URL type `hermes-shortcuts` | H-F5 |
-| A5 | `PrivacyInfo.xcprivacy` stubs for UserDefaults if used | H-N6 |
-| A6 | `.gitignore` : `Vendor/SkillPackages/`, `*.xcodeproj` if generated, secrets | — |
-| A7 | README app : how to fetch + generate + test | — |
+| Step | Action | Req | Seed status |
+|------|--------|-----|-------------|
+| A1 | Copy seed `mackasten/app/**` into app repo root | — | docs + scaffold ready |
+| A2 | Add `project.yml` (iOS app + unit test bundle) | H-N2 | **done in seed** |
+| A3 | Bundle ID `com.otnworld.mackasten`, display name Mackasten | H-N11 | **done** |
+| A4 | Register URL type `hermes-shortcuts` | H-F5 | **done** (`Info.plist`) |
+| A5 | `PrivacyInfo.xcprivacy` stubs for UserDefaults if used | H-N6 | **done** |
+| A6 | `.gitignore` : `Vendor/SkillPackages/`, generated xcodeproj | — | **done** |
+| A7 | README app : how to fetch + generate + test | — | **done** |
 
 ## Phase B — Fetch CI (P0)
 
 **DoD:** `./scripts/fetch_skill_packages.sh` materializes 4 packages ; schema check green.
 
-| Step | Action | Req |
-|------|--------|-----|
-| B1 | Pin `SKILL_REPO` + `SKILL_REF` (tag/SHA) in `SkillPin.env` or CI var | H-N3 |
-| B2 | Implement fetch (git sparse / release archive / raw API) | H-N3 |
-| B3 | Rewrite `shortcuts[].path` → vendor-local paths + copy XML | H-F1 |
-| B4 | Validate each `package.json` vs vendored copy of schema | H-N4 |
-| B5 | GitHub Action `fetch-packages.yml` on PR + main | H-N9 |
-| B6 | Enforce `local-*` ≠ `cloud-allowed` | H-C1 |
-
-Script seed in this skill tree: [`scripts/fetch_skill_packages.sh`](scripts/fetch_skill_packages.sh).
+| Step | Action | Req | Seed status |
+|------|--------|-----|-------------|
+| B1 | Pin `SKILL_REPO` + `SKILL_REF` in `SkillPin.env` | H-N3 | example present |
+| B2 | Implement fetch | H-N3 | **done** |
+| B3 | Rewrite paths → vendor-local + copy XML | H-F1 | **done** |
+| B4 | Validate JSON Schema after fetch | H-N4 | **done** |
+| B5 | GitHub Action `fetch-packages.yml` | H-N9 | **seeded** |
+| B6 | Enforce `local-*` ≠ `cloud-allowed` | H-C1 | **done** |
 
 ## Phase C — Domain + catalog UI (P0)
 
 **DoD:** Simulator shows 4 packages from Vendor ; detail shows policy + attestation.
 
-| Step | Action | Req |
-|------|--------|-----|
-| C1 | `MackastenPackage` Codable + loader | H-F1 |
-| C2 | `PackageCatalogStore` loads Vendor tree | H-F1 |
-| C3 | Catalog list + detail SwiftUI (iPhone/iPad) | H-N8 |
-| C4 | Attestation badge honest mapping | H-C3 |
-| C5 | Empty / error states if Vendor missing | — |
+| Step | Action | Req | Seed status |
+|------|--------|-----|-------------|
+| C1–C5 | Codable + store + SwiftUI list/detail + empty state | H-F1 H-N8 H-C3 | **scaffolded** (needs Mac run) |
 
 ## Phase D — Install / run bridge (P0)
 
-**DoD:** Hello World installs and runs on Simulator/device via Shortcuts.
-
-| Step | Action | Req |
-|------|--------|-----|
-| D1 | Build `shortcuts://` URLs (encode) | H-F3 H-F4 |
-| D2 | Export/copy XML to temporary importable location | H-F3 |
-| D3 | `ShortcutInstaller` + user-visible confirmation | H-F3 |
-| D4 | `ShortcutRunner` by `output_name` / installed name | H-F4 |
-| D5 | SwiftData `InstalledPackage` on success | H-F6 |
-| D6 | Library tab lists installed | H-F6 |
+| Step | Action | Req | Seed status |
+|------|--------|-----|-------------|
+| D1–D6 | URL builder, share install, run, SwiftData library | H-F3–F6 | **scaffolded** (needs Mac/device) |
 
 ## Phase E — Deep link + App Intents (P0/P1)
 
-**DoD:** `hermes-shortcuts://edit?path=…` handled ; Install/Run intents appear in Shortcuts.
-
-| Step | Action | Req |
-|------|--------|-----|
-| E1 | `onOpenURL` → `HermesShortcutsRouter` | H-F5 H-C4 |
-| E2 | Path allowlist + sheet with skill-relative path | H-F5 |
-| E3 | `InstallPackageIntent` / `RunPackageIntent` | H-F7 H-F8 |
-| E4 | `MackastenAppShortcuts` from phrases | H-F9 |
-| E5 | `BrowseCatalogIntent` | H-F11 |
+| Step | Action | Req | Seed status |
+|------|--------|-----|-------------|
+| E1–E5 | Router + Install/Run/Browse intents + AppShortcuts | H-F5–F9 H-F11 | **scaffolded** |
 
 ## Phase F — ModelRouter (P1)
 
-**DoD:** local-* packages show capability gate ; no cloud leak.
-
-| Step | Action | Req |
-|------|--------|-----|
-| F1 | Enum `ModelPolicy` | H-F10 |
-| F2 | Availability check Foundation Models / Apple Intelligence | H-F10 |
-| F3 | Detail CTA disabled + explanation when unavailable | H-F10 |
-| F4 | Guard `cloud-allowed` on local-* | H-C1 |
+| Step | Action | Req | Seed status |
+|------|--------|-----|-------------|
+| F1–F4 | Policy enum + Sim gate + local-* guard | H-F10 H-C1 | **scaffolded** (device AI probe TBD) |
 
 ## Phase G — Tests & hardening (P0/P1)
 
@@ -110,11 +86,11 @@ Agent **stops and reports** if:
 
 ## Suggested single-prompt for the next agent
 
-> Load `mackasten/app/SKILL.md`. Execute ONESHOT_PLAN phases A–G against private repo
-> `OTNworld/mackasten-iOS`. Pin skill ref to current release tag of
-> `generate-shortcuts-skill-Hermes-`. Satisfy all P0 rows in CHECKLIST.md. Do not
-> invent Apple App Intent IDs. If Xcode is missing, complete Linux-safe work and
-> hand off Mac steps verbatim.
+> Private repo `OTNworld/Mackasten` already seeded from `mackasten/app/` (includes
+> Swift scaffold). Load `SKILL.md`. Pin `SKILL_REF`, run fetch, `xcodegen generate`,
+> then execute remaining Mac gates in CHECKLIST.md (Simulator install/run Hello World,
+> deep link smoke, `xcodebuild test`). Do not invent Apple App Intent IDs. If Xcode is
+> missing, stop after confirming fetch + Linux unittest mirrors.
 
 ## Interactive questions (only if blocked)
 

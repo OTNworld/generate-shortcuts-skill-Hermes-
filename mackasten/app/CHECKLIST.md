@@ -6,12 +6,15 @@ Use during oneshot. Check boxes in the **app** repo PR description.
 
 ### Repo / project
 
-- [ ] Private repo `OTNworld/mackasten-iOS` exists
-- [ ] Seed docs (`VISION`…`SKILL`) present
-- [ ] `project.yml` + `xcodegen generate` succeeds
-- [ ] Bundle ID set ; URL scheme `hermes-shortcuts` registered
-- [ ] `PrivacyInfo.xcprivacy` present
-- [ ] `.gitignore` excludes `Vendor/SkillPackages/` build tree (or commits release snapshot intentionally)
+- [x] Seed docs (`VISION`…`SKILL`) present *(in skill `mackasten/app/`)*
+- [x] `project.yml` + XcodeGen layout present *(Mac: `xcodegen generate`)*
+- [x] Bundle ID set ; URL scheme `hermes-shortcuts` registered
+- [x] `PrivacyInfo.xcprivacy` present
+- [x] `.gitignore` excludes `Vendor/SkillPackages/`
+- [x] Repo slug is `OTNworld/Mackasten` *(not mackasten-iOS)*
+- [ ] Cursor GitHub App can access `Mackasten` *(human — required for agent push)*
+- [ ] Seed pushed to private repo *(human or `scripts/push_seed_to_mackasten.sh`)*
+
 
 ### Fetch CI
 
@@ -81,7 +84,7 @@ Use during oneshot. Check boxes in the **app** repo PR description.
 On Linux, mark Mac rows as **blocked** with exact commands:
 
 ```bash
-cd /path/to/mackasten-iOS
+cd /path/to/Mackasten
 ./scripts/fetch_skill_packages.sh
 xcodegen generate
 xcodebuild -scheme Mackasten -destination 'platform=iOS Simulator,name=iPhone 17' test

@@ -1,0 +1,30 @@
+name: fetch-and-validate-packages
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load skill pin
+        run: |
+          if [[ -f SkillPin.env ]]; then
+            set -a
+            # shellcheck disable=SC1091
+            source SkillPin.env
+            set +a
+          fi
+          echo "SKILL_REF=${SKILL_REF:-main}" >> "$GITHUB_ENV"
+          echo "SKILL_REPO_URL=${SKILL_REPO_URL:-https://github.com/OTNworld/generate-shortcuts-skill-Hermes-.git}" >> "$GITHUB_ENV"
+      - name: Fetch skill packages
+        env:
+          SKILL_REF: ${{ env.SKILL_REF }}
+          SKILL_REPO_URL: ${{ env.SKILL_REPO_URL }}
+        run: ./scripts/fetch_skill_packages.sh
+      - name: Upload Vendor tree
+        uses: actions/upload-artifact@v4
+        with:
+          name: skill-packages
+          path: Vendor/SkillPackages

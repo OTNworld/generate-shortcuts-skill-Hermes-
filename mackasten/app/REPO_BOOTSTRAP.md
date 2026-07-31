@@ -1,63 +1,78 @@
-# Bootstrap — private repo `OTNworld/mackasten-iOS`
+# Bootstrap — private repo `OTNworld/Mackasten`
 
-The Cloud Agent token **cannot** create private repos under your account. Do this
-once in the GitHub UI or with **your** `gh` login.
+**Repo name:** `Mackasten` (no `-iOS` suffix). The product is still a native
+iPhone/iPad companion app; only the GitHub slug is short.
 
-## 1. Create the repository
+This Cloud Agent **cannot** create or see the private repo until the Cursor /
+GitHub App is installed on it.
 
-GitHub → New repository:
+## 1. Repo (already created)
 
-| Field | Value |
-|-------|-------|
-| Owner | `OTNworld` |
-| Name | `mackasten-iOS` |
-| Visibility | **Private** |
-| README | empty OK (we push seed) |
-| License | none yet (private app) |
+If you already created it:
 
-CLI (on your machine):
-
-```bash
-gh repo create OTNworld/mackasten-iOS --private --description "Mackasten companion iOS app (Shortcuts marketplace)"
+```text
+https://github.com/OTNworld/Mackasten
 ```
 
-## 2. Seed from this skill folder
+Visibility: **Private**. Empty or with a default README is fine.
 
-From a clone of the **skill** repo:
+If you still need to create it (your machine):
+
+```bash
+gh repo create OTNworld/Mackasten --private --description "Mackasten companion app — Shortcuts marketplace"
+```
+
+## 2. Grant this agent access (required)
+
+1. GitHub → **Settings → Applications → Cursor** (or the GitHub App used by Cursor Cloud)
+2. **Repository access** → add **`OTNworld/Mackasten`**
+3. Re-run / message the agent so it can `git clone` + `git push`
+
+Without this step, the agent only gets 404 on the private repo.
+
+## 3. Seed the app tree (from skill `mackasten/app/`)
+
+On your machine **or** via the agent once access is granted:
 
 ```bash
 git clone https://github.com/OTNworld/generate-shortcuts-skill-Hermes-.git skill
-git clone https://github.com/OTNworld/mackasten-iOS.git mackasten-iOS
-cd mackasten-iOS
+git clone https://github.com/OTNworld/Mackasten.git Mackasten
+cd Mackasten
 
-# Product + agent skill seed
+# Product docs + Swift/XcodeGen scaffold + fetch CI → repo root
 cp -R ../skill/mackasten/app/. .
-mkdir -p scripts
-# fetch script already under ./scripts if copied from app/
 
 git add .
-git commit -m "Seed Mackasten iOS oneshot blueprint from skill mackasten/app"
+git commit -m "Seed Mackasten companion app from skill mackasten/app"
 git push -u origin main
 ```
 
-## 3. Grant the coding agent
+Helper (from skill checkout, after App access):
 
-- Add the private repo to the Cursor Cloud / GitHub App installation for OTNworld.
-- Or run the oneshot agent **locally** with access to `mackasten-iOS`.
+```bash
+./mackasten/app/scripts/push_seed_to_mackasten.sh
+```
 
-## 4. Cross-link from the skill (already planned)
+## 4. First Mac build
 
-Public skill docs point to `mackasten/app/` as blueprint and name the private repo
-without requiring public access to app sources.
+```bash
+cd Mackasten
+cp SkillPin.env.example SkillPin.env
+# set SKILL_REF=<skill tag or SHA>
+./scripts/fetch_skill_packages.sh
+xcodegen generate
+xcodebuild -scheme Mackasten -destination 'platform=iOS Simulator,name=iPhone 17' test
+```
 
-## 5. First oneshot
+## 5. Oneshot handoff
 
-Open `mackasten-iOS` with `SKILL.md` loaded and run [`ONESHOT_PLAN.md`](ONESHOT_PLAN.md).
+Open `OTNworld/Mackasten` with [`SKILL.md`](SKILL.md) loaded and follow
+[`ONESHOT_PLAN.md`](ONESHOT_PLAN.md) Mac gates.
 
 ## Checklist
 
-- [ ] Repo private `OTNworld/mackasten-iOS` created
-- [ ] Seed pushed
-- [ ] Agent can clone
-- [ ] `SKILL_REF` chosen (e.g. current skill semver tag)
-- [ ] Xcode 26+ ready for build phases
+- [x] Repo private `OTNworld/Mackasten` created *(you)*
+- [ ] Cursor GitHub App can access `Mackasten`
+- [ ] Seed pushed (includes `Mackasten/` sources + `project.yml`)
+- [ ] `SKILL_REF` pinned
+- [ ] Xcode 26+ ready for Simulator gates

@@ -1,12 +1,13 @@
 ---
-name: mackasten-ios
+name: mackasten-app
 description: >
-  Use when building, scaffolding, or shipping the Mackasten companion iOS app:
-  marketplace for Shortcuts packages, hermes-shortcuts:// deep links, App Intents /
-  Siri phrases, on-device / Apple Intelligence model routing, and CI fetch of
-  mackasten-package/v1 manifests from the generate-shortcuts-skill-Hermes- skill repo.
-  Prefer this skill over generic iOS scaffolding when the product is Mackasten.
-version: 0.1.0
+  Use when building, scaffolding, or shipping the Mackasten companion app
+  (native iOS/iPadOS): marketplace for Shortcuts packages, hermes-shortcuts://
+  deep links, App Intents / Siri phrases, on-device / Apple Intelligence model
+  routing, and CI fetch of mackasten-package/v1 manifests from the
+  generate-shortcuts-skill-Hermes- skill repo. Prefer this skill over generic
+  iOS scaffolding when the product is Mackasten. App GitHub repo: OTNworld/Mackasten.
+version: 0.1.1
 author: OTNworld / Hermes
 license: MIT (skill docs); app binary repo is private
 platforms: [ios, macos]
@@ -14,11 +15,11 @@ metadata:
   hermes:
     tags: [mackasten, ios, swiftui, app-intents, shortcuts, marketplace, siri]
     related_skills: [shortcuts-generator, ios-dev, app-intents]
-    app_repo: OTNworld/mackasten-iOS
+    app_repo: OTNworld/Mackasten
     skill_repo: OTNworld/generate-shortcuts-skill-Hermes-
 ---
 
-# Mackasten iOS — companion app skill
+# Mackasten — companion app skill
 
 Protocole agent pour **oneshot** (ou itérer) l’app native **Mackasten** : marketplace
 de packages Shortcuts, runtime local-model, Siri / App Intents, deep links vers
@@ -33,7 +34,7 @@ skills externes indexés dans [`sources.json`](sources.json) (ne pas vendorer le
 
 ## Quand utiliser ce skill
 
-- Créer ou étendre l’app `mackasten-iOS`.
+- Créer ou étendre l’app repo `Mackasten`.
 - Brancher le fetch CI des `mackasten/packages/*/package.json` depuis le skill public.
 - Enregistrer `hermes-shortcuts://`, App Intents marketplace, Siri phrases.
 - Adapter Apple Intelligence / on-device derrière une policy `model_policy`.
@@ -54,7 +55,7 @@ skills externes indexés dans [`sources.json`](sources.json) (ne pas vendorer le
 |--------|----------|
 | macOS + **Xcode 26+** (SDK iOS 26) | Build / Simulator — **pas** sur Cloud Agent Linux |
 | Compte Apple Developer | Device + éventuels entitlements |
-| Repo privé `OTNworld/mackasten-iOS` | Code app (ce dossier est le seed) |
+| Repo privé `OTNworld/Mackasten` | Code app (ce dossier est le seed) |
 | Accès lecture au skill public | Fetch CI des manifests + XML |
 
 Si pas de Xcode : scaffolder + docs OK ; **ne pas** prétendre que l’app a tourné.

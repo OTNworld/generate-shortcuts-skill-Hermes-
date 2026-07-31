@@ -34,26 +34,25 @@ Resolved by the companion app — not registered by this skill repo.
 
 ---
 
-## iOS app blueprint (`app/`) — oneshot seed
+## iOS app blueprint (`app/`) — oneshot seed + Swift scaffold
 
-Private app repo target: **`OTNworld/mackasten-iOS`** (you create it; agent cannot).  
-Former codename: `mackasten-iOS` — use that slug if the private repo already exists.  
+Private app repo target: **`OTNworld/Mackasten`** (slug without `-iOS`).  
 Link mode: **fetch CI** of packages + XML from this skill @ pinned tag/SHA.
+
+Includes XcodeGen `project.yml`, SwiftUI catalog/library, deep link, App Intents,
+Shortcuts bridge, and Linux-mirrored logic tests.
 
 | Entry | Role |
 |-------|------|
-| [`app/README.md`](app/README.md) | Map + decisions |
-| [`app/SKILL.md`](app/SKILL.md) | Agent skill to oneshot the app |
-| [`app/VISION.md`](app/VISION.md) | Final product vision |
-| [`app/ONESHOT_PLAN.md`](app/ONESHOT_PLAN.md) | Phased build plan |
-| [`app/CHECKLIST.md`](app/CHECKLIST.md) | Creation + full tests |
-| [`app/REPO_BOOTSTRAP.md`](app/REPO_BOOTSTRAP.md) | Create private repo + seed push |
-| [`app/CI_FETCH.md`](app/CI_FETCH.md) | Fetch contract |
-| [`app/scripts/fetch_skill_packages.sh`](app/scripts/fetch_skill_packages.sh) | Materialize `Vendor/SkillPackages/` |
-
-Smoke fetch inside this skill tree:
+| [`app/README.md`](app/README.md) | Map + Mac/Linux commands |
+| [`app/SKILL.md`](app/SKILL.md) | Agent skill |
+| [`app/project.yml`](app/project.yml) | XcodeGen |
+| [`app/Mackasten/`](app/Mackasten/) | App sources |
+| [`app/ONESHOT_PLAN.md`](app/ONESHOT_PLAN.md) | Phased plan (A–E seeded) |
+| [`app/REPO_BOOTSTRAP.md`](app/REPO_BOOTSTRAP.md) | Create private repo + seed |
 
 ```bash
 ./mackasten/app/scripts/fetch_skill_packages.sh
 python3 mackasten/app/scripts/check_oneshot_ready.py
+python3 -m unittest tests.test_mackasten_app_logic -v
 ```
