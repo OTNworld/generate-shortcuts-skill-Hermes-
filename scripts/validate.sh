@@ -88,7 +88,45 @@ print(f"OK  data/wf_actions.json ({wf['count']})")
 print(f"OK  data/appintents.json ({ai['count']})")
 print('OK  doc count claims match SSOT')
 print('OK  markdown complete lists match SSOT')
+
+# unverified ⊆ identifiers
+uv = set(ai.get('unverified') or [])
+ids = set(ai['identifiers'])
+bad = sorted(uv - ids)
+if bad:
+    print('FAIL unverified not in identifiers:', bad[:5])
+    sys.exit(1)
+print(f"OK  appintents unverified subset ({len(uv)})")
+
+# platform_hints keys ⊆ identifiers
+hints = wf.get('platform_hints') or {}
+badh = sorted(set(hints) - set(wf['identifiers']))
+if badh:
+    print('FAIL platform_hints unknown ids:', badh[:5])
+    sys.exit(1)
+allowed_plat = {'mac', 'ios', 'both', 'unknown'}
+badv = [f"{k}={v}" for k, v in hints.items() if v not in allowed_plat]
+if badv:
+    print('FAIL platform_hints bad values:', badv[:5])
+    sys.exit(1)
+print(f"OK  platform_hints ({len(hints)})")
 PY
+
+echo "== JSON schemas =="
+python3 scripts/check_json_schema.py data/wf_actions.json data/schemas/wf_actions.v1.json
+python3 scripts/check_json_schema.py data/appintents.json data/schemas/appintents.v1.json
+if [[ -f fixtures/attested/results.json ]]; then
+  python3 scripts/check_json_schema.py fixtures/attested/results.json data/schemas/attest-results.v1.json
+fi
+
+echo "== Secret heuristics =="
+python3 scripts/check_no_secrets.py
+
+echo "== Horizon packages =="
+python3 scripts/check_horizon_packages.py
+
+echo "== Sources registry =="
+python3 scripts/check_sources.py
 
 # --- XML well-formedness ---
 echo "== Rendered refs drift =="

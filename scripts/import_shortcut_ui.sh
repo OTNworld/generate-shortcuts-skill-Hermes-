@@ -4,10 +4,11 @@
 # Strategy (hybrid):
 # 1. open the signed file
 # 2. focus Shortcuts
-# 3. try named AX click, then Return (default CTA)
+# 3. try named AX click (incl. untrusted / secondary sheets), then Return
 # 4. optionally click green CTA by screenshot (fallback)
-# 5. verify via `shortcuts list`
-# 6. append fixtures/attested/runs/import_report.tsv
+# 5. dismiss parasite sheets (Escape) + retry if still not listed
+# 6. verify via `shortcuts list`
+# 7. append fixtures/attested/runs/import_report.tsv
 #
 # Requires: Accessibility for the host running osascript (Cursor / Terminal).
 set -euo pipefail
@@ -19,15 +20,17 @@ CLICK_GREEN=0
 TIMEOUT=12
 DRY=0
 FORCE=0
+HANDLE_SHEETS=1
 
 usage() {
   cat <<'EOF'
 Usage: scripts/import_shortcut_ui.sh [options] <signed.shortcut> [...]
 
-  --click-green  Also try pixel-locate the green CTA and click it
-  --timeout N    Seconds to wait for shortcuts list (default 12)
-  --force        Re-open even if already in shortcuts list
-  --dry-run      Open only; do not key/click
+  --click-green     Also try pixel-locate the green CTA and click it
+  --timeout N       Seconds to wait for shortcuts list (default 12)
+  --force           Re-open even if already in shortcuts list
+  --no-sheets       Skip secondary-sheet handling (untrusted / Escape retry)
+  --dry-run         Open only; do not key/click
 EOF
 }
 
@@ -36,6 +39,7 @@ while [[ $# -gt 0 ]]; do
     --click-green) CLICK_GREEN=1 ;;
     --timeout) TIMEOUT="${2:?}"; shift ;;
     --force) FORCE=1 ;;
+    --no-sheets) HANDLE_SHEETS=0 ;;
     --dry-run) DRY=1 ;;
     -h|--help) usage; exit 0 ;;
     --) shift; break ;;
@@ -85,10 +89,36 @@ tell application "System Events" to key code 36
 EOF
 }
 
+press_escape() {
+  osascript <<'EOF' >/dev/null
+tell application "System Events"
+  tell process "Shortcuts" to set frontmost to true
+end tell
+delay 0.1
+tell application "System Events" to key code 53
+EOF
+}
+
 try_named_click() {
   local out
   out="$(osascript "$ROOT/scripts/lib/shortcuts_import_click.applescript" Shortcuts 2>/dev/null || true)"
   printf '%s' "$out"
+}
+
+# Click trust / untrusted / permission CTAs; Escape if a parasite sheet remains.
+handle_secondary_sheets() {
+  local ax notes=""
+  ax="$(try_named_click || true)"
+  if [[ "$ax" == CLICKED:* ]]; then
+    notes="$ax"
+    press_return
+  fi
+  # If a non-import sheet is stuck, Escape once then re-open path is caller's job
+  if [[ "$ax" == "NONE" || "$ax" == ERROR:* ]]; then
+    press_escape
+    notes="${notes:+$notes;}escape"
+  fi
+  printf '%s' "$notes"
 }
 
 click_green_cta() {
@@ -123,13 +153,14 @@ for line in (geo.stdout or "").splitlines():
 if not boxes:
     raise SystemExit(0)
 greens = []
+# Observed green CTA ≈ (60, 132, 41) on macOS 26 FR
 for wx, wy, ww, wh in boxes:
     x0, y0 = wx * scale, wy * scale
     x1, y1 = (wx + ww) * scale, (wy + wh) * scale
     for y in range(max(0, y0), min(H, y1), 2):
         for x in range(max(0, x0), min(W, x1), 2):
             r, g, b = im.getpixel((x, y))
-            if 40 <= r <= 100 and 110 <= g <= 180 and 20 <= b <= 90 and g > r + 30:
+            if 45 <= r <= 85 and 115 <= g <= 155 and 25 <= b <= 65 and g > r + 40:
                 greens.append((x, y))
 if not greens:
     raise SystemExit(0)
@@ -170,7 +201,7 @@ import_one() {
     log_row "$(basename "$path")" "FAIL" "none" "0" "missing file"
     return 1
   fi
-  local name method="none"
+  local name method="none" sheet_notes=""
   name="$(basename "$path" .shortcut)"
   local t0 t1 ms
   t0="$(now_ms)"
@@ -195,6 +226,7 @@ import_one() {
   ax="$(try_named_click || true)"
   if [[ "$ax" == CLICKED:* ]]; then
     method="ax"
+    sheet_notes="$ax"
   fi
   press_return
   if [[ "$method" == "none" ]]; then
@@ -205,6 +237,7 @@ import_one() {
     g="$(click_green_cta || true)"
     if [[ -n "$g" ]]; then
       method="green"
+      sheet_notes="${sheet_notes:+$sheet_notes;}$g"
     fi
   fi
 
@@ -212,18 +245,26 @@ import_one() {
   for ((i = 1; i <= TIMEOUT; i++)); do
     if shortcuts list 2>/dev/null | grep -qx "$name"; then
       t1="$(now_ms)"; ms=$((t1 - t0))
-      log_row "$name" "OK" "$method" "$ms" ""
+      log_row "$name" "OK" "$method" "$ms" "$sheet_notes"
       return 0
     fi
     sleep 1
     if (( i % 2 == 0 )); then
+      if [[ "$HANDLE_SHEETS" -eq 1 ]]; then
+        local sn
+        sn="$(handle_secondary_sheets || true)"
+        if [[ -n "$sn" ]]; then
+          sheet_notes="${sheet_notes:+$sheet_notes;}$sn"
+          method="sheets"
+        fi
+      fi
       press_return
       try_named_click >/dev/null || true
     fi
   done
   t1="$(now_ms)"; ms=$((t1 - t0))
   snap_fail "$name"
-  log_row "$name" "FAIL" "$method" "$ms" "not listed after ${TIMEOUT}s"
+  log_row "$name" "FAIL" "$method" "$ms" "not listed after ${TIMEOUT}s ${sheet_notes}"
   return 1
 }
 

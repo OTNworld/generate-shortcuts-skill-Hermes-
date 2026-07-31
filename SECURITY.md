@@ -22,10 +22,20 @@ Do **not** embed in committed XML:
 
 Prefer Ask prompts or Shortcuts’ own credential mechanisms.
 
+**CI gate:** `python3 scripts/check_no_secrets.py` (also from `./scripts/validate.sh`)
+flags high-confidence patterns (`sk-…`, `ghp_…`, PEM private keys, `api_key=` assignments, …).
+
 ## Signed artifacts
 
 - Prefer gitignoring `*_signed.shortcut` and local `out/` directories
 - Attestation logs in `fixtures/attested/` should store hashes + OS metadata, not private shortcut bodies, unless scrubbed
+
+## Upstream lineage
+
+This Hermes skill is an MIT-licensed fork/adaptation. Upstream
+`drewocarr/generate-shortcuts-skill` is recorded in `data/sources.json` with
+**license: unknown/unspecified** — we do **not** claim their license is MIT.
+See `THIRD_PARTY_NOTICES.md`.
 
 ## Reporting
 

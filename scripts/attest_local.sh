@@ -14,6 +14,8 @@ DO_RUN=0
 CLICK_GREEN=0
 WITH_INPUTS=0
 WRITE_RESULTS=1
+FORCE_IMPORT=0
+IMPORT_TIMEOUT=12
 SCOPE="core" # core = examples 01-08 + palette; all = + community
 
 usage() {
@@ -25,6 +27,8 @@ Usage: scripts/attest_local.sh [options]
   --open          open signed files in Shortcuts (implies --sign)
   --import-ui     Sign + UI-import via Return/AX (implies --sign; needs Accessibility)
   --click-green   With --import-ui, also click green CTA via screenshot
+  --force         With --import-ui, re-import even if already listed
+  --timeout N     Import wait seconds (default 12; passed to import_shortcut_ui)
   --run           After import, run non-interactive goldens (shortcuts run)
   --with-inputs   With --run/--auto, also run ask goldens via fixtures/attested/inputs
   --auto          --import-ui --run --with-inputs (full local attestation loop)
@@ -37,6 +41,7 @@ Examples:
   ./scripts/attest_local.sh --hash-only
   ./scripts/attest_local.sh --auto
   ./scripts/attest_local.sh --import-ui --click-green --all
+  ./scripts/attest_local.sh --auto --force --timeout 20
 EOF
 }
 
@@ -47,6 +52,8 @@ while [[ $# -gt 0 ]]; do
     --open) DO_OPEN=1; DO_SIGN=1 ;;
     --import-ui) DO_IMPORT_UI=1; DO_SIGN=1 ;;
     --click-green) CLICK_GREEN=1 ;;
+    --force) FORCE_IMPORT=1 ;;
+    --timeout) IMPORT_TIMEOUT="${2:?}"; shift ;;
     --run) DO_RUN=1 ;;
     --with-inputs) WITH_INPUTS=1 ;;
     --auto) DO_IMPORT_UI=1; DO_SIGN=1; DO_RUN=1; WITH_INPUTS=1 ;;
@@ -123,15 +130,18 @@ if [[ "$DO_IMPORT_UI" -eq 1 ]]; then
   }
   # Fresh import report for this session
   printf 'name\tresult\tmethod\tms\tnotes\n' >fixtures/attested/runs/import_report.tsv
-  import_args=(./scripts/import_shortcut_ui.sh)
+  import_args=(./scripts/import_shortcut_ui.sh --timeout "$IMPORT_TIMEOUT")
   if [[ "$CLICK_GREEN" -eq 1 ]]; then
     import_args+=(--click-green)
+  fi
+  if [[ "$FORCE_IMPORT" -eq 1 ]]; then
+    import_args+=(--force)
   fi
   if [[ ${#SIGNED_LIST[@]} -eq 0 ]]; then
     while IFS= read -r s; do
       [[ -z "$s" ]] && continue
       SIGNED_LIST+=("$s")
-    done < <(ls /tmp/shortcuts-attest/*_signed.shortcut 2>/dev/null | sort)
+    done < <(find /tmp/shortcuts-attest -maxdepth 1 -type f -name '*_signed.shortcut' 2>/dev/null | sort)
   fi
   if [[ ${#SIGNED_LIST[@]} -eq 0 ]]; then
     echo "Error: no signed files; run with --sign/--import-ui/--auto first" >&2

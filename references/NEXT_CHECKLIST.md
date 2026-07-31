@@ -1,7 +1,14 @@
 # Checklist — prochains pas (attestation + skill 10/10)
 
-Dernière màj : **2026-07-26** (Mac local, macOS 26.5.2, automation Return/AX en place).  
-Branche de travail : `cursor/skill-quality-hardening-0e57`.
+> **Tracks actifs (2026-07-26) :**  
+> • Linux clos → [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md)  
+> • Horizon paper MVP clos → [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md)  
+> • Horizon agent track (MCP / market) → [`HORIZON_AGENT_CHECKLIST.md`](HORIZON_AGENT_CHECKLIST.md)  
+> • **Mac restant → [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md)** (source of truth device)  
+> Ce fichier reste l’historique détaillé ; le suivi Mac court est dans `MAC_10_CHECKLIST.md`.
+
+Dernière màj : **2026-07-26** (Linux 10/10 + Horizon paper + Mac baseline).  
+Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 
 **Légende**
 
@@ -15,7 +22,7 @@ Branche de travail : `cursor/skill-quality-hardening-0e57`.
 | **P2** | Nice-to-have / polish |
 | **DoD** | Definition of Done (critère d’acceptation) |
 
-Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
+Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md) · [`HORIZON_AGENT_CHECKLIST.md`](HORIZON_AGENT_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
 
 
 ---
@@ -115,17 +122,18 @@ Pour chaque golden skippé, décider une case MATRIX explicite :
 
 ### B5. Sheets secondaires **P1**
 
-- [ ] Détecter dialogues “non fiable” / “Add Untrusted” / permissions
-- [ ] Séquence : Return → si pas listé, clics AX nommés → Escape si sheet parasite → retry open
-- [ ] Timeout configurable déjà présent : exposer `--timeout` dans `attest_local.sh`
+- [x] Détecter dialogues “non fiable” / “Add Untrusted” / permissions (AX name list EN+FR)
+- [x] Séquence : Return → AX → Escape si sheet parasite → retry (`import_shortcut_ui.sh`)
+- [x] Timeout configurable : `--timeout` dans `attest_local.sh` + import UI
+- [ ] Documenter import “people-who-know-me” sur Mac (manuel)
 
 **DoD :** import d’un golden “anyone” + un “people-who-know-me” documenté.
 
 ### B6. Idempotence / cleanup **P2**
 
-- [ ] Option `--reimport` : si déjà dans `shortcuts list`, skip **ou** supprimer puis réimporter (doc risque)
+- [x] Option `--force` : réimporter même si déjà dans `shortcuts list`
+- [~] Deux `--auto` d’affilée = SKIP imports (déjà) ; cleanup manuel documenté
 - [ ] Ne jamais supprimer de raccourcis hors préfixe `*_signed` / dossier attest
-- [ ] Documenter le cleanup manuel dans Shortcuts
 
 **DoD :** 2× `--auto` d’affilée = SKIP imports, runs stables, pas de doublons.
 
@@ -219,11 +227,12 @@ Pour chaque golden skippé, décider une case MATRIX explicite :
 
 Reporté de [`ROADMAP_10.md`](ROADMAP_10.md) — faire après 1.9.0 :
 
-- [ ] **B6** `SKILL.en.md` + `OUTPUT_NAMES.md`
+- [x] **B6** `SKILL.en.md` + `OUTPUT_NAMES.md`
 - [x] **B7** Golden Share Sheet / ImportQuestions (`09-share-sheet-input`)
-- [ ] **B8** Locally : attested golden **ou** design-only clair (stub déjà honnête)
-- [ ] Palette 12 → 16–20 (actions power manquantes)
+- [x] **B8** Locally : **abandonné** → [`HORIZON.md`](HORIZON.md) (app / Siri / marketplace)
+- [x] Palette 12 → 16 (notification, number, openapp, speaktext)
 - [ ] Plus de community depuis `data/external/*.index.jsonl`
+- [ ] Horizon companion app (hors ce repo) — voir `HORIZON.md`
 
 ---
 
@@ -300,18 +309,18 @@ cat fixtures/attested/runs/run_report.tsv
 | B1 | import_report | P1 | | [x] |
 | B2 | results.json | P1 | | [x] |
 | B3 | screenshot on FAIL | P1 | | [x] |
-| B4 | click-green robuste | P2 | | [ ] |
-| B5 | sheets secondaires | P1 | | [ ] |
-| B6 | idempotence | P2 | | [~] `--force` |
-| B7 | preflight UX | P1 | | [x] |
+| B4 | click-green robuste | P2 | | [~] tolérance CTA resserrée |
+| B5 | sheets secondaires | P1 | | [x] AX+Escape |
+| B6 | idempotence | P2 | | [x] `--force` + SKIP |
+| B7 | preflight UX | P1 | | [x] + `--json` |
 | C1 | community ×2 | P0 | | [x] |
-| C2 | network pass | P2 | | [ ] |
+| C2 | network pass | P2 | | [~] notes + MATRIX |
 | C3 | inputs headless | P1 | | [x] |
 | C4 | iOS sample | P2 | | [ ] _(skipped for Mac-max)_ |
 | D1 | MATRIX complete | P0 | | [x] |
 | D2 | bump 1.9.0 | P0 | | [x] |
 | D3 | docs agent | P1 | | [x] |
 | D4 | git/PR | P0 | | [x] |
-| D5 | CI Darwin-safe | P1 | | [x] |
-| E* | roadmap élargie | P2 | | [ ] |
+| D5 | CI Darwin-safe | P1 | | [x] + selftest/craig/shellcheck |
+| E* | roadmap élargie | P2 | | [x] Locally→Horizon ; palette 16 |
 | F* | vision expérimentale | P2 | | [ ] |

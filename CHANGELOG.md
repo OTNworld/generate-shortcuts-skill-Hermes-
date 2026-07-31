@@ -5,6 +5,128 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [Unreleased]
+
+### Added
+- Horizon agent track: `references/HORIZON_AGENT_CHECKLIST.md` (utils → MCP → automations → market → CLI)
+- MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
+- Market blurbs: `references/MARKET_LISTING.md`
+- Cursor MCP install: `shortcuts-hermes` via `mcp_server/run.sh` + `.venv-mcp`
+
+## [1.16.0] - 2026-07-26
+
+### Added
+- GitHub Actions `release.yml` — on `v*` tag: validate + selftest + `gh release create` (linux notes)
+- Release tooling: `references/RELEASE.md`, `scripts/cut_release.sh` (dry-run default; `--mode linux|mac`)
+- `scripts/shortcut_icon.py` — lean glyph/color helper from `PLIST_FORMAT.md`
+- Teaching golden `examples/10-rewrite-text` + Horizon packages `clipboard-set`, `local-rewrite`
+- Community MIT vendor `19-app-release-notes` (Viticci gap); WF SSOT **446**
+- `results.json` `attest_baseline` honesty block (snapshot remains skill **1.10.0**)
+
+### Changed
+- Skill version 1.16.0
+- Viticci gaps **9 → 8**; community **10 → 11**; Horizon packages **2 → 4**
+
+## [1.15.0] - 2026-07-26
+
+### Added
+- Selective Viticci gap vendors (MIT):
+  - `community/17-create-calendar-event-from-template.shortcut.xml`
+  - `community/18-select-folder-compress-share.shortcut.xml`
+- SSOT WF actions **438 → 442** (`file.getfoldercontents`, `file.select`, `makezip`, `properties.files`)
+
+### Changed
+- Skill version 1.15.0
+- Viticci gaps **11 → 9**; community goldens **8 → 10**
+- Intentionally skipped heavy/API gaps (Evernote, Toggl, Dropbox, App Store, WordleBot, Clip to iCloud Clipboard)
+
+## [1.14.0] - 2026-07-26
+
+### Added
+- Sources registry hardening: `data/schemas/sources.v1.json`, `scripts/check_sources.py`,
+  `scripts/refresh_external_indexes.sh`, `data/external/viticci-gaps.jsonl` (11 non-vendored)
+- Official / research links: Apple User Guide, App Intents, ScPL, Zachary7829 format,
+  Matthew Cassinelli actions directory (`data/sources.json` now 13 entries)
+- `last_checked` / `archived` / `tags` on source records
+
+### Changed
+- Skill version 1.14.0
+- `ECOSYSTEM.md` + `THIRD_PARTY_NOTICES.md` synced (8 community, 11 gaps, Apple official block)
+- `validate.sh` runs sources integrity gate
+
+## [1.13.0] - 2026-07-26
+
+### Added
+- Mac remaining track: `references/MAC_10_CHECKLIST.md` + refreshed `MAC_HANDOFF.md`
+- Horizon paper MVP: `horizon/packages/*`, `data/schemas/horizon-package.v1.json`,
+  `scripts/check_horizon_packages.py`, `references/HORIZON_CHECKLIST.md`
+- Sample marketplace SKUs: `hello-world`, `local-ask-llm` (Apple Intelligence policy)
+
+### Changed
+- Skill version 1.13.0
+- `HORIZON.md` documents package format + deep-link convention
+- `AGENT_ENTRY.md` / README point at Linux / Mac / Horizon tracks
+
+## [1.12.0] - 2026-07-26
+
+### Added
+- Linux 10/10 track: `references/LINUX_10_CHECKLIST.md`, `references/AGENT_ENTRY.md`
+- Stdlib unit tests: `tests/test_linux10.py` (remix, craig, schemas, secrets)
+- JSON schemas: `data/schemas/{wf_actions,appintents,attest-results}.v1.json` + `check_json_schema.py`
+- Secret heuristics gate: `scripts/check_no_secrets.py` (wired in `validate.sh`)
+- AppIntents `unverified` list (14 Settings/VPN IDs); WF `platform_hints` for palette actions
+- Remix I/O fixtures: `fixtures/remix/hello-bonjour.{input,expected}.xml`
+- Craig fixture: `savefile-hello` → `documentpicker.save` auto-fix
+- FAILURE_MODES “Erreur → une commande” table
+
+### Changed
+- Skill version 1.12.0
+- `selftest.sh` runs unittest + savefile craig + remix I/O assert
+- Upstream lineage clarified in `sources.json`, `THIRD_PARTY_NOTICES.md`, `SECURITY.md`
+
+## [1.11.0] - 2026-07-26
+
+### Added
+- Horizon product direction: `references/HORIZON.md` (companion app, Siri, local-model marketplace)
+- Structural remix: `--list-actions`, `--insert-action`, `--remove-action`, `--move-action`, `--set-param`
+- Palette 13–16: notification, number, openapp, speaktext
+- AppIntents curated batch **+14** (168 total): Settings deep links + VPN Set/Toggle
+- CI: `selftest.sh` (craig + remix), `shellcheck` on scripts
+- Import UI secondary sheets (untrusted / Escape retry); `attest_local.sh --force` / `--timeout`
+- `check_shortcuts_automation.sh --json` for agents
+
+### Changed
+- Locally → Obsidian track **abandoned**; stub kept historical only
+- Skill version 1.11.0
+- Craig Loop lite: also rewrite legacy `getdictionaryvalue` → `getvalueforkey`
+
+### Fixed
+- Doc drift: `OBSIDIAN_BRIDGE.md` points at `URL_SCHEMES.md` + Horizon
+
+## [1.10.0] - 2026-07-26
+
+### Added
+- Mac-max attestation (no iOS): `results.json`, import/run TSV snapshots, Ask `--with-inputs`,
+  FAIL screenshots under `fixtures/attested/runs/`, `write_attest_results.sh`
+- `--auto` now includes `--with-inputs` + results aggregation
+- Competitive parity checklist (lean vs Viticci): `references/COMPETITIVE_CHECKLIST.md`
+- Lean remix + validate-on-write: `references/REMIX.md`, `scripts/remix_shortcut.py`,
+  `scripts/validate_on_write.sh`, `fixtures/remix/`
+- `SKILL.en.md`, `references/OUTPUT_NAMES.md`, `scripts/selftest.sh`
+- Community goldens 14–16 + teaching `09-share-sheet-input` (Share Sheet)
+- SSOT WF actions expanded to **438**
+- Craig Loop lite: `scripts/craig_loop_lite.py` + `validate_on_write.sh --fix` (UUID case, mode integer)
+- `references/APPINTENTS_GAP.md` (curated vs peer ToolKit dumps)
+- `.cursor/rules/shortcuts-validate-on-write.mdc`
+- Network pass notes in `ATTEST_AUTOMATION.md`; PLATFORM_MATRIX rows for community action IDs
+
+### Changed
+- Skill version 1.10.0
+- README differentiation: Mac attestation first-class vs larger playground plugins
+
+### Fixed
+- `palette/08-downloadurl`: align with community electricity-price wiring (magic input + headers); runtime NET flaky
+
 ## [1.9.0] - 2026-07-26
 
 ### Added
@@ -23,36 +145,6 @@ Versioning follows the `version` field in `SKILL.md`.
 
 ### Changed
 - Skill version 1.9.0
-
-## [1.10.0] - 2026-07-26
-
-### Added
-- Mac-max attestation (no iOS): `results.json`, import/run TSV snapshots, Ask `--with-inputs`,
-  FAIL screenshots under `fixtures/attested/runs/`, `write_attest_results.sh`
-- `--auto` now includes `--with-inputs` + results aggregation
-- Competitive parity checklist (lean vs Viticci): `references/COMPETITIVE_CHECKLIST.md`
-- Lean remix + validate-on-write: `references/REMIX.md`, `scripts/remix_shortcut.py`,
-  `scripts/validate_on_write.sh`, `fixtures/remix/`
-- `SKILL.en.md`, `references/OUTPUT_NAMES.md`, `scripts/selftest.sh`
-- Community goldens 14–16 + teaching `09-share-sheet-input` (Share Sheet)
-- SSOT WF actions expanded to **438**
-
-### Changed
-- Skill version 1.10.0
-- README differentiation: Mac attestation first-class vs larger playground plugins
-
-## [Unreleased]
-
-### Added
-- Horizon track: `references/HORIZON_CHECKLIST.md` (utils → MCP → automations → market → CLI)
-- MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
-- Market blurbs: `references/MARKET_LISTING.md`
-- Craig Loop lite: `scripts/craig_loop_lite.py` + `validate_on_write.sh --fix`
-- `references/APPINTENTS_GAP.md`, `.cursor/rules/shortcuts-validate-on-write.mdc`
-- Cursor MCP install: `shortcuts-hermes` via `mcp_server/run.sh` + `.venv-mcp`
-
-### Fixed
-- `palette/08-downloadurl`: electricity-price wiring; runtime NET flaky
 
 ## [1.8.0] - 2026-07-26
 
