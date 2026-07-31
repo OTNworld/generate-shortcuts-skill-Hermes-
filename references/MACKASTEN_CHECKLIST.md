@@ -34,18 +34,17 @@ Vision : [`MACKASTEN.md`](MACKASTEN.md) · index : [`../mackasten/README.md`](..
 
 ## Next (app repo — not this skill)
 
-Blueprint oneshot (docs + fetch script) lives in [`../mackasten/app/`](../mackasten/app/) — **seed ready**.
+Blueprint oneshot + **Swift scaffold** lives in [`../mackasten/app/`](../mackasten/app/) — **seed ready**.
 
-Private repo: **`OTNworld/mackasten-iOS`** (create under your account; see `app/REPO_BOOTSTRAP.md`). Former codename `mackasten-iOS` OK if already created.
+Private repo: **`OTNworld/mackasten-iOS`** (create under your account; see `app/REPO_BOOTSTRAP.md`).
 
 - [ ] Create private `mackasten-iOS` + push seed from `mackasten/app/`
-- [ ] Swift scaffold consuming fetched `Vendor/SkillPackages/` (from `mackasten/packages/`)
-- [ ] Register `hermes-shortcuts://` URL scheme
-- [ ] On-device model adapter + Siri phrases → install/run
-- [ ] Complete [`../mackasten/app/CHECKLIST.md`](../mackasten/app/CHECKLIST.md) P0 gates
+- [ ] Mac: `xcodegen generate` + Simulator catalog / install / run Hello World
+- [ ] Complete remaining P0 gates in [`../mackasten/app/CHECKLIST.md`](../mackasten/app/CHECKLIST.md)
+- [ ] On-device Siri / Apple Intelligence smokes
 
 ## Anti-goals
 
-- [x] Ne pas implémenter l’app dans ce repo
+- [x] Ne pas shipper de binaire App Store depuis ce skill (seed Swift OK ; runtime = repo privé)
 - [x] Ne pas revendiquer attestation marketplace sans MATRIX
 - [x] Ne pas utiliser AppIntents `unverified` dans un package teaching
