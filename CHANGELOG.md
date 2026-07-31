@@ -8,10 +8,14 @@ Versioning follows the `version` field in `SKILL.md`.
 ## [Unreleased]
 
 ### Added
-- Horizon iOS oneshot blueprint under `horizon/app/` (VISION, REQUIREMENTS, ARCHITECTURE, ONESHOT_PLAN, CHECKLIST, SKILL.md)
-- Fetch CI script `horizon/app/scripts/fetch_skill_packages.sh` + `check_oneshot_ready.py` gate in `validate.sh`
-- Bootstrap notes for private repo `OTNworld/horizon-iOS` (fetch-CI link mode)
+- Mackasten iOS oneshot blueprint under `mackasten/app/` (VISION, REQUIREMENTS, ARCHITECTURE, ONESHOT_PLAN, CHECKLIST, SKILL.md)
+- Fetch CI script `mackasten/app/scripts/fetch_skill_packages.sh` + `check_oneshot_ready.py` gate in `validate.sh` (dual layout: `mackasten/` + legacy `mackasten/`)
+- Bootstrap notes for private repo `OTNworld/mackasten-iOS` (fetch-CI link mode; former codename `mackasten-iOS`)
 - Peer source links: laramarcodes/ios-dev-skill, n0an/App-Intents-Agent-Skill
+- Mackasten agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (utils → MCP → automations → market → CLI)
+- MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
+- Market blurbs: `references/MARKET_LISTING.md`
+- Cursor MCP install: `shortcuts-hermes` via `mcp_server/run.sh` + `.venv-mcp`
 
 ## [1.16.0] - 2026-07-26
 
@@ -19,13 +23,13 @@ Versioning follows the `version` field in `SKILL.md`.
 - GitHub Actions `release.yml` — on `v*` tag: validate + selftest + `gh release create` (linux notes)
 - Release tooling: `references/RELEASE.md`, `scripts/cut_release.sh` (dry-run default; `--mode linux|mac`)
 - `scripts/shortcut_icon.py` — lean glyph/color helper from `PLIST_FORMAT.md`
-- Teaching golden `examples/10-rewrite-text` + Horizon packages `clipboard-set`, `local-rewrite`
+- Teaching golden `examples/10-rewrite-text` + Mackasten packages `clipboard-set`, `local-rewrite`
 - Community MIT vendor `19-app-release-notes` (Viticci gap); WF SSOT **446**
 - `results.json` `attest_baseline` honesty block (snapshot remains skill **1.10.0**)
 
 ### Changed
 - Skill version 1.16.0
-- Viticci gaps **9 → 8**; community **10 → 11**; Horizon packages **2 → 4**
+- Viticci gaps **9 → 8**; community **10 → 11**; Mackasten packages **2 → 4**
 
 ## [1.15.0] - 2026-07-26
 
@@ -58,14 +62,14 @@ Versioning follows the `version` field in `SKILL.md`.
 
 ### Added
 - Mac remaining track: `references/MAC_10_CHECKLIST.md` + refreshed `MAC_HANDOFF.md`
-- Horizon paper MVP: `horizon/packages/*`, `data/schemas/horizon-package.v1.json`,
-  `scripts/check_horizon_packages.py`, `references/HORIZON_CHECKLIST.md`
+- Mackasten paper MVP: `mackasten/packages/*`, `data/schemas/mackasten-package.v1.json`,
+  `scripts/check_mackasten_packages.py`, `references/MACKASTEN_CHECKLIST.md`
 - Sample marketplace SKUs: `hello-world`, `local-ask-llm` (Apple Intelligence policy)
 
 ### Changed
 - Skill version 1.13.0
-- `HORIZON.md` documents package format + deep-link convention
-- `AGENT_ENTRY.md` / README point at Linux / Mac / Horizon tracks
+- `MACKASTEN.md` documents package format + deep-link convention
+- `AGENT_ENTRY.md` / README point at Linux / Mac / Mackasten tracks
 
 ## [1.12.0] - 2026-07-26
 
@@ -87,7 +91,7 @@ Versioning follows the `version` field in `SKILL.md`.
 ## [1.11.0] - 2026-07-26
 
 ### Added
-- Horizon product direction: `references/HORIZON.md` (companion app, Siri, local-model marketplace)
+- Mackasten product direction: `references/MACKASTEN.md` (companion app, Siri, local-model marketplace)
 - Structural remix: `--list-actions`, `--insert-action`, `--remove-action`, `--move-action`, `--set-param`
 - Palette 13–16: notification, number, openapp, speaktext
 - AppIntents curated batch **+14** (168 total): Settings deep links + VPN Set/Toggle
@@ -101,7 +105,7 @@ Versioning follows the `version` field in `SKILL.md`.
 - Craig Loop lite: also rewrite legacy `getdictionaryvalue` → `getvalueforkey`
 
 ### Fixed
-- Doc drift: `OBSIDIAN_BRIDGE.md` points at `URL_SCHEMES.md` + Horizon
+- Doc drift: `OBSIDIAN_BRIDGE.md` points at `URL_SCHEMES.md` + Mackasten
 
 ## [1.10.0] - 2026-07-26
 

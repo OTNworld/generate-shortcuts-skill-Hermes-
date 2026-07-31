@@ -226,9 +226,9 @@ class TestSources(unittest.TestCase):
         self.assertEqual(r.returncode, 0, r.stderr)
 
 
-class TestHorizon(unittest.TestCase):
+class TestMackasten(unittest.TestCase):
     def test_packages_gate(self):
-        r = run(["python3", "scripts/check_horizon_packages.py"])
+        r = run(["python3", "scripts/check_mackasten_packages.py"])
         self.assertEqual(r.returncode, 0, r.stderr + r.stdout)
 
     def test_package_schema(self):
@@ -236,8 +236,8 @@ class TestHorizon(unittest.TestCase):
             [
                 "python3",
                 "scripts/check_json_schema.py",
-                "horizon/packages/hello-world/package.json",
-                "data/schemas/horizon-package.v1.json",
+                "mackasten/packages/hello-world/package.json",
+                "data/schemas/mackasten-package.v1.json",
             ]
         )
         self.assertEqual(r.returncode, 0, r.stderr)

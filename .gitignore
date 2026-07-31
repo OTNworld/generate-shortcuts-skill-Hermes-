@@ -14,9 +14,13 @@
 /fixtures/attested/*.shortcut
 /fixtures/attested/*_signed.shortcut
 fixtures/attested/runs/
+fixtures/craig/remix-*.shortcut.xml
 
 __pycache__/
 *.py[cod]
 
-# Horizon app fetch output (seed / local CI smoke)
-/horizon/app/Vendor/
+# MCP server local venv
+.venv-mcp/
+
+# Mackasten app fetch output (seed / local CI smoke)
+/mackasten/app/Vendor/

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "shortcuts-hermes": {
+      "command": "/Users/ps/Developer/generate-shortcuts-skill-Hermes-/mcp_server/run.sh",
+      "args": [],
+      "env": {
+        "SHORTCUTS_SKILL_ROOT": "/Users/ps/Developer/generate-shortcuts-skill-Hermes-"
+      }
+    }
+  }
+}

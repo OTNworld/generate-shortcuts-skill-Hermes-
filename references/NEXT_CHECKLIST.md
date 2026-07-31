@@ -2,11 +2,12 @@
 
 > **Tracks actifs (2026-07-26) :**  
 > • Linux clos → [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md)  
-> • Horizon paper MVP clos → [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md)  
+> • Mackasten paper MVP clos → [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md)  
+> • Mackasten agent track (MCP / market) → [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md)  
 > • **Mac restant → [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md)** (source of truth device)  
 > Ce fichier reste l’historique détaillé ; le suivi Mac court est dans `MAC_10_CHECKLIST.md`.
 
-Dernière màj : **2026-07-26** (Linux 10/10 + Horizon paper + Mac baseline).  
+Dernière màj : **2026-07-26** (Linux 10/10 + Mackasten paper + Mac baseline).  
 Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 
 **Légende**
@@ -21,7 +22,7 @@ Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 | **P2** | Nice-to-have / polish |
 | **DoD** | Definition of Done (critère d’acceptation) |
 
-Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
+Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md) · [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
 
 
 ---
@@ -228,10 +229,10 @@ Reporté de [`ROADMAP_10.md`](ROADMAP_10.md) — faire après 1.9.0 :
 
 - [x] **B6** `SKILL.en.md` + `OUTPUT_NAMES.md`
 - [x] **B7** Golden Share Sheet / ImportQuestions (`09-share-sheet-input`)
-- [x] **B8** Locally : **abandonné** → [`HORIZON.md`](HORIZON.md) (app / Siri / marketplace)
+- [x] **B8** Locally : **abandonné** → [`MACKASTEN.md`](MACKASTEN.md) (app / Siri / marketplace)
 - [x] Palette 12 → 16 (notification, number, openapp, speaktext)
 - [ ] Plus de community depuis `data/external/*.index.jsonl`
-- [ ] Horizon companion app (hors ce repo) — voir `HORIZON.md`
+- [ ] Mackasten companion app (hors ce repo) — voir `MACKASTEN.md`
 
 ---
 
@@ -321,5 +322,5 @@ cat fixtures/attested/runs/run_report.tsv
 | D3 | docs agent | P1 | | [x] |
 | D4 | git/PR | P0 | | [x] |
 | D5 | CI Darwin-safe | P1 | | [x] + selftest/craig/shellcheck |
-| E* | roadmap élargie | P2 | | [x] Locally→Horizon ; palette 16 |
+| E* | roadmap élargie | P2 | | [x] Locally→Mackasten ; palette 16 |
 | F* | vision expérimentale | P2 | | [ ] |

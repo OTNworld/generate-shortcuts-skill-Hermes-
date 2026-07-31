@@ -5,7 +5,8 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Horizon companion (marketplace / Siri): `references/HORIZON.md` · oneshot iOS blueprint: `horizon/app/SKILL.md`
+  Obsidian vault notes (optional; Locally track abandoned — see MACKASTEN.md).
+  Mackasten companion oneshot iOS blueprint: `mackasten/app/SKILL.md`.
 version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
@@ -21,7 +22,7 @@ metadata:
 English mirror of the agent protocol. The Hermes-facing `SKILL.md` remains French;
 follow the same steps and scripts.
 
-**Agent map:** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md) · **Linux 10/10:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md) · **Mac 10/10:** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md) · **Horizon:** [`horizon/README.md`](horizon/README.md)
+**Agent map:** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md) · **Linux 10/10:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md) · **Mac 10/10:** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md) · **Mackasten:** [`mackasten/README.md`](mackasten/README.md)
 
 ## Commands (virtual)
 

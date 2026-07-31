@@ -8,13 +8,13 @@ Mac-attested track (verify MATRIX before publish)
 - GitHub Actions `release.yml` — on `v*` tag: validate + selftest + `gh release create` (linux notes)
 - Release tooling: `references/RELEASE.md`, `scripts/cut_release.sh` (dry-run default; `--mode linux|mac`)
 - `scripts/shortcut_icon.py` — lean glyph/color helper from `PLIST_FORMAT.md`
-- Teaching golden `examples/10-rewrite-text` + Horizon packages `clipboard-set`, `local-rewrite`
+- Teaching golden `examples/10-rewrite-text` + Mackasten packages `clipboard-set`, `local-rewrite`
 - Community MIT vendor `19-app-release-notes` (Viticci gap); WF SSOT **446**
 - `results.json` `attest_baseline` honesty block (snapshot remains skill **1.10.0**)
 
 ### Changed
 - Skill version 1.16.0
-- Viticci gaps **9 → 8**; community **10 → 11**; Horizon packages **2 → 4**
+- Viticci gaps **9 → 8**; community **10 → 11**; Mackasten packages **2 → 4**
 
 ## Support matrix (honest)
 
@@ -23,7 +23,7 @@ Mac-attested track (verify MATRIX before publish)
 | Linux CI (`validate` / `selftest` / schemas / sources) | Supported |
 | macOS sign → import → run | See Mac claim below |
 | iOS | Best-effort / **not** systematically attested |
-| Horizon marketplace packages | **Paper MVP** (`horizon/packages/`) — not an App Store product |
+| Mackasten marketplace packages | **Paper MVP** (`mackasten/packages/`) — not an App Store product |
 | AppIntents listed in `unverified` | SSOT only — **no** teaching `appintentexecution` goldens yet |
 
 **Mac attestation:** intended for use after `MAC_10_CHECKLIST` is completed on device. Confirm `fixtures/attested/MATRIX.md` + `results.json` `skill_version` == **1.16.0** before publishing this claim. If MATRIX is still on an older skill version, use `--mode linux` instead.

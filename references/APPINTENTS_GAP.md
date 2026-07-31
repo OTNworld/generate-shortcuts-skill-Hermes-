@@ -1,6 +1,6 @@
 # AppIntents gap audit (lean)
 
-Date: **2026-07-26** (batch +14 Settings/VPN; Horizon watchlist)  
+Date: **2026-07-26** (batch +14 Settings/VPN; Mackasten watchlist)  
 Peer: [viticci/shortcuts-playground](https://github.com/viticci/shortcuts-playground-plugin) `APPINTENTS.md` + ToolKit v63/v78 snapshots.
 
 ## Models (do not conflate)
@@ -25,9 +25,9 @@ Listed in `data/appintents.json` → `unverified` (must stay ⊆ `identifiers`):
 
 **Agent rule:** do **not** ship teaching `appintentexecution` goldens for these until a Mac/iOS export confirms BundleIdentifier + Name. SSOT membership ≠ device-verified.
 
-## Horizon watchlist (do not invent IDs)
+## Mackasten watchlist (do not invent IDs)
 
-Companion app / next-gen Siri / on-device models ([`HORIZON.md`](HORIZON.md)):
+Companion app / next-gen Siri / on-device models ([`MACKASTEN.md`](MACKASTEN.md)):
 
 - On-device rewrite / summarize / proofread extensions beyond current `RewriteIntent` / `SummarizeIntent` / `ProofreadIntent`
 - Marketplace install / run intents (app-owned, not Apple system)

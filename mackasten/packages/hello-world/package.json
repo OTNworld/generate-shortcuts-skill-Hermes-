@@ -1,0 +1,27 @@
+{
+  "schema": "mackasten-package/v1",
+  "id": "hello-world",
+  "name": "Hello World",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Minimal marketplace sample: Get Text → Show Result.",
+  "tags": ["starter", "teaching"],
+  "model_policy": "none",
+  "siri_phrases": ["Run Hello World shortcut", "Show hello world"],
+  "shortcuts": [
+    {
+      "path": "templates/examples/01-hello-world.shortcut.xml",
+      "role": "primary",
+      "output_name": "Hello World"
+    }
+  ],
+  "attestation": {
+    "matrix_ref": "fixtures/attested/MATRIX.md",
+    "results_ref": "fixtures/attested/results.json",
+    "status": "mac-run"
+  },
+  "edit": {
+    "skill_path": "templates/examples/01-hello-world.shortcut.xml",
+    "deep_link": "hermes-shortcuts://edit?path=templates/examples/01-hello-world.shortcut.xml"
+  }
+}

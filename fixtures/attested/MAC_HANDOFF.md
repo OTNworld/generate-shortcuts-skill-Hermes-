@@ -1,7 +1,7 @@
 # Mac attestation handoff
 
 Complete remaining **Mac 10/10** items on a Mac with Shortcuts.app.
-Linux CI already covers XML + grammar + SSOT + Horizon package manifests.
+Linux CI already covers XML + grammar + SSOT + Mackasten package manifests.
 
 **Active checklist:** [`references/MAC_10_CHECKLIST.md`](../../references/MAC_10_CHECKLIST.md)  
 **Start here:** [`LOCAL_FINALIZE.md`](../../LOCAL_FINALIZE.md)

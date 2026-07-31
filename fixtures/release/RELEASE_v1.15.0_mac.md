@@ -22,7 +22,7 @@ Mac-attested track (verify MATRIX before publish)
 | Linux CI (`validate` / `selftest` / schemas / sources) | Supported |
 | macOS sign → import → run | See Mac claim below |
 | iOS | Best-effort / **not** systematically attested |
-| Horizon marketplace packages | **Paper MVP** (`horizon/packages/`) — not an App Store product |
+| Mackasten marketplace packages | **Paper MVP** (`mackasten/packages/`) — not an App Store product |
 | AppIntents listed in `unverified` | SSOT only — **no** teaching `appintentexecution` goldens yet |
 
 **Mac attestation:** intended for use after `MAC_10_CHECKLIST` is completed on device. Confirm `fixtures/attested/MATRIX.md` + `results.json` `skill_version` == **1.15.0** before publishing this claim. If MATRIX is still on an older skill version, use `--mode linux` instead.

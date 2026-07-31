@@ -157,13 +157,13 @@
       "url": "https://developer.apple.com/documentation/appintents",
       "role": "official-docs",
       "license": "Apple",
-      "notes": "App Intents framework docs \u2014 relevant to Horizon / Siri / appintentexecution; do not invent intent IDs from memory.",
+      "notes": "App Intents framework docs \u2014 relevant to Mackasten / Siri / appintentexecution; do not invent intent IDs from memory.",
       "use": "official",
       "last_checked": "2026-07-26",
       "tags": [
         "apple",
         "appintents",
-        "horizon"
+        "mackasten"
       ]
     },
     {
@@ -197,11 +197,11 @@
       "url": "https://github.com/laramarcodes/ios-dev-skill",
       "role": "peer-ios-scaffold",
       "license": "unknown/unspecified",
-      "notes": "Peer agent skill for SwiftUI/iOS 26 scaffolding (XcodeGen, Foundation Models). Link for Horizon app oneshot; do not vendor into this Shortcuts skill.",
+      "notes": "Peer agent skill for SwiftUI/iOS 26 scaffolding (XcodeGen, Foundation Models). Link for Mackasten app oneshot; do not vendor into this Shortcuts skill.",
       "use": "link",
       "last_checked": "2026-07-27",
       "tags": [
-        "horizon",
+        "mackasten",
         "ios",
         "peer",
         "skill"
@@ -212,11 +212,11 @@
       "url": "https://github.com/n0an/App-Intents-Agent-Skill",
       "role": "peer-app-intents",
       "license": "unknown/unspecified",
-      "notes": "Peer App Intents / Siri / AppShortcutsProvider guidance for Horizon-owned intents. Link only; never invent Apple intent IDs from memory.",
+      "notes": "Peer App Intents / Siri / AppShortcutsProvider guidance for Mackasten-owned intents. Link only; never invent Apple intent IDs from memory.",
       "use": "link",
       "last_checked": "2026-07-27",
       "tags": [
-        "horizon",
+        "mackasten",
         "appintents",
         "peer",
         "skill"
