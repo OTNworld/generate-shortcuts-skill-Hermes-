@@ -6,6 +6,7 @@ description: >
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
   Obsidian vault notes (optional; Locally track abandoned — see MACKASTEN.md).
+  Mackasten companion oneshot iOS blueprint: `mackasten/app/SKILL.md`.
 version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT

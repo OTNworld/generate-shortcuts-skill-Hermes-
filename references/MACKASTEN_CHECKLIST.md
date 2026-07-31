@@ -34,9 +34,15 @@ Vision : [`MACKASTEN.md`](MACKASTEN.md) · index : [`../mackasten/README.md`](..
 
 ## Next (app repo — not this skill)
 
-- [ ] Swift scaffold consuming `mackasten/packages/`
+Blueprint oneshot (docs + fetch script) lives in [`../mackasten/app/`](../mackasten/app/) — **seed ready**.
+
+Private repo: **`OTNworld/mackasten-iOS`** (create under your account; see `app/REPO_BOOTSTRAP.md`). Former codename `mackasten-iOS` OK if already created.
+
+- [ ] Create private `mackasten-iOS` + push seed from `mackasten/app/`
+- [ ] Swift scaffold consuming fetched `Vendor/SkillPackages/` (from `mackasten/packages/`)
 - [ ] Register `hermes-shortcuts://` URL scheme
 - [ ] On-device model adapter + Siri phrases → install/run
+- [ ] Complete [`../mackasten/app/CHECKLIST.md`](../mackasten/app/CHECKLIST.md) P0 gates
 
 ## Anti-goals
 

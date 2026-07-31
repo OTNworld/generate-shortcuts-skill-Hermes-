@@ -49,7 +49,7 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 - `templates/palette/` : 16 minimal power-action starters
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
 - `templates/locally-obsidian.stub.xml` : stub **abandonné** (historique, non importable)
-- Mackasten (app / Siri / marketplace) : `references/MACKASTEN.md`
+- Mackasten (app / Siri / marketplace) : `references/MACKASTEN.md` · oneshot iOS : `mackasten/app/SKILL.md`
 - Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
 
 ## Étapes

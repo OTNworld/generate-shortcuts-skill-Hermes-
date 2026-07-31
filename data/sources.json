@@ -193,6 +193,36 @@
       ]
     },
     {
+      "id": "laramarcodes-ios-dev-skill",
+      "url": "https://github.com/laramarcodes/ios-dev-skill",
+      "role": "peer-ios-scaffold",
+      "license": "unknown/unspecified",
+      "notes": "Peer agent skill for SwiftUI/iOS 26 scaffolding (XcodeGen, Foundation Models). Link for Mackasten app oneshot; do not vendor into this Shortcuts skill.",
+      "use": "link",
+      "last_checked": "2026-07-27",
+      "tags": [
+        "mackasten",
+        "ios",
+        "peer",
+        "skill"
+      ]
+    },
+    {
+      "id": "n0an-app-intents-agent-skill",
+      "url": "https://github.com/n0an/App-Intents-Agent-Skill",
+      "role": "peer-app-intents",
+      "license": "unknown/unspecified",
+      "notes": "Peer App Intents / Siri / AppShortcutsProvider guidance for Mackasten-owned intents. Link only; never invent Apple intent IDs from memory.",
+      "use": "link",
+      "last_checked": "2026-07-27",
+      "tags": [
+        "mackasten",
+        "appintents",
+        "peer",
+        "skill"
+      ]
+    },
+    {
       "id": "matthewcassinelli-actions",
       "url": "https://matthewcassinelli.com/actions/",
       "role": "action-directory",

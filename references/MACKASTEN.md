@@ -1,6 +1,7 @@
 # Mackasten — companion app, Siri, marketplace
 
-**Status:** product direction (2026-07-26). Not implemented in this Hermes skill repo yet.  
+**Status:** product direction (2026-07-27). Paper packages live here; **native app** is out of band in private `OTNworld/mackasten-iOS`.  
+**Oneshot blueprint + agent skill:** [`../mackasten/app/`](../mackasten/app/) (vision, requirements, fetch CI, checklist).  
 **Replaces:** Locally → Obsidian golden track (`templates/locally-obsidian.stub.xml` **abandoned**).
 
 ## Why abandon Locally / Obsidian golden
@@ -62,11 +63,14 @@ Not registered by this skill repo — reserved for the companion app / IDE bridg
 
 ## Suggested app backlog (out of band)
 
-1. Scaffold native app (Swift / App Intents) with Shortcuts import + run helpers.
-2. Consume `mackasten/packages/*/package.json` as marketplace catalog seed.
-3. Local-model adapter (Apple Intelligence / third-party on-device) behind a stable App Intent.
-4. Siri phrases → install/run marketplace shortcut.
-5. Resolve `hermes-shortcuts://edit` back into this skill workspace.
+Tracked as executable oneshot plan in [`../mackasten/app/ONESHOT_PLAN.md`](../mackasten/app/ONESHOT_PLAN.md):
+
+1. Bootstrap private `mackasten-iOS` — [`../mackasten/app/REPO_BOOTSTRAP.md`](../mackasten/app/REPO_BOOTSTRAP.md).
+2. Scaffold native app (Swift / App Intents) with Shortcuts import + run helpers.
+3. **Fetch CI** of `mackasten/packages/*/package.json` + XML @ pinned skill ref (legacy `mackasten/` layout still accepted by the fetch script).
+4. Local-model / Apple Intelligence gate (`ModelRouter`) behind package `model_policy`.
+5. Siri phrases → install/run marketplace shortcut (app-owned intents).
+6. Resolve `hermes-shortcuts://edit` back into this skill workspace.
 
 ## Anti-goals
 

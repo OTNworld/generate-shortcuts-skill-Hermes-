@@ -21,3 +21,6 @@ __pycache__/
 
 # MCP server local venv
 .venv-mcp/
+
+# Mackasten app fetch output (seed / local CI smoke)
+/mackasten/app/Vendor/

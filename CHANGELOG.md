@@ -8,6 +8,10 @@ Versioning follows the `version` field in `SKILL.md`.
 ## [Unreleased]
 
 ### Added
+- Mackasten iOS oneshot blueprint under `mackasten/app/` (VISION, REQUIREMENTS, ARCHITECTURE, ONESHOT_PLAN, CHECKLIST, SKILL.md)
+- Fetch CI script `mackasten/app/scripts/fetch_skill_packages.sh` + `check_oneshot_ready.py` gate in `validate.sh` (dual layout: `mackasten/` + legacy `mackasten/`)
+- Bootstrap notes for private repo `OTNworld/mackasten-iOS` (fetch-CI link mode; former codename `mackasten-iOS`)
+- Peer source links: laramarcodes/ios-dev-skill, n0an/App-Intents-Agent-Skill
 - Mackasten agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (utils → MCP → automations → market → CLI)
 - MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
 - Market blurbs: `references/MARKET_LISTING.md`
