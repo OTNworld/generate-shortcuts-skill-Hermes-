@@ -1,4 +1,4 @@
-# MCP Shortcuts (horizon H1)
+# MCP Shortcuts (mackasten H1)
 
 Expose repo utilities as MCP tools so agents call **tools** instead of inventing bash.
 

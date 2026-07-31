@@ -10,7 +10,7 @@ The **Locally → Obsidian** golden / stub path is **abandoned** (2026-07-26).
 | Artifact | Status |
 |----------|--------|
 | `templates/locally-obsidian.stub.xml` | Kept as historical **non-importable** stub only — do not extend, sign, or attest |
-| Product replacement | Companion app + Siri + local-model marketplace — see [`HORIZON.md`](HORIZON.md) |
+| Product replacement | Companion app + Siri + local-model marketplace — see [`MACKASTEN.md`](MACKASTEN.md) |
 
 Do not open roadmap items to “finish” Locally attestation.
 
@@ -44,7 +44,7 @@ Rules:
 
 ## Related
 
-- Horizon product direction: [`HORIZON.md`](HORIZON.md)
+- Mackasten product direction: [`MACKASTEN.md`](MACKASTEN.md)
 - Importable patterns: `templates/examples/`
 - Failure playbook: `FAILURE_MODES.md`
 - URL schemes: `URL_SCHEMES.md`

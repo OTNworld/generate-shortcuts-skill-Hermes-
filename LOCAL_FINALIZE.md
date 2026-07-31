@@ -4,7 +4,7 @@ Branche : `cursor/horizon-app-and-improvements-df7d`
 PR : https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/pull/5  
 Checklist Mac : [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)
 
-La CI Linux est déjà au **10/10** sur le track Linux (`LINUX_10_CHECKLIST.md`) + Horizon paper MVP.
+La CI Linux est déjà au **10/10** sur le track Linux (`LINUX_10_CHECKLIST.md`) + Mackasten paper MVP.
 Il reste l’**attestation Shortcuts** sur ton Mac (palette 13–16, NET, AppIntents verify).
 
 ## 1. Récupérer la branche
@@ -43,6 +43,6 @@ Cocher [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md).
 - exports personnels / secrets
 - `fixtures/attested/runs/*.png` (déjà gitignored via `runs/`)
 
-## 5. Horizon
+## 5. Mackasten
 
-Packages marketplace (paper) : [`horizon/README.md`](horizon/README.md) — pas besoin de Mac pour valider les manifests.
+Packages marketplace (paper) : [`mackasten/README.md`](mackasten/README.md) — pas besoin de Mac pour valider les manifests.

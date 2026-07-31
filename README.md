@@ -77,9 +77,9 @@ Hermes will generate the plist XML, write it to a `.shortcut` file, and sign it 
 **Agent map (≤2 min):** [`references/AGENT_ENTRY.md`](references/AGENT_ENTRY.md)  
 **Linux 10/10 track:** [`references/LINUX_10_CHECKLIST.md`](references/LINUX_10_CHECKLIST.md)  
 **Mac 10/10 track (device):** [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)  
-**Horizon packages:** [`horizon/README.md`](horizon/README.md)  
+**Mackasten packages:** [`mackasten/README.md`](mackasten/README.md)  
 **Release:** [`references/RELEASE.md`](references/RELEASE.md) · `./scripts/cut_release.sh`  
-**Product direction (companion app / Siri / local-model marketplace):** [`references/HORIZON.md`](references/HORIZON.md). The Locally→Obsidian stub track is abandoned.
+**Product direction (companion app / Siri / local-model marketplace):** [`references/MACKASTEN.md`](references/MACKASTEN.md). The Locally→Obsidian stub track is abandoned.
 
 ## Local finalize (Mac → 10/10)
 
@@ -98,7 +98,7 @@ Remix lean: `references/REMIX.md` + `scripts/remix_shortcut.py`. After every pli
 | **fix (Craig)** | `./scripts/validate_on_write.sh --fix <file>` |
 | **remix** | `python3 scripts/remix_shortcut.py` · `references/REMIX.md` |
 | **attest** | `./scripts/attest_local.sh --auto` (Mac + Accessibility) |
-| **horizon** | Agent track: `references/HORIZON_AGENT_CHECKLIST.md` (MCP / automations / market) · paper MVP: `references/HORIZON_CHECKLIST.md` |
+| **mackasten** | Agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (MCP / automations / market) · paper MVP: `references/MACKASTEN_CHECKLIST.md` |
 
 ## Validation
 
@@ -128,8 +128,8 @@ Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar he
 | `scripts/validate_on_write.sh` | Per-file post-edit validate (`--fix` = Craig Loop lite) |
 | `scripts/attest_local.sh` | Mac attestation pipeline |
 | `scripts/selftest.sh` | Local gate (validate + sample validate_on_write) |
-| `references/HORIZON_CHECKLIST.md` | Horizon paper MVP (packages / schema) |
-| `references/HORIZON_AGENT_CHECKLIST.md` | Post–Mac-max agent track (MCP / market / CLI) |
+| `references/MACKASTEN_CHECKLIST.md` | Mackasten paper MVP (packages / schema) |
+| `references/MACKASTEN_AGENT_CHECKLIST.md` | Post–Mac-max agent track (MCP / market / CLI) |
 | `data/sources.json` | Registry of external repos / corpora |
 | `references/ECOSYSTEM.md` | How we link, index, and selectively vendor peers |
 | `references/URL_SCHEMES.md` | `shortcuts://` + x-callback-url |

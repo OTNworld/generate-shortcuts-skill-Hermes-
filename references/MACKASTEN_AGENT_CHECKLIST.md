@@ -1,4 +1,4 @@
-# Checklist — Horizon agent track (MCP / automations / market)
+# Checklist — Mackasten agent track (MCP / automations / market)
 
 Dernière màj : **2026-07-26**  
 Prérequis : skill **1.10.0** mergé (`main`), MVP Viticci-lean + Craig Loop lite done.  
@@ -6,7 +6,7 @@ Contexte rating : **~10 Mac-max** ; prochain gain = **ergonomie agent / visibili
 
 **Légende :** `[ ]` todo · `[~]` partiel · `[x]` done · **P0/P1/P2**
 
-Paper MVP packages : [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md) (distinct).
+Paper MVP packages : [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md) (distinct).
 
 Liens : [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) · [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`ECOSYSTEM.md`](ECOSYSTEM.md)
 
@@ -76,7 +76,7 @@ Exposer les utils comme outils MCP au lieu de “lance ce bash”.
 
 ## H2 — Automations Cursor **P1**
 
-### Automations (horizon H2)
+### Automations (mackasten H2)
 
 - [x] Automation : périodique ou on-push → `./scripts/selftest.sh` (toujours) — **doc** dans ATTEST_AUTOMATION (CI validate déjà)
 - [~] Automation Mac-only (doc) : `./scripts/attest_local.sh --hash-only` ou `--auto` quand agent local
@@ -132,7 +132,7 @@ H0 inventaire / README utils
  → H4 CLI seulement si besoin
 ```
 
-### MVP horizon “ressenti agent”
+### MVP mackasten “ressenti agent”
 
 - [x] H0 tableau utils visible
 - [x] H1 validate via MCP (ou stub + doc)

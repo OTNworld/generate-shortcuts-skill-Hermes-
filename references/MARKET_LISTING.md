@@ -1,7 +1,7 @@
-# Market listing draft (horizon H3)
+# Market listing draft (mackasten H3)
 
 Ready-to-paste blurbs for Cursor skills market / LobeHub / similar catalogs.
-**Not published yet** — fill account steps when ready, then check `HORIZON_AGENT_CHECKLIST.md` H3.
+**Not published yet** — fill account steps when ready, then check `MACKASTEN_AGENT_CHECKLIST.md` H3.
 
 ## One-liner (EN, ≤280)
 
@@ -32,4 +32,4 @@ Génère et corrige des raccourcis Apple en plist XML valide. Là où d’autres
 
 - Repo: https://github.com/OTNworld/generate-shortcuts-skill-Hermes-
 - Release: https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/releases/tag/v1.10.0
-- Horizon agent track: [`HORIZON_AGENT_CHECKLIST.md`](HORIZON_AGENT_CHECKLIST.md)
+- Mackasten agent track: [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md)

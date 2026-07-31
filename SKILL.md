@@ -5,7 +5,7 @@ description: >
   Shortcut. Covers generating valid `.shortcut` files from plist XML,
   signing them for import, and understanding the Shortcuts action grammar:
   WF*Actions, AppIntents, variables, and control flow. Optionally bridges to
-  Obsidian vault notes (optional; Locally track abandoned — see HORIZON.md).
+  Obsidian vault notes (optional; Locally track abandoned — see MACKASTEN.md).
 version: 1.16.0
 author: OTNworld fork / Hermes adaptation
 license: MIT
@@ -49,7 +49,7 @@ Pour les notes de projet Obsidian (optionnel) : voir `references/OBSIDIAN_BRIDGE
 - `templates/palette/` : 16 minimal power-action starters
 - `templates/shortcut-skeleton.plist` : squelette racine pour génération
 - `templates/locally-obsidian.stub.xml` : stub **abandonné** (historique, non importable)
-- Horizon (app / Siri / marketplace) : `references/HORIZON.md`
+- Mackasten (app / Siri / marketplace) : `references/MACKASTEN.md`
 - Écosystème / sources externes : `references/ECOSYSTEM.md` + `data/sources.json`
 
 ## Étapes
@@ -121,8 +121,8 @@ Sur iOS, les limites acceptables pour un premier jet sont :
 - `references/ATTEST_AUTOMATION.md` : import UI + run automatisés (macOS local).
 - `references/NEXT_CHECKLIST.md` : checklist prochains pas vers 10/10.
 - `references/COMPETITIVE_CHECKLIST.md` : parité auteur vs Viticci (remix / validate-on-write / corpus), lean.
-- `references/HORIZON_CHECKLIST.md` : paper MVP packages / schema.
-- `references/HORIZON_AGENT_CHECKLIST.md` : après plafond Mac (MCP / automations / market / CLI).
+- `references/MACKASTEN_CHECKLIST.md` : paper MVP packages / schema.
+- `references/MACKASTEN_AGENT_CHECKLIST.md` : après plafond Mac (MCP / automations / market / CLI).
 - `references/REMIX.md` : protocole remix / diff chirurgical.
 - `references/OUTPUT_NAMES.md` : libellés `OutputName` anglais.
 - `SKILL.en.md` : protocole agent en anglais.
@@ -143,7 +143,7 @@ Préférer les scripts du repo aux commandes inventées :
 | remix | `python3 scripts/remix_shortcut.py` |
 | attest Mac | `./scripts/attest_local.sh --auto` |
 
-MCP (horizon) : `references/MCP_SHORTCUTS.md` · serveur `mcp_server/run.sh`.
+MCP (mackasten) : `references/MCP_SHORTCUTS.md` · serveur `mcp_server/run.sh`.
 
 ## Signing Shortcuts
 
@@ -211,5 +211,5 @@ Avant toute release/tag/push de ce skill ou d’un projet Shortcuts :
 - `templates/locally-obsidian.stub.xml` est un stub **abandonné** (non importable).
 - Ne pas le signer ni l’importer dans Raccourcis ; ne pas rouvrir le track Locally.
 - Pour un raccourci minimal valide, utiliser `templates/examples/` ou `templates/hello-world.shortcut.xml`.
-- Direction produit (app / Siri / marketplace modèles locaux) : `references/HORIZON.md`.
+- Direction produit (app / Siri / marketplace modèles locaux) : `references/MACKASTEN.md`.
 - Bridge Obsidian optionnel : `references/OBSIDIAN_BRIDGE.md`.

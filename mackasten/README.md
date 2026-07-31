@@ -1,4 +1,4 @@
-# Horizon packages (paper MVP)
+# Mackasten packages (paper MVP)
 
 Marketplace **package manifests** for the future companion app.
 This directory is validated on Linux CI — it does **not** ship an app binary.
@@ -12,10 +12,10 @@ This directory is validated on Linux CI — it does **not** ship an app binary.
 
 ## Format
 
-- Schema: [`data/schemas/horizon-package.v1.json`](../data/schemas/horizon-package.v1.json)
-- Checker: `python3 scripts/check_horizon_packages.py`
-- Checklist: [`references/HORIZON_CHECKLIST.md`](../references/HORIZON_CHECKLIST.md)
-- Vision: [`references/HORIZON.md`](../references/HORIZON.md)
+- Schema: [`data/schemas/mackasten-package.v1.json`](../data/schemas/mackasten-package.v1.json)
+- Checker: `python3 scripts/check_mackasten_packages.py`
+- Checklist: [`references/MACKASTEN_CHECKLIST.md`](../references/MACKASTEN_CHECKLIST.md)
+- Vision: [`references/MACKASTEN.md`](../references/MACKASTEN.md)
 
 ## Rules
 

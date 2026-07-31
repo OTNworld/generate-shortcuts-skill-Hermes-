@@ -1,4 +1,4 @@
-# Horizon — companion app, Siri, marketplace
+# Mackasten — companion app, Siri, marketplace
 
 **Status:** product direction (2026-07-26). Not implemented in this Hermes skill repo yet.  
 **Replaces:** Locally → Obsidian golden track (`templates/locally-obsidian.stub.xml` **abandoned**).
@@ -36,11 +36,11 @@ Until the app repo exists:
 - Expand palette + remix so agents can author marketplace-ready goldens.
 - Track App Intent gaps for Siri / on-device AI in [`APPINTENTS_GAP.md`](APPINTENTS_GAP.md) (watchlist only — no invented IDs).
 - Do **not** revive `locally-obsidian.stub.xml` as an importable golden.
-- **Paper MVP:** package manifests under [`horizon/`](../horizon/) — see [`HORIZON_CHECKLIST.md`](HORIZON_CHECKLIST.md).
+- **Paper MVP:** package manifests under [`mackasten/`](../mackasten/) — see [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md).
 
-## Package format (`horizon-package/v1`)
+## Package format (`mackasten-package/v1`)
 
-Validated by `scripts/check_horizon_packages.py` (CI):
+Validated by `scripts/check_mackasten_packages.py` (CI):
 
 | Field | Role |
 |-------|------|
@@ -50,7 +50,7 @@ Validated by `scripts/check_horizon_packages.py` (CI):
 | `attestation` | Pointers to MATRIX / `results.json` + coarse status |
 | `edit.deep_link` | `hermes-shortcuts://edit?path=…` (convention only) |
 
-Samples: `horizon/packages/hello-world`, `horizon/packages/local-ask-llm`.
+Samples: `mackasten/packages/hello-world`, `mackasten/packages/local-ask-llm`.
 
 ## Deep link (convention)
 
@@ -63,7 +63,7 @@ Not registered by this skill repo — reserved for the companion app / IDE bridg
 ## Suggested app backlog (out of band)
 
 1. Scaffold native app (Swift / App Intents) with Shortcuts import + run helpers.
-2. Consume `horizon/packages/*/package.json` as marketplace catalog seed.
+2. Consume `mackasten/packages/*/package.json` as marketplace catalog seed.
 3. Local-model adapter (Apple Intelligence / third-party on-device) behind a stable App Intent.
 4. Siri phrases → install/run marketplace shortcut.
 5. Resolve `hermes-shortcuts://edit` back into this skill workspace.
