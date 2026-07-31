@@ -24,3 +24,4 @@ __pycache__/
 
 # Mackasten app fetch output (seed / local CI smoke)
 /mackasten/app/Vendor/
+/horizon/app/Vendor/
