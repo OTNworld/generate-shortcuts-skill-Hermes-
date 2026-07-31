@@ -5,6 +5,14 @@ All notable changes to this skill are documented in this file.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows the `version` field in `SKILL.md`.
 
+## [Unreleased]
+
+### Added
+- Mackasten agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (utils → MCP → automations → market → CLI)
+- MCP stub: `mcp_server/shortcuts_mcp_server.py` + `references/MCP_SHORTCUTS.md`
+- Market blurbs: `references/MARKET_LISTING.md`
+- Cursor MCP install: `shortcuts-hermes` via `mcp_server/run.sh` + `.venv-mcp`
+
 ## [1.16.0] - 2026-07-26
 
 ### Added

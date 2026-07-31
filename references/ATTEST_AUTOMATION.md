@@ -129,4 +129,11 @@ Craig Loop lite (safe fixes only): `./scripts/validate_on_write.sh --fix <file>`
 6. Fill `fixtures/attested/MATRIX.md` from sign/import/`run_report.tsv`.
 7. Never commit `*_signed.shortcut` binaries.
 
+### Automations (mackasten H2)
+
+- Always-safe: schedule or manually run `./scripts/selftest.sh` after pulls.
+- Mac-only: `./scripts/attest_local.sh --hash-only` or `--auto` on a local agent.
+- Fail signal: `fixtures/attested/results.json` field `"pass": false`.
+- Full track: [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md) H2 · Cursor Automations UI when wiring a real trigger.
+
 See also: `LOCAL_FINALIZE.md`, `fixtures/attested/MAC_HANDOFF.md`.

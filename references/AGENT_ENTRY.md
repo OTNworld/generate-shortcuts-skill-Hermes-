@@ -44,6 +44,7 @@ Single map for Hermes / Cursor agents. Details live in linked docs — start her
 |-------|-----------|--------|
 | Linux 10/10 | [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md) | **Done (1.12.0)** |
 | Mackasten paper MVP | [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md) | **Done (1.13.0)** |
+| Mackasten agent (MCP / market) | [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md) | H0–H3 stub / blurbs |
 | Mac attestation 10/10 | [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md) | **Open — needs Darwin** |
 | Release / publish | [`RELEASE.md`](RELEASE.md) | Tooling ready (`cut_release.sh`) |
 | Lean peer parity | [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) | MVP done |

@@ -89,9 +89,21 @@ See [`LOCAL_FINALIZE.md`](LOCAL_FINALIZE.md) and `./scripts/attest_local.sh --au
 Peer playgrounds often lead on remix/ToolKit size; we lead on **attested, reproducible Mac delivery**.
 Remix lean: `references/REMIX.md` + `scripts/remix_shortcut.py`. After every plist edit: `scripts/validate_on_write.sh`.
 
+## Agent commands → utilities
+
+| Intent | Command |
+|--------|---------|
+| **build** | Follow `SKILL.md` steps + goldens under `templates/` |
+| **validate** | `./scripts/validate_on_write.sh <file>` · repo: `./scripts/validate.sh` · gate: `./scripts/selftest.sh` |
+| **fix (Craig)** | `./scripts/validate_on_write.sh --fix <file>` |
+| **remix** | `python3 scripts/remix_shortcut.py` · `references/REMIX.md` |
+| **attest** | `./scripts/attest_local.sh --auto` (Mac + Accessibility) |
+| **mackasten** | Agent track: `references/MACKASTEN_AGENT_CHECKLIST.md` (MCP / automations / market) · paper MVP: `references/MACKASTEN_CHECKLIST.md` |
+
 ## Validation
 
 ```bash
+./scripts/selftest.sh
 ./scripts/validate.sh
 ./scripts/validate_on_write.sh templates/examples/01-hello-world.shortcut.xml
 ```
@@ -113,6 +125,11 @@ Checks SSOT catalog contracts, XML well-formedness, shell syntax, and grammar he
 | `references/EXAMPLES.md` | Index of importable goldens |
 | `scripts/sign_shortcut.sh` | Signing helper |
 | `scripts/validate.sh` | Repo validation |
+| `scripts/validate_on_write.sh` | Per-file post-edit validate (`--fix` = Craig Loop lite) |
+| `scripts/attest_local.sh` | Mac attestation pipeline |
+| `scripts/selftest.sh` | Local gate (validate + sample validate_on_write) |
+| `references/MACKASTEN_CHECKLIST.md` | Mackasten paper MVP (packages / schema) |
+| `references/MACKASTEN_AGENT_CHECKLIST.md` | Post–Mac-max agent track (MCP / market / CLI) |
 | `data/sources.json` | Registry of external repos / corpora |
 | `references/ECOSYSTEM.md` | How we link, index, and selectively vendor peers |
 | `references/URL_SCHEMES.md` | `shortcuts://` + x-callback-url |

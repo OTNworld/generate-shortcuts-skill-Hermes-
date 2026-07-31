@@ -3,6 +3,7 @@
 > **Tracks actifs (2026-07-26) :**  
 > • Linux clos → [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md)  
 > • Mackasten paper MVP clos → [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md)  
+> • Mackasten agent track (MCP / market) → [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md)  
 > • **Mac restant → [`MAC_10_CHECKLIST.md`](MAC_10_CHECKLIST.md)** (source of truth device)  
 > Ce fichier reste l’historique détaillé ; le suivi Mac court est dans `MAC_10_CHECKLIST.md`.
 
@@ -21,7 +22,7 @@ Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 | **P2** | Nice-to-have / polish |
 | **DoD** | Definition of Done (critère d’acceptation) |
 
-Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
+Liens : [`ATTEST_AUTOMATION.md`](ATTEST_AUTOMATION.md) · [`../fixtures/attested/MATRIX.md`](../fixtures/attested/MATRIX.md) · [`COMPETITIVE_CHECKLIST.md`](COMPETITIVE_CHECKLIST.md) · [`MACKASTEN_CHECKLIST.md`](MACKASTEN_CHECKLIST.md) · [`MACKASTEN_AGENT_CHECKLIST.md`](MACKASTEN_AGENT_CHECKLIST.md) · [`ROADMAP_10.md`](ROADMAP_10.md) · [`../LOCAL_FINALIZE.md`](../LOCAL_FINALIZE.md)
 
 
 ---
