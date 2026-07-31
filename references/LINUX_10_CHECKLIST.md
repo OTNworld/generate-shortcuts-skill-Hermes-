@@ -1,7 +1,7 @@
 # Checklist — sprints Linux → 10/10 (sans Mac/iOS)
 
 Dernière màj : **2026-07-26** · Skill : **1.12.0**  
-Branche : `cursor/mackasten-app-and-improvements-df7d`
+Branche : `cursor/horizon-app-and-improvements-df7d`
 
 **Périmètre :** tout ce qui atteint 10/10 **sans** `shortcuts` CLI, sans import UI, sans device.  
 **Hors scope :** attestation MATRIX live, iOS, Mackasten app runtime, AppIntents *verified* via export.

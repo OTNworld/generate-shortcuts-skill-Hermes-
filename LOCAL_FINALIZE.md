@@ -1,6 +1,6 @@
 # Finaliser en local (Mac) → 10/10
 
-Branche : `cursor/mackasten-app-and-improvements-df7d`  
+Branche : `cursor/horizon-app-and-improvements-df7d`  
 PR : https://github.com/OTNworld/generate-shortcuts-skill-Hermes-/pull/5  
 Checklist Mac : [`references/MAC_10_CHECKLIST.md`](references/MAC_10_CHECKLIST.md)
 
@@ -11,8 +11,8 @@ Il reste l’**attestation Shortcuts** sur ton Mac (palette 13–16, NET, AppInt
 
 ```bash
 git fetch origin
-git checkout cursor/mackasten-app-and-improvements-df7d
-git pull origin cursor/mackasten-app-and-improvements-df7d
+git checkout cursor/horizon-app-and-improvements-df7d
+git pull origin cursor/horizon-app-and-improvements-df7d
 ./scripts/validate.sh
 ```
 

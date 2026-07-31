@@ -7,7 +7,7 @@
 > Ce fichier reste l’historique détaillé ; le suivi Mac court est dans `MAC_10_CHECKLIST.md`.
 
 Dernière màj : **2026-07-26** (Linux 10/10 + Mackasten paper + Mac baseline).  
-Branche de travail : `cursor/mackasten-app-and-improvements-df7d`.
+Branche de travail : `cursor/horizon-app-and-improvements-df7d`.
 
 **Légende**
 

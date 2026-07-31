@@ -1,7 +1,7 @@
 # Checklist — Mac 10/10 (device only)
 
 Dernière màj : **2026-07-26** · Prérequis skill : **≥1.12.0**  
-Branche : `cursor/mackasten-app-and-improvements-df7d`
+Branche : `cursor/horizon-app-and-improvements-df7d`
 
 **Périmètre :** uniquement ce qui exige Darwin + Shortcuts.app.  
 **Déjà clos hors device :** [`LINUX_10_CHECKLIST.md`](LINUX_10_CHECKLIST.md) · historique détaillé : [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md)
