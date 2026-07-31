@@ -16,7 +16,7 @@ Palier A (9/10) is implemented in v1.6.0. Remaining for a credible **10/10 skill
 | B10 | Expand community vendors from `data/external/*.index.jsonl` as needed | **11 goldens (1.16.0)**; 8 gaps remain |
 | B11 | Attestation automation (import UI + run) | **Done (scripts)** — sheets / NET harden in 1.11.0 |
 | B12 | Lean remix + validate-on-write | **Done (1.10.0)**; structural remix **1.11.0** |
-| B13 | Mackasten companion app / Siri / marketplace | **Paper MVP (1.13.0)** + **oneshot blueprint (`mackasten/app/`)** — private `mackasten-iOS` + fetch CI; see [`../mackasten/app/`](../mackasten/app/) |
+| B13 | Mackasten companion app / Siri / marketplace | **Paper MVP (1.13.0)** + **oneshot blueprint (`mackasten/app/`)** — private `Mackasten` + fetch CI; see [`../mackasten/app/`](../mackasten/app/) |
 
 **Prochains pas détaillés (checklist active) :**  
 [`NEXT_CHECKLIST.md`](NEXT_CHECKLIST.md) (attestation / 10/10 Mac)  

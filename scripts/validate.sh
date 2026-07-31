@@ -125,7 +125,7 @@ python3 scripts/check_no_secrets.py
 echo "== Mackasten packages =="
 python3 scripts/check_mackasten_packages.py
 
-echo "== Mackasten iOS oneshot blueprint =="
+echo "== Mackasten app oneshot blueprint =="
 python3 mackasten/app/scripts/check_oneshot_ready.py
 
 echo "== Sources registry =="

@@ -11,8 +11,9 @@ Use during oneshot. Check boxes in the **app** repo PR description.
 - [x] Bundle ID set ; URL scheme `hermes-shortcuts` registered
 - [x] `PrivacyInfo.xcprivacy` present
 - [x] `.gitignore` excludes `Vendor/SkillPackages/`
-- [ ] Private repo `OTNworld/mackasten-iOS` exists *(human)*
-- [ ] Seed pushed to private repo *(human)*
+- [x] Repo slug is `OTNworld/Mackasten` *(not mackasten-iOS)*
+- [ ] Cursor GitHub App can access `Mackasten` *(human — required for agent push)*
+- [ ] Seed pushed to private repo *(human or `scripts/push_seed_to_mackasten.sh`)*
 
 
 ### Fetch CI
@@ -83,7 +84,7 @@ Use during oneshot. Check boxes in the **app** repo PR description.
 On Linux, mark Mac rows as **blocked** with exact commands:
 
 ```bash
-cd /path/to/mackasten-iOS
+cd /path/to/Mackasten
 ./scripts/fetch_skill_packages.sh
 xcodegen generate
 xcodebuild -scheme Mackasten -destination 'platform=iOS Simulator,name=iPhone 17' test

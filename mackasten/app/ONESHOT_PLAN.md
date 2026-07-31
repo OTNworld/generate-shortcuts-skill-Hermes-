@@ -6,7 +6,7 @@ CI fetch scripts + unit tests purs, and hand off Mac gates explicitly.
 
 ## Preflight (human, once)
 
-1. Create private repo `OTNworld/mackasten-iOS` — [`REPO_BOOTSTRAP.md`](REPO_BOOTSTRAP.md).
+1. Private repo **`OTNworld/Mackasten`** exists + Cursor GitHub App access — [`REPO_BOOTSTRAP.md`](REPO_BOOTSTRAP.md).
 2. Grant the coding agent access to that private repo.
 3. Confirm Xcode 26+ / Simulator on the machine that will run phases D–F.
 
@@ -86,7 +86,7 @@ Agent **stops and reports** if:
 
 ## Suggested single-prompt for the next agent
 
-> Private repo `OTNworld/mackasten-iOS` already seeded from `mackasten/app/` (includes
+> Private repo `OTNworld/Mackasten` already seeded from `mackasten/app/` (includes
 > Swift scaffold). Load `SKILL.md`. Pin `SKILL_REF`, run fetch, `xcodegen generate`,
 > then execute remaining Mac gates in CHECKLIST.md (Simulator install/run Hello World,
 > deep link smoke, `xcodebuild test`). Do not invent Apple App Intent IDs. If Xcode is

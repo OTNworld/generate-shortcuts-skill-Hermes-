@@ -1,17 +1,17 @@
-# Mackasten iOS — app blueprint + Swift scaffold
+# Mackasten — app blueprint + Swift scaffold
 
-**Status:** oneshot seed with **Swift/XcodeGen scaffold** (phases A–E). Runtime binary
-still targets private `OTNworld/mackasten-iOS`.  
+**Status:** oneshot seed with **Swift/XcodeGen scaffold** (phases A–E). Runtime
+targets private GitHub repo **`OTNworld/Mackasten`** (slug without `-iOS`).  
 **Packages SSOT:** [`../packages/`](../packages/) · schema `mackasten-package/v1`  
 **Vision:** [`VISION.md`](VISION.md) · **Oneshot:** [`ONESHOT_PLAN.md`](ONESHOT_PLAN.md)
 
-Copy this entire directory into the private app repo after [`REPO_BOOTSTRAP.md`](REPO_BOOTSTRAP.md).
+Copy this entire directory into `OTNworld/Mackasten` after [`REPO_BOOTSTRAP.md`](REPO_BOOTSTRAP.md).
 
 ## Decisions locked
 
 | Decision | Choice |
 |----------|--------|
-| Private app repo | `OTNworld/mackasten-iOS` (create under your account) |
+| Private app repo | **`OTNworld/Mackasten`** (not `mackasten-iOS`) |
 | Link to skill | **Fetch CI** of `mackasten/packages` + XML @ pinned tag/SHA |
 | Stack | Swift / SwiftUI / App Intents / SwiftData · iOS 18+ / SDK 26 |
 | Bundle ID | `com.otnworld.mackasten` |

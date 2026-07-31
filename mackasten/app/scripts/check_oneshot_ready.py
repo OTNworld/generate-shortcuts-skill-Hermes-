@@ -24,6 +24,7 @@ REQUIRED = [
     ".gitignore",
     ".github/workflows/fetch-packages.yml",
     "scripts/fetch_skill_packages.sh",
+    "scripts/push_seed_to_mackasten.sh",
     "references/MARKETPLACE.md",
     "references/URL_SCHEME.md",
     "references/LOCAL_MODELS.md",

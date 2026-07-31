@@ -1,6 +1,6 @@
 # Mackasten — vision produit finale
 
-**Status:** target architecture (2026-07-27). Runtime app = repo privé `mackasten-iOS`.  
+**Status:** target architecture (2026-07-31). Runtime app = repo privé `OTNworld/Mackasten`.  
 **Seed / skill agent :** ce dossier. **Paper packages :** [`../packages/`](../packages/).
 
 ## Thesis
@@ -13,7 +13,7 @@ quand c’est possible — et les expose à **Siri / App Intents**.
 | Couche | Propriétaire | Rôle |
 |--------|--------------|------|
 | Skill Hermes (public MIT) | `generate-shortcuts-skill-Hermes-` | Grammaire, goldens, validate, sign, attest, manifests `mackasten-package/v1` |
-| App Mackasten (privé) | `mackasten-iOS` | UX, confiance, updates, routing modèles, Siri |
+| App Mackasten (privé) | `OTNworld/Mackasten` | UX, confiance, updates, routing modèles, Siri |
 | OS Apple | Shortcuts + App Intents + Apple Intelligence | Exécution native des workflows / intents système |
 
 ## Utilisateur cible

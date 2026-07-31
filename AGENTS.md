@@ -47,8 +47,8 @@ VM by design — do the 10/10 attestation on a real Mac (see `LOCAL_FINALIZE.md`
   or validation fails.
 - Mackasten marketplace manifests live under `mackasten/packages/` (schema
   `mackasten-package/v1`); `scripts/check_mackasten_packages.py` runs in `validate.sh`.
-- Mackasten iOS oneshot seed + Swift scaffold: `mackasten/app/` (private repo
-  `mackasten-iOS`); Linux mirrors in `tests/test_mackasten_app_logic.py`.
+- Mackasten oneshot seed + Swift scaffold: `mackasten/app/` (private repo
+  `Mackasten`); Linux mirrors in `tests/test_mackasten_app_logic.py`.
 - Optional local MCP: `mcp_server/run.sh` (needs `.venv-mcp`); not required for CI.
 - `*.stub.xml` files are XML-only design snapshots and are intentionally skipped by grammar
   checks.

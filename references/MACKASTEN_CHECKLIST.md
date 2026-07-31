@@ -36,9 +36,10 @@ Vision : [`MACKASTEN.md`](MACKASTEN.md) · index : [`../mackasten/README.md`](..
 
 Blueprint oneshot + **Swift scaffold** lives in [`../mackasten/app/`](../mackasten/app/) — **seed ready**.
 
-Private repo: **`OTNworld/mackasten-iOS`** (create under your account; see `app/REPO_BOOTSTRAP.md`).
+Private repo: **`OTNworld/Mackasten`** (create under your account; see `app/REPO_BOOTSTRAP.md`).
 
-- [ ] Create private `mackasten-iOS` + push seed from `mackasten/app/`
+- [ ] Grant Cursor GitHub App access to `Mackasten`
+- [ ] Push seed from `mackasten/app/` (`scripts/push_seed_to_mackasten.sh`)
 - [ ] Mac: `xcodegen generate` + Simulator catalog / install / run Hello World
 - [ ] Complete remaining P0 gates in [`../mackasten/app/CHECKLIST.md`](../mackasten/app/CHECKLIST.md)
 - [ ] On-device Siri / Apple Intelligence smokes

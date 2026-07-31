@@ -36,7 +36,7 @@ Resolved by the companion app — not registered by this skill repo.
 
 ## iOS app blueprint (`app/`) — oneshot seed + Swift scaffold
 
-Private app repo target: **`OTNworld/mackasten-iOS`**.  
+Private app repo target: **`OTNworld/Mackasten`** (slug without `-iOS`).  
 Link mode: **fetch CI** of packages + XML from this skill @ pinned tag/SHA.
 
 Includes XcodeGen `project.yml`, SwiftUI catalog/library, deep link, App Intents,
