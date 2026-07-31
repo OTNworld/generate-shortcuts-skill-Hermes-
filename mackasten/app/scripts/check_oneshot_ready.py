@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ensure mackasten/app oneshot blueprint files exist (docs gate)."""
+"""Ensure mackasten/app oneshot blueprint + Swift scaffold files exist."""
 
 from __future__ import annotations
 
@@ -19,6 +19,10 @@ REQUIRED = [
     "CI_FETCH.md",
     "REPO_BOOTSTRAP.md",
     "sources.json",
+    "project.yml",
+    "SkillPin.env.example",
+    ".gitignore",
+    ".github/workflows/fetch-packages.yml",
     "scripts/fetch_skill_packages.sh",
     "references/MARKETPLACE.md",
     "references/URL_SCHEME.md",
@@ -26,6 +30,19 @@ REQUIRED = [
     "references/APP_INTENTS.md",
     "references/TESTING.md",
     "references/DESIGN.md",
+    "Mackasten/Info.plist",
+    "Mackasten/App/MackastenApp.swift",
+    "Mackasten/App/RootTabView.swift",
+    "Mackasten/Models/MackastenPackage.swift",
+    "Mackasten/DeepLink/HermesShortcutsRouter.swift",
+    "Mackasten/ShortcutsBridge/ShortcutsURLBuilder.swift",
+    "Mackasten/Catalog/PackageCatalogStore.swift",
+    "Mackasten/Intents/MackastenIntents.swift",
+    "Mackasten/Intents/MackastenAppShortcuts.swift",
+    "Mackasten/Library/InstalledPackage.swift",
+    "Resources/PrivacyInfo.xcprivacy",
+    "MackastenTests/MackastenLogicTests.swift",
+    "MackastenTests/Fixtures/packages/hello-world/package.json",
 ]
 
 
@@ -35,7 +52,7 @@ def main() -> int:
         for m in missing:
             print(f"FAIL missing {m}", file=sys.stderr)
         return 1
-    print(f"OK  mackasten/app oneshot blueprint ({len(REQUIRED)} files)")
+    print(f"OK  mackasten/app oneshot scaffold ({len(REQUIRED)} files)")
     return 0
 
 

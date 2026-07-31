@@ -6,12 +6,14 @@ Use during oneshot. Check boxes in the **app** repo PR description.
 
 ### Repo / project
 
-- [ ] Private repo `OTNworld/mackasten-iOS` exists
-- [ ] Seed docs (`VISION`…`SKILL`) present
-- [ ] `project.yml` + `xcodegen generate` succeeds
-- [ ] Bundle ID set ; URL scheme `hermes-shortcuts` registered
-- [ ] `PrivacyInfo.xcprivacy` present
-- [ ] `.gitignore` excludes `Vendor/SkillPackages/` build tree (or commits release snapshot intentionally)
+- [x] Seed docs (`VISION`…`SKILL`) present *(in skill `mackasten/app/`)*
+- [x] `project.yml` + XcodeGen layout present *(Mac: `xcodegen generate`)*
+- [x] Bundle ID set ; URL scheme `hermes-shortcuts` registered
+- [x] `PrivacyInfo.xcprivacy` present
+- [x] `.gitignore` excludes `Vendor/SkillPackages/`
+- [ ] Private repo `OTNworld/mackasten-iOS` exists *(human)*
+- [ ] Seed pushed to private repo *(human)*
+
 
 ### Fetch CI
 

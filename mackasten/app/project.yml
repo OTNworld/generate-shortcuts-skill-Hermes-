@@ -1,0 +1,58 @@
+name: Mackasten
+options:
+  bundleIdPrefix: com.otnworld
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  Mackasten:
+    type: application
+    platform: iOS
+    sources:
+      - path: Mackasten
+        excludes:
+          - Info.plist
+    resources:
+      - path: Resources
+      - path: Vendor/SkillPackages
+        optional: true
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.otnworld.mackasten
+        PRODUCT_NAME: Mackasten
+        INFOPLIST_FILE: Mackasten/Info.plist
+    scheme:
+      testTargets:
+        - MackastenTests
+  MackastenTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: MackastenTests
+    resources:
+      - path: MackastenTests/Fixtures
+        optional: true
+        type: folder
+    dependencies:
+      - target: Mackasten
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.otnworld.mackasten.tests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Mackasten:
+    build:
+      targets:
+        Mackasten: all
+        MackastenTests: [test]
+    test:
+      targets:
+        - MackastenTests

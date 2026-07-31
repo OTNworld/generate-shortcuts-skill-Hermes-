@@ -1,0 +1,18 @@
+# Xcode / macOS junk
+.DS_Store
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.build/
+
+# Generated Xcode project (XcodeGen is SSOT)
+*.xcodeproj/
+*.xcworkspace/
+
+# Fetch CI output (regenerate with scripts/fetch_skill_packages.sh)
+Vendor/SkillPackages/
+
+# Secrets / local pins with tokens
+SkillPin.env
+*.p12
+*.mobileprovision

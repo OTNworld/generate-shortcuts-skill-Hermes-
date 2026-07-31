@@ -1,0 +1,10 @@
+{
+  "schema": "horizon-catalog/v1",
+  "skill_ref": "main",
+  "packages": [
+    "clipboard-set",
+    "hello-world",
+    "local-ask-llm",
+    "local-rewrite"
+  ]
+}

@@ -5,59 +5,44 @@ once in the GitHub UI or with **your** `gh` login.
 
 ## 1. Create the repository
 
-GitHub → New repository:
-
-| Field | Value |
-|-------|-------|
-| Owner | `OTNworld` |
-| Name | `mackasten-iOS` |
-| Visibility | **Private** |
-| README | empty OK (we push seed) |
-| License | none yet (private app) |
-
-CLI (on your machine):
-
 ```bash
 gh repo create OTNworld/mackasten-iOS --private --description "Mackasten companion iOS app (Shortcuts marketplace)"
 ```
 
 ## 2. Seed from this skill folder
 
-From a clone of the **skill** repo:
-
 ```bash
 git clone https://github.com/OTNworld/generate-shortcuts-skill-Hermes-.git skill
 git clone https://github.com/OTNworld/mackasten-iOS.git mackasten-iOS
 cd mackasten-iOS
 
-# Product + agent skill seed
+# Product docs + Swift/XcodeGen scaffold + fetch CI
 cp -R ../skill/mackasten/app/. .
-mkdir -p scripts
-# fetch script already under ./scripts if copied from app/
 
 git add .
-git commit -m "Seed Mackasten iOS oneshot blueprint from skill mackasten/app"
+git commit -m "Seed Mackasten iOS scaffold from skill mackasten/app"
 git push -u origin main
 ```
 
-## 3. Grant the coding agent
+## 3. First Mac build
 
-- Add the private repo to the Cursor Cloud / GitHub App installation for OTNworld.
-- Or run the oneshot agent **locally** with access to `mackasten-iOS`.
+```bash
+cp SkillPin.env.example SkillPin.env
+# set SKILL_REF=<skill tag or SHA>
+./scripts/fetch_skill_packages.sh
+xcodegen generate
+xcodebuild -scheme Mackasten -destination 'platform=iOS Simulator,name=iPhone 17' test
+```
 
-## 4. Cross-link from the skill (already planned)
+## 4. Grant the coding agent
 
-Public skill docs point to `mackasten/app/` as blueprint and name the private repo
-without requiring public access to app sources.
-
-## 5. First oneshot
-
-Open `mackasten-iOS` with `SKILL.md` loaded and run [`ONESHOT_PLAN.md`](ONESHOT_PLAN.md).
+Add the private repo to the Cursor / GitHub App installation, then run the oneshot
+prompt in [`ONESHOT_PLAN.md`](ONESHOT_PLAN.md).
 
 ## Checklist
 
 - [ ] Repo private `OTNworld/mackasten-iOS` created
-- [ ] Seed pushed
+- [ ] Seed pushed (includes `Mackasten/` sources + `project.yml`)
 - [ ] Agent can clone
-- [ ] `SKILL_REF` chosen (e.g. current skill semver tag)
-- [ ] Xcode 26+ ready for build phases
+- [ ] `SKILL_REF` pinned
+- [ ] Xcode 26+ ready for Simulator gates
