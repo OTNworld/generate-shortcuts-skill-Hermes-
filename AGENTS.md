@@ -42,8 +42,11 @@ VM by design — do the 10/10 attestation on a real Mac (see `LOCAL_FINALIZE.md`
 - Never mutate committed teaching goldens under `templates/`. Remix demos must `--output`
   to a temp path (e.g. `/tmp/...`).
 - `validate.sh` enforces that numeric claims in `README.md`/`SKILL.md`/`references/*` match
-  the SSOT counts in `data/wf_actions.json` (438) and `data/appintents.json` (154), and
+  the SSOT counts in `data/wf_actions.json` (**446**) and `data/appintents.json` (**168**), and
   that `render_refs.py --check` shows no drift. If you change catalogs, re-sync the docs
   or validation fails.
+- Mackasten marketplace manifests live under `mackasten/packages/` (schema
+  `mackasten-package/v1`); `scripts/check_mackasten_packages.py` runs in `validate.sh`.
+- Optional local MCP: `mcp_server/run.sh` (needs `.venv-mcp`); not required for CI.
 - `*.stub.xml` files are XML-only design snapshots and are intentionally skipped by grammar
   checks.
